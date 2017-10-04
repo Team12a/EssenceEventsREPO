@@ -45,11 +45,11 @@
       <link rel="stylesheet" href="app/celebrations/celebrations.css">
       <link rel="stylesheet" href="app/client/client.css">
       <link rel="stylesheet" href="app/client/partials/clientNav/clientNav.css">
+      <link rel="stylesheet" href="app/client/partials/makePayment/makePayment.css">
       <link rel="stylesheet" href="app/client/partials/welcome/welcome.css">
       <link rel="stylesheet" href="app/corporate/corporate.css">
       <link rel="stylesheet" href="app/customer/customer.css">
       <link rel="stylesheet" href="app/customer/myEvents/myEvents.css">
-      <link rel="stylesheet" href="app/customer/partials/makePayment/makePayment.css">
       <link rel="stylesheet" href="app/links/links.css">
       <link rel="stylesheet" href="app/liveGallery/liveGallery.css">
       <link rel="stylesheet" href="app/main/main.css">
@@ -119,11 +119,11 @@
     <!-- build:js(.tmp) app/app.js -->
       <script src="app/app.js"></script>
       <!-- injector:js -->
-      <script src="app/client/client.module.js"></script>
       <script src="app/admin/admin.module.js"></script>
+      <script src="app/client/client.module.js"></script>
       <script src="components/auth/auth.module.js"></script>
       <script src="components/util/util.module.js"></script>
-      <script src="app/account/login/resetModal/manageContractorModal.controller.js"></script>
+      <script src="app/client/client.router.js"></script>
       <script src="app/account/login/resetModal/resetModal.controller.js"></script>
       <script src="app/account/login/resetModal/resetModal.js"></script>
       <script src="app/account/settings/settings.controller.js"></script>
@@ -160,10 +160,12 @@
       <script src="app/celebrations/celebrations.controller.js"></script>
       <script src="app/celebrations/celebrations.js"></script>
       <script src="app/client/client.controller.js"></script>
+      <script src="app/account/account.js"></script>
       <script src="app/aboutus/aboutus.js"></script>
-      <script src="app/client/client.router.js"></script>
       <script src="app/client/partials/clientContent/clientContent.directive.js"></script>
       <script src="app/client/partials/clientNav/clientNav.directive.js"></script>
+      <script src="app/client/partials/makePayment/makePayment.controller.js"></script>
+      <script src="app/client/partials/makePayment/makePayment.js"></script>
       <script src="app/client/partials/welcome/welcome.controller.js"></script>
       <script src="app/client/partials/welcome/welcome.js"></script>
       <script src="app/corporate/corporate.controller.js"></script>
@@ -190,7 +192,7 @@
       <script src="app/services/services.js"></script>
       <script src="app/weddings/weddings.controller.js"></script>
       <script src="app/weddings/weddings.js"></script>
-      <script src="app/account/account.js"></script>
+      <script src="app/account/login/login.controller.js"></script>
       <script src="components/auth/auth.service.js"></script>
       <script src="components/auth/interceptor.service.js"></script>
       <script src="components/auth/router.decorator.js"></script>
@@ -200,7 +202,7 @@
       <script src="components/mongoose-error/mongoose-error.directive.js"></script>
       <script src="components/navbar/navbar.controller.js"></script>
       <script src="components/navbar/navbar.directive.js"></script>
-      <script src="app/account/login/login.controller.js"></script>
+      <script src="app/account/login/resetModal/manageContractorModal.controller.js"></script>
       <script src="components/util/util.service.js"></script>
       <!-- endinjector -->
     <!-- endbuild -->
