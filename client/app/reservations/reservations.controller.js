@@ -29,6 +29,7 @@ angular.module('essenceEventsRepoApp')
       lastName: $scope.lname,
       address: $scope.email,
       phone: $scope.phone,
+      eventDate: $scope.edate,
       message: $scope.message
     };
 
