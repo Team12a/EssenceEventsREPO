@@ -1,0 +1,27 @@
+<div class = "container-fluid">
+
+  <div ng-controller="WelcomeCtrl" ng-init="getEvents()">
+
+    <h2>Welcome, {{clientName}} </h2>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th><b>Event Name</b></td>
+          <th><b>Location</b></td>
+          <th><b>Date</b></td>
+          <th></td>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr ng-repeat="event in events">
+          <td>{{event.name}}</td>
+          <td>{{event.location}}</td>
+          <td>{{event.date.substring(5,10) + '-' + event.date.substring(0,4)}}</td>
+          <td> <btn class = "btn btn-primary" ui-sref="myEvents({eventt: event})"> Details</btn></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

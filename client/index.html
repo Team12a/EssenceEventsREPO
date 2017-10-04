@@ -43,6 +43,9 @@
       <link rel="stylesheet" href="app/admin/partials/manageLinks/manageLinksModal/manageLinksModal.css">
       <link rel="stylesheet" href="app/app.css">
       <link rel="stylesheet" href="app/celebrations/celebrations.css">
+      <link rel="stylesheet" href="app/client/client.css">
+      <link rel="stylesheet" href="app/client/partials/clientNav/clientNav.css">
+      <link rel="stylesheet" href="app/client/partials/welcome/welcome.css">
       <link rel="stylesheet" href="app/corporate/corporate.css">
       <link rel="stylesheet" href="app/customer/customer.css">
       <link rel="stylesheet" href="app/customer/myEvents/myEvents.css">
@@ -116,10 +119,10 @@
     <!-- build:js(.tmp) app/app.js -->
       <script src="app/app.js"></script>
       <!-- injector:js -->
+      <script src="app/client/client.module.js"></script>
       <script src="app/admin/admin.module.js"></script>
       <script src="components/auth/auth.module.js"></script>
       <script src="components/util/util.module.js"></script>
-      <script src="app/celebrations/celebrations.controller.js"></script>
       <script src="app/account/login/resetModal/manageContractorModal.controller.js"></script>
       <script src="app/account/login/resetModal/resetModal.controller.js"></script>
       <script src="app/account/login/resetModal/resetModal.js"></script>
@@ -154,8 +157,15 @@
       <script src="app/admin/partials/signup/signup.controller.js"></script>
       <script src="app/admin/partials/signup/signup.js"></script>
       <script src="app/app.constant.js"></script>
-      <script src="app/aboutus/aboutus.js"></script>
+      <script src="app/celebrations/celebrations.controller.js"></script>
       <script src="app/celebrations/celebrations.js"></script>
+      <script src="app/client/client.controller.js"></script>
+      <script src="app/aboutus/aboutus.js"></script>
+      <script src="app/client/client.router.js"></script>
+      <script src="app/client/partials/clientContent/clientContent.directive.js"></script>
+      <script src="app/client/partials/clientNav/clientNav.directive.js"></script>
+      <script src="app/client/partials/welcome/welcome.controller.js"></script>
+      <script src="app/client/partials/welcome/welcome.js"></script>
       <script src="app/corporate/corporate.controller.js"></script>
       <script src="app/corporate/corporate.js"></script>
       <script src="app/customer/customer.controller.js"></script>
