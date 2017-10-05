@@ -31,7 +31,7 @@ angular.module('essenceEventsRepoApp.client')
       {
         'title': 'Make a Payment',
         'description': 'Access payments and pay through paypal',
-        'state': 'client.makeAPayment',
+        'state': 'client.makePayment',
       },
       {
         'title': 'Upload a Testimonial',
