@@ -6,11 +6,9 @@ function AuthService($location, $http, $cookies, $q, appConfig, Util, User) {
   var safeCb = Util.safeCb;
   var currentUser = {};
   var userRoles = appConfig.userRoles || [];
-
   if ($cookies.get('token') && $location.path() !== '/logout') {
     currentUser = User.get({access_token: $cookies.get('token')});
   }
-
   var Auth = {
 
     /**
@@ -131,7 +129,7 @@ function AuthService($location, $http, $cookies, $q, appConfig, Util, User) {
           return is;
         });
     },
-
+     //changed logic so that we check if user role is only equal to not greater than or equal to
      /**
       * Check if a user has a specified role or higher
       *   (synchronous|asynchronous)
@@ -142,7 +140,7 @@ function AuthService($location, $http, $cookies, $q, appConfig, Util, User) {
       */
     hasRole(role, callback) {
       var hasRole = function(r, h) {
-        return userRoles.indexOf(r) >= userRoles.indexOf(h);
+        return userRoles.indexOf(r) === userRoles.indexOf(h);
       };
 
       if (arguments.length < 2) {
@@ -157,7 +155,16 @@ function AuthService($location, $http, $cookies, $q, appConfig, Util, User) {
           return has;
         });
     },
-
+    /**
+     * RECENTLY ADDED
+     * Check if user is a super admin
+     * @param {Function|*} callback - optional, function(is)
+     * @return {Bool|Promise}
+    */
+    isSuperAdmin(){
+      return Auth.hasRole
+        .apply(Auth, [].concat.apply(['superAdmin'], arguments));
+    },
      /**
       * Check if a user is an admin
       *   (synchronous|asynchronous)

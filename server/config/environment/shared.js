@@ -2,5 +2,6 @@
 
 exports = module.exports = {
   // List of user roles
-  userRoles: ['guest', 'user', 'admin']
+  // Added superAdmin as a role
+  userRoles: ['guest', 'user', 'admin', 'superAdmin']
 };

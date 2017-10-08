@@ -2,6 +2,7 @@
 
 angular.module('essenceEventsRepoApp', [
   'essenceEventsRepoApp.auth',
+  'essenceEventsRepoApp.superAdmin',
   'essenceEventsRepoApp.admin',
   'essenceEventsRepoApp.constants',
   'ngCookies',

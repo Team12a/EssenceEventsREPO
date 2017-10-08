@@ -52,6 +52,9 @@
       <link rel="stylesheet" href="app/rentals/rentals.css">
       <link rel="stylesheet" href="app/reservations/reservations.css">
       <link rel="stylesheet" href="app/services/services.css">
+      <link rel="stylesheet" href="app/superAdmin/partials/superAdminNav/superAdminNav.css">
+      <link rel="stylesheet" href="app/superAdmin/partials/updatePictures/updatePictures.css">
+      <link rel="stylesheet" href="app/superAdmin/superAdmin.css">
       <link rel="stylesheet" href="app/weddings/weddings.css">
       <link rel="stylesheet" href="components/font-awesome-4.5.0/css/font-awesome.css">
       <link rel="stylesheet" href="components/font-awesome-4.5.0/css/font-awesome.min.css">
@@ -94,7 +97,7 @@
       <script src="bower_components/angular-cookies/angular-cookies.js"></script>
       <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
       <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-      <script src="bower_components/lodash/lodash.js"></script>
+      <script src="bower_components/lodash/dist/lodash.compat.js"></script>
       <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
       <script src="bower_components/angular-validation-match/dist/angular-validation-match.min.js"></script>
       <script src="bower_components/d3/d3.js"></script>
@@ -104,6 +107,11 @@
       <script src="bower_components/angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar-tpls.js"></script>
       <script src="bower_components/api-check/dist/api-check.js"></script>
       <script src="bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
+      <script src="bower_components/markerclustererplus/src/markerclusterer.js"></script>
+      <script src="bower_components/google-maps-utility-library-v3-markerwithlabel/dist/markerwithlabel.js"></script>
+      <script src="bower_components/google-maps-utility-library-v3-infobox/dist/infobox.js"></script>
+      <script src="bower_components/google-maps-utility-library-v3-keydragzoom/dist/keydragzoom.js"></script>
+      <script src="bower_components/js-rich-marker/src/richmarker.js"></script>
       <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
       <!-- endbower -->
     <!-- endbuild -->
@@ -111,10 +119,10 @@
       <script src="app/app.js"></script>
       <!-- injector:js -->
       <script src="app/admin/admin.module.js"></script>
+      <script src="app/superAdmin/superAdmin.module.js"></script>
       <script src="components/auth/auth.module.js"></script>
       <script src="components/util/util.module.js"></script>
-      <script src="app/celebrations/celebrations.controller.js"></script>
-      <script src="app/account/login/resetModal/manageContractorModal.controller.js"></script>
+      <script src="app/corporate/corporate.js"></script>
       <script src="app/account/login/resetModal/resetModal.controller.js"></script>
       <script src="app/account/login/resetModal/resetModal.js"></script>
       <script src="app/account/settings/settings.controller.js"></script>
@@ -148,10 +156,10 @@
       <script src="app/admin/partials/signup/signup.controller.js"></script>
       <script src="app/admin/partials/signup/signup.js"></script>
       <script src="app/app.constant.js"></script>
-      <script src="app/aboutus/aboutus.js"></script>
+      <script src="app/celebrations/celebrations.controller.js"></script>
       <script src="app/celebrations/celebrations.js"></script>
       <script src="app/corporate/corporate.controller.js"></script>
-      <script src="app/corporate/corporate.js"></script>
+      <script src="app/aboutus/aboutus.js"></script>
       <script src="app/customer/customer.controller.js"></script>
       <script src="app/customer/customer.js"></script>
       <script src="app/customer/myEvents/myEvents.controller.js"></script>
@@ -172,9 +180,16 @@
       <script src="app/reservations/reservations.js"></script>
       <script src="app/services/services.controller.js"></script>
       <script src="app/services/services.js"></script>
+      <script src="app/superAdmin/partials/superAdminContent/superAdminContent.directive.js"></script>
+      <script src="app/superAdmin/partials/superAdminNav/superAdminNav.directive.js"></script>
+      <script src="app/superAdmin/partials/updatePictures/updatePictures.controller.js"></script>
+      <script src="app/superAdmin/partials/updatePictures/updatePictures.js"></script>
+      <script src="app/superAdmin/superAdmin.controller.js"></script>
+      <script src="app/account/account.js"></script>
+      <script src="app/superAdmin/superAdmin.router.js"></script>
       <script src="app/weddings/weddings.controller.js"></script>
       <script src="app/weddings/weddings.js"></script>
-      <script src="app/account/account.js"></script>
+      <script src="app/account/login/login.controller.js"></script>
       <script src="components/auth/auth.service.js"></script>
       <script src="components/auth/interceptor.service.js"></script>
       <script src="components/auth/router.decorator.js"></script>
@@ -184,7 +199,7 @@
       <script src="components/mongoose-error/mongoose-error.directive.js"></script>
       <script src="components/navbar/navbar.controller.js"></script>
       <script src="components/navbar/navbar.directive.js"></script>
-      <script src="app/account/login/login.controller.js"></script>
+      <script src="app/account/login/resetModal/manageContractorModal.controller.js"></script>
       <script src="components/util/util.service.js"></script>
       <!-- endinjector -->
     <!-- endbuild -->
