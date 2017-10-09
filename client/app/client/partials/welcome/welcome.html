@@ -18,7 +18,7 @@
           <td>{{event.name}}</td>
           <td>{{event.location}}</td>
           <td>{{event.date.substring(5,10) + '-' + event.date.substring(0,4)}}</td>
-          <td> <btn class = "btn btn-primary" ui-sref="myEvents({eventt: event})"> Details</btn></td>
+          <td> <btn class = "btn btn-primary" ng-click="openModal(event)"> Details</btn></td>
         </tr>
       </tbody>
     </table>

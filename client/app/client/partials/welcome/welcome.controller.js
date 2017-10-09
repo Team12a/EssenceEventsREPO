@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('essenceEventsRepoApp.client')
-.controller('WelcomeCtrl', [ 'Events', 'Auth', '$scope', '$stateParams', '$state', function ( Events, Auth, $scope, $stateParams, $state) {
+.controller('WelcomeCtrl', [ 'Events', 'Auth', '$scope','$modal', '$stateParams', '$state', function ( Events, Auth, $scope, $modal, $stateParams, $state) {
 
 var getUser = function() {
   if (!$scope.curUser._id)
@@ -27,9 +27,19 @@ $scope.getEvents = function(){
     });
 };
 
-$scope.navigate = function(eevent){
+//Open Manage Clients Modal to manage client information and create events for a client
+$scope.openModal= function(event) {
+  var modalInstance = $modal.open({
+    animation: true,
+    templateUrl: 'app/client/partials/welcome/myEvents/myEvents.html',
+    controller: 'MyEventsCtrl',
+    resolve: {
+      event: function()
+      {
+        return event;
+      }
+    }
+  });
+};
 
-  $state.go('myEvents' ,{eventt: eevent});
-
-}
 }]);
