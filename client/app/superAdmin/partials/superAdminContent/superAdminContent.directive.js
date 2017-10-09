@@ -1,5 +1,7 @@
 'use strict';
 
+
+//directive for super admin content
 angular.module('essenceEventsRepoApp')
   .directive('superAdminContent', function(){
     return{

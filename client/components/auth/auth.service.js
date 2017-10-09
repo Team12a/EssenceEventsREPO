@@ -129,7 +129,7 @@ function AuthService($location, $http, $cookies, $q, appConfig, Util, User) {
           return is;
         });
     },
-     //changed logic so that we check if user role is only equal to not greater than or equal to
+     //RECENT: changed logic so that we check if user role is only equal to not greater than or equal to
      /**
       * Check if a user has a specified role or higher
       *   (synchronous|asynchronous)
@@ -156,7 +156,7 @@ function AuthService($location, $http, $cookies, $q, appConfig, Util, User) {
         });
     },
     /**
-     * RECENTLY ADDED
+     * RECENT:
      * Check if user is a super admin
      * @param {Function|*} callback - optional, function(is)
      * @return {Bool|Promise}

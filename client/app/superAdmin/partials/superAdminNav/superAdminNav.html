@@ -1,11 +1,11 @@
-<div id="sidebar-wrapper">
-  <ul class="sidevar-nav">
+<div id="sidebar-wrapper" >
+  <ul class="sidebar-nav">
     <li class="sidebar-brand">
-      <a href= "#">
+      <a href="#">
         Super Admin Panel
       </a>
     </li>
-    <li class= "sidebar-brand" ng-repeat="function in Functions">
+    <li class = "sidebar-brand" ng-repeat="function in Functions">
       <a ui-sref="{{function.state}}">{{function.title}}</a>
     </li>
   </ul>

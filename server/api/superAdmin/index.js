@@ -7,6 +7,6 @@ import * as auth from '../../auth/auth.service';
 
 var router = new Router();
 
-router.get('/', auth.hasRole('superAdmin'));
+// router.get('/', auth.hasRole('superAdmin'), *some callback*);
 
 export default router;

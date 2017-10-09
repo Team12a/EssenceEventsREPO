@@ -1,5 +1,6 @@
 'use strict';
 
+//functions that will be included in our Super Admin Panel
 angular.module('essenceEventsRepoApp.superAdmin')
   .controller('SuperAdminController',['$scope',function($scope)
 {
@@ -19,7 +20,9 @@ angular.module('essenceEventsRepoApp.superAdmin')
         'description' : 'Manage vendors included in vendors tab',
         'state' : 'superAdmin.updateVendors',
       }
-      //still need to add some functions here
+      /*still need to add some functions here, specifically need to implement way to access admin priviledges
+      to avoid redundancy by copy pasting
+      */
     ];
 
 }]);

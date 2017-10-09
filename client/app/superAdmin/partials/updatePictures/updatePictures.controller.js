@@ -1,5 +1,5 @@
 // angular.module('essenceEventsRepoApp.superAdmin')
-//   .controller('UpdatePicturesController',['$scope', '$state', function($scope, state){
-
+//   .controller('UpdatePicturesController',['$scope', '$state', '$stateParams' function($scope, state){
+//
 //   }
 // }]);
