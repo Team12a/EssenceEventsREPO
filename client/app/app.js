@@ -3,6 +3,7 @@
 
 angular.module('essenceEventsRepoApp', [
   'essenceEventsRepoApp.auth',
+  'essenceEventsRepoApp.superAdmin',
   'essenceEventsRepoApp.admin',
   'essenceEventsRepoApp.client',
   'essenceEventsRepoApp.constants',

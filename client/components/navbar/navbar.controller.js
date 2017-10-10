@@ -81,9 +81,10 @@ class NavbarController {
 
   }
 
-
+//Added this.isSuperAdmin to constructor, line 85
   constructor(Auth, $state, $scope, Events) {
     this.isLoggedIn = Auth.isLoggedIn;
+    this.isSuperAdmin = Auth.isSuperAdmin;
     this.isAdmin = Auth.isAdmin;
     this.getCurrentUser = Auth.getCurrentUser;
     //this.curUsr = this.getCurrentUser();
