@@ -102,7 +102,7 @@
   "scripts": {
     "start": "node server",
     "test": "grunt test",
-    "postinstall": "bower install",
+    "postinstall": "./node_modules/bower/bin/bower install",
     "update-webdriver": "node node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update"
   },
   "private": true
