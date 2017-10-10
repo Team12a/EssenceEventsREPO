@@ -31,15 +31,15 @@ $scope.getEvents = function(){
 $scope.openModal= function(event) {
   var modalInstance = $modal.open({
     animation: true,
-    templateUrl: 'app/client/partials/welcome/welcomeModal/welcomeModal.html',
-    controller: 'WelcomeModalCtrl',
-    resolve: {
-      event: function()
-      {
-        return event;
-      }
-    }
-  });
-};
+     templateUrl: 'app/client/partials/welcome/welcomeModal/welcomeModal.html',
+     controller: 'WelcomeModalCtrl',
+     resolve: {
+       event: function()
+       {
+         return event;
+       }
+     }
+   });
+ };
 
 }]);
