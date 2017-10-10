@@ -10,7 +10,7 @@ describe('Controller: makePaymentCtrl', function () {
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    CreateContractorCtrl = $controller('makePaymentCtrl', {
+    makePaymentCtrl = $controller('makePaymentCtrl', {
       $scope: scope
     });
   }));
