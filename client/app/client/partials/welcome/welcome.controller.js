@@ -31,6 +31,7 @@ $scope.getEvents = function(){
 $scope.openModal= function(event) {
   var modalInstance = $modal.open({
     animation: true,
+    scope: $scope,
      templateUrl: 'app/client/partials/welcome/welcomeModal/welcomeModal.html',
      controller: 'WelcomeModalCtrl',
      resolve: {

@@ -3,8 +3,7 @@
 angular.module('essenceEventsRepoApp.client')
 .controller('WelcomeModalCtrl',  ['$scope' , '$stateParams', '$state', '$q', '$modalInstance', 'event', 'Events', 'Subcontractors', function ($scope, $stateParams, $state, $q, $modalInstance, event, Events, Subcontractors) {
   $scope.message = 'Hello';
-
-  $scope.ev = event;;
+  $scope.ev = event;
   console.log(JSON.stringify($scope.ev));
 
   //Finds all subcontractors by id
