@@ -1,19 +1,21 @@
-<div>
-  <h2 class="modal-header">
-    Your Event
-  </h2>
-  <div class="modal-body">
-    <container>
-        <div ng-controller="WelcomeModalCtrl" ng-init="getEventSubcons()">
+<div id="welcomeModal">
+  <div class="modal-content">
+    <div>
+      <h2 class="modal-header">
+        Your Event
+      </h2>
+      <div class="modal-body">
+        <container>
+          <div ng-controller="WelcomeModalCtrl" ng-init="getEventSubcons()">
             <div style="text-align:center">
               <h1> Your {{ev.name}} </h1>
               <h3> is on {{ev.date | date: 'fullDate'}}</h3>
               <h3> at {{ev.location}}</h3>
             </div>
-              <!--Your budget-->
-              <div class = "col-md-12">
-                <div class = "col-md-6">
-                  <h2 align="center">Your Budget</h3>
+            <!--Your budget-->
+            <div class = "col-md-12">
+              <div class = "col-md-6">
+                <h2 align="center">Your Budget</h3>
                   <nvd3 options="options" data="ev.budget"></nvd3>
                 </div>
                 <!-- Display Guest List -->
@@ -89,17 +91,21 @@
               <th><b>Name</b></th>
               <th><b>Link</b></th>
             </tr>
-            </thead>
+          </thead>
 
-            <tbody ng-repeat ="item in subcontractors">
-            <tr>
-            <td>{{item.name}}</td>
-            <td><a ng-href="{{item.link | url}}" target="_blank">{{item.link | url}}</a></td>
-            </tr>
-            </tbody>
-            </table>
-            </div> -->
-            </div>
-    </container>
-  </div>
+          <tbody ng-repeat ="item in subcontractors">
+          <tr>
+          <td>{{item.name}}</td>
+          <td><a ng-href="{{item.link | url}}" target="_blank">{{item.link | url}}</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div> -->
+</div>
+</container>
+</div>
+</div>
+<div class="modal-footer">
+</div>
+</div>
 </div>
