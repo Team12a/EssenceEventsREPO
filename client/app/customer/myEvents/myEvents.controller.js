@@ -1,11 +1,12 @@
 'use strict';
 
 angular.module('essenceEventsRepoApp')
-.controller('MyEventsCtrl',  ['$scope' , '$stateParams', '$state', '$q', '$modalInstance', 'event', 'Events', 'Subcontractors', function ($scope, $stateParams, $state, $q, $modalInstance, event, Events, Subcontractors) {
+.controller('MyEventsCtrl',  ['$scope' , '$stateParams', '$state', '$q', 'Events', 'Subcontractors', function ($scope, $stateParams, $state, $q, Events, Subcontractors) {
   $scope.message = 'Hello';
 
-  $scope.ev = event;
-  console.log(JSON.stringify($scope.ev));
+  if ($stateParams.eventt[0])
+    $state.go('customer');
+  $scope.ev = $stateParams.eventt;
   $scope.subcontractors = [];
 
   //Finds all subcontractors by id

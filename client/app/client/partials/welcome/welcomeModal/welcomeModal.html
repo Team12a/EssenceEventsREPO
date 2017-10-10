@@ -1,10 +1,11 @@
+<div id="welcomeModal" ng-click="resetPicker()">
 <div>
   <h2 class="modal-header">
     Your Event
   </h2>
   <div class="modal-body">
     <container>
-        <div ng-controller="MyEventsCtrl" ng-init="getEventSubcons()">
+        <div ng-controller="WelcomeModalCtrl" ng-init="getEventSubcons()">
             <div style="text-align:center">
               <h1> Your {{ev.name}} </h1>
               <h3> is on {{ev.date | date: 'fullDate'}}</h3>
@@ -69,7 +70,7 @@
                         <th><b>Done</b></th>
                       </tr>
                     </thead>
-            
+
                     <tbody ng-repeat ="item in ev.toDoList" ng-show="hasItems(ev.toDoList)">
                       <tr>
                         <td>{{item.todo}}</td>
@@ -90,7 +91,7 @@
               <th><b>Link</b></th>
             </tr>
             </thead>
-            
+
             <tbody ng-repeat ="item in subcontractors">
             <tr>
             <td>{{item.name}}</td>
@@ -103,4 +104,4 @@
     </container>
   </div>
 </div>
-
+</div>
