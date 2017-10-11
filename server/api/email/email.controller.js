@@ -20,12 +20,12 @@ var nodemailer = require('nodemailer');
 export function email(req, res)
 {
   var email = req.body;
-  var user = config.essEventsEmail.user;  //truncated email
-  var pass = config.essEventsEmail.password;
+  var user = process.env.essEventsEmail.user || config.essEventsEmail.user;  //truncated email
+  var pass = process.env.essEventsEmail.password || config.essEventsEmail.password;
   var transporter = nodemailer.createTransport('smtps://' + user + '%40gmail.com:' + pass + '@smtp.gmail.com');
   var mailOptions = {
     from: email.address,
-    to: config.essEventsEmail.address,
+    to: process.env.essEventsEmail.address || config.essEventsEmail.address,
     subject: 'Contact Request from ' + email.firstName + ' ' + email.lastName,
     text: ((!email.message)? '' : email.message + '\n\n') + 'Event Date: ' + email.eventDate + '\nPhone: ' + email.phone + '\nEmail: ' + email.address
   };
@@ -63,7 +63,7 @@ export function resetPass(req, res) {
 	  res.status(400).send(err);
 	}
 	else {
-          var transporter = nodemailer.createTransport('smtps://' + config.essEventsEmail.user + '%40gmail.com:' + config.essEventsEmail.password + '@smtp.gmail.com');
+          var transporter = nodemailer.createTransport('smtps://' + process.env.essEventsEmail.user || config.essEventsEmail.user + '%40gmail.com:' + process.env.essEventsEmail.password || config.essEventsEmail.password + '@smtp.gmail.com');
           var mailOptions = {
             to: req.body.email,
 	    subject: 'Password Reset',
