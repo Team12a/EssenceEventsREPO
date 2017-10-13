@@ -27,7 +27,7 @@ export function email(req, res)
     from: email.address,
     to: config.essEventsEmail.address,
     subject: 'Contact Request from ' + email.firstName + ' ' + email.lastName,
-    text: ((!email.message)? '' : email.message + '\n\n') + 'Phone: ' + email.phone + '\nEmail: ' + email.address
+    text: ((!email.message)? '' : email.message + '\n\n') + 'Event Date: ' + email.eventDate + '\nPhone: ' + email.phone + '\nEmail: ' + email.address
   };
 
   transporter.sendMail(mailOptions, function(error, info) {

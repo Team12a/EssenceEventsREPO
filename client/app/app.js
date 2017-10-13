@@ -1,8 +1,11 @@
+// added a client module
 'use strict';
 
 angular.module('essenceEventsRepoApp', [
   'essenceEventsRepoApp.auth',
+  'essenceEventsRepoApp.superAdmin',
   'essenceEventsRepoApp.admin',
+  'essenceEventsRepoApp.client',
   'essenceEventsRepoApp.constants',
   'ngCookies',
   'ngResource',

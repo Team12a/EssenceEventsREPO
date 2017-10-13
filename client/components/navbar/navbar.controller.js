@@ -65,13 +65,15 @@ class NavbarController {
   isCollapsed = true;
   //end-non-standard
 
+// made a chage on line 76 to contain client not customer
+
   navigate(){
     var curUsr = this.getCurrentUser();
     let state = this.state;
     this.Evs.getByUser(curUsr._id)
     .then(function(response) {
       var events = response.data;
-      state.go('customer', {userID: curUsr._id, userName: curUsr.name, events: events});
+      state.go('client', {userID: curUsr._id, userName: curUsr.name, events: events});
     }, function(err) {
       //do something
       console.log(err);
@@ -79,9 +81,10 @@ class NavbarController {
 
   }
 
-
+//Added this.isSuperAdmin to constructor, line 85
   constructor(Auth, $state, $scope, Events) {
     this.isLoggedIn = Auth.isLoggedIn;
+    this.isSuperAdmin = Auth.isSuperAdmin;
     this.isAdmin = Auth.isAdmin;
     this.getCurrentUser = Auth.getCurrentUser;
     //this.curUsr = this.getCurrentUser();
