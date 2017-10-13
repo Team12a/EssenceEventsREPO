@@ -1,9 +1,11 @@
 'use strict';
 
-import payment from './payment.model';
+import Payment from './payment.model';
 import passport from 'passport';
 import config from '../../config/environment';
 import jwt from 'jsonwebtoken';
+
+
 
 //Sends back all payments with open find call
 export function findAll(req, res) {
@@ -15,7 +17,7 @@ export function findAll(req, res) {
   });
 }
 
-//Uses the findByUser to send all user paymnets back
+//Uses the findByUser to send all user payments back
 export function findAllByUser(req, res) {
   res.send(req.payments);
 }
@@ -28,7 +30,7 @@ export function findOneById(req, res) {
 //Create a new payment based on req.body and save it to the database
 export function create(req, res) {
   var payment = new Payment(req.body);
-  payment.save(function(err, payment) {
+  Payment.save(function(err, payment) {
     if (err) {
       res.status(400).send(err);
       throw err;

@@ -1,7 +1,19 @@
 'use strict';
 
-angular.module('essenceEventsRepoApp.client')
-  .controller('makePaymentCtrl', ['$scope', '$state', 'Payments', 'Auth', function ($scope, $state, Payments, Auth) {
+angular.module('essenceEventsRepoApp')
+.controller('makePaymentCtrl', ['Payments','Auth','$scope', '$stateParams', '$state', function ( Payments, Auth, $scope, $stateParams, $state) {
+
+  var getPayments = function(){
+    if (!$scope.id)
+      setTimeout($scope.getPayments, 100);
+    else
+      Payments.paymentsByUserId($scope.id)
+        .then(function(response) {
+          $scope.payments = response.data;
+        }, function(error) {
+          //do something
+      });
+  };
 
     var getUser = function() {
       if (!$scope.curUser._id)
@@ -15,21 +27,11 @@ angular.module('essenceEventsRepoApp.client')
     $scope.curUser = Auth.getCurrentUser();
     getUser();
 
-    $scope.getPayments = function(){
-      if (!$scope.id)
-        setTimeout($scope.getPayments, 100);
-      else
-        Payments.paymentsByUserId($scope.id)
-          .then(function(response) {
-            $scope.payments = response.data;
-          }, function(error) {
-            //do something
-        });
-    };
+
 
 
     $scope.find = function() {
-      Payments.getAll()
+      Payments.findAll()
 	.then(function(response) {
 	  $scope.Payments = response.data;
 	}, function(error) {

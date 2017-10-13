@@ -14,7 +14,7 @@ export default function(app) {
   app.use('/api/events', require('./api/event'));
   app.use('/api/links', require('./api/link'));
   app.use('/api/email', require('./api/email'));
-  //app.use('/api/payment', require('./api/payment'));
+  app.use('/api/payment', require('./api/payment'));
 
   app.use('/auth', require('./auth'));
 

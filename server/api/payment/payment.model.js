@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
 var paymentSchema = new Schema({
   userId: String,
   description: String,
-  dueDate: Date,
+  dueDate: String,
   amount: Number,
   paid: Boolean
 });

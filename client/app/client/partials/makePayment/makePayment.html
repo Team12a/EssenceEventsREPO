@@ -1,5 +1,5 @@
-<!doctype html>
-<div class="row" ng-init="getPayments()">
+<div class="row">
+  <div ng-init="getPayments()">
   <h1 class="page-header">Make a Payment</h1>
   <table class="table table-hover hoverSort">
       <thead>
@@ -13,9 +13,23 @@
       <tbody>
         <tr>
             <td>Wedding</td>
-            <td>01-24-1997</td>
+            <td>01-24-18</td>
+            <td>$2500</td>
+            <td><button type="button" class="btn btn-md btn-default">Paypal</button></td>
+          </tr>
+          <tr>
+            <td>Initial Meeting</td>
+            <td>10-14-17</td>
             <td>$25</td>
-          <td><button type="button" class="btn btn-md btn-default">Paypal</button></td>
+            <td><button type="button" class="btn btn-md btn-default">Paypal</button></td>
+          </tr>
+          <tr>
+            <td>Cake</td>
+            <td>01-17-18</td>
+            <td>$300</td>
+            <td><button type="button" class="btn btn-md btn-default">Paypal</button></td>
+          </tr>
+
         </tr>
         <tr ng-repeat="payment in payments">
           <td>{{payment.description}}</td>
@@ -26,4 +40,4 @@
       </tbody>
   </table>
 </div>
-</html>
+</div>
