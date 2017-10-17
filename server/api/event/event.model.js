@@ -29,7 +29,8 @@ var eventSchema = new Schema({
     email: String,
     phoneNumber: Number,
     partySize: Number,
-    accepted: Boolean
+    accepted: Number,
+    accommodations: [String]
   }],
   budget: [{
     title: String,

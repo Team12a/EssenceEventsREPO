@@ -1,0 +1,36 @@
+<div class = "container-fluid">
+
+  <div ng-controller="manageGuestListCtrl" ng-init="getEvents();">
+
+    <h2>Your Guests </h2>
+    <div class="col-md-5" style="padding-left:0px;float: right;">
+      <input "type=text" class="form-control" placeholder="Search here..." ng-model="searchGuests"></input>
+    </div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th><b>Guest Name</b></td>
+          <th><b>Party Size</b></td>
+          <th><b>Accommodations</b></td>
+            <th><b>Attending</b></td>
+          <th></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat ="item in guests | filter: searchGuests">
+          <td>{{item.name}}</td>
+          <td>{{item.partySize}}</td>
+          <td>{{item.accommodations}}</td>
+          <td><input type="checkbox" name="Attendance"/></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><button type="button" class="btn btn-md btn-default">Add Guests</button> </td>
+      </tfoot>
+    </table>
+
+  </div>
+</div>
