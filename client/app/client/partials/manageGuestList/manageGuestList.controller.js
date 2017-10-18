@@ -1,8 +1,10 @@
 'use strict';
 
 angular.module('essenceEventsRepoApp.client')
-.controller('manageGuestListCtrl', [ 'Events', 'Auth', '$scope','$stateParams', '$state', function ( Events, Auth, $scope, $stateParams, $state) {
+.controller('manageGuestListCtrl', [ 'Events', 'Auth',  '$scope','$stateParams', '$state', function ( Events, Auth, $scope, $stateParams, $state) {
 
+
+$scope.ev = $scope.Selectedevent;
 
 var getUser = function() {
   if (!$scope.curUser._id)
@@ -32,5 +34,14 @@ $scope.getEvents = function(){
   {
     return (arr.length > 0);
   };
+
+$scope.getGuests = function(event){
+  if(!$scope.id)
+    setTimeout($scope.getGuests, 100);
+  else
+    $scope.ev = event;
+        //do something
+
+};
 
 }]);
