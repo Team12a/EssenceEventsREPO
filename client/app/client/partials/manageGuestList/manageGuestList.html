@@ -6,22 +6,23 @@
     <div class="col-md-5" style="padding-left:0px;float: right;">
       <input "type=text" class="form-control" placeholder="Search here..." ng-model="searchGuests"></input>
     </div>
-    <table class="table table-hover">
+    <table class="table table-hover" ng-init="sortGuest='name'">
       <thead>
         <tr>
-          <th><b>Guest Name</b></td>
-          <th><b>Party Size</b></td>
+          <th ng-click="sortGuest='name'"><b>Guest Name</b></td>
+          <th ng-click="sortGuest='partySize'"><b>Party Size</b></td>
           <th><b>Accommodations</b></td>
             <th><b>Attending</b></td>
           <th></td>
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat ="item in guests | filter: searchGuests">
+         <tr ng-repeat ="item in event.guests" >
+           <!-- | filter: searchGuests -->
           <td>{{item.name}}</td>
           <td>{{item.partySize}}</td>
           <td>{{item.accommodations}}</td>
-          <td><input type="checkbox" name="Attendance"/></td>
+          <td><span ng-class="(item.accepted) ? 'fa fa-check-square-o fa-lg' : 'fa fa-square-o fa-lg'"></span></td>
         </tr>
       </tbody>
       <tfoot>

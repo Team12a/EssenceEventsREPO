@@ -3,6 +3,7 @@
 angular.module('essenceEventsRepoApp.client')
 .controller('manageGuestListCtrl', [ 'Events', 'Auth', '$scope','$stateParams', '$state', function ( Events, Auth, $scope, $stateParams, $state) {
 
+
 var getUser = function() {
   if (!$scope.curUser._id)
     setTimeout(getUser, 100);
@@ -26,4 +27,10 @@ $scope.getEvents = function(){
         //do something
     });
   };
+
+  $scope.hasItems = function(arr)
+  {
+    return (arr.length > 0);
+  };
+
 }]);
