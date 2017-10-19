@@ -2,28 +2,41 @@
   <div ng-controller="UploadTestimonialCtrl" ng-init="getEvents()">
       <h2>Upload a Testimonial</h2>
       <h6>Loved the service? Let us know below!</h6>
-      <form name="form" class="form-horizontal">
-        <fieldset>
-          <legend>Contact us</legend>
-          <div class="form-group">
-            <span class="col-md-1 col-md-offset-1"><i class="fa fa-user bigicon fa-2x"></i></span>
-            <div class="col-md-9">
-              <input id="fname" name="name" type="text" placeholder="First Name" class="form-control" ng-model="fname" required>
+      <form class="well span8">
+        <div class="row">
+            <div class="span3">
+                <label>First Name</label> <input class="span3" placeholder=
+                "Your First Name" type="text"> <label>Last Name</label>
+                <input class="span3" placeholder="Your Last Name" type="text">
+                <label>Email Address</label> <input class="span3" placeholder=
+                "Your email address" type="text"> <label>Subject</label>
+                <select class="span3" id="subject" name="subject">
+                    <option selected value="na">
+                        Choose One:
+                    </option>
+
+                    <option value="service">
+                        General Customer Service
+                    </option>
+
+                    <option value="suggestions">
+                        Suggestions
+                    </option>
+
+                    <option value="product">
+                        Product Support
+                    </option>
+                </select>
             </div>
-          </div>
-          <div class="form-group">
-            <span class="col-md-1 col-md-offset-2"><i class="fa fa-user bigicon fa-2x"></i></span>
-            <div class="col-md-8">
-              <input id="lname" name="name" type="text" placeholder="Last Name" class="form-control" ng-model="lname" required>
-            </div>
-          </div>
-          <div class="form-group">
-            <span class="col-md-1 col-md-offset-2"><i class="fa fa-envelope-o bigicon fa-2x"></i></span>
-            <div class="col-md-8">
-              <input id="email" name="email" type="text" placeholder="Email Address" class="form-control" ng-model="email" required>
-            </div>
-          </div>
-        </fieldset>
-      </form>
+
+            <div class="span5">
+                <label>Message</label>
+                <textarea class="input-xlarge span5" id="message" name="message"
+                rows="10">
+    </textarea>
+            </div><button class="btn btn-primary pull-right" type=
+            "submit">Send</button>
+        </div>
+    </form>
   </div>
 </div>
