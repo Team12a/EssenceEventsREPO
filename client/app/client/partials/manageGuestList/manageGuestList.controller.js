@@ -44,4 +44,10 @@ $scope.getGuests = function(event){
 
 };
 
+//Add Guest
+$scope.addGuest = function()
+{
+  $state.go('client.addGuest', {userID : user._id, usersName : user.name});
+};
+
 }]);

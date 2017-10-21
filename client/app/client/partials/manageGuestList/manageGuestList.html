@@ -16,6 +16,7 @@
           <th ng-click="sortGuest='partySize'"><b>Party Size</b></td>
           <th><b>Accommodations</b></td>
             <th><b>Attending</b></td>
+            <th><b>Edit</b></td>
           <th></td>
         </tr>
       </thead>
@@ -26,15 +27,16 @@
           <td>{{item.partySize}}</td>
           <td>{{item.accommodations}}</td>
           <td><span ng-class="(item.accepted) ? 'fa fa-check-square-o fa-lg' : 'fa fa-square-o fa-lg'"></span></td>
+          <td><span class="glyphicon glyphicon-edit"></span></td>
         </tr>
       </tbody>
       <tfoot>
         <td></td>
         <td></td>
         <td></td>
-        <td><button type="button" class="btn btn-md btn-default">Add Guests</button> </td>
+        <td></td>
+        <td><button type="button" class="btn btn-md btn-default" ng-click="addGuest()">Add Guests</button> </td>
       </tfoot>
     </table>
-
   </div>
 </div>
