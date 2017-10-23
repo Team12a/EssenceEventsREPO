@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('essenceEventsRepoApp')
-.controller('UploadTestimonialCtrl', ['$scope', 'Auth', 'Email', '$state', function ($scope, Auth, Email, $state) {
+.controller('UploadTestimonialCtrl', ['$scope', 'Auth', 'Testimonial', '$state', function ($scope, Auth, Testimonial, $state) {
 
   //Setup email response messages
   $scope.emailSuccess = false;
