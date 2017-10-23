@@ -2,41 +2,41 @@
   <div ng-controller="UploadTestimonialCtrl" ng-init="getEvents()">
       <h2>Upload a Testimonial</h2>
       <h6>Loved the service? Let us know below!</h6>
-      <form class="well span8">
-        <div class="row">
-            <div class="span3">
-                <label>First Name</label> <input class="span3" placeholder=
-                "Your First Name" type="text"> <label>Last Name</label>
-                <input class="span3" placeholder="Your Last Name" type="text">
-                <label>Email Address</label> <input class="span3" placeholder=
-                "Your email address" type="text"> <label>Subject</label>
-                <select class="span3" id="subject" name="subject">
-                    <option selected value="na">
-                        Choose One:
-                    </option>
-
-                    <option value="service">
-                        General Customer Service
-                    </option>
-
-                    <option value="suggestions">
-                        Suggestions
-                    </option>
-
-                    <option value="product">
-                        Product Support
-                    </option>
-                </select>
+      <div class="well well-sm">
+        <form name="form" class="form-horizontal">
+          <fieldset>
+            <legend class="text-left header">Testimonial</legend>
+            <p class="text-center" ng-if="emailSuccess">
+              Your email has been successfully send.  Thank you!
+            </p>
+            <p class="text-center" ng-if="emailError">
+              Oops!  An error occured while sending your email.
+            </p>
+            <div class="form-group">
+              <span class="col-md-2"><i class="fa fa-user bigicon fa-2x"></i></span>
+              <div class="col-md-10">
+                <input id="name" name="name" type="text" placeholder="Name" class="form-control" ng-model="name" required>
+              </div>
             </div>
-
-            <div class="span5">
-                <label>Message</label>
-                <textarea class="input-xlarge span5" id="message" name="message"
-                rows="10">
-    </textarea>
-            </div><button class="btn btn-primary pull-right" type=
-            "submit">Send</button>
-        </div>
-    </form>
+            <div class="form-group">
+              <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon fa-2x"></i></span>
+              <div class="col-md-8">
+                <input id="ename" name="name" type="text" placeholder="Event Description" class="form-control" ng-model="ename" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon fa-2x"></i></span>
+              <div class="col-md-8">
+                <textarea class="form-control" id="message" name="message" placeholder="Enter your message for us here. We will get back to you within 2 business days." rows="7" ng-model="message"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-md-8 text-center">
+                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
   </div>
 </div>
