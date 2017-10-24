@@ -1,10 +1,10 @@
 <div class = "container-fluid">
 
-  <div ng-controller="manageGuestListCtrl" ng-init="getEvents();">
+  <div ng-controller="manageGuestListCtrl" ng-init="getEvents()">
 
     <h2>Your Guests </h2>
     <select>
-      <option ng-model="selectedEvent" value="event" ng-repeat="event in events" ng-click="getGuests(event)">{{event.name}}</option>
+      <option ng-model="selectedEvent" value="event" ng-repeat="event in events" ng-change="selectEvent(selectedEvent)">{{event.name}}</option>
     </select>
     <div class="col-md-5" style="padding-left:0px;float: right;">
       <input "type=text" class="form-control" placeholder="Search here..." ng-model="searchGuests"></input>
@@ -25,8 +25,8 @@
            <!-- | filter: searchGuests -->
           <td>{{item.name}}</td>
           <td>{{item.partySize}}</td>
-          <td>{{item.accommodations}}</td>
-          <td><span ng-class="(item.accepted) ? 'fa fa-check-square-o fa-lg' : 'fa fa-square-o fa-lg'"></span></td>
+          <!-- <td>{{item.accommodations}}</td>
+          <td><span ng-class="(item.accepted) ? 'fa fa-check-square-o fa-lg' : 'fa fa-square-o fa-lg'"></span></td> -->
           <td><span class="glyphicon glyphicon-edit"></span></td>
         </tr>
       </tbody>

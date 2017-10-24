@@ -3,9 +3,6 @@
 angular.module('essenceEventsRepoApp.client')
 .controller('manageGuestListCtrl', [ 'Events', 'Auth',  '$scope','$stateParams', '$state', function ( Events, Auth, $scope, $stateParams, $state) {
 
-
-$scope.ev = $scope.Selectedevent;
-
 var getUser = function() {
   if (!$scope.curUser._id)
     setTimeout(getUser, 100);
@@ -15,10 +12,10 @@ var getUser = function() {
   }
 };
 
-$scope.curUser = Auth.getCurrentUser();
-getUser();
+  $scope.curUser = Auth.getCurrentUser();
+  getUser();
 
-$scope.getEvents = function(){
+ $scope.getEvents = function(){
   if (!$scope.id)
     setTimeout($scope.getEvents, 100);
   else
@@ -35,13 +32,12 @@ $scope.getEvents = function(){
     return (arr.length > 0);
   };
 
-$scope.getGuests = function(event){
+$scope.selectEvent = function(selEvent){
   if(!$scope.id)
-    setTimeout($scope.getGuests, 100);
+    setTimeout($scope.selectEvent, 100);
   else
-    $scope.ev = event;
+    $scope.ev = selEvent;
         //do something
-
 };
 
 //Add Guest
