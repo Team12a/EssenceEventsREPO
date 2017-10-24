@@ -31,7 +31,7 @@
           <a ui-sref="{{item.state}}" class="navBarButton" ng-click="nav.isCollapsed = true">{{item.title}}</a>
         </li>
         <span ng-repeat-end></span>
-        <li ng-if="nav.isSuperAdmin()" ui-sref-active ="active"><a ui-sref = "superAdmin.updatePictures" class="navBarButton" id="superAdmin" ng-click="nav.isCollapsed = true">Super Admin</a></li>
+        <li ng-if="nav.isSuperAdmin()" ui-sref-active ="active"><a ui-sref = "superAdmin.createAccount" class="navBarButton" id="superAdmin" ng-click="nav.isCollapsed = true">Super Admin</a></li>
         <li ng-if="nav.isAdmin()" ui-sref-active="active"><a ui-sref="admin.createAccount" class="navBarButton" id="Admin" ng-click="nav.isCollapsed = true">Admin</a></li>
         <li ng-if="nav.isLoggedIn() && !nav.isAdmin() && !nav.isSuperAdmin()" ui-sref-active="active"><a ng-click="nav.isCollapsed = true; nav.navigate()" ui-sref="customer">Manage</a></li>
       </ul>

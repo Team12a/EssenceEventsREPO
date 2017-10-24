@@ -32,12 +32,24 @@ export function index(req, res) {
 }
 
 /**
+  * Get all admins
+*/
+export function getAdmins(req, res){
+  User.find({role:'admin'}).exec(function(err, users){
+    if(err) res.status(400).send(err);
+    else{
+      res.status(200).json(users);
+    }
+  });
+}
+/**
  * Creates a new user
  */
+ //RECENT: changed to take in the role from front end
 export function create(req, res, next) {
   var newUser = new User(req.body);
   newUser.provider = 'local';
-  newUser.role = 'user';
+  newUser.role = req.body.role;
   newUser.saveAsync()
     .spread(function(user) {
       var token = jwt.sign({ _id: user._id }, config.secrets.session, {
