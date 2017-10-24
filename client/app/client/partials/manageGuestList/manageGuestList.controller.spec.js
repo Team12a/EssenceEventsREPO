@@ -1,6 +1,6 @@
 'use strict';
 
-describe('manageGuestListCtrl', function () {
+describe('Controller: manageGuestListCtrl', function () {
 
   // load the controller's module
   beforeEach(module('essenceEventsRepoApp'));

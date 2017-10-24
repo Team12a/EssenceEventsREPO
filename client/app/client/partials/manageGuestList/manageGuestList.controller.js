@@ -3,6 +3,10 @@
 angular.module('essenceEventsRepoApp.client')
 .controller('manageGuestListCtrl', [ 'Events', 'Auth',  '$scope','$stateParams', '$state', function ( Events, Auth, $scope, $stateParams, $state) {
 
+
+//console.log($scope.selectedEventId);
+//console.log(ev.name);
+
 var getUser = function() {
   if (!$scope.curUser._id)
     setTimeout(getUser, 100);
@@ -32,18 +36,24 @@ var getUser = function() {
     return (arr.length > 0);
   };
 
-$scope.selectEvent = function(selEvent){
-  if(!$scope.id)
+$scope.selectEvent = function(selectedEventId){
+  console.log("test");
+  if (!$scope.id)
     setTimeout($scope.selectEvent, 100);
   else
-    $scope.ev = selEvent;
-        //do something
+  Events.findOneById(selectedEventId)
+  .then(function(response){
+    $scope.ev = response.data;
+  }, function(error){
+    //do something
+});
+  console.log($ev.name);
 };
 
 //Add Guest
 $scope.addGuest = function()
 {
-  $state.go('client.addGuest', {userID : user._id, usersName : user.name});
+  $state.go('client.addGuest');
 };
 
 }]);

@@ -1,27 +1,29 @@
 <div class = "container-fluid">
-
   <div ng-controller="manageGuestListCtrl" ng-init="getEvents()">
 
     <h2>Your Guests </h2>
-    <select>
-      <option ng-model="selectedEvent" value="event" ng-repeat="event in events" ng-change="selectEvent(selectedEvent)">{{event.name}}</option>
+    <select  ng-model="selectedEventId" ng-change="selectEvent(selectedEventId)">
+      <!-- ng-options="event.id as event.name for event in events" -->
+       <!-- ng-change="selectEvent(selectEvent)"> -->
+       <option ng-repeat="event in events" value="event.id">{{event.name}}</option>
     </select>
     <div class="col-md-5" style="padding-left:0px;float: right;">
       <input "type=text" class="form-control" placeholder="Search here..." ng-model="searchGuests"></input>
     </div>
-    <table class="table table-hover" ng-init="sortGuest='name'">
+<table class="table table-hover">
+         <!-- ng-init="sortGuest='name'"> -->
       <thead>
         <tr>
-          <th ng-click="sortGuest='name'"><b>Guest Name</b></td>
-          <th ng-click="sortGuest='partySize'"><b>Party Size</b></td>
+          <th><b>Guest Name</b></td>
+          <th><b>Party Size</b></td>
           <th><b>Accommodations</b></td>
             <th><b>Attending</b></td>
             <th><b>Edit</b></td>
           <th></td>
         </tr>
       </thead>
-      <tbody>
-         <tr ng-repeat ="item in ev.guests" >
+      <tbody ng-repeat ="item in ev.guests" >
+         <tr>
            <!-- | filter: searchGuests -->
           <td>{{item.name}}</td>
           <td>{{item.partySize}}</td>
