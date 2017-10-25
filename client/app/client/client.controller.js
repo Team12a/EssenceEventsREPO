@@ -21,7 +21,7 @@ angular.module('essenceEventsRepoApp.client')
       {
         'title': 'Your Budget',
         'description': 'Manage budget for specific event',
-        'state': 'client.manageBudget',
+        'state': 'client.yourBudget',
       },
       {
         'title': 'Your Guest List',
