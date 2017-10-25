@@ -1,6 +1,7 @@
 <div class = "container-fluid">
-  <div ng-controller="yourBudgetCtrl" ng-init="getEvents()">
+  <div ng-controller="viewBudgetCtrl" ng-init="getEvents()">
       <h2>Welcome, {{clientName}} </h2>
+      <h3>VIEW BUDGET PAGE</h3>
       <table class="table table-hover">
         <thead>
           <tr>
@@ -15,7 +16,7 @@
             <td>Event 1</td>
             <td>Location 1</td>
             <td>Date 1</td>
-            <td><button class="btn btn-info" ng-click="viewBudget()">View Budget</button></td>
+            <td><button class="btn btn-info" type="button" name="button">View Budget</button></td>
           </tr>
           <tr ng-repeat="event in events">
             <td>{{event.name}}</td>

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('essenceEventsRepoApp.client')
-.controller('yourBudgetCtrl', [ 'Events', 'Auth', '$scope','$modal', '$stateParams', '$state', function ( Events, Auth, $scope, $modal, $stateParams, $state) {
+.controller('viewBudgetCtrl', [ 'Events', 'Auth', '$scope','$modal', '$stateParams', '$state', function ( Events, Auth, $scope, $modal, $stateParams, $state) {
 
 var getUser = function() {
   if (!$scope.curUser._id)
@@ -56,14 +56,6 @@ $scope.toggle = function (event) {
       }, function(err) {
 	//do something
     });
-  };
-
-  //viewBudget
-  $scope.viewBudget = function()
-  {
-    console.log("in the view budget function");
-    //$modalInstance.close();
-    $state.go('client.viewBudget', {userID : $scope.id, usersName : $scope.clientName});
   };
 
     // Pi chart for budget
