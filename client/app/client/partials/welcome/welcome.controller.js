@@ -27,23 +27,6 @@ $scope.getEvents = function(){
     });
 };
 
-//Open Manage Clients Modal to manage client information and create events for a client
-$scope.openModal= function(event) {
-  var modalInstance = $modal.open({
-    animation: true,
-    scope: $scope,
-     templateUrl: 'app/client/partials/welcome/welcomeModal/welcomeModal.html',
-     controller: 'WelcomeModalCtrl',
-     resolve: {
-       event: function()
-       {
-         return event;
-       }
-     }
-   });
- };
-
-
 $scope.toggle = function (event) {
   $scope.state = !$scope.state;
   $scope.ev = event;
