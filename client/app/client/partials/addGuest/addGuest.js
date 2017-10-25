@@ -6,7 +6,7 @@ angular.module('essenceEventsRepoApp.client')
       .state('client.addGuest', {
         url: '/addGuest',
         templateUrl: 'app/client/partials/addGuest/addGuest.html',
-        controller: 'AddGuestCtrl',
+        controller: 'addGuestCtrl',
         authenticate: 'user'
       });
   });
