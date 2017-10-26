@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('essenceEventsRepoApp.client')
   .config(function ($stateProvider) {
     $stateProvider
@@ -5,7 +7,7 @@ angular.module('essenceEventsRepoApp.client')
         url: '/uploadTestimonial',
         templateUrl: 'app/client/partials/uploadTestimonial/uploadTestimonial.html',
         controller: 'UploadTestimonialCtrl',
-        controllerAs: 'upload',
-        authenticate: 'user'
+        authenticate: 'user',
+        controllerAs: 'upload'
       });
   });

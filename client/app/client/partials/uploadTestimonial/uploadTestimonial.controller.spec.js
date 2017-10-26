@@ -5,7 +5,7 @@ describe('Controller: UploadTestimonialCtrl', function () {
   // load the controller's module
   beforeEach(module('essenceEventsRepoApp'));
 
-  var ReservationsCtrl, scope;
+  var UploadTestimonialCtrl, scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
