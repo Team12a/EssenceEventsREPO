@@ -1,7 +1,7 @@
 <div class="row">
   <div>
     <div>
-      <h1 class="page-header">Add Guests</h1>
+      <h1 class="page-header">Add Guests for {{ev.name}}</h1>
     </div>
     <div class="col-sm-6">
       <form name="listingForm" class="form-horizontal" ng-submit="submit()">
@@ -20,13 +20,13 @@
           </div>
           <div show-errors>
             <label for="attending">Attending</label>
-            <input name="attending" type="checkbox" ng-model="attending" id="attending" class="form-control">
+            <input name="attending" type="checkbox" ng-model="attending" id="attending" >
           </div>
           <div ng-show="error" class="text-danger">
             <strong ng-bind="error"></strong>
           </div>
 	  <div>
-            <button class="btn btn-inverse btn-lg btn-register" type="submit">
+            <button class="btn btn-inverse btn-lg btn-register" type="submit" ng-submit="addGuest()">
               Add Guest
   	    </button>
           </div>
