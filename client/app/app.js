@@ -18,7 +18,7 @@ angular.module('essenceEventsRepoApp', [
   'uiGmapgoogle-maps'
 ])
   .config(['$urlRouterProvider', '$locationProvider', 'calendarConfig', '$httpProvider',
-  function($urlRouterProvider, $locationProvider, calendarConfig, $httpProvider) {
+  function($urlRouterProvider, $locationProvider, calendarConfig, $httpProvider, uiGmapGoogleMapApiProvider) {
     $urlRouterProvider
       .otherwise('/');
 
@@ -32,6 +32,12 @@ angular.module('essenceEventsRepoApp', [
     $httpProvider.defaults.headers.get['If-Modified-Since'] = 'Mon, 26 Jul 1997 05:00:00 GMT';
     $httpProvider.defaults.headers.get['Cache-Control'] = 'no-cache';
     $httpProvider.defaults.headers.get['Pragma'] = 'no-cache';
+
+    uiGmapGoogleMapApiProvider.configure({
+        key: 'AIzaSyCIz5Dce93Z8qz_vGhuX_mfvjESEPYM9EA',
+        v: '3.20', //defaults to latest 3.X anyhow
+        libraries: 'weather,geometry,visualization'
+    });
   }])
 .filter('phone', function() {
   return function(number) {

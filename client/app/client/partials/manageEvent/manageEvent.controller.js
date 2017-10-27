@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('essenceEventsRepoApp.client')
-.controller('manageEventCtrl', [ 'Events', 'Auth', '$scope','$modal', '$stateParams', '$state', function ( Events, Auth, $scope, $modal, $stateParams, $state) {
+.controller('manageEventCtrl', [ 'Events', 'Auth', '$scope','$modal', '$stateParams', '$state', function ( Events, Auth, $scope, $modal, $stateParams, $state, uiGmapGoogleMapApi) {
 
 var getUser = function() {
   if (!$scope.curUser._id)
@@ -57,6 +57,10 @@ $scope.toggle = function (event) {
 	//do something
     });
   };
+
+  uiGmapGoogleMapApi.then(function(maps) {
+    $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
+   });
 
     // Pi chart for budget
     $scope.options = {

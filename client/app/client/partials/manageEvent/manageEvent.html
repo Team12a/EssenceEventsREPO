@@ -23,16 +23,17 @@
 
 
             <div ng-show="state" ng-init="getEventSubcons()">
-              <div style="text-align:center">
+              <!-- <div style="text-align:center">
                 <h3> Your {{ev.name}} </h3>
                 <h5> is on {{ev.date | date: 'fullDate'}}</h5>
                 <h5> at {{ev.location}}</h5>
-              </div>
+              </div> -->
               <!--Your budget-->
               <div class = "col-md-12">
                 <div class = "col-md-6">
-                  <h4 align="center">Your Budget</h4>
-                  <nvd3 options="options" data="ev.budget"></nvd3>
+                  <h4 align="center">Event Location</h4>
+                  <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+                  <!-- <nvd3 options="options" data="ev.budget"></nvd3> -->
                 </div>
                 <!-- Display Guest List -->
                 <div class = "col-md-6" ng-init="sortGuest='name'">
