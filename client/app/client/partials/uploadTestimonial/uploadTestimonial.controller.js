@@ -11,10 +11,10 @@ angular.module('essenceEventsRepoApp.client')
       message: $scope.message
     };
   Testimonial.create(testimonial)
-      .then(function(response) {
-        $state.go('client.uploadTestimonial');
-      }, function(err) {
-        //do something
+    .then(function(response) {
+      $state.reload();
+    }, function (err) {
+      //do something
     });
   };
 

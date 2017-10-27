@@ -18,7 +18,7 @@ export function findAll(req, res) {
 //Create a new event based on req.body and save it to the database
 export function create(req, res) {
   var testimonial = new Testimonial(req.body);
-  testimonial.save(function(err) {
+  Testimonial.save(function(err) {
     if (err) {
       throw err;
       res.status(400).send(err);

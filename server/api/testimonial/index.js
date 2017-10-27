@@ -7,6 +7,6 @@ import * as auth from '../../auth/auth.service';
 var router = new Router();
 
 router.get('/', controller.findAll);
-router.post('/', auth.hasRole('user'), controller.create);
+router.post('/',controller.create);
 
 export default router;
