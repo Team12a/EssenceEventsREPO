@@ -7,9 +7,7 @@
         .state('client.addGuest', {
           url: '/addGuest/',
           params: {
-            userID: 'undefined',
-            usersName: 'undefined',
-            event: 'undefined'
+            ev: 'undefined'
           },
           templateUrl: 'app/client/partials/addGuest/addGuest.html',
           controller: 'addGuestCtrl',

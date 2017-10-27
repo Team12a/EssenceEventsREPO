@@ -30,7 +30,7 @@ var eventSchema = new Schema({
     phoneNumber: Number,
     partySize: Number,
     accepted: Boolean,
-    accommodations: [String]
+    accommodations: String
   }],
   budget: [{
     title: String,

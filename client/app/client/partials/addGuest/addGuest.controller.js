@@ -1,18 +1,18 @@
 'use strict';
 
 angular.module('essenceEventsRepoApp.client')
-.controller('addGuestCtrl', [ 'event', 'Auth',  '$scope','$stateParams', '$state', function (event, Auth, $scope, $stateParams, $state) {
+.controller('addGuestCtrl', [ 'Auth',  '$scope','$stateParams', '$state', function (Auth, $scope, $stateParams, $state) {
 
-  $scope.ev = event;
+  $scope.eve =  $stateParams.ev;
 
   $scope.addGuest = function(){
     console.log("add Event");
     var newGuest = {
-    name: $scope.name,
-    partySize: $scope.partySize,
-    accommodations: $scope.accommodations,
-    attending: $scope.attending
+    "name": $scope.name,
+    "partySize": $scope.partySize,
+    "accommodations": $scope.accommodations,
+    "attending": $scope.attending
     };
-    event.guests.push(newGuest);
-  }
+    eve.guests.push(newGuest);
+  };
 }]);

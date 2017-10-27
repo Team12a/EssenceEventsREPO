@@ -212,26 +212,30 @@
     <tab heading="Guests" ng-if="hideDeleteTab">
       <h2 class="modal-header">Guest List:</h2>
       <div class="modal-body">
-        <form class="row" name="formssss">
-          <div id="budget" class="col-md-7">
+        <form class="row" name="formssss" display="inline-block">
+          <div id="budget" class="col-md-5">
             <label for="guestName">Name:</label>
             <input type="text" name="guestName" ng-model="guestName" class="form-control">
           </div>
-          <div id="budget" class="col-md-5">
+          <div id="budget" class="col-md-4">
             <label for="guestPhone">Phone Number:</label>
             <input type="number" name="guestPhone" ng-model="guestPhone" class="form-control">
           </div>
-          <div id="budget" class="col-md-8">
-            <label for="guestEmail">Email:</label>
-            <input type="email" name="guestEmail" ng-model="guestEmail" class="form-control">
-          </div>
-          <div id="budget" class="col-md-3">
+          <div id="budget" class="col-md-2">
             <label for="todoInput">Party Size:</label>
             <input type="number" name="guestSize" ng-model="guestSize" class="form-control">
           </div>
+          <div id="budget" class="col-md-5">
+            <label for="guestEmail">Email:</label>
+            <input type="email" name="guestEmail" ng-model="guestEmail" class="form-control">
+          </div>
+          <div id="budget" class="col-md-6">
+            <label for="accommodations">Accommodations:</label>
+            <input type="text" name="accommodations" ng-model="accommodations" class="form-control">
+          </div>
           <div class="col-md-1">
             <label for="button">&zwnj;</label>
-            <button class="btn btn-success" id="addGuest" ng-click="addGuest(guestName,guestEmail,guestPhone,guestSize) ? guestName=guestEmail=guestPhone=guestSize=null : null">+</button>
+            <button class="btn btn-success" id="addGuest" ng-click="addGuest(guestName,guestEmail,guestPhone,guestSize, accommodations) ? guestName=guestEmail=guestPhone=guestSize=null : null">+</button>
           </div>
         </form>
 
@@ -243,6 +247,7 @@
                 <th><b>Email</b></th>
                 <th><b>Phone Number</b></th>
                 <th><b>Party Size</b></th>
+                <th><b>Accommodations</b></th>
                 <th><b>Accepted</b></th>
                 <th style="text-align:right"></th>
               </tr>
@@ -254,6 +259,7 @@
                 <td>{{item.email}}</td>
                 <td>{{item.phoneNumber}}</td>
                 <td>{{item.partySize}}</td>
+                <td>{{item.accommodations}}</td>
                 <td><span ng-class="(item.accepted) ? 'fa fa-check-square-o fa-lg' : 'fa fa-square-o fa-lg'" ng-click="changeAccepted($index)"></span></td>
                 <td style="text-align:right"><button type="button" class="btn btn-danger" ng-click="deleteGuest($index)">Remove</button></td>
               </tr>
