@@ -1,0 +1,13 @@
+{
+    "textArray": 
+    [
+        {
+            "location": "Homepage_centered_text", 
+            "literalText": "Help me, help you"
+        },
+        {
+            "location": "Homepage", 
+            "literalText": "Test Code"
+        }
+    ]
+}

@@ -11,10 +11,32 @@
   </div>
 </header>
 
+
+<script>
+function myFunction(button) {
+    var x = document.getElementById("mytext");
+    if (x.contentEditable == "true") {
+        x.contentEditable = "false";
+        button.innerHTML = "Edit";
+    } else {
+        x.contentEditable = "true";
+        button.innerHTML = "Save";
+    }
+}
+</script>
+
+
 <section id="services">
         <div class="container">
             <br><br>
-            <h2 class="text-center cta-h2">Help me, help you</h2>
+            <!-- <p id="myP" contenteditable="true">Try to change this text.</p> -->
+            
+            <h2 id="mytext" class="text-center cta-h2" contenteditable="true">Help me, help you</h2>
+            <button onclick="myFunction(this);">Edit</button>
+            
+          
+            
+            
         </div>
         <div class="container">
             <div class="row">
