@@ -6,8 +6,8 @@ angular.module('essenceEventsRepoApp.client')
 
   $scope.submit = function() {
     var testimonial = {
-      name: $scope.clientName,
-      ename: $scope.eventDescription,
+      clientName: $scope.clientName,
+      eventDescription: $scope.eventDescription,
       message: $scope.message
     };
   Testimonial.create(testimonial)
