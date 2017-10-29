@@ -7,6 +7,6 @@ angular.module('essenceEventsRepoApp.superAdmin')
         url: '/manageLinks',
         templateUrl: 'app/superAdmin/partials/manageLinks/manageLinks.html',
         controller: 'ManageLinksCtrl',
-        authenticate: 'superAdmin'
+        authenticate: 'super'
       });
   });

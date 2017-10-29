@@ -8,6 +8,6 @@
           templateUrl: 'app/superAdmin/partials/manageLinks/manageLinksModal/manageLinksModal.html',
           controller: 'ManageLinksModalCtrl',
           controllerAs: 'mancon',
-         authenticate: 'superAdmin'
+         authenticate: 'super'
         });
     });

@@ -8,6 +8,6 @@
           templateUrl: 'app/superAdmin/partials/manageContractors/manageContractorModal/manageContractorModal.html',
           controller: 'ManageContractorModalCtrl',
           controllerAs: 'mancon',
-         authenticate: 'superAdmin'
+         authenticate: 'super'
         });
     });

@@ -6,6 +6,7 @@ angular.module('essenceEventsRepoApp.superAdmin')
   //Instantiate $scope variables so they show up in modal
   $scope.username = user.name;
   $scope.email = user.email;
+  $scope.role=user.role;
   $scope.phoneNumber = user.phoneNumber;
   $scope.deleteHTML = false;
 

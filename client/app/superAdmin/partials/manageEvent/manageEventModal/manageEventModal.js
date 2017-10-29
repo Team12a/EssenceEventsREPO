@@ -8,6 +8,6 @@
           templateUrl: 'app/superAdmin/partials/manageClients/manageClientsModal/manageEventModal.html',
           controller: 'ManageEventModalCtrl',
           controllerAs: 'mancli',
-          authenticate: 'superAdmin',
+          authenticate: 'super',
         });
     });

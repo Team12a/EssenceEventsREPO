@@ -8,6 +8,6 @@ angular.module('essenceEventsRepoApp.superAdmin')
         templateUrl: 'app/superAdmin/partials/manageAccounts/manageAccounts.html',
         controller: 'ManageAccountsCtrl',
         controllerAs: 'mc',
-        authenticate: 'superAdmin'
+        authenticate: 'super'
       });
   });

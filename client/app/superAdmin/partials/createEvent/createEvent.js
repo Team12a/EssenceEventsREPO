@@ -11,6 +11,6 @@ angular.module('essenceEventsRepoApp.superAdmin')
         },
         templateUrl: 'app/superAdmin/partials/createEvent/createEvent.html',
         controller: 'CreateEventCtrl',
-        authenticate: 'superAdmin'
+        authenticate: 'super'
       });
   });

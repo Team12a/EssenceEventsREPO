@@ -1,28 +1,28 @@
 <div>
   <tabset justified="true">
-    <tab heading="Manage User">
+    <tab heading="Manage Account">
 
       <div ng-if="!(deleteHTML)">
-        <h2 class="modal-header">Client information:</h2>
+        <h2 class="modal-header">Account information:</h2>
         <div class="modal-body">
           <container>
             <form class = "form" name="form" ng-submit="submit(username, email, phoneNumber)" novalidate>
               <div class="form-group">
-                <label for="username">Client name</label>
+                <label for="username">Account name</label>
                 <input type="text" class="form-control" name="username" ng-model="username" placeholder={{username}}>
               </div>
               <div class="form-group">
-                <label for="email">Client email</label>
+                <label for="email">Account email</label>
                 <input type="text" class="form-control" name="email" ng-model="email" placeholder={{email}}>
               </div>
               <div class="form-group">
-                <label for="phoneNumber">Client phone number</label>
+                <label for="phoneNumber">Account phone number</label>
                 <input type="text" class="form-control" name="phoneNumber" ng-model="phoneNumber" placeholder={{phoneNumber}}>
               </div>
               <div>
                 <button type="submit" id="submit" class="btn btn-success">Save Changes</button>
                 <button id="delete" class="btn btn-danger" ng-click="toggleDeleteUser()">Delete</button>
-		<button class="btn btn-default" ng-click="cancel()" style="float: right">Cancel</button>
+		            <button class="btn btn-default" ng-click="cancel()" style="float: right">Cancel</button>
               </div>
             </form>
 
@@ -48,7 +48,7 @@
       </div>
     </tab>
 
-    <tab heading="Manage Events" ng-init="getEvents()" ng-click="refreshDeleteUserHTML()" id="manageEvents">
+    <tab heading="Manage Events" ng-if="role=user" ng-init="getEvents()" ng-click="refreshDeleteUserHTML()" id="manageEvents">
       <h2 class="modal-header">Client events:</h2>
       <div class="modal-body">
         <button class="btn btn-lg btn-block btn-success" ng-click="createEvent()">Create Event</button>

@@ -34,14 +34,17 @@ export function index(req, res) {
 /**
   * Get all admins
 */
-export function getAdmins(req, res){
-  User.find({role:'admin'}).exec(function(err, users){
+//write function using has role authentication to get users AND Admins based on role
+//remember: have to import the file
+export function getAll(req, res){
+  User.find().sort('role').exec(function(err, users){
     if(err) res.status(400).send(err);
     else{
       res.status(200).json(users);
     }
   });
 }
+
 /**
  * Creates a new user
  */

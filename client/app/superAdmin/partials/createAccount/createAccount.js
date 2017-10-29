@@ -10,7 +10,7 @@ angular.module('essenceEventsRepoApp.superAdmin')
         // },
         templateUrl:'app/superAdmin/partials/createAccount/createAccount.html',
         controller:'CreateAccountCtrl',
-        authenticate: 'superAdmin',
+        authenticate: 'super',
         controllerAs:'accCtrl'
       });
   });

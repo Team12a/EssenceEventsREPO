@@ -7,6 +7,6 @@ angular.module('essenceEventsRepoApp.superAdmin')
         url: '/manageContractors',
         templateUrl: 'app/superAdmin/partials/manageContractors/manageContractors.html',
         controller: 'ManageContractorsCtrl',
-        authenticate: 'superAdmin'
+        authenticate: 'super'
       });
   });
