@@ -1,7 +1,17 @@
 <div class = "container-fluid">
   <div ng-controller="viewBudgetCtrl" ng-init="getEvents()">
     <h2>Welcome, {{clientName}} </h2>
-    <h4>VIEW BUDGET PAGE</h4>
+    <h3>{{event.name}}</h3>
+
+    <div ng-init="getEventSubcons()">
+      <!--Your budget-->
+      <div class = "col-md-12">
+        <div class = "col-md-6">
+          <h4 align="center">Your Budget</h4>
+          <nvd3 options="options" data="event.budget"></nvd3>
+        </div>
+      </div>
+    </div>
 
     <div class="row">
       <form class="form-inline col-md-10 col-md-offset-1" id="view-budget-form">
@@ -33,12 +43,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <!-- <tr>
             <td>Food</td>
             <td>200</td>
             <td><button class="btn btn-danger" name="remove">Remove</button></td>
             <td><button class="btn btn-info" >Edit</button></td>
-          </tr>
+          </tr> -->
           <tr ng-repeat="expense in event.budget">
             <td>{{expense.title}}</td>
             <td>{{expense.amount}}</td>
@@ -48,18 +58,6 @@
         </tbody>
       </table>
     </div>
-
-
-
-      <div ng-show="state" ng-init="getEventSubcons()">
-        <!--Your budget-->
-        <div class = "col-md-12">
-          <div class = "col-md-6">
-            <h4 align="center">Your Budget</h4>
-            <nvd3 options="options" data="ev.budget"></nvd3>
-          </div>
-        </div>
-      </div>
 
   </div>
 </div>

@@ -42,7 +42,7 @@ $scope.viewBudget = function(event)
   console.log("in the view budget function");
   console.log(event);
   console.log(event._id);
-  $state.go('client.viewBudget', {$scope.event: event});
+  //$state.go('client.viewBudget', {$scope.event: event});
   //$state.go('client.viewBudget', {event.id: event.id})
   //$modalInstance.close();
   //$state.go('client.viewBudget', {userID : $scope.id, usersName : $scope.clientName});
