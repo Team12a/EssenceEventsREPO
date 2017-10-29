@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('essenceEventsRepoApp.client')
-.controller('manageEventCtrl', [ 'Events', 'Auth', '$scope','$modal', '$stateParams', '$state', function ( Events, Auth, $scope, $modal, $stateParams, $state, uiGmapGoogleMapApi) {
+.controller('manageEventCtrl', [ 'Events', 'Auth', '$scope','$modal', '$stateParams', '$state', 'uiGmapGoogleMapApi', function ( Events, Auth, $scope, $modal, $stateParams, $state, uiGmapGoogleMapApi) {
 
 var getUser = function() {
   if (!$scope.curUser._id)

@@ -17,7 +17,7 @@ angular.module('essenceEventsRepoApp', [
   'mwl.calendar',
   'uiGmapgoogle-maps'
 ])
-  .config(['$urlRouterProvider', '$locationProvider', 'calendarConfig', '$httpProvider',
+  .config(['$urlRouterProvider', '$locationProvider', 'calendarConfig', '$httpProvider', 'uiGmapGoogleMapApiProvider',
   function($urlRouterProvider, $locationProvider, calendarConfig, $httpProvider, uiGmapGoogleMapApiProvider) {
     $urlRouterProvider
       .otherwise('/');
@@ -34,8 +34,8 @@ angular.module('essenceEventsRepoApp', [
     $httpProvider.defaults.headers.get['Pragma'] = 'no-cache';
 
     uiGmapGoogleMapApiProvider.configure({
-        key: 'AIzaSyCIz5Dce93Z8qz_vGhuX_mfvjESEPYM9EA',
-        v: '3.20', //defaults to latest 3.X anyhow
+        key: 'AIzaSyDTiE3uowLwUmTscMZYqxVIEGCRiFIPNwo',
+        v: '3', //defaults to latest 3.X anyhow
         libraries: 'weather,geometry,visualization'
     });
   }])
