@@ -4,6 +4,7 @@ angular.module('essenceEventsRepoApp.client')
 .controller('yourBudgetCtrl', [ 'Events', 'Auth', '$scope','$modal', '$stateParams', '$state', function ( Events, Auth, $scope, $modal, $stateParams, $state) {
 
 var getUser = function() {
+  console.log(" am i getting the user?");
   if (!$scope.curUser._id)
     setTimeout(getUser, 100);
   else {
@@ -13,9 +14,13 @@ var getUser = function() {
 };
 
 $scope.curUser = Auth.getCurrentUser();
+console.log("scope.curUser = " + $scope.curUser);
 getUser();
+console.log("$scope.clientName: " + $scope.clientName);
+console.log("$scope.curUser._id: " + $scope.curUser._id);
 
 $scope.getEvents = function(){
+  console.log("$scope.id = " + $scope.id);
   if (!$scope.id)
     setTimeout($scope.getEvents, 100);
   else
