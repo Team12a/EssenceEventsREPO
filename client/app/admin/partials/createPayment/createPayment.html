@@ -16,11 +16,11 @@
         <!-- Div to input the date -->
         <div class="form-group row col-md-12" style="margin-bottom: 0px;" show-errors>
           <div class="col-md-6" style="padding-left: 0px;">
-            <label for="dateOfPayment">Due Date:</label>
+            <label for="dateOfEvent">Date:</label>
             <div class = "input-group">
-              <input type="text" class="form-control" id="paymentDueDate" datepicker-popup="fullDate" ng-model="paymentDueDate" is-open="paymentDateOpened"  datepicker-options="dateOptions" close-text="Close" />
+              <input type="text" class="form-control" id="eventDate" datepicker-popup="fullDate" ng-model="eventDate" is-open="eventDateOpened"  datepicker-options="dateOptions" close-text="Close" />
               <span class="input-group-btn">
-                <button type="button" class="btn btn-default" datepicker-popup="fullDate" ng-click="openPaymentDate($payment)"><i class="glyphicon glyphicon-calendar"></i></button>
+                <button type="button" class="btn btn-default" ng-click="openEventDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
               </span>
             </div>
           </div>
@@ -31,12 +31,9 @@
           <label for="amount">Amount:</label>
           <input name="amount" type="amount" ng-model="amount" id="amount" class="form-control">
         </div>
-
-
-
         <!-- Submit button -->
         <div class="form-group row col-md-12">
-          <button type="button" class="btn btn-default" ng-click="submit()" ng-disabled="form.$invalid">Submit</button>
+          <button type="submit" ng-click="submit()" class="btn btn-default">Submit</button>
         </div>
 
       </form>

@@ -30,7 +30,7 @@ export function findOneById(req, res) {
 //Create a new payment based on req.body and save it to the database
 export function create(req, res) {
   var payment = new Payment(req.body);
-  Payment.save(function(err, payment) {
+  payment.save(function(err, payment) {
     if (err) {
       res.status(400).send(err);
       throw err;

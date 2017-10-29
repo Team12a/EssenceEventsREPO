@@ -15,21 +15,17 @@ angular.module('essenceEventsRepoApp.admin')
   $scope.clientName = $stateParams.usersName;
 
   //datePickerOptions
-  // $scope.dateOptions =
+  $scope.dateOptions =
 
 
 
   //set up date for event
-  $scope.paymentDueDate = new Date();
-  $scope.openPaymentDate = function($payment) {
-    $payment.preventDefault();
-    $payment.stopPropagation();
-    $scope.paymentDateOpened = true;
+  $scope.eventDate = new Date();
+  $scope.openEventDate = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    $scope.eventDateOpened = true;
   };
-
-
-$scope.amount = 15;
-
 
 
   //Saves all of the $scope fields into an event object and saves it to the database

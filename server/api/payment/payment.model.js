@@ -2,10 +2,10 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var paymentSchema = new Schema({
-  userId: String,
   description: String,
   dueDate: String,
   amount: Number,
+  userId: String,
   paid: Boolean
 });
 
