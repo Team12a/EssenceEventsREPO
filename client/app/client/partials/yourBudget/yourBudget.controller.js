@@ -5,9 +5,10 @@ angular.module('essenceEventsRepoApp.client')
 
 var getUser = function() {
   console.log(" am i getting the user?");
-  if (!$scope.curUser._id)
+  if (!$scope.curUser._id) {
+    console.error("no user found");
     setTimeout(getUser, 100);
-  else {
+  } else {
     $scope.clientName = $scope.curUser.name;
     $scope.id = $scope.curUser._id;
   }
@@ -26,6 +27,7 @@ $scope.getEvents = function(){
   else
     Events.getByUser($scope.id)
       .then(function(response) {
+        console.log("response.data = " + response.data);
         $scope.events = response.data;
       }, function(error) {
         //do something
