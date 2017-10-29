@@ -15,7 +15,7 @@ angular.module('essenceEventsRepoApp.admin')
   $scope.clientName = $stateParams.usersName;
 
   //datePickerOptions
-  $scope.dateOptions =
+  // $scope.dateOptions =
 
 
 
