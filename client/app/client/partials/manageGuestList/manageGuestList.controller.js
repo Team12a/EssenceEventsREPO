@@ -41,9 +41,20 @@ angular.module('essenceEventsRepoApp.client')
         $state.go('client.addGuest', {ev : $scope.ev} );
       };
 
-      $scope.editGuest = function(){
-        alert("Editing Guest");
+      // $scope.editGuest = function(){
+      //   alert("Editing Guest");
+      // };
+  };
+
+  $scope.toggleEdit = function (item) {
+    $scope.state1 = !$scope.state1;
+    $scope.guest = item;
+
+      $scope.hasItems = function(arr)
+      {
+        return (arr.length > 0);
       };
+      
   };
 
 }]);

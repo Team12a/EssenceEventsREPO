@@ -48,7 +48,7 @@
                   <td>{{item.partySize}}</td>
                   <td>{{item.accommodations}}</td>
                   <td><span ng-class="(item.accepted) ? 'fa fa-check-square-o fa-lg' : 'fa fa-square-o fa-lg'"></span></td>
-                  <td><span class="glyphicon glyphicon-edit" ng-click="editGuest()"></span></td>
+                  <td><span class="glyphicon glyphicon-edit" ng-click="toggleEdit(item)"></span></td>
                 </tr>
               </tbody>
               <tfoot>
@@ -60,9 +60,12 @@
               </tfoot>
 
             </table>
+
           </div>
         </div>
-
+          <div ng-show="state1">
+            <h1>HI<h1>
+          </div>
 
       </div>
 
