@@ -2,7 +2,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var testimonialSchema = new Schema({
-  clientName: String,
+  postName: String,
   eventDescription: String,
   message: String,
 });
