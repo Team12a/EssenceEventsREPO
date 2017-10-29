@@ -50,7 +50,7 @@
                 <td>{{user.phoneNumber | phone}}</td>
                 <td>{{user.email}}</td>
                 <td>{{user.role}}</td>
-                <td><button type="button" class="btn btn-md btn-default" ng-click=mc.openModal(user)>Manage</button></td>
+                <td><button type="button" class="btn btn-md btn-danger" ng-click=mc.delete(user)>Delete</button></td>
             </tr>
           </tbody>
       </table>

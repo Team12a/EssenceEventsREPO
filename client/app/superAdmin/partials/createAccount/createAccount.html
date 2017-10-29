@@ -66,13 +66,13 @@
 
         <div class="form-group" ng-class="{'has-success' : form.phoneNumber.$valid && accCtrl.submitted, 'has-error' : form.phoneNumber.$invalid && accCtrl.submitted}">
           <label>Phone Number</label>
-          <input type="number" name="phoneNumber" class="form-control" ng-model="accCtrl.user.phoneNumber" ng-minlength="7" placeholder="e.g.(1234567890)" required/>
+          <input type="number" name="phoneNumber" class="form-control" ng-model="accCtrl.user.phoneNumber" ng-minlength="7" ng-maxlength="10" placeholder="e.g.(1234567890)" required/>
           <p class="help-block" ng-show="form.phoneNumber.$error.required && accCtrl.submitted">
             A phone number is required.
           </p>
           <p class="help-block" ng-show="form.phoneNumber.$error.minlength && form.phoneNumber.$dirty && accCtrl.submitted">
             Phone number should be at least 7 digits.
-          </p>
+          </p class="help-block" ng-show="form.phonNumber.$error.maxlength && form.phoneNumber.$dirty && accCtrl.submitted">
         </div>
 
         <div>
