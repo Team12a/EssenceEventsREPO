@@ -15,13 +15,15 @@
             <td>Event 1</td>
             <td>Location 1</td>
             <td>Date 1</td>
-            <td><button class="btn btn-info" ng-click="viewBudget()">View Budget</button></td>
+            <td><button class="btn btn-info" ng-click="viewBudget(event)">View Budget</button></td>
           </tr>
           <tr ng-repeat="event in events">
             <td>{{event.name}}</td>
             <td>{{event.location}}</td>
             <td>{{event.date.substring(5,10) + '-' + event.date.substring(0,4)}}</td>
-            <td> <button class = "btn btn-primary" ng-click="toggle(event)">Budget</button></td>
+            <td><button class="btn btn-info"><a ui-sref="client.viewBudget({eventId: event._id})">View Budget</a></button></td>
+
+            <!-- <td> <button class = "btn btn-info" ng-click="viewBudget(event)">View Budget</button></td> -->
           </tr>
         </tbody>
       </table>

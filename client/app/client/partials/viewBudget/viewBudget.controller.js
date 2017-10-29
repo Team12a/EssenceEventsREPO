@@ -3,6 +3,10 @@
 angular.module('essenceEventsRepoApp.client')
 .controller('viewBudgetCtrl', [ 'Events', 'Auth', '$scope','$modal', '$stateParams', '$state', function ( Events, Auth, $scope, $modal, $stateParams, $state) {
 
+//$scope.event = JSON.parse(JSON.stringify($scope.event));
+console.log("check if event passed through" + $stateParams.eventId);
+console.log("scope" + $scope);
+
 var getUser = function() {
   console.log(" am i getting the user?");
   if (!$scope.curUser._id) {
@@ -13,6 +17,10 @@ var getUser = function() {
     $scope.id = $scope.curUser._id;
   }
 };
+
+console.log("was I passed in an event?");
+console.log("event: " + event);
+console.log("event id: " + event._id);
 
 $scope.curUser = Auth.getCurrentUser();
 console.log("scope.curUser = " + $scope.curUser);

@@ -25,13 +25,27 @@ $scope.getEvents = function(){
   if (!$scope.id)
     setTimeout($scope.getEvents, 100);
   else
-    Events.getByUser($scope.id)
+    // Events.getByUser($scope.id)
+    $scope.useridlauren = '59f5e336df1d79a60ab45ca7';
+    Events.getByUser($scope.useridlauren)
       .then(function(response) {
         console.log("response.data = " + response.data);
         $scope.events = response.data;
       }, function(error) {
         //do something
     });
+};
+
+//viewBudget
+$scope.viewBudget = function(event)
+{
+  console.log("in the view budget function");
+  console.log(event);
+  console.log(event._id);
+  $state.go('client.viewBudget', {$scope.event: event});
+  //$state.go('client.viewBudget', {event.id: event.id})
+  //$modalInstance.close();
+  //$state.go('client.viewBudget', {userID : $scope.id, usersName : $scope.clientName});
 };
 
 $scope.toggle = function (event) {
@@ -65,13 +79,6 @@ $scope.toggle = function (event) {
     });
   };
 
-  //viewBudget
-  $scope.viewBudget = function()
-  {
-    console.log("in the view budget function");
-    //$modalInstance.close();
-    $state.go('client.viewBudget', {userID : $scope.id, usersName : $scope.clientName});
-  };
 
     // Pi chart for budget
     $scope.options = {

@@ -24,11 +24,6 @@ angular.module('essenceEventsRepoApp.client')
         'state': 'client.yourBudget',
       },
       {
-        'title': 'View Budget',
-        'description': 'Manage budget for a specific event',
-        'state': 'client.viewBudget'
-      },
-      {
         'title': 'Your Guest List',
         'description': 'Manage guest list for specific event',
         'state': 'client.manageGuestList',
