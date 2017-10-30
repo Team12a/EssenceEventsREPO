@@ -40,6 +40,24 @@
                 <!-- Display Guest List -->
                 <div class = "col-md-6" ng-init="sortGuest='name'">
                   <h4 style="text-align:center">Event Details</h4>
+                  <table>
+                    <tr>
+                      <td><h5 align="left"> Event: </h5></td>
+                      <td> {{ev.name}} </td>
+                    </tr>
+                    <tr>
+                      <td><h5 align="left"> Date: </h5></td>
+                      <td> {{ev.date | date:"EEEE, MMM. d, yyyy"}} </td>
+                    </tr>
+                    <tr>
+                      <td><h5 align="left"> Time: </h5></td>
+                      <td> {{ev.date | date:"h:mm a"}} </td>
+                    </tr>
+                    <tr>
+                      <td><h5 align="left"> Location: </h5></td>
+                      <td> {{ev.location}} </td>
+                    </tr>
+                  </table>
                 </div>
               </div>
               <!-- Display Todo Calendar -->
