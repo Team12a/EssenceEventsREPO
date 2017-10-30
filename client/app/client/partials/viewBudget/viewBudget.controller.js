@@ -23,28 +23,26 @@ getUser();
 
 $scope.useridlauren = 0;
 $scope.getEvents = function(){
-  if (!$scope.id)
+  if (!$scope.id) {
     setTimeout($scope.getEvents, 100);
-  else {
+    $state.go('client.yourBudget');
+  } else {
       Events.getOne($stateParams.eventId)
         .then(function(response) {
-          console.log(response);
           $scope.event = response.data;
-          console.log($scope.event);
-          console.log("subcontractors = " + $scope.event.subcontractors);
-          console.log("length = " + $scope.event.subcontractors.length);
         }, function(error) {
           console.error(error);
         });
   }
 };
 
-$scope.getEventSubcons = function() {
-  if (event.subcontractors.length != "0"){
+$scope.load = function() {
+  //$scope.state = !$scope.state;
+  //$scope.ev = event;
+  $scope.getEventSubcons = function() {
     var promises = $scope.event.subcontractors.map(function(subcon) {
       return Subcontractors.getOne(subcon);
     });
-    console.log("promises: " + promises);
     $q.all(promises)
     .then(function(response) {
       response.forEach(function(r) {
@@ -53,61 +51,106 @@ $scope.getEventSubcons = function() {
     }, function(err) {
       //do something
     });
-  }
-};
-
-$scope.changeDone = function(index) {
-  $scope.event.toDoList[index].done = !$scope.event.toDoList[index].done;
-  var body = {
-    index: index,
-    bool: $scope.event.toDoList[index].done
   };
-  Events.toggleTodo($scope.event._id, body)
-    .then(function(response) {
-//console.log('done');
-    }, function(err) {
-//do something
-  });
-};
 
-
-  // Pi chart for budget
-  $scope.options = {
-    chart: {
-      type: 'pieChart',
-      height: 300,
-      x: function(d){return d.title},
-      y: function(d){return d.amount;},
-      showLabels: true,
-      duration: 500,
-      labelThreshold: 0.01,
-      labelSunbeamLayout: true,
-      legend: {
-        margin: {
-          top: 5,
-          right: 35,
-          bottom: 5,
-          left: 0
+    // Pi chart for budget
+    $scope.options = {
+      chart: {
+        type: 'pieChart',
+        height: 300,
+        x: function(d){return d.title},
+        y: function(d){return d.amount;},
+        showLabels: true,
+        duration: 500,
+        labelThreshold: 0.01,
+        labelSunbeamLayout: true,
+        legend: {
+          margin: {
+            top: 5,
+            right: 35,
+            bottom: 5,
+            left: 0
+          }
         }
       }
-    }
+    };
+
   };
 
-  //Todo list
-  $scope.hasItems = function(arr)
-  {
-    return (arr.length > 0);
-  };
 
-  //Calendar stuff
-  $scope.calendarView = 'month';
-  $scope.calendarDate = new Date();
-  $scope.todo = [];
-  $scope.todo.push({title: $scope.event.name, type: 'important', startsAt: new Date($scope.event.date)});
-  console.log("todo: " + $scope.todo);
-  //for (var i = 0; i < $scope.event.toDoList.length(); i++)
-  //  $scope.todo.push({title: $scope.event.toDoList[i].todo, type: 'info', startsAt: new Date($scope.event.toDoList[i].by)});
-
+// $scope.getEventSubcons = function() {
+//   if (event.subcontractors.length != "0"){
+//     var promises = $scope.event.subcontractors.map(function(subcon) {
+//       return Subcontractors.getOne(subcon);
+//     });
+//     console.log("promises: " + promises);
+//     $q.all(promises)
+//     .then(function(response) {
+//       response.forEach(function(r) {
+//         $scope.subcontractors.push(r.data);
+//       });
+//     }, function(err) {
+//       //do something
+//     });
+//   }
+// };
+//
+// $scope.changeDone = function(index) {
+//   $scope.event.toDoList[index].done = !$scope.event.toDoList[index].done;
+//   var body = {
+//     index: index,
+//     bool: $scope.event.toDoList[index].done
+//   };
+//   Events.toggleTodo($scope.event._id, body)
+//     .then(function(response) {
+// //console.log('done');
+//     }, function(err) {
+// //do something
+//   });
+// };
+//
+//
+//   // Pi chart for budget
+//   $scope.options = {
+//     chart: {
+//       type: 'pieChart',
+//       height: 300,
+//       x: function(d){return d.title},
+//       y: function(d){return d.amount;},
+//       showLabels: true,
+//       duration: 500,
+//       labelThreshold: 0.01,
+//       labelSunbeamLayout: true,
+//       legend: {
+//         margin: {
+//           top: 5,
+//           right: 35,
+//           bottom: 5,
+//           left: 0
+//         }
+//       }
+//     }
+//   };
+//
+//   //Todo list
+//   $scope.hasItems = function(arr)
+//   {
+//     return (arr.length > 0);
+//   };
+//
+//   $scope.$on('$viewContentLoaded', function(){
+//     //Here your view content is fully loaded !!
+//     //Calendar stuff
+//     $scope.calendarView = 'month';
+//     $scope.calendarDate = new Date();
+//     $scope.todo = [];
+//     $scope.todo.push({title: $scope.event.name, type: 'important', startsAt: new Date($scope.event.date)});
+//     console.log("todo: " + $scope.todo);
+//     console.log("todoList: " + $scope.event.toDoList[0]);
+//
+//     for (var i = 0; i < $scope.event.toDoList.length(); i++)
+//       $scope.todo.push({title: $scope.event.toDoList[i].todo, type: 'info', startsAt: new Date($scope.event.toDoList[i].by)});
+//   });
 
 
 }]);

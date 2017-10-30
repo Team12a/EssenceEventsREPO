@@ -1,9 +1,9 @@
 <div class = "container-fluid">
-  <div ng-controller="viewBudgetCtrl" ng-init="getEvents()">
+  <div ng-controller="viewBudgetCtrl" ng-init="getEvents(); load()">
     <h2>Welcome, {{clientName}} </h2>
     <h3>{{event.name}}</h3>
 
-    <div ng-init="getEventSubcons()">
+    <div ng-init="">
       <!--Your budget-->
       <div class = "col-md-12">
         <div class = "col-md-6">
