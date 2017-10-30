@@ -46,9 +46,9 @@ var loopJob = new CronJob({
             console.log(doc);
             if(doc != null){
               doc.forEach(function(err, cursor){  //For each event
-                var arrLength = cursor.toDoList.size;
-                console.log(arrLength);
-                /*cursor.toDoList.forEach(function(err, toDoItem){
+                //var arrLength = cursor.toDoList.size;
+                //console.log(arrLength);
+                cursor.toDoList.forEach(function(err, toDoItem){
                   if(!toDoItem.done){
                     var toDoEmail;
                     User.findAsync({name: cursor.userId}, function(err, user){
@@ -74,7 +74,7 @@ var loopJob = new CronJob({
                         console.log('Message sent: ' + info.response);
                     });
                   }
-                });*/
+                });
               });
             }
           });
