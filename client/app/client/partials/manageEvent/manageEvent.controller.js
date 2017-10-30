@@ -38,6 +38,8 @@ $scope.toggle = function (event) {
     .then(function(response) {
       response.forEach(function(r) {
         $scope.subcontractors.push(r.data);
+        console.log($scope.subcontractors)
+        console.log(r.data);
       });
     }, function(err) {
       //do something
@@ -86,6 +88,11 @@ $scope.toggle = function (event) {
 
     //Todo list
     $scope.hasItems = function(arr)
+    {
+      return (arr.length > 0);
+    };
+
+    $scope.hasSubcontractors = function(arr)
     {
       return (arr.length > 0);
     };

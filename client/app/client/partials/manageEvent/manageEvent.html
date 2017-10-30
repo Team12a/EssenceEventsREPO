@@ -45,6 +45,24 @@
               <!-- Display Todo Calendar -->
               <div class = "col-md-12">
                 <div class="col-md-6">
+                  <h4 style="text-align:center">Subcontractors List</h4>
+                  <table class = "table table-hover">
+                    <thead>
+                      <tr>
+                        <th><b>Subcontractor</b></th>
+                        <th><b>Date</b></th>
+                        <th><b>Done</b></th>
+                      </tr>
+                    </thead>
+                    <tbody ng-repeat ="person in ev.subcontractors" ng-show="hasSubcontractors(ev.subcontractors)">
+                      <tr>
+                        <td>{{person}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- display table of todolist -->
+                <div class = "col-md-6">
                   <h4 style="text-align:center">Task List</h4>
                   <table class = "table table-hover">
                     <thead>
@@ -54,7 +72,6 @@
                         <th><b>Done</b></th>
                       </tr>
                     </thead>
-
                     <tbody ng-repeat ="item in ev.toDoList" ng-show="hasItems(ev.toDoList)">
                       <tr>
                         <td>{{item.todo}}</td>
@@ -63,9 +80,6 @@
                       </tr>
                     </tbody>
                   </table>
-                </div>
-                <!-- display table of todolist -->
-                <div class = "col-md-6">
 
                 </div>
               </div>
