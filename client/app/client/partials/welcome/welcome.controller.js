@@ -27,7 +27,6 @@ $scope.getEvents = function(){
     });
 };
 
-
 $scope.toggle = function (event) {
   $scope.state = !$scope.state;
   $scope.ev = event;
