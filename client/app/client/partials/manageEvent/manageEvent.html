@@ -33,9 +33,9 @@
                 <div class = "col-md-6">
                   <h4 align="center">Event Location</h4>
                   <div>
-                  <ui-gmap-google-map ng-if="map.center" center="map.center" zoom="map.zoom" options="map.options">
+                  <ui-gmap-google-map ng-if ="map.center"  center="map.center" zoom="map.zoom" options="map.options">
                     <ui-gmap-marker coords="markers.coords" idkey ="markers.id">
-                      <ui-gmap-window>
+                      <ui-gmap-window show ="show">
                         <div>{{markers.window.title}}</div>
                       </ui-gmap-window>
                     </ui-gmap-marker>

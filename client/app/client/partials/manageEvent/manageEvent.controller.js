@@ -1,9 +1,7 @@
 'use strict';
 
 angular.module('essenceEventsRepoApp.client')
-.controller('manageEventCtrl', [ 'Events', 'Auth', '$scope','$modal', '$stateParams', '$state', 'uiGmapGoogleMapApi', function ( Events, Auth, $scope, $modal, $stateParams, $state, uiGmapGoogleMapApi) {
-
-var isDraggable = !('ontouchstart' in document.documentElement);
+.controller('manageEventCtrl', [ 'Events', 'Auth', '$scope','$modal', '$stateParams', '$state', 'uiGmapIsReady', function ( Events, Auth, $scope, $modal, $stateParams, $state, uiGmapIsReady) {
 
 
 var getUser = function() {
@@ -35,7 +33,7 @@ $scope.getEvents = function(){
 $scope.toggle = function (event) {
   $scope.state = !$scope.state;
   $scope.ev = event;
-  $scope.map = { center: { latitude: $scope.ev.lat, longitude: $scope.ev.lng }, zoom: 17, options: {draggable: isDraggable}};
+  $scope.map = { center: { latitude: $scope.ev.lat, longitude: $scope.ev.lng }, zoom: 17};
   $scope.markers = {
     id:"0",
     coords: {
