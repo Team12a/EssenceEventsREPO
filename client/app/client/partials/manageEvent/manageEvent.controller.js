@@ -61,8 +61,23 @@ $scope.toggle = function (event) {
   };
 
   uiGmapGoogleMapApi.then(function(maps) {
-    $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({'address': $scope.ev.location},function(results, status){
+      if(status == google.maps.GeocoderStatus.OK){
+        $scope.map = {
+          center: {
+            latitude: 29.652290,
+            longitude: -82.330253
+         },
+          zoom: 8
+        }
+        //$scope.map.setCenter(results[0].geometry.location);
+        
+      } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
    });
+ });
 
     // Pi chart for budget
     $scope.options = {
@@ -92,6 +107,7 @@ $scope.toggle = function (event) {
       return (arr.length > 0);
     };
 
+    //Checks if subcontractors
     $scope.hasSubcontractors = function(arr)
     {
       return (arr.length > 0);

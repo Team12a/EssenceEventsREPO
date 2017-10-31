@@ -35,6 +35,10 @@ var eventSchema = new Schema({
     title: String,
     amount: Number
   }],
+  subcons: [{
+    name: String,
+    link: String
+  }],
   subcontractors: [String]
 });
 

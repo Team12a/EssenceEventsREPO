@@ -40,22 +40,25 @@
                 <!-- Display Guest List -->
                 <div class = "col-md-6" ng-init="sortGuest='name'">
                   <h4 style="text-align:center">Event Details</h4>
-                  <table>
+                  <table align="center">
                     <tr>
                       <td><h5 align="left"> Event: </h5></td>
-                      <td> {{ev.name}} </td>
+                      <td><h5 align ="right"> {{ev.name}} </h5></td>
                     </tr>
+                    <br>
                     <tr>
                       <td><h5 align="left"> Date: </h5></td>
-                      <td> {{ev.date | date:"EEEE, MMM. d, yyyy"}} </td>
+                      <td> <h5 align ="right">{{ev.date | date:"EEEE, MMM. d, yyyy"}} </h5></td>
                     </tr>
+                    <br>
                     <tr>
                       <td><h5 align="left"> Time: </h5></td>
-                      <td> {{ev.date | date:"h:mm a"}} </td>
+                      <td><h5 align="right"> {{ev.date | date:"h:mm a"}}</h5> </td>
                     </tr>
+                    <br>
                     <tr>
                       <td><h5 align="left"> Location: </h5></td>
-                      <td> {{ev.location}} </td>
+                      <td><h5 align="right"> {{ev.location}} </h5></td>
                     </tr>
                   </table>
                 </div>
@@ -68,13 +71,13 @@
                     <thead>
                       <tr>
                         <th><b>Subcontractor</b></th>
-                        <th><b>Date</b></th>
-                        <th><b>Done</b></th>
+                        <th><b>Link</b></th>
                       </tr>
                     </thead>
-                    <tbody ng-repeat ="person in ev.subcontractors" ng-show="hasSubcontractors(ev.subcontractors)">
+                    <tbody ng-repeat ="person in ev.subcons" ng-show="hasSubcontractors(ev.subcontractors)">
                       <tr>
-                        <td>{{person}}</td>
+                        <td>{{person.name}}</td>
+                        <td>{{person.link}}</td>
                       </tr>
                     </tbody>
                   </table>
