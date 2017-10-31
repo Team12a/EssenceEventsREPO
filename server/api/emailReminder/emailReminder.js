@@ -8,7 +8,7 @@ var sgTransport = require('nodemailer-sendgrid-transport');
 const CronJob = require('cron').CronJob;
 //Temp
 var counter = 0;
-
+var br = '################################\n';
 /*
   For this emailReminder to work, the sendgrid email account should be in development.js
   It should follow this format:
@@ -34,23 +34,23 @@ var loopJob = new CronJob({
   //Describes what actions are taken after each interval
   onTick: function() {
           //Temp
-          console.log('Running Send Notifications Worker every 1 seconds');
+          console.log('\nRunning Send Notifications Worker every 1 seconds');
           counter = counter + 1;
           //Creates transporter using sendgrid
           var transporter = nodemailer.createTransport(sgTransport(config.essEventsReminderEmail.options));
           //For each toDoList item, checks if finished, if not, send email to corresponding user email
           //If null (aka. no events/toDoList), do nothing
-          //var doc = Event.findAsync({$where: "this.toDoList.length > 0 && this.userId != null"});
-          //  if(doc != null){
-          //    for(var k in doc){
-          //      console.log(doc[k]);
+          Event.findAsync({ $where: "this.toDoList.length > 0" },function(err, docs){
+            console.log('Printing docs from Array');
+            docs.forEach(function(err, doc){
+              console.log(JSON.stringify(doc));
+            });
+          });
                     //Check if Date is passed
                     //If Date is upcoming
                     //placeholder email
-          // create template based sender function
-
-          //Email Template
-          var emailReminderTemplate = transporter.templateSender(
+                  //Email Template
+          /*var emailReminderTemplate = transporter.templateSender(
             {
             subject: 'Testing reminder for {{username}}!',
             html: `<p><b>Email Address:</b> <strong>{{emailAddress}}</strong></p>
@@ -79,10 +79,8 @@ var loopJob = new CronJob({
                 console.log('Email reminder sent');
               }
             }
-          );
+          );*/
 
-          //      });
-          //    }
           //  }
 
 
