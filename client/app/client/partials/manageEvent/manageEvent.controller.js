@@ -3,6 +3,8 @@
 angular.module('essenceEventsRepoApp.client')
 .controller('manageEventCtrl', [ 'Events', 'Auth', '$scope','$modal', '$stateParams', '$state', 'uiGmapGoogleMapApi', function ( Events, Auth, $scope, $modal, $stateParams, $state, uiGmapGoogleMapApi) {
 
+var isDraggable = !('ontouchstart' in document.documentElement);
+
 var getUser = function() {
   if (!$scope.curUser._id)
     setTimeout(getUser, 100);
@@ -60,23 +62,30 @@ $scope.toggle = function (event) {
     });
   };
 
-  uiGmapGoogleMapApi.then(function(maps) {
-    var geocoder = new google.maps.Geocoder();
-    geocoder.geocode({'address': $scope.ev.location},function(results, status){
-      if(status == google.maps.GeocoderStatus.OK){
-        $scope.map = {
-          center: {
-            latitude: 29.652290,
-            longitude: -82.330253
-         },
-          zoom: 8
+  $scope.map = { center: { latitude: 29.65253, longitude: -82.330276 }, zoom: 14 };
+  var geocoder = new google.maps.Geocoder();
+  geocoder.geocode({'address': $scope.ev.location},function(results, status){
+    if(status == google.maps.GeocoderStatus.OK){
+      var locCoord = results[0].geometry.location;
+      $scope.map = {
+        center: {
+          latitude: locCoord.lat(),
+          longitude: locCoord.lng()
+       },
+        zoom: 14
+      };
+      $scope.marker = {
+        id:0,
+        coords: {
+          latitude: locCoord.lat(),
+          longitude: locCoord.lng()
+        },
+        options: {draggable: false}
+      };
+
+    } else {
+          alert('Geocode was not successful for the following reason: ' + status);
         }
-        //$scope.map.setCenter(results[0].geometry.location);
-        
-      } else {
-            alert('Geocode was not successful for the following reason: ' + status);
-          }
-   });
  });
 
     // Pi chart for budget
