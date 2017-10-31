@@ -40,12 +40,14 @@ var loopJob = new CronJob({
           var transporter = nodemailer.createTransport(sgTransport(config.essEventsReminderEmail.options));
           //For each toDoList item, checks if finished, if not, send email to corresponding user email
           //If null (aka. no events/toDoList), do nothing
-          Event.findAsync({ $where: "this.toDoList.length > 0" },function(err, docs){
-            console.log('Printing docs from Array');
-            docs.forEach(function(err, doc){
-              console.log(JSON.stringify(doc));
-            });
+          console.log('Finding data');
+          Event.find({toDoList: {done: 'false'}}, function(err, docs){
+              if(err) throw err;
+              else{
+                console.log(docs);
+              }
           });
+
                     //Check if Date is passed
                     //If Date is upcoming
                     //placeholder email
