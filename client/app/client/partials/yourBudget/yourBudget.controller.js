@@ -4,7 +4,6 @@ angular.module('essenceEventsRepoApp.client')
 .controller('yourBudgetCtrl', [ 'Events', 'Auth', '$scope','$modal', '$stateParams', '$state', function ( Events, Auth, $scope, $modal, $stateParams, $state) {
 
 var getUser = function() {
-  console.log(" am i getting the user?");
   if (!$scope.curUser._id) {
     console.error("no user found");
     setTimeout(getUser, 100);
@@ -15,13 +14,9 @@ var getUser = function() {
 };
 
 $scope.curUser = Auth.getCurrentUser();
-console.log("scope.curUser = " + $scope.curUser);
 getUser();
-console.log("$scope.clientName: " + $scope.clientName);
-console.log("$scope.curUser._id: " + $scope.curUser._id);
 
 $scope.getEvents = function(){
-  console.log("$scope.id = " + $scope.id);
   if (!$scope.id)
     setTimeout($scope.getEvents, 100);
   else
@@ -29,23 +24,10 @@ $scope.getEvents = function(){
     $scope.useridlauren = '59f5e336df1d79a60ab45ca7';
     Events.getByUser($scope.useridlauren)
       .then(function(response) {
-        console.log("response.data = " + response.data);
         $scope.events = response.data;
       }, function(error) {
         //do something
     });
-};
-
-//viewBudget
-$scope.viewBudget = function(event)
-{
-  console.log("in the view budget function");
-  console.log(event);
-  console.log(event._id);
-  //$state.go('client.viewBudget', {$scope.event: event});
-  //$state.go('client.viewBudget', {event.id: event.id})
-  //$modalInstance.close();
-  //$state.go('client.viewBudget', {userID : $scope.id, usersName : $scope.clientName});
 };
 
 $scope.toggle = function (event) {

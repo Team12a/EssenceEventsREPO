@@ -3,7 +3,6 @@
 angular.module('essenceEventsRepoApp.client')
 .controller('viewBudgetCtrl', [ 'Events', 'Auth', '$scope','$modal', '$stateParams', '$state', function ( Events, Auth, $scope, $modal, $stateParams, $state) {
 
-console.log("check if event passed through" + $stateParams.eventId);
 $scope.event = $stateParams.eventId;
 if (!$stateParams.eventId){
   $state.go('client.yourBudget');
@@ -75,6 +74,20 @@ $scope.load = function() {
       }
     };
 
+  };
+
+  $scope.amount = 0.0;
+  $scope.title = "";
+
+  $scope.addExpenditure = function(){
+    console.log('expenditure added');
+    console.log('budget: ' + $scope.event.budget);
+    $scope.event.budget.push({
+      "amount": $scope.amount,
+      "title" : $scope.title
+    });
+    $scope.amount = 0.0;
+    $scope.title = "";
   };
 
 

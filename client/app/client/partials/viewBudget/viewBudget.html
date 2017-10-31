@@ -14,17 +14,17 @@
     </div>
 
     <div class="row">
-      <form class="form-inline col-md-10 col-md-offset-1" id="view-budget-form">
+      <form ng-submit="addExpenditure()" class="form-inline col-md-10 col-md-offset-1" id="view-budget-form">
         <p>Add Expenditure:</p>
         <div class="form-group">
           <label class="sr-only" for="inputExpenditure">Expenditure</label>
-          <input type="text" class="form-control" id="inputExpenditure" placeholder="Expenditure">
+          <input type="text" ng-model="title" class="form-control" id="inputExpenditure" placeholder="Expenditure">
         </div>
         <div class="form-group" id="price-input">
           <label class="sr-only" for="inputAmount">Amount</label>
           <div class="input-group">
             <div class="input-group-addon">$</div>
-            <input type="text" class="form-control" id="inputAmount" placeholder="Amount">
+            <input type="text" ng-model="amount" class="form-control" id="inputAmount" placeholder="Amount">
             <div class="input-group-addon">.00</div>
           </div>
         </div>
