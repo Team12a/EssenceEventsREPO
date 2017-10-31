@@ -18,24 +18,14 @@ angular.module('essenceEventsRepoApp.admin')
   };
 
     //get all events and add client name
-  $scope.getPayments = function() {
-    Payments.getAll()
-    .then(function(response) {
-      $scope.payments = response.data;
-    //We have the userId in the model so we use Auth to get the name for each
-      $scope.payments.forEach(function(payment) {
-        Auth.getById(payment.userId)
+    $scope.getPayments = function() {
+      Payments.getAll()
         .then(function(response) {
-          payment.userId = response.data.userId;
+	  $scope.payments = response.data;
         }, function(err) {
-          //do something
-        });
+	  //do something
       });
-    }, function(error) {
-      //do something
-    });
-  };
-
+    };
     //Open modal view
   $scope.openModal = function(payment) {
     var modalInstance = $modal.open({

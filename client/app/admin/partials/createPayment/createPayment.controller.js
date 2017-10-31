@@ -20,11 +20,11 @@ angular.module('essenceEventsRepoApp.admin')
 
 
   //set up date for event
-  $scope.eventDate = new Date();
-  $scope.openEventDate = function($event) {
+  $scope.paymentDueDate = new Date();
+  $scope.openPaymentDate = function($event) {
     $event.preventDefault();
     $event.stopPropagation();
-    $scope.eventDateOpened = true;
+    $scope.paymentDateOpened = true;
   };
 
 

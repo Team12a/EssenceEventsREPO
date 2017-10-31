@@ -10,13 +10,14 @@ import jwt from 'jsonwebtoken';
 //Sends back all payments with open find call
 export function findAll(req, res) {
   Payment.find({}, function(err, payments) {
-    if (err)
+    if (err) {
+      throw err;
       res.status(400).send(err);
+    }
     else
       res.send(payments);
   });
 }
-
 //Uses the findByUser to send all user payments back
 export function findAllByUser(req, res) {
   res.send(req.payments);
