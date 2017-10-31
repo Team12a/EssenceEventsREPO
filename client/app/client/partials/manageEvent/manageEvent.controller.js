@@ -5,6 +5,7 @@ angular.module('essenceEventsRepoApp.client')
 
 var isDraggable = !('ontouchstart' in document.documentElement);
 
+
 var getUser = function() {
   if (!$scope.curUser._id)
     setTimeout(getUser, 100);
@@ -29,9 +30,22 @@ $scope.getEvents = function(){
     });
 };
 
+
+
 $scope.toggle = function (event) {
   $scope.state = !$scope.state;
   $scope.ev = event;
+  $scope.map = { center: { latitude: $scope.ev.lat, longitude: $scope.ev.lng }, zoom: 17, options: {draggable: isDraggable}};
+  $scope.markers = {
+    id:"0",
+    coords: {
+      latitude: $scope.ev.lat,
+      longitude: $scope.ev.lng
+    },
+    window: {
+      title: $scope.ev.location
+    }
+  };
   $scope.getEventSubcons = function() {
     var promises = $scope.ev.subcontractors.map(function(subcon) {
       return Subcontractors.getOne(subcon);
@@ -46,6 +60,8 @@ $scope.toggle = function (event) {
     }, function(err) {
       //do something
     });
+
+
   };
 
   $scope.changeDone = function(index) {
@@ -61,32 +77,6 @@ $scope.toggle = function (event) {
 	//do something
     });
   };
-
-  $scope.map = { center: { latitude: 29.65253, longitude: -82.330276 }, zoom: 14 };
-  var geocoder = new google.maps.Geocoder();
-  geocoder.geocode({'address': $scope.ev.location},function(results, status){
-    if(status == google.maps.GeocoderStatus.OK){
-      var locCoord = results[0].geometry.location;
-      $scope.map = {
-        center: {
-          latitude: locCoord.lat(),
-          longitude: locCoord.lng()
-       },
-        zoom: 14
-      };
-      $scope.marker = {
-        id:0,
-        coords: {
-          latitude: locCoord.lat(),
-          longitude: locCoord.lng()
-        },
-        options: {draggable: false}
-      };
-
-    } else {
-          alert('Geocode was not successful for the following reason: ' + status);
-        }
- });
 
     // Pi chart for budget
     $scope.options = {
@@ -129,6 +119,7 @@ $scope.toggle = function (event) {
     $scope.todo.push({title: $scope.ev.name, type: 'important', startsAt: new Date($scope.ev.date)});
     for (var i = 0; i < $scope.ev.toDoList.length; i++)
       $scope.todo.push({title: $scope.ev.toDoList[i].todo, type: 'info', startsAt: new Date($scope.ev.toDoList[i].by)});
+
 };
 
 }]);
