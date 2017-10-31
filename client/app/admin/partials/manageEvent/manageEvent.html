@@ -23,7 +23,7 @@
                     <tr ng-repeat="event in events | filter: filterCurrent() | filter: searchEvents |orderBy: sort">
                       <td>{{event.name}}</td>
                       <td>{{event.userName || '----'}}</td>
-                      <td>{{event.location}}</td>
+                      <td>{{event.locationName}}</td>
                       <td>{{event.date.substring(5,10) + '-' + event.date.substring(0,4)}}</td>
                       <td><button type="button" class="btn btn-md btn-default" ng-click="openModal(event)">Manage</button></td>
                     </tr>
