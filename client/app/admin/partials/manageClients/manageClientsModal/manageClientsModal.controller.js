@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('essenceEventsRepoApp.admin')
-.controller('ManageClientsModalCtrl', ['$scope', '$state', '$modal', '$modalInstance', 'user', 'Events',  '$cookies', function ($scope, $state, $modal, $modalInstance, user, Events, $cookies)
+.controller('ManageClientsModalCtrl', ['$scope', '$state', '$modal', '$modalInstance', 'user', 'Events', 'Payments',  '$cookies', function ($scope, $state, $modal, $modalInstance, user, Events, Payments, $cookies)
 {
   //Instantiate $scope variables so they show up in modal
   $scope.username = user.name;

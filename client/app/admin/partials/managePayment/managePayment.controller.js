@@ -19,11 +19,13 @@ angular.module('essenceEventsRepoApp.admin')
 
     //get all events and add client name
     $scope.getPayments = function() {
+      console.log("Im here!");
       Payments.getAll()
-        .then(function(response) {
-	  $scope.payments = response.data;
-        }, function(err) {
-	  //do something
+      .then(function(response) {
+        console.log(response);
+        $scope.payments = response.data;
+      }, function(error) {
+        //do something
       });
     };
     //Open modal view

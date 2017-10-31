@@ -19,7 +19,7 @@
                   </thead>
 
                   <tbody>
-                    <tr ng-repeat="payment in payments | filter: filterCurrent() | filter: searchPayments |orderBy: sort">
+                    <tr ng-repeat="payment in payments">
                       <td>{{payment.description}}</td>
                       <td>{{payment.amount}}</td>
                       <td>{{payment.dueDate.substring(5,10) + '-' + payment.dueDate.substring(0,4)}}</td>
