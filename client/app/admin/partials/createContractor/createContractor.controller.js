@@ -5,7 +5,7 @@ angular.module('essenceEventsRepoApp.admin')
       if ($scope.name) {
         var contractor = {
           name: $scope.name,
-	  link: $scope.link
+	        link: $scope.link
         };
         Subcontractors.create(contractor)
           .then(function(response) {
