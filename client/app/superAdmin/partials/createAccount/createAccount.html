@@ -72,7 +72,10 @@
           </p>
           <p class="help-block" ng-show="form.phoneNumber.$error.minlength && form.phoneNumber.$dirty && accCtrl.submitted">
             Phone number should be at least 7 digits.
-          </p class="help-block" ng-show="form.phonNumber.$error.maxlength && form.phoneNumber.$dirty && accCtrl.submitted">
+          </p>
+          <p class="help-block" ng-show="form.phoneNumber.$error.maxlength && form.phoneNumber.$dirty && accCtrl.submitted">
+            Phone number should be a maximum of 10 digits.
+          </p>
         </div>
 
         <div>
