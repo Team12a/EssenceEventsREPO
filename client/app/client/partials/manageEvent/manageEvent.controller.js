@@ -41,7 +41,7 @@ $scope.toggle = function (event) {
       longitude: $scope.ev.lng
     },
     window: {
-      title: $scope.ev.location
+      title: $scope.ev.locationName
     }
   };
   $scope.getEventSubcons = function() {

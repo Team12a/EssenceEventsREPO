@@ -15,7 +15,10 @@ var eventSchema = new Schema({
   type: {
     type: String
   },
-  location: {
+  locationName: {
+    type: String
+  },
+  locationAdd: {
     type: String
   },
   lat: {

@@ -165,7 +165,7 @@ angular.module('essenceEventsRepoApp.admin')
   $scope.submit = function() {
     uiGmapGoogleMapApi.then(function(maps) {
       var geocoder = new google.maps.Geocoder();
-      geocoder.geocode({'address': $scope.venue},function(results, status){
+      geocoder.geocode({'address': $scope.venueAddress},function(results, status){
         if(status == google.maps.GeocoderStatus.OK){
           var locCoord = results[0].geometry.location;
               $scope.latitude= locCoord.lat();
@@ -174,7 +174,8 @@ angular.module('essenceEventsRepoApp.admin')
         var event = {
           name: $scope.eventName,
           date: $scope.eventDate,
-          location: $scope.venue,
+          locationName: $scope.venueName,
+          locationAdd: $scope.venueAddress,
           lat: $scope.latitude,
           lng: $scope.longitude,
           userId: $stateParams.userID,
