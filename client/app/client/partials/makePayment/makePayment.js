@@ -1,4 +1,3 @@
-'use strict';
 
 angular.module('essenceEventsRepoApp.client')
   .config(function ($stateProvider) {
@@ -7,7 +6,7 @@ angular.module('essenceEventsRepoApp.client')
         url: '/makePayment',
         templateUrl: 'app/client/partials/makePayment/makePayment.html',
         controller: 'makePaymentCtrl',
-        authenticate: 'user',
-        controllerAs: 'client'
+        controllerAs: 'makePayment',
+        authenticate: 'user'
       });
   });

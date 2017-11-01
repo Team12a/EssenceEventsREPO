@@ -1,16 +1,16 @@
 'use strict';
 
-describe('makePaymentCtrl', function () {
+describe('Controller: yourBudgetCtrl', function () {
 
   // load the controller's module
   beforeEach(module('essenceEventsRepoApp'));
 
-  var makePaymentCtrl, scope;
+  var yourBudgetCtrl, scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    makePaymentCtrl = $controller('makePaymentCtrl', {
+    yourBudgetCtrl = $controller('yourBudgetCtrl', {
       $scope: scope
     });
   }));
