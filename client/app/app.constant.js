@@ -3,7 +3,7 @@
 
 angular.module('essenceEventsRepoApp.constants', [])
 
-.constant('appConfig', {userRoles:['guest','user','admin','superAdmin']})
+.constant('appConfig', {userRoles:['guest','user','admin','super']})
 
 ;
 })(angular);

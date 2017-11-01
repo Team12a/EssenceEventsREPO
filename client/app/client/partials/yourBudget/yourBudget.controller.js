@@ -20,9 +20,7 @@ $scope.getEvents = function(){
   if (!$scope.id)
     setTimeout($scope.getEvents, 100);
   else
-    // Events.getByUser($scope.id)
-    $scope.useridlauren = '59f5e336df1d79a60ab45ca7';
-    Events.getByUser($scope.useridlauren)
+    Events.getByUser($scope.id)
       .then(function(response) {
         $scope.events = response.data;
       }, function(error) {
@@ -30,36 +28,7 @@ $scope.getEvents = function(){
     });
 };
 
-$scope.toggle = function (event) {
-  $scope.state = !$scope.state;
-  $scope.ev = event;
-  $scope.getEventSubcons = function() {
-    var promises = $scope.ev.subcontractors.map(function(subcon) {
-      return Subcontractors.getOne(subcon);
-    });
-    $q.all(promises)
-    .then(function(response) {
-      response.forEach(function(r) {
-        $scope.subcontractors.push(r.data);
-      });
-    }, function(err) {
-      //do something
-    });
-  };
 
-  $scope.changeDone = function(index) {
-    $scope.ev.toDoList[index].done = !$scope.ev.toDoList[index].done;
-    var body = {
-      index: index,
-      bool: $scope.ev.toDoList[index].done
-    };
-    Events.toggleTodo($scope.ev._id, body)
-      .then(function(response) {
-	//console.log('done');
-      }, function(err) {
-	//do something
-    });
-  };
 
 
     // Pi chart for budget
@@ -84,20 +53,7 @@ $scope.toggle = function (event) {
       }
     };
 
-    //Todo list
-    $scope.hasItems = function(arr)
-    {
-      return (arr.length > 0);
-    };
 
-    //Calendar stuff
-    $scope.calendarView = 'month';
-    $scope.calendarDate = new Date();
-    $scope.todo = [];
-    $scope.todo.push({title: $scope.ev.name, type: 'important', startsAt: new Date($scope.ev.date)});
-    for (var i = 0; i < $scope.ev.toDoList.length; i++)
-      $scope.todo.push({title: $scope.ev.toDoList[i].todo, type: 'info', startsAt: new Date($scope.ev.toDoList[i].by)});
-};
 
 
 }]);
