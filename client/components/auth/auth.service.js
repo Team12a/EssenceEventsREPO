@@ -163,7 +163,7 @@ function AuthService($location, $http, $cookies, $q, appConfig, Util, User) {
     */
     isSuperAdmin(){
       return Auth.hasRole
-        .apply(Auth, [].concat.apply(['superAdmin'], arguments));
+        .apply(Auth, [].concat.apply(['super'], arguments));
     },
      /**
       * Check if a user is an admin
