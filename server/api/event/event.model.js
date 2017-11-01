@@ -15,7 +15,16 @@ var eventSchema = new Schema({
   type: {
     type: String
   },
-  location: {
+  locationName: {
+    type: String
+  },
+  locationAdd: {
+    type: String
+  },
+  lat: {
+    type: String
+  },
+  lng: {
     type: String
   },
   budgetGoal: Number,
@@ -34,6 +43,10 @@ var eventSchema = new Schema({
   budget: [{
     title: String,
     amount: Number
+  }],
+  subcons: [{
+    name: String,
+    link: String
   }],
   subcontractors: [String]
 });
