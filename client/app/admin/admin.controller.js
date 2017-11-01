@@ -34,7 +34,12 @@ angular.module('essenceEventsRepoApp.admin')
         'title': 'Manage Links',
         'description': 'Manage Public Links Page',
         'state': 'admin.manageLinks',
-      }
+      },
+      {
+        'title': 'View Testimonials',
+        'description': 'View Testimonials Uploaded by Clients',
+        'state': 'admin.veiwTestimonials',
+      },
     ];
 
 

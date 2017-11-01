@@ -1,3 +1,5 @@
+//RECENT: change on line 77
+
 'use strict';
 
 import crypto from 'crypto';
@@ -71,7 +73,8 @@ UserSchema
       .then(function(user) {
         if (user) {
           if (self.id === user.id) {
-            return respond(true);
+            //changed logic: should not respond true if self == user => would mean user exists in db, so don't validate and throw error
+            return respond(false);
           }
           return respond(false);
         }

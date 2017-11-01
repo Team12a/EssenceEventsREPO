@@ -1,0 +1,99 @@
+<div class = "container-fluid">
+  <div ng-controller="WelcomeCtrl" ng-init="getEvents()">
+      <h2>Welcome, {{clientName}} </h2>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th><b>Event Name</b></td>
+            <th><b>Location</b></td>
+            <th><b>Date</b></td>
+            <th></td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="event in events">
+            <td>{{event.name}}</td>
+            <td>{{event.location}}</td>
+            <td>{{event.date.substring(5,10) + '-' + event.date.substring(0,4)}}</td>
+            <td> <button class = "btn btn-primary" ng-click="toggle(event)">View Guests</button></td>
+          </tr>
+        </tbody>
+      </table>
+
+
+      <div ng-show="state">
+        <!-- Display Guest List -->
+        <div class = "col-md-12" ng-init="sortGuest='name'">
+          <div class="col-md-5" style="padding-left:0px;float: left;">
+            <input "type=text" class="form-control" placeholder="Search here..." ng-model="searchGuests"></input>
+            <br></br>
+          </div>
+        <div class = "col-md-12">
+            <h4 style="text-align:center" font size="+3">Guest List for {{ev.name}}</h4>
+            <br></br>
+            <table class = "table table-hover hoverSort">
+              <thead>
+                <tr>
+                  <th ng-click="sortGuest='guestName'"><b>Guest Name</b></th>
+                  <th ng-click="sortGuest='partySize'"><b>Party Size</b></th>
+                  <th ng-click="sortGuest='accommodations'"><b>Accommodations</b></th>
+                  <th ng-click="sortGuest='attending'"><b>Attending</b></th>
+                  <th><b>Edit</b></th>
+
+                </tr>
+              </thead>
+              <tbody ng-repeat ="item in ev.guests | orderBy: sortGuest | filter: searchGuests" ng-show="hasItems(ev.guests)">
+                <tr>
+                  <td>{{item.name}}</td>
+                  <td>{{item.partySize}}</td>
+                  <td>{{item.accommodations}}</td>
+
+                  <td><span ng-class="(item.accepted) ? 'fa fa-check-square-o fa-lg' : 'fa fa-square-o fa-lg'" ng-click="changeAccepted()"></span></td>
+
+                  <td><span class="glyphicon glyphicon-edit" ng-click="toggleEdit(item)"></span></td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><button type="button" class="btn btn-md btn-default" ng-click="addGuest()">Add Guests</button> </td>
+              </tfoot>
+
+            </table>
+
+          </div>
+        </div>
+          <div ng-show="state1">
+
+            <b>Update Information For {{guest.name}}<b>
+              <br></br>
+              <form name="listingForm" class="form-horizontal" ng-submit="submit()">
+                <div id="budget" class="col-md-4">
+                  <label for="guestPhone">Phone Number:</label>
+                  <input type="number" name="guestPhone" placeholder="{{guest.phoneNumber}}" ng-model="guestPhone" class="form-control">
+                </div>
+                <div id="budget" class="col-md-5">
+                  <label for="guestEmail">Email:</label>
+                  <input type="email" name="guestEmail" placeholder="{{guest.email}}" ng-model="guestEmail" class="form-control">
+                </div>
+                <div id="budget" class="col-md-2">
+                  <label for="todoInput">Party Size:</label>
+                  <input type="number" name="guestSize" placeholder="{{guest.partySize}}" ng-model="guestSize" class="form-control">
+                </div>
+                <div id="budget" class="col-md-6">
+                  <label for="accommodations">Accommodations:</label>
+                  <input type="text" name="accommodations" placeholder="{{guest.accommodations}}" ng-model="guestAccommodations" class="form-control">
+                </div>
+                  <br></br>
+                  <button class="btn btn-success" id="updateGuest" ng-submit="updateGuest()">Update</button>
+                  <button class = "btn btn-danger" ng-click="deleteGuest()">Remove</button>
+                <form>
+
+          </div>
+
+      </div>
+
+  </div>
+</div>
