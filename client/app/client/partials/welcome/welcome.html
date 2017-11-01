@@ -5,20 +5,22 @@
         <thead>
           <tr>
             <th><b>Event Name</b></td>
-            <th><b>Location</b></td>
-            <th><b>Date</b></td>
-            <th></td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="event in events">
-            <td>{{event.name}}</td>
-            <td>{{event.location}}</td>
-            <td>{{event.date.substring(5,10) + '-' + event.date.substring(0,4)}}</td>
-            <td> <button class = "btn btn-primary" ng-click="toggle(event)">Details</button></td>
-          </tr>
-        </tbody>
-      </table>
+              <th><b>Location</b></td>
+                <th><b>Address</b></td>
+                <th><b>Date</b></td>
+                  <th></td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="ev in events">
+                    <td>{{ev.name}}</td>
+                    <td>{{ev.locationName}}</td>
+                    <td>{{ev.locationAdd}}</td>
+                    <td>{{ev.date.substring(5,10) + '-' + ev.date.substring(0,4)}}</td>
+                    <td> <btn class = "btn btn-primary" ng-click="toggle(ev)"> Details</btn></td>
+                  </tr>
+                </tbody>
+              </table>
 
 
 
@@ -26,7 +28,7 @@
       <div style="text-align:center">
         <h3> Your {{ev.name}} </h3>
         <h5> is on {{ev.date | date: 'fullDate'}}</h5>
-        <h5> at {{ev.location}}</h5>
+        <h5> at {{ev.locationName}}</h5>
       </div>
         <!--Your budget-->
         <div class = "col-md-12">

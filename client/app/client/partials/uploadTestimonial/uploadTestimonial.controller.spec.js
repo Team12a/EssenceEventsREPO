@@ -1,16 +1,16 @@
 'use strict';
 
-describe('Controller: WelcomeModalCtrl', function () {
+describe('Controller: UploadTestimonialCtrl', function () {
 
   // load the controller's module
   beforeEach(module('essenceEventsRepoApp'));
 
-  var WelcomeModalCtrl, scope;
+  var UploadTestimonialCtrl, scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    WelcomeModalCtrl = $controller('WelcomeModalCtrl', {
+    UploadTestimonialCtrl = $controller('UploadTestimonialCtrl', {
       $scope: scope
     });
   }));

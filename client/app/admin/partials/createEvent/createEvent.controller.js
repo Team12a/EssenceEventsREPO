@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('essenceEventsRepoApp.admin')
-.controller('CreateEventCtrl', ['Events', '$scope', '$stateParams', '$state', function (Events, $scope, $stateParams, $state) {
+.controller('CreateEventCtrl', ['Events', '$scope', '$stateParams', '$state','uiGmapGoogleMapApi', function (Events, $scope, $stateParams, $state, uiGmapGoogleMapApi) {
 
   // $scope.message = 'Hello';
 
@@ -15,7 +15,7 @@ angular.module('essenceEventsRepoApp.admin')
   $scope.clientName = $stateParams.usersName;
 
   //datePickerOptions
-  $scope.dateOptions =
+//  $scope.dateOptions =
 
 
 
@@ -26,6 +26,9 @@ angular.module('essenceEventsRepoApp.admin')
     $event.stopPropagation();
     $scope.eventDateOpened = true;
   };
+
+
+
 
 
   // $scope.freeCash;
@@ -157,23 +160,38 @@ angular.module('essenceEventsRepoApp.admin')
     arr.splice(index,1);
   }
 
+
   //Saves all of the $scope fields into an event object and saves it to the database
   $scope.submit = function() {
-    var event = {
-      name: $scope.eventName,
-      date: $scope.eventDate,
-      location: $scope.venue,
-      userId: $stateParams.userID,
-      toDoList: $scope.thingsToDo,
-      budgetGoal: $scope.budgetGoal,
-      budget: $scope.budget
-    };
-    Events.create(event)
-      .then(function(response) {
-        $state.go('admin.manageEvent');
-      }, function(err) {
-        //do something
-    });
+    uiGmapGoogleMapApi.then(function(maps) {
+      var geocoder = new google.maps.Geocoder();
+      geocoder.geocode({'address': $scope.venueAddress},function(results, status){
+        if(status == google.maps.GeocoderStatus.OK){
+          var locCoord = results[0].geometry.location;
+              $scope.latitude= locCoord.lat();
+              $scope.longitude= locCoord.lng();
+        }
+        var event = {
+          name: $scope.eventName,
+          date: $scope.eventDate,
+          locationName: $scope.venueName,
+          locationAdd: $scope.venueAddress,
+          lat: $scope.latitude,
+          lng: $scope.longitude,
+          userId: $stateParams.userID,
+          toDoList: $scope.thingsToDo,
+          budgetGoal: $scope.budgetGoal,
+          budget: $scope.budget
+        };
+        Events.create(event)
+          .then(function(response) {
+            $state.go('admin.manageEvent');
+          }, function(err) {
+            //do something
+        });
+      });
+        });
+
   };
 
 }]);
