@@ -57,6 +57,7 @@ angular.module('essenceEventsRepoApp.client')
         return (arr.length > 0);
       };
 
+
       $scope.updateGuest = function(){
         console.log("here");
         item.phoneNumber = $scope.guestPhone ;
