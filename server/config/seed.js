@@ -14,7 +14,14 @@ User.find({}).removeAsync()
       email: 'test@example.com',
       password: 'test',
       phoneNumber: '555-555-5555'
-    }, {
+    },/*created super admin for testing*/{
+      provider: 'local',
+      role: 'superAdmin',
+      name: 'Super Admin',
+      email: 'superAdmin@example.com',
+      password: 'super',
+      phoneNumber:'111-111-1111'
+    },{
       provider: 'local',
       role: 'admin',
       name: 'Admin',

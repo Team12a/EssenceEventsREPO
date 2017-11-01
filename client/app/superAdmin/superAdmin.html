@@ -1,0 +1,26 @@
+<div class = "container-fluid">
+  <div id="wrapper" class="" controller="SuperAdminController" ng-init="initScope()">
+
+    <!--Sidebar-->
+    <superadminnav></superadminnav>
+
+    <!--Mobile view menu -->
+    <accordion id="mobileNavBar">
+      <accordion-group is-open="status.open">
+        <accordion-heading>
+          <i class="fa fa-chevron-down"></i> Super Admin Panel
+        </accordion-heading>
+        <ul>
+          <li ng-repeat = "function in Functions">
+              <a ng-click = "status.open= !status.open" ui-sref="{{function.state}}">{{function.title}}</a>
+          </li>
+        </ul>
+      </accordion-group>
+    </accordion>
+      <container>
+          <div ui-view></div>
+      </container>
+      <!--/#page-content-wrapper-->
+
+  </div>
+</div>

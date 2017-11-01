@@ -38,13 +38,15 @@ angular.module('essenceEventsRepoApp.client')
 
       //Takes you to page to add a guest for the selected event
       $scope.addGuest = function(){
-        $state.go('client.addGuest', {ev : $scope.ev} );
+        $state.go('client.addGuest', {ev : event} );
       };
 
-      // $scope.editGuest = function(){
-      //   alert("Editing Guest");
+      //
+      // //Have To double check the correct index
+      // $scope.changeAccepted = function(index) {
+      //   $scope.ev.guests[index].accepted = !$scope.event.guests[index].accepted;
       // };
-  };
+
 
   $scope.toggleEdit = function (item) {
     $scope.state1 = !$scope.state1;
@@ -54,7 +56,20 @@ angular.module('essenceEventsRepoApp.client')
       {
         return (arr.length > 0);
       };
-      
+
+
+      $scope.updateGuest = function(){
+        console.log("here");
+        item.phoneNumber = $scope.guestPhone ;
+        item.email = $scope.guestEmail;
+        item.partySize = $scope.guestSize;
+        item.accommodations= $scope.guestAccommodations;
+      };
+
+      $scope.removeGuest = function(){
+
+      };
   };
+};
 
 }]);

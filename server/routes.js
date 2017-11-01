@@ -15,6 +15,9 @@ export default function(app) {
   app.use('/api/links', require('./api/link'));
   app.use('/api/email', require('./api/email'));
   app.use('/api/payments', require('./api/payment'));
+  app.use('/api/testimonial', require('./api/testimonial'));
+  //not sure about this
+  app.use('/api/superAdmins', require('./api/superAdmin'));
 
   app.use('/auth', require('./auth'));
 

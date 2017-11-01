@@ -1,0 +1,124 @@
+<div class = "container-fluid">
+  <div ng-controller="manageEventCtrl" ng-init="getEvents()">
+    <h2>Your Events </h2>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th><b>Event Name</b></td>
+            <th><b>Location</b></td>
+              <th><b>Address</b></td>
+              <th><b>Date</b></td>
+                <th></td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="event in events">
+                  <td>{{event.name}}</td>
+                  <td>{{event.locationName}}</td>
+                  <td>{{event.locationAdd}}</td>
+                  <td>{{event.date.substring(5,10) + '-' + event.date.substring(0,4)}}</td>
+                  <td> <btn class = "btn btn-primary" ng-click="toggle(event)"> Details</btn></td>
+                </tr>
+              </tbody>
+            </table>
+
+
+
+            <div ng-show="state" ng-init="getEventSubcons()">
+              <!-- <div style="text-align:center">
+                <h3> Your {{ev.name}} </h3>
+                <h5> is on {{ev.date | date: 'fullDate'}}</h5>
+                <h5> at {{ev.location}}</h5>
+              </div> -->
+              <!--Your budget-->
+              <div class = "col-md-12">
+                <div class = "col-md-6">
+                  <h4 align="center">Event Location</h4>
+                  <div>
+                  <ui-gmap-google-map ng-if ="map.center"  center="map.center" zoom="map.zoom" options="map.options">
+                    <ui-gmap-marker coords="markers.coords" idkey ="markers.id">
+                      <ui-gmap-window show ="show">
+                        <div>{{markers.window.title}}</div>
+                      </ui-gmap-window>
+                    </ui-gmap-marker>
+
+                  </ui-gmap-google-map>
+                </div>
+                  <!-- <nvd3 options="options" data="ev.budget"></nvd3> -->
+                </div>
+                <!-- Display Guest List -->
+                <div class = "col-md-6" ng-init="sortGuest='name'">
+                  <h4 style="text-align:center">Event Details</h4>
+                  <table align="center">
+                    <tr>
+                      <td><h5 align="left"> Event: </h5></td>
+                      <td><h5 align ="right"> {{ev.name}} </h5></td>
+                    </tr>
+                    <br>
+                    <tr>
+                      <td><h5 align="left"> Date: </h5></td>
+                      <td> <h5 align ="right">{{ev.date | date:"EEEE, MMM. d, yyyy"}} </h5></td>
+                    </tr>
+                    <br>
+                    <tr>
+                      <td><h5 align="left"> Time: </h5></td>
+                      <td><h5 align="right"> {{ev.date | date:"h:mm a"}}</h5> </td>
+                    </tr>
+                    <br>
+                    <tr>
+                      <td><h5 align="left"> Location Name: </h5></td>
+                      <td><h5 align="right"> {{ev.locationName}} </h5></td>
+                    </tr>
+                    <br>
+                    <tr>
+                      <td><h5 align="left"> Address </h5></td>
+                      <td><h5 align="right"> {{ev.locationAdd}} </h5></td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              <!-- Display Todo Calendar -->
+              <div class = "col-md-12">
+                <div class="col-md-6">
+                  <h4 style="text-align:center">Subcontractors List</h4>
+                  <table class = "table table-hover">
+                    <thead>
+                      <tr>
+                        <th><b>Subcontractor</b></th>
+                        <th><b>Link</b></th>
+                      </tr>
+                    </thead>
+                    <tbody ng-repeat ="person in ev.subcons" ng-show="hasSubcontractors(ev.subcontractors)">
+                      <tr>
+                        <td>{{person.name}}</td>
+                        <td>{{person.link}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- display table of todolist -->
+                <div class = "col-md-6">
+                  <h4 style="text-align:center">Task List</h4>
+                  <table class = "table table-hover">
+                    <thead>
+                      <tr>
+                        <th><b>Task</b></th>
+                        <th><b>Date</b></th>
+                        <th><b>Done</b></th>
+                      </tr>
+                    </thead>
+                    <tbody ng-repeat ="item in ev.toDoList" ng-show="hasItems(ev.toDoList)">
+                      <tr>
+                        <td>{{item.todo}}</td>
+                        <td>{{item.by | date:"EEEE, MMM. d, yyyy @h:mm a"}}</td>
+                        <td><span ng-class="(item.done) ? 'fa fa-check-square-o fa-lg' : 'fa fa-square-o fa-lg'" ng-click="changeDone($index)"></span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
