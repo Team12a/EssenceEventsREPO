@@ -36,7 +36,6 @@ $scope.getEvents = function(){
 };
 
 $scope.load = function() {
-  
 
     // Pi chart for budget
     $scope.options = {
