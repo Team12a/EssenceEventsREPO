@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('essenceEventsRepoApp.admin')
-.controller('ManageClientsModalCtrl', ['$scope', '$state', '$modal', '$modalInstance', 'user', 'Events', '$cookies', function ($scope, $state, $modal, $modalInstance, user, Events, $cookies)
+.controller('ManageClientsModalCtrl', ['$scope', '$state', '$modal', '$modalInstance', 'user', 'Events', 'Payments',  '$cookies', function ($scope, $state, $modal, $modalInstance, user, Events, Payments, $cookies)
 {
   //Instantiate $scope variables so they show up in modal
   $scope.username = user.name;
@@ -30,6 +30,25 @@ angular.module('essenceEventsRepoApp.admin')
     $state.go('admin.createEvent', {userID : user._id, usersName : user.name});
   };
 
+  //***Create Payment ***
+  $scope.createPayment = function()
+  {
+    $modalInstance.close();
+    $state.go('admin.createPayment', {userID: user._id, usersName: user.name});
+  };
+
+  //**Get all payments for the user***
+  $scope.getPayments = function(){
+    $scope.payments = null;
+    Payments.getByUser(user._id)
+    .then(function(response){
+      if(response.data.lenght >0)
+      $scope.payments = response.data;
+    }, function(err){
+      //do something
+    });
+  };
+
   //Get all events for the user
   $scope.getEvents = function() {
     $scope.events = null;
@@ -41,6 +60,23 @@ angular.module('essenceEventsRepoApp.admin')
       //do something
     });
   };
+
+  //***Switches states to Manage Payments and opens the modal for the payment clicked***
+  $scope.managePayment = function(payment){
+    $modalInstance.close();
+    $state.go('admin.managePayment');
+    var modalInstance = $modal.open({
+      animation: true,
+      templateUrl: 'app/admin/partials/managePayment/managePaymentModal/managePaymentModal.html',
+      controller: 'ManagePaymentModalCtrl',
+      resolve: {
+        payment: function()
+        {
+          return payment;
+        }
+  }
+});
+};
 
   //Switches states to Manage Events and opens the modal for the event clicked
   $scope.manageEvent = function(event) {

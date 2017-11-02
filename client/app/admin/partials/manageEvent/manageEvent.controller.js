@@ -22,6 +22,7 @@ angular.module('essenceEventsRepoApp.admin')
     Events.getAll()
     .then(function(response) {
       $scope.events = response.data;
+      
     //We have the userId in the model so we use Auth to get the name for each
       $scope.events.forEach(function(event) {
         Auth.getById(event.userId)
