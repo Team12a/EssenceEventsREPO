@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('essenceEventsRepoApp.client')
-.controller('UploadTestimonialCtrl', ['Testimonial', '$scope', '$stateParams', '$state', function (Testimonial, $scope, $stateParams, $state) {
+.controller('UploadTestimonialCtrl', ['Testimonials', '$scope', '$stateParams', '$state', function (Testimonials, $scope, $stateParams, $state) {
 
 
   $scope.submit = function() {
@@ -10,7 +10,7 @@ angular.module('essenceEventsRepoApp.client')
       eventDescription: $scope.eventDescription,
       message: $scope.message
     };
-  Testimonial.create(testimonial)
+  Testimonials.create(testimonial)
     .then(function(response) {
       $state.reload();
     }, function (err) {
