@@ -29,6 +29,12 @@ angular.module('essenceEventsRepoApp.client')
 
   $scope.toggle = function (event) {
     $scope.state = !$scope.state;
+
+    //Trying to make sure second toggle closes when first one does
+    // if(!$scope.state && scope.state1){
+    // $scope.state1 = !$scope.state1;
+    // }
+
     $scope.ev = event;
 
       $scope.hasItems = function(arr)
@@ -59,6 +65,7 @@ angular.module('essenceEventsRepoApp.client')
 
       $scope.updateGuest = function(){
         console.log("here");
+        //Check that fiedls aren't empty
         item.phoneNumber = $scope.guestPhone ;
         item.email = $scope.guestEmail;
         item.partySize = $scope.guestSize;
