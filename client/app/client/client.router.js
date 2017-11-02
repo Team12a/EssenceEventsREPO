@@ -5,6 +5,11 @@ angular.module('essenceEventsRepoApp.client')
     $stateProvider
       .state('client', {
         url: '/client',
+        params: {
+          userID: 'undefined',
+          userName: 'undefined',
+          events: ['=']
+        },
         templateUrl: 'app/client/client.html',
         controller: 'ClientController',
         controllerAs: 'client',

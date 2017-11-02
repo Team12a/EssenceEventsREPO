@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('essenceEventsRepoApp.admin')
-.controller('ManageEventModalCtrl', ['$scope', '$state', '$q', '$modalInstance', 'event', 'Events', 'Subcontractors', function ($scope, $state, $q, $modalInstance, event, Events, Subcontractors)
+.controller('ManageEventModalCtrl', ['$scope', '$state', '$q', '$modalInstance', 'event', 'Events', 'Subcontractors', 'uiGmapGoogleMapApi', function ($scope, $state, $q, $modalInstance, event, Events, Subcontractors, uiGmapGoogleMapApi)
 {
 
     //Copy object so we don't change main page concurrently and setup subcontractors
@@ -210,15 +210,26 @@ $scope.deleteSubcon = function(index) {
 
 //Update the object on save call
 $scope.submit = function() {
-  $scope.event.budget[0].amount = ($scope.currentCost > $scope.event.budgetGoal)? 0 : $scope.event.budgetGoal - $scope.currentCost;
-  if ($scope.event.name && $scope.event.date)
-  Events.update($scope.event)
-  .then(function(response) {
-    $modalInstance.close();
-    $state.reload();
-  }, function(err) {
-    console.log(err);
-  });
+  uiGmapGoogleMapApi.then(function(maps) {
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({'address': $scope.event.locationAdd},function(results, status){
+      if(status == google.maps.GeocoderStatus.OK){
+        var locCoord = results[0].geometry.location;
+            $scope.event.lat= locCoord.lat();
+            $scope.event.lng= locCoord.lng();
+          }
+          $scope.event.budget[0].amount = ($scope.currentCost > $scope.event.budgetGoal)? 0 : $scope.event.budgetGoal - $scope.currentCost;
+          if ($scope.event.name && $scope.event.date)
+          Events.update($scope.event)
+          .then(function(response) {
+            $modalInstance.close();
+            $state.reload();
+          }, function(err) {
+            console.log(err);
+          });
+        });
+      });
+
 };
 
 //Close modal without making changes

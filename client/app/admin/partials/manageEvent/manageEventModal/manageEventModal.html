@@ -32,7 +32,12 @@
             <!-- Div to input then venue  -->
             <div class="form-group row col-md-12" show-errors>
               <label for="venue">Venue:</label>
-              <input name="venue" type="venue" ng-model="event.location" id="venue" class="form-control" required>
+              <input name="venue" type="venue" ng-model="event.locationName" id="venue" class="form-control" required>
+            </div>
+
+            <div class="form-group row col-md-12" show-errors>
+              <label for="venue">Address:</label>
+              <input name="venueAddress" type="venueAddress" ng-model="event.locationAdd" id="venueAddress" class="form-control" required>
             </div>
 
             <!-- Div to input the goal budget -->
