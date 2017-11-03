@@ -38,10 +38,16 @@ var loopJob = new CronJob({
           console.log('\nRunning Send Notifications Worker every 1 seconds');
           //Creates transporter using sendgrid
           var transporter = nodemailer.createTransport(sgTransport(config.essEventsReminderEmail.options));
-          //Email templates
+          //For each toDoList item, checks if finished, if not, send email to corresponding user email
+          //If null (aka. no events/toDoList), do nothing
+
+                    //Check if Date is passed
+                    //If Date is upcoming
+                    //placeholder email
+                  //Email Template
           var upcomingTemplate = transporter.templateSender(
             {
-            subject: 'Testing reminder for {{username}}!',
+            subject: 'Testing reminder for {{emailAddress}}!',
             html: `<p>Hello, <b>{{username}},</b></p>
                   <p>       You have upcoming an upcoming due date for <b>{{todoListItem}}</b> on <b>{{todoListDate}}</b>.</p>`
             }, {
@@ -156,4 +162,4 @@ module.exports = {
   loop_job: loopJob
 };
 //loop.start();
-//console.log('loopJob status', loopJob.running); // loopJob status true
+//console.log('loopJob status', loopJob.running); // loopJob status true, use this to check if it's running
