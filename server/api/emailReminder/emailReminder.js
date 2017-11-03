@@ -28,7 +28,7 @@ const CronJob = require('cron').CronJob;
 */
 
 var br = '################################\n';
-
+var bool = false;
 
 var loopJob = new CronJob({
   cronTime: '* * * * * *', //Modify values as needed.
@@ -49,7 +49,7 @@ var loopJob = new CronJob({
           });
           var passedTemplate = transporter.templateSender(
             {
-            subject: 'Testing reminder for {{username}}!',
+            subject: 'Testing reminder for {{emailAddress}}!',
             html: `<p>Hello, <b>{{username}},</b></p>
                   <p>       You have upcoming an upcoming due date for <b>{{todoListItem}}</b> on <b>{{todoListDate}}</b>.</p>`
             }, {
@@ -57,7 +57,7 @@ var loopJob = new CronJob({
           });
           //Current Date
           var now = moment();
-
+          bool = false;
 
           //For each toDoList item, checks if finished, if not, send email to corresponding user email
           //If null (aka. no events/toDoList), do nothing
@@ -77,15 +77,17 @@ var loopJob = new CronJob({
                         var itemDate = moment(item.by);
                         var dateDiff = itemDate.diff(now, 'd');
                         console.log('Date Diff: ' + dateDiff);
-                        if(dateDiff <= 0 && thingArray[0].userId != null){  //If the event doesn't contain a user for whatever reason
+                        if(dateDiff <= 0 && thingArray[0].userId != null && !bool){  //If the event doesn't contain a user for whatever reason
+                        //Temp
+                        bool = true;
                         // use template based sender to send a message
                         upcomingTemplate(
                           { to: config.essEventsReminderEmail.email.address}, //Place Sender Email here. For testing purposes, send to itself.
                           {
                             username: thingArray[0].userId,
                             emailAddress: '<Insert User Email Here>',
-                            todoListItem: 'SampleToDoListItem',
-                            todoListDate: 'SampleDueDate'
+                            todoListItem: item.todo,
+                            todoListDate: item.by
                           },
                           function(err, info){
                             if(err){
