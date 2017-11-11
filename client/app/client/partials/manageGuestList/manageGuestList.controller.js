@@ -27,14 +27,8 @@ angular.module('essenceEventsRepoApp.client')
       });
   };
 
-  $scope.toggle = function (event) {
+  $scope.toggle = function(event) {
     $scope.state = !$scope.state;
-
-    //Trying to make sure second toggle closes when first one does
-    // if(!$scope.state && scope.state1){
-    // $scope.state1 = !$scope.state1;
-    // }
-
     $scope.ev = event;
 
       $scope.hasItems = function(arr)
@@ -46,36 +40,57 @@ angular.module('essenceEventsRepoApp.client')
       $scope.addGuest = function(){
         $state.go('client.addGuest', {ev : event} );
       };
+};
 
-      //
-      // //Have To double check the correct index
-      // $scope.changeAccepted = function(index) {
-      //   $scope.ev.guests[index].accepted = !$scope.event.guests[index].accepted;
-      // };
+    //TO-DO How to get it to save after updating the checks
+    $scope.changeAccepted = function(event, index, guest) {
+      console.log(guest.name);
+      for(var i = 0; i < event.guests.length; i++){
+        if(event.guests[i].name == guest.name){
+          event.guests[i].accepted = !event.guests[i].accepted;
+        }
+      }
+      //guest.accepted = !guest.accepted;
+     //event.guests[index].accepted = !event.guests[index].accepted;
+    };
 
-
-  $scope.toggleEdit = function (item) {
+  $scope.toggleEdit = function (event, guest) {
     $scope.state1 = !$scope.state1;
-    $scope.guest = item;
+    $scope.ev = event;
+    $scope.guest = guest;
+    console.log($scope.ev);
 
       $scope.hasItems = function(arr)
       {
         return (arr.length > 0);
       };
 
-      $scope.updateGuest = function(){
-        console.log("here");
-        //Check that fiedls aren't empty
-        item.phoneNumber = $scope.guestPhone ;
-        item.email = $scope.guestEmail;
-        item.partySize = $scope.guestSize;
-        item.accommodations= $scope.guestAccommodations;
-      };
-
-      $scope.removeGuest = function(){
-
-      };
+      //
+      // $scope.updateGuest = function(){
+      //   console.log("here");
+      //   if($scope.guestPhone != '')
+      //   item.phoneNumber = $scope.guestPhone ;
+      //
+      //   if($scope.guestEmail != '')
+      //   item.email = $scope.guestEmail;
+      //
+      //   if($scope.guestSize != '')
+      //   item.partySize = $scope.guestSize;
+      //
+      //   if($scope.guestAccommodations != '')
+      //   item.accommodations= $scope.guestAccommodations;
+      // };
   };
-};
 
+  //TO-Do: Debug!
+  $scope.removeGuest = function(event,index, guest){
+    console.log("Removing");
+    for(var i = 0; i < event.guests.length; i++){
+      if(event.guests[i].email == guest.email){
+        event.guests.splice(i, 1);
+      }
+    }
+
+
+  };
 }]);

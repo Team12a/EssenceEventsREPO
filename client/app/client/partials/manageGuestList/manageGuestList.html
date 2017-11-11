@@ -47,8 +47,8 @@
                   <td>{{item.name}}</td>
                   <td>{{item.partySize}}</td>
                   <td>{{item.accommodations}}</td>
-                  <td><span ng-class="(item.accepted) ? 'fa fa-check-square-o fa-lg' : 'fa fa-square-o fa-lg'" ng-click="changeAccepted()"></span></td>
-                  <td><span class="glyphicon glyphicon-edit" ng-click="toggleEdit(item)"></span></td>
+                  <td><span ng-class="(item.accepted) ? 'fa fa-check-square-o fa-lg' : 'fa fa-square-o fa-lg'" ng-click="changeAccepted(ev, $index, item)"></span></td>
+                  <td><span class="glyphicon glyphicon-edit" ng-click="toggleEdit(ev, item)"></span></td>
                 </tr>
               </tbody>
               <tfoot>
@@ -85,7 +85,7 @@
                 </div>
                   <br></br>
                   <button class="btn btn-success" id="updateGuest" ng-submit="updateGuest()">Update</button>
-                  <button class = "btn btn-danger" ng-click="deleteGuest()">Remove</button>
+                  <button class = "btn btn-danger" ng-click="removeGuest(ev, $index, guest)">Remove</button>
                 <form>
           </div>
 
