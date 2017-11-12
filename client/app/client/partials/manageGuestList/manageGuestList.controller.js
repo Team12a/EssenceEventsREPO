@@ -50,6 +50,7 @@ angular.module('essenceEventsRepoApp.client')
           event.guests[i].accepted = !event.guests[i].accepted;
         }
       }
+      Events.update(event);
     };
 
   $scope.toggleEdit = function (event, guest) {
@@ -72,7 +73,7 @@ angular.module('essenceEventsRepoApp.client')
         event.guests.splice(i, 1);
       }
     }
-
+    Events.update(event);
 
   };
 
