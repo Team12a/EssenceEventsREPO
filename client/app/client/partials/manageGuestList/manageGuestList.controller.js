@@ -36,55 +36,37 @@ angular.module('essenceEventsRepoApp.client')
         return (arr.length > 0);
       };
 
-      //Takes you to page to add a guest for the selected event
-      $scope.addGuest = function(){
-        $state.go('client.addGuest', {ev : event} );
-      };
 };
 
+//Takes you to page to add a guest for the selected event
+  $scope.addGuest = function(event){
+    $state.go('client.addGuest', {ev : event} );
+  };
+
     //TO-DO How to get it to save after updating the checks
-    $scope.changeAccepted = function(event, index, guest) {
-      console.log(guest.name);
+    $scope.changeAccepted = function(event, guest) {
       for(var i = 0; i < event.guests.length; i++){
-        if(event.guests[i].name == guest.name){
+        if(event.guests[i].email == guest.email){
           event.guests[i].accepted = !event.guests[i].accepted;
         }
       }
-      //guest.accepted = !guest.accepted;
-     //event.guests[index].accepted = !event.guests[index].accepted;
     };
 
   $scope.toggleEdit = function (event, guest) {
     $scope.state1 = !$scope.state1;
     $scope.ev = event;
     $scope.guest = guest;
-    console.log($scope.ev);
 
       $scope.hasItems = function(arr)
       {
         return (arr.length > 0);
       };
 
-      //
-      // $scope.updateGuest = function(){
-      //   console.log("here");
-      //   if($scope.guestPhone != '')
-      //   item.phoneNumber = $scope.guestPhone ;
-      //
-      //   if($scope.guestEmail != '')
-      //   item.email = $scope.guestEmail;
-      //
-      //   if($scope.guestSize != '')
-      //   item.partySize = $scope.guestSize;
-      //
-      //   if($scope.guestAccommodations != '')
-      //   item.accommodations= $scope.guestAccommodations;
-      // };
+
   };
 
-  //TO-Do: Debug!
-  $scope.removeGuest = function(event,index, guest){
-    console.log("Removing");
+
+  $scope.removeGuest = function(event, guest){
     for(var i = 0; i < event.guests.length; i++){
       if(event.guests[i].email == guest.email){
         event.guests.splice(i, 1);
@@ -93,4 +75,26 @@ angular.module('essenceEventsRepoApp.client')
 
 
   };
+
+  $scope.updateGuest = function(event, guest){
+    console.log("here");
+
+    for(var i = 0; i < event.guests.length; i++){
+      if(event.guests[i].email == guest.email){
+
+        if($scope.guestPhone != null)
+        guest.phoneNumber = $scope.guestPhone ;
+
+        if($scope.guestEmail != null)
+        guest.email = $scope.guestEmail;
+
+        if($scope.guestSize != null)
+        guest.partySize = $scope.guestSize;
+
+        if($scope.guestAccommodations != null)
+        guest.accommodations= $scope.guestAccommodations;
+      }
+    }
+  };
+
 }]);

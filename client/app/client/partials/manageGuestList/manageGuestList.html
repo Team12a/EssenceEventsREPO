@@ -1,6 +1,6 @@
 <div class = "container-fluid">
   <div ng-controller="WelcomeCtrl" ng-init="getEvents()">
-      <h2>Welcome, {{clientName}} </h2>
+      <h2>Manage Your Guests </h2>
       <table class="table table-hover">
         <thead>
           <tr>
@@ -47,8 +47,9 @@
                   <td>{{item.name}}</td>
                   <td>{{item.partySize}}</td>
                   <td>{{item.accommodations}}</td>
-                  <td><span ng-class="(item.accepted) ? 'fa fa-check-square-o fa-lg' : 'fa fa-square-o fa-lg'" ng-click="changeAccepted(ev, $index, item)"></span></td>
+                  <td><span ng-class="(item.accepted) ? 'fa fa-check-square-o fa-lg' : 'fa fa-square-o fa-lg'" ng-click="changeAccepted(ev, item)"></span></td>
                   <td><span class="glyphicon glyphicon-edit" ng-click="toggleEdit(ev, item)"></span></td>
+                  <td><span button class = "btn btn-danger" ng-click="removeGuest(ev, item)">Remove</span><td>
                 </tr>
               </tbody>
               <tfoot>
@@ -56,7 +57,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td><button type="button" class="btn btn-md btn-default" ng-click="addGuest()">Add Guests</button> </td>
+                <td><button type="button" class="btn btn-md btn-default" ng-click="addGuest(ev)">Add Guests</button> </td>
               </tfoot>
 
             </table>
@@ -66,7 +67,7 @@
           <div ng-show="state1">
             <b>Update Information For {{guest.name}}<b>
               <br></br>
-              <form name="listingForm" class="form-horizontal" ng-submit="submit()">
+              <form name="listingForm" class="form-horizontal" ng-submit="updateGuest(ev, guest)">
                 <div id="budget" class="col-md-4">
                   <label for="guestPhone">Phone Number:</label>
                   <input type="number" name="guestPhone" placeholder="{{guest.phoneNumber}}" ng-model="guestPhone" class="form-control">
@@ -84,9 +85,8 @@
                   <input type="text" name="accommodations" placeholder="{{guest.accommodations}}" ng-model="guestAccommodations" class="form-control">
                 </div>
                   <br></br>
-                  <button class="btn btn-success" id="updateGuest" ng-submit="updateGuest()">Update</button>
-                  <button class = "btn btn-danger" ng-click="removeGuest(ev, $index, guest)">Remove</button>
-                <form>
+                  <button class="btn btn-success" id="updateGuest" ng-submit="updateGuest(ev, guest)">Update</button>
+                </form>
           </div>
 
       </div>
