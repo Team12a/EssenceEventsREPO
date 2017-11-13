@@ -2,7 +2,7 @@
   <h1 class="page-header">Manage existing accounts</h1>
   <div class = "form-group col-md-12" style="padding-left:0px;">
     <div class="col-md-5" style="padding-left:0px;">
-      <input type="text" class="form-control" placeholder="Search here..." ng-model="searchClients"></input>
+      <input type="text" class="form-control" placeholder="Search here..." ng-model="searchUsers"></input>
     </div>
   </div>
   <tabset>
@@ -20,7 +20,7 @@
           </thead>
 
           <tbody>
-            <tr ng-repeat="user in mc.alldata | filter: 'user'| filter: searchClients | orderBy: sort">
+            <tr ng-repeat="user in mc.alldata | filter: 'user'| filter: searchUsers | orderBy: sort">
                 <td>{{user.name}}</td>
                 <td>{{user.phoneNumber | phone}}</td>
                 <td>{{user.email}}</td>
