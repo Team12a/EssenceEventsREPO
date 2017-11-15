@@ -68,28 +68,26 @@
             <b>Update Information For {{guest.name}}<b>
               <br></br>
               <form name="listingForm" class="form-horizontal" ng-submit="updateGuest(ev, guest)">
-                <div id="budget" class="col-md-4">
+                <div id="updateGuest" class="col-md-4">
                   <label for="guestPhone">Phone Number:</label>
-                  <input type="number" name="guestPhone" placeholder="{{guest.phoneNumber}}" ng-model="guestPhone" class="form-control">
+                  <input type="number" name="guestPhone"  placeholder="{{guest.phoneNumber}}" ng-model="formData.guestPhone" class="form-control">
                 </div>
-                <div id="budget" class="col-md-5">
+                <div id="updateGuest" class="col-md-5">
                   <label for="guestEmail">Email:</label>
-                  <input type="email" name="guestEmail" placeholder="{{guest.email}}" ng-model="guestEmail" class="form-control">
+                  <input type="email" name="guestEmail"  placeholder="{{guest.email}}" ng-model="formData.guestEmail" class="form-control">
                 </div>
-                <div id="budget" class="col-md-2">
-                  <label for="todoInput">Party Size:</label>
-                  <input type="number" name="guestSize" placeholder="{{guest.partySize}}" ng-model="guestSize" class="form-control">
+                <div id="updateGuest" class="col-md-2">
+                  <label for="guestSize">Party Size:</label>
+                  <input type="number" name="guestSize"  placeholder="{{guest.partySize}}" ng-model="formData.guestSize" class="form-control">
                 </div>
-                <div id="budget" class="col-md-6">
-                  <label for="accommodations">Accommodations:</label>
-                  <input type="text" name="accommodations" placeholder="{{guest.accommodations}}" ng-model="guestAccommodations" class="form-control">
+                <div id="updateGuest" class="col-md-6">
+                  <label for="guestAccommodations">Accommodations:</label>
+                  <input name="guestAccommodations" placeholder="{{guest.accommodations}}" ng-model="formData.guestAccommodations" class="form-control">
                 </div>
                   <br></br>
-                  <button class="btn btn-success" id="updateGuest" ng-submit="updateGuest(ev, guest)">Update</button>
+                  <button class="btn btn-success" id="updateGuest" type = 'submit'>Update</button>
                 </form>
           </div>
-
       </div>
-
   </div>
 </div>

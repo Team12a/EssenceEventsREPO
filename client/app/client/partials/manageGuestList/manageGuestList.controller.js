@@ -3,6 +3,8 @@
 angular.module('essenceEventsRepoApp.client')
 .controller('manageGuestListCtrl', [ 'Events', 'Auth', '$scope', '$stateParams', '$state', function ( Events, Auth, $scope, $stateParams, $state) {
 
+  $scope.formData = {};
+
   var getUser = function() {
     if (!$scope.curUser._id)
       setTimeout(getUser, 100);
@@ -27,32 +29,36 @@ angular.module('essenceEventsRepoApp.client')
       });
   };
 
+  //Displays the guest list for selected event
   $scope.toggle = function(event) {
+    //TO-DO: Add in logic to close state1 when this state is closed
     $scope.state = !$scope.state;
     $scope.ev = event;
 
-      $scope.hasItems = function(arr)
-      {
-        return (arr.length > 0);
-      };
-
+    $scope.hasItems = function(arr) {
+      return (arr.length > 0);
+    };
 };
 
-//Takes you to page to add a guest for the selected event
+  //Takes you to page to add a guest for the selected event
   $scope.addGuest = function(event){
     $state.go('client.addGuest', {ev : event} );
   };
 
-    //TO-DO How to get it to save after updating the checks
-    $scope.changeAccepted = function(event, guest) {
-      for(var i = 0; i < event.guests.length; i++){
-        if(event.guests[i].email == guest.email){
-          event.guests[i].accepted = !event.guests[i].accepted;
-        }
-      }
-      Events.update(event);
-    };
 
+  $scope.changeAccepted = function(event, guest) {
+
+    //Finds the correct guest by email
+    for(var i = 0; i < event.guests.length; i++){
+      if(event.guests[i].email == guest.email){
+        event.guests[i].accepted = !event.guests[i].accepted;
+      }
+    }
+
+    Events.update(event);
+  };
+
+  //Brings up the edit guest form
   $scope.toggleEdit = function (event, guest) {
     $scope.state1 = !$scope.state1;
     $scope.ev = event;
@@ -62,12 +68,11 @@ angular.module('essenceEventsRepoApp.client')
       {
         return (arr.length > 0);
       };
-
-
   };
 
 
   $scope.removeGuest = function(event, guest){
+    //Finds correct guest by email
     for(var i = 0; i < event.guests.length; i++){
       if(event.guests[i].email == guest.email){
         event.guests.splice(i, 1);
@@ -77,25 +82,27 @@ angular.module('essenceEventsRepoApp.client')
 
   };
 
+  //This function not working
   $scope.updateGuest = function(event, guest){
-    console.log("here");
 
     for(var i = 0; i < event.guests.length; i++){
+
       if(event.guests[i].email == guest.email){
 
-        if($scope.guestPhone != null)
-        guest.phoneNumber = $scope.guestPhone ;
+        if($scope.formData.guestPhone != undefined)
+          guest.phoneNumber = $scope.formData.guestPhone;
 
-        if($scope.guestEmail != null)
-        guest.email = $scope.guestEmail;
+        if($scope.formData.guestEmail != undefined)
+          guest.email = $scope.formData.guestEmail;
 
-        if($scope.guestSize != null)
-        guest.partySize = $scope.guestSize;
+        if($scope.formData.guestAccommodations != null)
+          guest.accommodations = $scope.formData.guestAccommodations;
 
-        if($scope.guestAccommodations != null)
-        guest.accommodations= $scope.guestAccommodations;
+        if($scope.formData.guestSize != undefined)
+          guest.partySize = $scope.formData.guestSize;
       }
     }
+    Events.update(event);
   };
 
 }]);

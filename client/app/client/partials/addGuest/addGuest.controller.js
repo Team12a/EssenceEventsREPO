@@ -14,7 +14,12 @@ angular.module('essenceEventsRepoApp.client')
     "phoneNumber": $scope.phoneNumber
     };
     $scope.eve.guests.push(newGuest);
-    Events.update($scope.eve);
+    Events.update($scope.eve)
+    .then(function(response){
+      $state.go('client.manageGuestList');
+    }, function(err){
+
+    });
 
   };
 }]);
