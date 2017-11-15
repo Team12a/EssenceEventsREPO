@@ -102,12 +102,12 @@ export function removeUser(req, res) {
   if (req.events.length > 0)
     Event.find({userId: req.events[0].userId})
       .remove(function (err) {
-	       if (err) {
-	          throw err;
-	          res.status(400).end();
-	       }
-	        else
-	         res.send('did it');
+	if (err) {
+	  throw err;
+	  res.status(400).end();
+	}
+	else
+	  res.send('did it');
     });
   else
     res.status(400).end();
