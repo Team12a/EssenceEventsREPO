@@ -1,18 +1,18 @@
 <div class = "container-fluid">
-  <div ng-controller="manageEventCtrl" ng-init="getEvents()">
+  <div ng-controller="manageEventCtrl" ng-init="getEvents(); sort='date'">
     <h2>Your Events </h2>
-    <table class="table table-hover">
+    <table class="table table-hover hoverSort">
       <thead>
         <tr>
-          <th><b>Event Name</b></td>
-            <th><b>Location</b></td>
-              <th><b>Address</b></td>
-              <th><b>Date</b></td>
+          <th ng-click="sort='name'"><b>Event Name</b></td>
+            <th ng-click="sort='locationName'"><b>Location</b></td>
+              <th ng-click="sort='locationAdd'"><b>Address</b></td>
+              <th ng-click="sort='date'"><b>Date</b></td>
                 <th></td>
                 </tr>
               </thead>
               <tbody>
-                <tr ng-repeat="event in events">
+                <tr ng-repeat="event in events |orderBy: sort">
                   <td>{{event.name}}</td>
                   <td>{{event.locationName}}</td>
                   <td>{{event.locationAdd}}</td>
