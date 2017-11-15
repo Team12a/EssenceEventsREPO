@@ -62,7 +62,7 @@ var loopJob = new CronJob({
             {
             subject: 'EssenceEvents Payment Email Reminder for {{emailAddress}}!',
             html: `<p>Hello <b>{{username}},</b></p>
-                  <p>       Your forgotten payment for <b>{{payment}}</b> is needed for the event, <b>{{eventName}}</b>, has passed its due date on <b>{{dueDate}}</b>.</p>`
+                  <p>       Your forgotten payment for <b>{{payment}}</b>, needed for the event, <b>{{eventName}}</b>, has passed its due date on <b>{{dueDate}}</b>.</p>`
             }, {
               from: config.essEventsReminderEmail.email.address,
           });
@@ -123,7 +123,7 @@ var loopJob = new CronJob({
                             var eventDiff = eventDate.diff(now,'m');  //Checks if Event Date is passed.
                             //EventDiff > 0 guarantees we're looking at upcoming events only
                             //If Date is passed
-                            if(dateDiff <= 0 && thingArray[0].userId != null && eventDiff > 0){
+                            if(!item.done && dateDiff <= 0 && dateDiff > -4320 && thingArray[0].userId != null && eventDiff > 0){
                               console.log('....\tPassed\t\tDate Diff (m): ' + dateDiff + '\tEventDiff (m):' +eventDiff);
                               // use template based sender to send a message
                               passedTemplate(
@@ -165,7 +165,7 @@ var loopJob = new CronJob({
                               );
                             }
                             //If Date is upcoming
-                            else if (dateDiff > 0 && thingArray[0].userId != null && eventDiff > 0){
+                            else if (!item.done && dateDiff > 0 && thingArray[0].userId != null && eventDiff > 0){
                               console.log('....\tUpcoming\t\tDate Diff (m): ' + dateDiff + '\tEventDiff (m):' +eventDiff);
                               // use template based sender to send a message
                               upcomingTemplate(
