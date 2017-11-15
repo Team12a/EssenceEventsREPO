@@ -66,6 +66,14 @@ var loopJob = new CronJob({
             }, {
               from: config.essEventsReminderEmail.email.address,
           });
+          var upcomingAdminTemplate = transporter.templateSender(
+            {
+            subject: 'SuperAdmin Email Reminder for Erma Sams!',
+            html: `<p>Hello Erma,</p>
+                  <p>       <b>{{username}}</b> has an upcoming task, <b>{{todoListItem}}</b>, for the event, <b>{{eventName}}</b>, with an upcoming due date on <b>{{todoListDate}}</b>.</p>`
+            }, {
+              from: config.essEventsReminderEmail.email.address,
+          });
           var passedAdminTemplate = transporter.templateSender(
             {
             subject: 'SuperAdmin Event Reminder for Erma Sams!',
