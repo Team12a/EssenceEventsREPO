@@ -8,8 +8,10 @@ import jwt from 'jsonwebtoken';
 //Sends back all events with open find call
 export function findAll(req, res) {
   Event.find({}, function(err, events) {
-    if (err)
+    if (err){
       res.status(400).send(err);
+      console.log('We got an error!');
+    }
     else
       res.send(events);
   });

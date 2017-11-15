@@ -8,7 +8,7 @@ angular.module('essenceEventsRepoApp.superAdmin')
   //handle people trying to hit url directly.
   if($stateParams.userID == 'undefined')
   {
-    $state.go('admin.manageClients');
+    $state.go('superAdmin.manageAccounts');
   }
 
   //used to display the user you are talking to
@@ -172,6 +172,7 @@ angular.module('essenceEventsRepoApp.superAdmin')
       .then(function(response) {
         $state.go('superAdmin.manageEvent');
       }, function(err) {
+         throw(err);
         //do something
     });
   };
