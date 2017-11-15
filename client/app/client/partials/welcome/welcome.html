@@ -48,17 +48,13 @@
                   <th ng-click="sortGuest='partySize'"><b>Party Size</b></th>
                   <th ng-click="sortGuest='accepted'"><b>Accepted</b></th> -->
                   <th ng-click="sortGuest='accepted'"><b>Accepted</b></th>
-                  <th ng-click="sortGuest='declined'"><b>Declined</b></th>
                   <th ng-click="sortGuest='pending'"><b>Pending</b></th>
                 </tr>
               </thead>
-              <tbody ng-repeat ="item in ev.guests | orderBy: sortGuest" ng-show="hasItems(ev.guests)">
+              <tbody ng-show="hasItems(ev.guests)">
                 <tr>
-                  <td>{{item.name}}</td>
-                  <td>{{item.email}}</td>
-                  <td>{{item.phoneNumber}}</td>
-                  <td>{{item.partySize}}</td>
-                  <td><span ng-class="(item.accepted) ? 'fa fa-check-square-o fa-lg' : 'fa fa-square-o fa-lg'"></span></td>
+                  <td>{{accepted}}</td>
+                  <td>{{pending}}</td>
                 </tr>
               </tbody>
             </table>
