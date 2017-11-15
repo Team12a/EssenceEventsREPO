@@ -24,6 +24,12 @@
               </div>
 
               <!-- Div to input time for date -->
+              <div class = "col-md-5 col-md-offset-1" show errors>
+              <timepicker ng-model="event.date" hour-step="1" minute-step="1" show-meridian="true">
+              </timepicker>
+            </div>
+
+            <!-- Div to input time for location -->
               <div class="form-group row col-md-12" show-errors>
                 <label for="venue">Venue:</label>
                 <input name="venue" type="venue" ng-model="event.locationName" id="venue" class="form-control" required>
