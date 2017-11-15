@@ -1,0 +1,58 @@
+<div class="row" ng-init="sort='name'">
+  <h1 class="page-header">Manage existing accounts</h1>
+  <div class = "form-group col-md-12" style="padding-left:0px;">
+    <div class="col-md-5" style="padding-left:0px;">
+      <input type="text" class="form-control" placeholder="Search here..." ng-model="searchClients"></input>
+    </div>
+  </div>
+  <tabset>
+    <tab heading="User Accounts">
+      <br>
+      <table class="table table-hover hoverSort">
+          <thead>
+            <tr>
+              <th ng-click="sort='name'"><b>Name</b></td>
+              <th ng-click="sort='phoneNumber'"><b>Phone Number</b></td>
+              <th ng-click="sort='email'"><b>Email</b></td>
+              <th ng-click="sort"='role'><b>Account Type</b></td>
+              <th></td>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr ng-repeat="user in mc.alldata | filter: 'user'| filter: searchClients | orderBy: sort">
+                <td>{{user.name}}</td>
+                <td>{{user.phoneNumber | phone}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.role}}</td>
+                <td><button type="button" class="btn btn-md btn-default" ng-click=mc.openModal(user)>Manage</button></td>
+            </tr>
+          </tbody>
+      </table>
+    </tab>
+
+    <tab heading="Admin Accounts">
+      <br>
+      <table class="table table-hover hoverSort">
+          <thead>
+            <tr>
+              <th ng-click="sort='name'"><b>Name</b></td>
+              <th ng-click="sort='phoneNumber'"><b>Phone Number</b></td>
+              <th ng-click="sort='email'"><b>Email</b></td>
+              <th ng-click="sort"='role'><b>Account Type</b></td>
+              <th></td>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr ng-repeat="user in mc.alldata | filter: 'admin' | filter: searchClients | orderBy: sort">
+                <td>{{user.name}}</td>
+                <td>{{user.phoneNumber | phone}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.role}}</td>
+                <td><button type="button" class="btn btn-md btn-danger" ng-click=mc.delete(user)>Delete</button></td>
+            </tr>
+          </tbody>
+      </table>
+  </tabset>
+</div>
