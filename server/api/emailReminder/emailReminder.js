@@ -45,40 +45,96 @@ var loopJob = new CronJob({
           var upcomingTemplate = transporter.templateSender(
             {
             subject: 'EssenceEvents Email Reminder for {{emailAddress}}!',
-            html: `<p>Hello <b>{{username}},</b></p>
-                  <p>       You have an upcoming due date for <b>{{todoListItem}}</b> on <b>{{todoListDate}}</b>.</p>`
+            html: `<table>
+                    <tr bgcolor="#EDC4D6">
+                      <th><h1><img src="http://essenceevents.net/assets/images/EELogoIMG.png" width="50" height="50" alt="Essence Events" align ="center" /> Email Reminder</h1></th>
+                      </tr>
+                      <tr>
+                        <td><h3>Hello <b>{{username}},</b></h3>
+                              <p>       You have an upcoming due date for <b>{{todoListItem}}</b> on <b>{{todoListDate}}</b>.</p></td>
+                      </tr>
+                      <tr bgcolor="#EDC4D6">
+                        <td align="center"><h3>Essence Events.</h3></td>
+                      </tr>
+                  </table>`
             }, {
               from: config.essEventsReminderEmail.email.address,
           });
           var passedTemplate = transporter.templateSender(
             {
-            subject: 'EssenceEvents Passed Email Reminder for {{emailAddress}}!',
-            html: `<p>Hello <b>{{username}},</b></p>
-                  <p>       Your unfinished task, <b>{{todoListItem}}</b>, has passed its due date on <b>{{todoListDate}}</b>.</p>`
+            subject: 'EssenceEvents Passed Due Email Reminder for {{emailAddress}}!',
+            html: `<table>
+                    <tr bgcolor="#EDC4D6">
+                      <th><h1><img src="http://essenceevents.net/assets/images/EELogoIMG.png" width="50" height="50" alt="Essence Events" align ="center" /> Email Reminder</h1></th>
+                      </tr>
+                      <tr>
+                        <td><h3>Hello <b>{{username}},</b></h3>
+                              <p>       Your unfinished task, <b>{{todoListItem}}</b>, has passed its due date on <b>{{todoListDate}}</b>.</p></td>
+                      </tr>
+                      <tr bgcolor="#EDC4D6">
+                        <td align="center"><h3>Essence Events.</h3></td>
+                      </tr>
+                  </table>`
+
             }, {
               from: config.essEventsReminderEmail.email.address,
           });
           var passedPaymentTemplate = transporter.templateSender(
             {
-            subject: 'EssenceEvents Payment Email Reminder for {{emailAddress}}!',
-            html: `<p>Hello <b>{{username}},</b></p>
-                  <p>       Your forgotten payment for <b>{{payment}}</b>, needed for the event, <b>{{eventName}}</b>, has passed its due date on <b>{{dueDate}}</b>.</p>`
+            subject: 'EssenceEvents Passed Due Payment Email Reminder for {{emailAddress}}!',
+            html:
+                  `<table>
+                          <tr bgcolor="#EDC4D6">
+                            <th><h1><img src="http://essenceevents.net/assets/images/EELogoIMG.png" width="50" height="50" alt="Essence Events" align ="center" /> Email Reminder</h1></th>
+                            </tr>
+                            <tr>
+                              <td><h3>Hello <b>{{username}},</b></h3>
+                                    <p>       Your payment for <b>{{payment}}</b>, needed for the event, <b>{{eventName}}</b>, has passed its due date on <b>{{dueDate}}</b>.</p></td>
+                            </tr>
+                            <tr bgcolor="#EDC4D6">
+                              <td align="center"><h3>Essence Events.</h3></td>
+                            </tr>
+                        </table>`
             }, {
               from: config.essEventsReminderEmail.email.address,
           });
           var passedAdminTemplate = transporter.templateSender(
             {
             subject: 'SuperAdmin Event Reminder for Erma Sams!',
-            html: `<p>Hello Erma,</p>
-                  <p>       <b>{{username}}</b> has an uncompleted task,<b>{{todoListItem}}</b>, for the event, <b>{{eventName}}</b>, that has passed it's due date on <b>{{todoListDate}}</b>.</p>`
+            html:
+                  `<table>
+                          <tr bgcolor="#EDC4D6">
+                            <th><h1><img src="http://essenceevents.net/assets/images/EELogoIMG.png" width="50" height="50" alt="Essence Events" align ="center" /> Email Reminder</h1></th>
+                            </tr>
+                            <tr>
+                              <td><h3>Hello Erma,</h3>
+                                    <p>       <b>{{username}}</b> has an uncompleted task,<b>{{todoListItem}}</b>, for the event, <b>{{eventName}}</b>, that has passed it's due date on <b>{{todoListDate}}</b>.</p></td>
+                            </tr>
+                            <tr bgcolor="#EDC4D6">
+                              <td align="center"><h3>Essence Events.</h3></td>
+                            </tr>
+                        </table>`
+
             }, {
               from: config.essEventsReminderEmail.email.address,
           });
           var passedAdminPaymentTemplate = transporter.templateSender(
             {
             subject: 'SuperAdmin Payment Reminder for Erma Sams!',
-            html: `<p>Hello Erma,</p>
-                  <p>       <b>{{username}}</b> has missed a payment, <b>{{payment}}</b>, for the event, <b>{{eventName}}</b>, that was due on <b>{{dueDate}}</b>.</p>`
+            html:
+                  `<table>
+                          <tr bgcolor="#EDC4D6">
+                            <th><h1><img src="http://essenceevents.net/assets/images/EELogoIMG.png" width="50" height="50" alt="Essence Events" align ="center" /> Email Reminder</h1></th>
+                            </tr>
+                            <tr>
+                              <td><h3>Hello Erma,</h3>
+                                    <p>       <b>{{username}}</b> has missed a payment, <b>{{payment}}</b>, for the event, <b>{{eventName}}</b>, that was due on <b>{{dueDate}}</b>.</p></td>
+                            </tr>
+                            <tr bgcolor="#EDC4D6">
+                              <td align="center"><h3>Essence Events.</h3></td>
+                            </tr>
+                        </table>`
+
             }, {
               from: config.essEventsReminderEmail.email.address,
           });
