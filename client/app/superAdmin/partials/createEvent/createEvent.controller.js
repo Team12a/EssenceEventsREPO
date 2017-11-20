@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('essenceEventsRepoApp.superAdmin')
-.controller('CreateEventCtrl', ['Events', '$scope', '$stateParams', '$state', 'uiGmapGoogleMapApi', function (Events, $scope, $stateParams, $state, uiGmapGoogleMapApi) {
+.controller('CreateEventCtrlSuper', ['Events', '$scope', '$stateParams', '$state', 'uiGmapGoogleMapApi', function (Events, $scope, $stateParams, $state, uiGmapGoogleMapApi) {
 
   // $scope.message = 'Hello';
 
@@ -166,6 +166,12 @@ angular.module('essenceEventsRepoApp.superAdmin')
           var locCoord = results[0].geometry.location;
               $scope.latitude= locCoord.lat();
               $scope.longitude= locCoord.lng();
+        }else {
+
+              $scope.latitude = 29.65253;
+              $scope.longitude = -82.330276;
+              $scope.venueName = 'Essence Events';
+              $scope.venueAddress = '530 W University Ave Gainesville, FL ';
         }
         var event = {
           name: $scope.eventName,

@@ -10,7 +10,7 @@ angular.module('essenceEventsRepoApp.superAdmin')
           usersName: 'undefined'
         },
         templateUrl: 'app/superAdmin/partials/createEvent/createEvent.html',
-        controller: 'CreateEventCtrl',
+        controller: 'CreateEventCtrlSuper',
         authenticate: 'super'
       });
   });
