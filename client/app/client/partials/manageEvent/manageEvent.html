@@ -98,6 +98,8 @@
                 </div>
                 <!-- display table of todolist -->
                 <div class = "col-md-6">
+
+                  <div>
                   <h4 style="text-align:center">Task List</h4>
                   <table class = "table table-hover">
                     <thead>
@@ -115,7 +117,32 @@
                       </tr>
                     </tbody>
                   </table>
-
+                </div>
+                <h4>Add new Todo</h4>
+                <form class="row" name="$parent.hello">
+                  <div id="budget" class="col-md-12">
+                    <label for="todoInput">Item:</label>
+                    <input type="text" name="todoInput" ng-model="todoInput" class="form-control">
+                  </div>
+                  <div class="form-group row col-md-12" show-errors>
+                    <div class = "col-md-6">
+                      <label for="dateOfEvent">Date:</label>
+                      <div class = "input-group">
+                        <input type="text" class="form-control" id="eventDate" datepicker-popup="fullDate" ng-model="newDueDate" is-open="datePicker.scheduleDateOpened" picker-options="dateOptions" close-text="Close">
+                        <span class="input-group-btn">
+                          <button type="button" class="btn btn-default" ng-click="scheduleDateOpen($event)"><i id="todoCal" class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                      </div>
+                    </div>
+                    <div class ="col-md-3" style="margin-left: 5px;" show errors>
+                      <timepicker ng-model="newDueDate" hour-step="1" minute-step="1" show-meridian="true"></timepicker>
+                    </div>
+                    <div class="col-md-1 col-md-offset-1">
+                      <label for="button">&zwnj;</label>
+                      <button type="submit" class="btn btn-success" id="addTodo" ng-click="addToDo(todoInput,newDueDate) ? todoInput = newDueDate = null : null">+</button>
+                    </div>
+                  </div>
+                </form>
                 </div>
               </div>
             </div>

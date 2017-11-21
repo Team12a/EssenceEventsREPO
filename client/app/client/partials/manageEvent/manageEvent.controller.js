@@ -58,8 +58,33 @@ $scope.toggle = function (event) {
     }, function(err) {
       //do something
     });
+  };
+
+  $scope.datePicker = {opened: false, scheduleDateOpened: false};
+  $scope.open = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    $scope.datePicker.opened = true;
+  };
 
 
+  //used for Schedule Tab,
+  $scope.scheduleDateOpen = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    $scope.datePicker.scheduleDateOpened = true;
+  };
+
+
+  //adds item into todo list
+  $scope.addToDo = function(todo, date)
+  {
+    if (todo && date) {
+      $scope.ev.toDoList.push({todo: todo, by: date, done: false});
+      return 1;
+    }
+    else
+    return 0;
   };
 
   $scope.changeDone = function(index) {
