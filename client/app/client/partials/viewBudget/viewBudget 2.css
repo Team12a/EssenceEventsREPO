@@ -1,0 +1,26 @@
+.view-budget-page {
+  margin: 5%;
+}
+
+#inputExpenditure {
+  width: 90%;
+}
+
+#view-budget-form {
+  padding: 5%;
+  padding-left: 0%;
+}
+
+#price-input {
+  width: 50%;
+}
+
+p {
+  padding: 2%;
+  padding-left: 0%;
+}
+
+table {
+  width: 90% !important;
+  padding-right: 5%;
+}

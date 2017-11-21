@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('essenceEventsRepoApp.superAdmin')
+angular.module('essenceEventsRepoApp.admin')
 .controller('CreateEventCtrl', ['Events', '$scope', '$stateParams', '$state', function (Events, $scope, $stateParams, $state) {
 
   // $scope.message = 'Hello';
