@@ -27,8 +27,16 @@ angular.module('essenceEventsRepoApp')
       });
   };
 
-    $scope.toPaypal(payment){
+  $scope.payment.amount = 5;
+
+    $scope.togglePay = function (payment) {
+      $state.go('client.paypal', {payment : payment} );
+
+    };
+
+    $scope.toPaypal = function(payment){
       console.log(payment.amount);
+
       paypal.Button.render({
 
         env: 'sandbox', // sandbox | production
@@ -59,7 +67,7 @@ angular.module('essenceEventsRepoApp')
             payment: {
               transactions: [
                 {
-                  amount: { total: "0.01", currency: 'USD' }
+                  amount: { total: , currency: 'USD' }
                 }
               ]
             }
