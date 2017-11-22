@@ -5,6 +5,11 @@ angular.module('essenceEventsRepoApp.client')
 
   $scope.eve =  $stateParams.ev;
 
+  if($stateParams.ev == 'undefined')
+  {
+    $state.go('client.manageGuestList');
+  }
+
   $scope.addGuest = function(){
     var newGuest = {
     "name": $scope.name,
