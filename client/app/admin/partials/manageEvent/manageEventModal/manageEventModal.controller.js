@@ -163,7 +163,7 @@ $scope.hasItems = function(arr)
 $scope.addBudget = function(item, cost)
 {
   if (item && cost) {
-    $scope.event.budget.push({title: item, amount: cost});
+    $scope.event.budget.push({title: item, amount: cost, user: 'admin'});
     $scope.currentCost = $scope.currentCost + cost;
 
     //ADD IF STATEMENT FOR ERROR HANDLING

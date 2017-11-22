@@ -37,8 +37,9 @@ angular.module('essenceEventsRepoApp.admin')
   $scope.thingsToDo = [];
   $scope.budget = [
     {
-      title: "Free Cash",
-      amount: $scope.freeCash
+      title: 'Free Cash',
+      amount: $scope.freeCash,
+      user: 'admin'
     }
   ];
 
@@ -68,8 +69,8 @@ angular.module('essenceEventsRepoApp.admin')
   //Change free cash when updated in the budget array
   $scope.changeFreeCashArr = function()
   {
-    $scope.budget[0] = ({title: "Free Cash", amount: $scope.freeCash});
-  }
+    $scope.budget[0] = ({title: 'Free Cash', amount: $scope.freeCash, user: 'admin'});
+  };
 
   //Check if Todo List is empty
   $scope.hasItems = function(arr)
@@ -97,7 +98,7 @@ angular.module('essenceEventsRepoApp.admin')
   $scope.addBudget = function()
   {
     if ($scope.budgetItem && $scope.itemCost && $scope.freeCash >= $scope.itemCost) {
-      $scope.budget.push({title: $scope.budgetItem, amount: $scope.itemCost});
+      $scope.budget.push({title: $scope.budgetItem, amount: $scope.itemCost, user: 'admin'});
       $scope.freeCash = $scope.freeCash - $scope.itemCost;
       $scope.currCost += $scope.itemCost;
       $scope.myBudgetStyle = {}

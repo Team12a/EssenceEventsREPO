@@ -20,7 +20,7 @@ var getUser = function() {
 $scope.curUser = Auth.getCurrentUser();
 getUser();
 
-$scope.useridlauren = 0;
+//$scope.useridlauren = 0;
 $scope.getEvents = function(){
   if (!$scope.id) {
     setTimeout($scope.getEvents, 100);
@@ -68,11 +68,30 @@ $scope.load = function() {
     console.log('expenditure added');
     console.log('budget: ' + $scope.event.budget);
     $scope.event.budget.push({
-      "amount": $scope.amount,
-      "title" : $scope.title
+      'amount': $scope.amount,
+      'title' : $scope.title,
+      'user': 'client'
     });
     $scope.amount = 0.0;
-    $scope.title = "";
+    $scope.title = '';
+  };
+
+  $scope.editExpenditure = function(expense){
+    console.log('user: ' + expense.user );
+    if (expense.user == 'client'){
+      console.log('can edit expense');
+    } else {
+      console.log('cannot edit an expense that you did not input');
+    }
+  };
+
+  $scope.deleteExpenditure = function(expense){
+    console.log('user: ' + expense.user );
+    if (expense.user == 'client'){
+      console.log('can delete expense');
+    } else {
+      console.log('cannot delete an expense that you did not input');
+    }
   };
 
 

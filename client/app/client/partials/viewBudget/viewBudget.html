@@ -46,8 +46,8 @@
           <tr ng-repeat="expense in event.budget">
             <td>{{expense.title}}</td>
             <td>{{expense.amount}}</td>
-            <td><button class="btn btn-danger" name="remove">Remove</button></td>
-            <td><button class="btn btn-info" ng-click="toggle(event)" >Edit</button></td>
+            <td><button class="btn btn-danger" ng-click="deleteExpenditure(expense)" >Delete</button></td>
+            <td><button class="btn btn-info" ng-click="editExpenditure(expense)" >Edit</button></td>
           </tr>
         </tbody>
       </table>
