@@ -1,0 +1,57 @@
+<div class = "container-fluid">
+  <div ng-controller="viewBudgetCtrl" ng-init="getEvents(); load()">
+    <h2>Budget for {{event.name}} </h2>
+
+
+    <div ng-init="">
+      <!--Your budget-->
+      <div class = "col-md-12">
+        <div class = "col-md-6">
+          <h4 align="center">Your Budget</h4>
+          <nvd3 options="options" data="event.budget"></nvd3>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <form ng-submit="addExpenditure()" class="form-inline col-md-10 col-md-offset-1" id="view-budget-form">
+        <p>Add Expenditure:</p>
+        <div class="form-group">
+          <label class="sr-only" for="inputExpenditure">Expenditure</label>
+          <input type="text" ng-model="title" class="form-control" id="inputExpenditure" placeholder="Expenditure">
+        </div>
+        <div class="form-group" id="price-input">
+          <label class="sr-only" for="inputAmount">Amount</label>
+          <div class="input-group">
+            <div class="input-group-addon">$</div>
+            <input type="text" ng-model="amount" class="form-control" id="inputAmount" placeholder="Amount">
+            <div class="input-group-addon">.00</div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-success">Add</button>
+      </form>
+    </div>
+
+    <div class="row">
+      <table class="table table-hover col-md-10 col-md-offset-1">
+        <thead>
+          <tr>
+            <th><b>Expenditure</b></td>
+            <th><b>Price</b></td>
+            <th><b></b></td>
+            <th><b></b></td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="expense in event.budget">
+            <td>{{expense.title}}</td>
+            <td>{{expense.amount}}</td>
+            <td><button class="btn btn-danger" name="remove">Remove</button></td>
+            <td><button class="btn btn-info" ng-click="toggle(event)" >Edit</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

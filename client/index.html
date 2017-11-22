@@ -32,6 +32,7 @@
       <link rel="stylesheet" href="app/admin/partials/adminNav/adminNav.css">
       <link rel="stylesheet" href="app/admin/partials/createContractor/createContractor.css">
       <link rel="stylesheet" href="app/admin/partials/createEvent/createEvent.css">
+      <link rel="stylesheet" href="app/admin/partials/createPayment/createPayment.css">
       <link rel="stylesheet" href="app/admin/partials/deleteUserPage/deleteUserPage.css">
       <link rel="stylesheet" href="app/admin/partials/manageClients/manageClients.css">
       <link rel="stylesheet" href="app/admin/partials/manageClients/manageClientsModal/manageClientsModal.css">
@@ -41,6 +42,8 @@
       <link rel="stylesheet" href="app/admin/partials/manageEvent/manageEventModal/manageEventModal.css">
       <link rel="stylesheet" href="app/admin/partials/manageLinks/manageLinks.css">
       <link rel="stylesheet" href="app/admin/partials/manageLinks/manageLinksModal/manageLinksModal.css">
+      <link rel="stylesheet" href="app/admin/partials/managePayment/managePayment.css">
+      <link rel="stylesheet" href="app/admin/partials/managePayment/managePaymentModal/managePaymentModal.css">
       <link rel="stylesheet" href="app/admin/partials/viewTestimonials/viewTestimonials.css">
       <link rel="stylesheet" href="app/app.css">
       <link rel="stylesheet" href="app/celebrations/celebrations.css">
@@ -51,7 +54,9 @@
       <link rel="stylesheet" href="app/client/partials/manageEvent/manageEvent.css">
       <link rel="stylesheet" href="app/client/partials/manageGuestList/manageGuestList.css">
       <link rel="stylesheet" href="app/client/partials/uploadTestimonial/uploadTestimonial.css">
+      <link rel="stylesheet" href="app/client/partials/viewBudget/viewBudget.css">
       <link rel="stylesheet" href="app/client/partials/welcome/welcome.css">
+      <link rel="stylesheet" href="app/client/partials/yourBudget/yourBudget.css">
       <link rel="stylesheet" href="app/corporate/corporate.css">
       <link rel="stylesheet" href="app/customer/customer.css">
       <link rel="stylesheet" href="app/customer/myEvents/myEvents.css">
@@ -61,10 +66,21 @@
       <link rel="stylesheet" href="app/rentals/rentals.css">
       <link rel="stylesheet" href="app/reservations/reservations.css">
       <link rel="stylesheet" href="app/services/services.css">
+      <link rel="stylesheet" href="app/superAdmin/partials/createContractor/createContractor.css">
+      <link rel="stylesheet" href="app/superAdmin/partials/createEvent/createEvent.css">
+      <link rel="stylesheet" href="app/superAdmin/partials/manageAccounts/manageAccounts.css">
+      <link rel="stylesheet" href="app/superAdmin/partials/manageAccounts/manageAccountsModal/manageAccountsModal.css">
+      <link rel="stylesheet" href="app/superAdmin/partials/manageContractors/manageContractorModal/manageContractorModal.css">
+      <link rel="stylesheet" href="app/superAdmin/partials/manageContractors/manageContractors.css">
+      <link rel="stylesheet" href="app/superAdmin/partials/manageEvent/manageEvent.css">
+      <link rel="stylesheet" href="app/superAdmin/partials/manageEvent/manageEventModal/manageEventModal.css">
+      <link rel="stylesheet" href="app/superAdmin/partials/manageLinks/manageLinks.css">
+      <link rel="stylesheet" href="app/superAdmin/partials/manageLinks/manageLinksModal/manageLinksModal.css">
       <link rel="stylesheet" href="app/superAdmin/partials/superAdminNav/superAdminNav.css">
       <link rel="stylesheet" href="app/superAdmin/partials/updatePictures/updatePictures.css">
       <link rel="stylesheet" href="app/superAdmin/partials/updateTestimonials/updateTestimonials.css">
       <link rel="stylesheet" href="app/superAdmin/partials/updateVendors/updateVendors.css">
+      <link rel="stylesheet" href="app/superAdmin/partials/viewTestimonials/viewTestimonials.css">
       <link rel="stylesheet" href="app/superAdmin/superAdmin.css">
       <link rel="stylesheet" href="app/weddings/weddings.css">
       <link rel="stylesheet" href="components/font-awesome-4.5.0/css/font-awesome.css">
@@ -85,13 +101,14 @@
     <div ui-view=""></div>
     <footer></footer>
 
+
+
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
       ga('create', 'UA-XXXXX-X');
       ga('send', 'pageview');
     </script>
@@ -125,6 +142,7 @@
       <script src="bower_components/js-rich-marker/src/richmarker.js"></script>
       <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
       <!-- endbower -->
+      <script src="https://www.paypalobjects.com/api/checkout.js"></script>
     <!-- endbuild -->
     <!-- build:js(.tmp) app/app.js -->
       <script src="app/app.js"></script>
@@ -134,7 +152,11 @@
       <script src="app/superAdmin/superAdmin.module.js"></script>
       <script src="components/auth/auth.module.js"></script>
       <script src="components/util/util.module.js"></script>
+
       <script src="app/client/partials/manageGuestList/manageGuestList.controller.js"></script>
+
+      <script src="app/customer/customer.controller.js"></script>
+
       <script src="app/account/login/resetModal/resetModal.js"></script>
       <script src="app/account/settings/settings.controller.js"></script>
       <script src="app/admin/admin.controller.js"></script>
@@ -147,6 +169,7 @@
       <script src="app/admin/partials/createEvent/createEvent.controller.js"></script>
       <script src="app/admin/partials/createEvent/createEvent.js"></script>
       <script src="app/admin/partials/createPayment/createPayment.controller.js"></script>
+      <script src="app/admin/partials/createPayment/createPayment.js"></script>
       <script src="app/admin/partials/deleteUserPage/deleteUserPage.controller.js"></script>
       <script src="app/admin/partials/deleteUserPage/deleteUserPage.js"></script>
       <script src="app/admin/partials/manageClients/manageClients.controller.js"></script>
@@ -165,6 +188,10 @@
       <script src="app/admin/partials/manageLinks/manageLinks.js"></script>
       <script src="app/admin/partials/manageLinks/manageLinksModal/manageLinksModal.controller.js"></script>
       <script src="app/admin/partials/manageLinks/manageLinksModal/manageLinksModal.js"></script>
+      <script src="app/admin/partials/managePayment/managePayment.controller.js"></script>
+      <script src="app/admin/partials/managePayment/managePayment.js"></script>
+      <script src="app/admin/partials/managePayment/managePaymentModal/managePaymentModal.controller.js"></script>
+      <script src="app/admin/partials/managePayment/managePaymentModal/managePaymentModal.js"></script>
       <script src="app/admin/partials/signup/signup.controller.js"></script>
       <script src="app/admin/partials/signup/signup.js"></script>
       <script src="app/admin/partials/viewTestimonials/viewTestimonials.controller.js"></script>
@@ -183,21 +210,33 @@
       <script src="app/client/partials/makePayment/makePayment.js"></script>
       <script src="app/client/partials/manageEvent/manageEvent.controller.js"></script>
       <script src="app/client/partials/manageEvent/manageEvent.js"></script>
+
       <script src="app/aboutus/aboutus.js"></script>
       <script src="app/client/partials/manageGuestList/manageGuestList.js"></script>
       <script src="app/client/partials/uploadTestimonial/uploadTestimonial.controller.js"></script>
       <script src="app/client/partials/uploadTestimonial/uploadTestimonial.js"></script>
+
+      <script src="app/client/partials/manageGuestList/manageGuestList.controller.js"></script>
+      <script src="app/client/partials/manageGuestList/manageGuestList.js"></script>
+      <script src="app/client/partials/uploadTestimonial/uploadTestimonial.controller.js"></script>
+      <script src="app/client/partials/uploadTestimonial/uploadTestimonial.js"></script>
+      <script src="app/client/partials/viewBudget/viewBudget.controller.js"></script>
+      <script src="app/client/partials/viewBudget/viewBudget.js"></script>
+
       <script src="app/client/partials/welcome/welcome.controller.js"></script>
       <script src="app/client/partials/welcome/welcome.js"></script>
+      <script src="app/client/partials/yourBudget/yourBudget.controller.js"></script>
+      <script src="app/client/partials/yourBudget/yourBudget.js"></script>
       <script src="app/corporate/corporate.controller.js"></script>
       <script src="app/corporate/corporate.js"></script>
-      <script src="app/customer/customer.controller.js"></script>
+      <script src="app/aboutus/aboutus.js"></script>
       <script src="app/customer/customer.js"></script>
       <script src="app/customer/myEvents/myEvents.controller.js"></script>
       <script src="app/customer/myEvents/myEvents.js"></script>
       <script src="app/factories/email.factory.js"></script>
       <script src="app/factories/event.factory.js"></script>
       <script src="app/factories/link.factory.js"></script>
+      <script src="app/factories/payment.factory.js"></script>
       <script src="app/factories/subcontractor.factory.js"></script>
       <script src="app/factories/testimonial.factory.js"></script>
       <script src="app/links/links.controller.js"></script>
@@ -212,6 +251,28 @@
       <script src="app/reservations/reservations.js"></script>
       <script src="app/services/services.controller.js"></script>
       <script src="app/services/services.js"></script>
+      <script src="app/superAdmin/partials/createAccount/createAccount.controller.js"></script>
+      <script src="app/superAdmin/partials/createAccount/createAccount.js"></script>
+      <script src="app/superAdmin/partials/createContractor/createContractor.controller.js"></script>
+      <script src="app/superAdmin/partials/createContractor/createContractor.js"></script>
+      <script src="app/superAdmin/partials/createEvent/createEvent.controller.js"></script>
+      <script src="app/superAdmin/partials/createEvent/createEvent.js"></script>
+      <script src="app/superAdmin/partials/manageAccounts/manageAccounts.controller.js"></script>
+      <script src="app/superAdmin/partials/manageAccounts/manageAccounts.js"></script>
+      <script src="app/superAdmin/partials/manageAccounts/manageAccountsModal/manageAccountsModal.controller.js"></script>
+      <script src="app/superAdmin/partials/manageAccounts/manageAccountsModal/manageAccountsModal.js"></script>
+      <script src="app/superAdmin/partials/manageContractors/manageContractorModal/manageContractorModal.controller.js"></script>
+      <script src="app/superAdmin/partials/manageContractors/manageContractorModal/manageContractorModal.js"></script>
+      <script src="app/superAdmin/partials/manageContractors/manageContractors.controller.js"></script>
+      <script src="app/superAdmin/partials/manageContractors/manageContractors.js"></script>
+      <script src="app/superAdmin/partials/manageEvent/manageEvent.controller.js"></script>
+      <script src="app/superAdmin/partials/manageEvent/manageEvent.js"></script>
+      <script src="app/superAdmin/partials/manageEvent/manageEventModal/manageEventModal.controller.js"></script>
+      <script src="app/superAdmin/partials/manageEvent/manageEventModal/manageEventModal.js"></script>
+      <script src="app/superAdmin/partials/manageLinks/manageLinks.controller.js"></script>
+      <script src="app/superAdmin/partials/manageLinks/manageLinks.js"></script>
+      <script src="app/superAdmin/partials/manageLinks/manageLinksModal/manageLinksModal.controller.js"></script>
+      <script src="app/superAdmin/partials/manageLinks/manageLinksModal/manageLinksModal.js"></script>
       <script src="app/superAdmin/partials/superAdminContent/superAdminContent.directive.js"></script>
       <script src="app/superAdmin/partials/superAdminNav/superAdminNav.directive.js"></script>
       <script src="app/superAdmin/partials/updatePictures/updatePictures.controller.js"></script>
@@ -220,6 +281,8 @@
       <script src="app/superAdmin/partials/updateTestimonials/updateTestimonials.js"></script>
       <script src="app/superAdmin/partials/updateVendors/updateVendors.controller.js"></script>
       <script src="app/superAdmin/partials/updateVendors/updateVendors.js"></script>
+      <script src="app/superAdmin/partials/viewTestimonials/viewTestimonials.controller.js"></script>
+      <script src="app/superAdmin/partials/viewTestimonials/viewTestimonials.js"></script>
       <script src="app/superAdmin/superAdmin.controller.js"></script>
       <script src="app/account/login/login.controller.js"></script>
       <script src="app/superAdmin/superAdmin.router.js"></script>

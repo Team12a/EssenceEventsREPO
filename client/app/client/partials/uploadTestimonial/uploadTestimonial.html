@@ -3,7 +3,7 @@
       <h2>Upload a Testimonial</h2>
       <h6>Loved the service? Let us know below!</h6>
       <div class="well well-sm">
-        <form name="form" class="form-horizontal" ng-submit="submit()">
+        <form name="form" class="form-horizontal" ng-submit="submit()" onSubmit="alert('Thank you for your feedback.');" >
           <fieldset>
             <legend class="text-left header">Testimonial</legend>
             <p class="text-center" ng-if="submitSuccess">

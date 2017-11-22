@@ -70,6 +70,7 @@ angular.module('essenceEventsRepoApp.client')
       };
   };
 
+
   $scope.removeGuest = function(event, guest){
     //Finds correct guest by email
     for(var i = 0; i < event.guests.length; i++){
@@ -79,6 +80,7 @@ angular.module('essenceEventsRepoApp.client')
     }
     Events.update(event);
   };
+
 
   $scope.updateGuest = function(event, guest){
 

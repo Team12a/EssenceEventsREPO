@@ -1,3 +1,4 @@
+//changed the logic here to allow access for both super admin and admins
 'use strict';
 
 import {Router} from 'express';
