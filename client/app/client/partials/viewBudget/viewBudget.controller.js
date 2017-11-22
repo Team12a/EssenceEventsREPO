@@ -77,20 +77,24 @@ $scope.load = function() {
   };
 
   $scope.editExpenditure = function(expense){
-    console.log('user: ' + expense.user );
+    //console.log('user: ' + expense.user );
     if (expense.user == 'client'){
-      console.log('can edit expense');
+      //console.log('can edit expense');
+      return true;
     } else {
-      console.log('cannot edit an expense that you did not input');
+      //console.log('cannot edit an expense that you did not input');
+      return false;
     }
   };
 
   $scope.deleteExpenditure = function(expense){
-    console.log('user: ' + expense.user );
+    //console.log('user: ' + expense.user );
     if (expense.user == 'client'){
-      console.log('can delete expense');
+      //console.log('can delete expense');
+      return true;
     } else {
-      console.log('cannot delete an expense that you did not input');
+      //console.log('cannot delete an expense that you did not input');
+      return false;
     }
   };
 
