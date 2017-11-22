@@ -31,14 +31,14 @@ angular.module('essenceEventsRepoApp.client')
 
   //Displays the guest list for selected event
   $scope.toggle = function(event) {
-    //TO-DO: Add in logic to close state1 when this state is closed
+
     $scope.state = !$scope.state;
     $scope.ev = event;
 
     $scope.hasItems = function(arr) {
       return (arr.length > 0);
     };
-};
+  };
 
   //Takes you to page to add a guest for the selected event
   $scope.addGuest = function(event){
@@ -70,7 +70,6 @@ angular.module('essenceEventsRepoApp.client')
       };
   };
 
-
   $scope.removeGuest = function(event, guest){
     //Finds correct guest by email
     for(var i = 0; i < event.guests.length; i++){
@@ -79,14 +78,12 @@ angular.module('essenceEventsRepoApp.client')
       }
     }
     Events.update(event);
-
   };
 
-  //This function not working
   $scope.updateGuest = function(event, guest){
 
     for(var i = 0; i < event.guests.length; i++){
-
+      //Finds Correct Guest
       if(event.guests[i].email == guest.email){
 
         if($scope.formData.guestPhone != undefined)
@@ -102,7 +99,20 @@ angular.module('essenceEventsRepoApp.client')
           guest.partySize = $scope.formData.guestSize;
       }
     }
-    Events.update(event);
+
+    Events.update(event)
+    .then(function(response) {
+      //Clears Form
+      $scope.formData = {
+        'guestPhone'     : undefined,
+        'guestEmail'      : undefined,
+        'guestAccommodations' : null,
+        'guestSize' : undefined
+    };
+      $scope.state1 = !$scope.state1;
+    }, function(err) {
+      //do something
+    });
   };
 
 }]);

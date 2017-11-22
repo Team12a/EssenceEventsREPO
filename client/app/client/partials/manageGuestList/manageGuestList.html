@@ -20,7 +20,6 @@
         </tbody>
       </table>
 
-
       <div ng-show="state">
         <!-- Display Guest List -->
         <div class = "col-md-12" ng-init="sortGuest='name'">
@@ -39,7 +38,6 @@
                   <th ng-click="sortGuest='accommodations'"><b>Accommodations</b></th>
                   <th ng-click="sortGuest='attending'"><b>Attending</b></th>
                   <th><b>Edit</b></th>
-
                 </tr>
               </thead>
               <tbody ng-repeat ="item in ev.guests | orderBy: sortGuest | filter: searchGuests" ng-show="hasItems(ev.guests)">
@@ -59,9 +57,7 @@
                 <td></td>
                 <td><button type="button" class="btn btn-md btn-default" ng-click="addGuest(ev)">Add Guests</button> </td>
               </tfoot>
-
             </table>
-
           </div>
         </div>
           <div ng-show="state1">
@@ -84,8 +80,11 @@
                   <label for="guestAccommodations">Accommodations:</label>
                   <input name="guestAccommodations" placeholder="{{guest.accommodations}}" ng-model="formData.guestAccommodations" class="form-control">
                 </div>
+                <div>
                   <br></br>
-                  <button class="btn btn-success" id="updateGuest" type = 'submit'>Update</button>
+                  <br></br>
+                  <button  class="btn btn-success" id="updateGuest" type = 'submit'>Update</button>
+                </div>
                 </form>
           </div>
       </div>
