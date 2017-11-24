@@ -18,6 +18,7 @@ export default function(app) {
   app.use('/api/testimonial', require('./api/testimonial'));
   //not sure about this
   app.use('/api/superAdmins', require('./api/superAdmin'));
+  app.use('/api/textEdit', require('./api/textEdit'));
 
   app.use('/auth', require('./auth'));
 
