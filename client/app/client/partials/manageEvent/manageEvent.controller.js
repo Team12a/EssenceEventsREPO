@@ -79,8 +79,15 @@ $scope.toggle = function (event) {
   //adds item into todo list
   $scope.addToDo = function(todo, date)
   {
+    console.log($scope.ev);
     if (todo && date) {
-      $scope.ev.toDoList.push({todo: todo, by: date, done: false});
+      $scope.ev.toDoList.push({todo: $scope.todoInput, by: $scope.newDueDate, done: false});
+      Events.update($scope.ev)
+      .then(function(response){
+        console.log('Success');
+      }, function(err){
+        console.log(err);
+      });
       return 1;
     }
     else
@@ -142,6 +149,8 @@ $scope.toggle = function (event) {
     $scope.todo.push({title: $scope.ev.name, type: 'important', startsAt: new Date($scope.ev.date)});
     for (var i = 0; i < $scope.ev.toDoList.length; i++)
       $scope.todo.push({title: $scope.ev.toDoList[i].todo, type: 'info', startsAt: new Date($scope.ev.toDoList[i].by)});
+
+
 
 };
 
