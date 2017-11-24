@@ -217,7 +217,7 @@
     <tab heading="Guests" ng-if="hideDeleteTab">
       <h2 class="modal-header">Guest List:</h2>
       <div class="modal-body">
-        <button class="btn btn-lg btn-block btn-success" ui-sref="admin.viewGuestList({eventt: event})">View Guest List</button>
+        <button class="btn btn-lg btn-block btn-success" ng-click="viewGuestList(event)">View Guest List</button>
         <form class="row" name="formssss" display="inline-block">
           <div id="budget" class="col-md-5">
             <label for="guestName">Name:</label>

@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('essenceEventsRepoApp.admin')
-.controller('ViewGuestListCtrl', ['Events', '$scope', '$stateParams', '$state', function (Events, $scope, $stateParams, $state) {
+.controller('ViewGuestListCtrl', ['Events', 'event', '$scope', '$stateParams', '$state', function (Events, event, $scope, $stateParams, $state) {
 
-  if ($stateParams.eventt[0])
+  if ($stateParams.event[0])
     $state.go('admin.manageEvent');
-  $scope.event = $stateParams.eventt;
+  $scope.event = $stateParams.event;
 
 
   $scope.addGuest = function(name, email, phoneNumber, partySize, accommodations) {
