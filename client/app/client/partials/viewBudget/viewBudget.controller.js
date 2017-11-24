@@ -93,7 +93,15 @@ $scope.load = function() {
     $scope.title = '';
   };
 
-  $scope.editExpenditure = function(expense){
+  $scope.deleteExpenditure = function(expense){
+    console.log('delete expenditure');
+    //console.log('budget before: ' + $scope.event.budget);
+    $scope.event.budget.pop();
+    //console.log('budget after pop: ' + $scope.event.budget);
+    updateEvent($scope.event)
+  };
+
+  $scope.canEdit = function(expense){
     //console.log('user: ' + expense.user );
     if (expense.user == 'client'){
       //console.log('can edit expense');
@@ -104,7 +112,7 @@ $scope.load = function() {
     }
   };
 
-  $scope.deleteExpenditure = function(expense){
+  $scope.canDelete = function(expense){
     //console.log('user: ' + expense.user );
     if (expense.user == 'client'){
       //console.log('can delete expense');
@@ -115,5 +123,9 @@ $scope.load = function() {
     }
   };
 
+  $scope.editingExpense = false;
+  $scope.editExpenditure = function(){
+    $scope.editingExpense = true;
+  };
 
 }]);
