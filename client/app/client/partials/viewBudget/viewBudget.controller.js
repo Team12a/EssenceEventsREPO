@@ -58,7 +58,7 @@ $scope.load = function() {
       chart: {
         type: 'pieChart',
         height: 300,
-        x: function(d){return d.title},
+        x: function(d){return d.title;},
         y: function(d){return d.amount;},
         showLabels: true,
         duration: 500,
@@ -78,7 +78,7 @@ $scope.load = function() {
   };
 
   $scope.amount = 0.0;
-  $scope.title = "";
+  $scope.title = '';
 
   $scope.addExpenditure = function(){
     console.log('expenditure added');
@@ -98,12 +98,12 @@ $scope.load = function() {
     //console.log('budget before: ' + $scope.event.budget);
     $scope.event.budget.pop();
     //console.log('budget after pop: ' + $scope.event.budget);
-    updateEvent($scope.event)
+    updateEvent($scope.event);
   };
 
   $scope.canEdit = function(expense){
     //console.log('user: ' + expense.user );
-    if (expense.user == 'client'){
+    if (expense.user === 'client'){
       //console.log('can edit expense');
       return true;
     } else {
@@ -114,7 +114,7 @@ $scope.load = function() {
 
   $scope.canDelete = function(expense){
     //console.log('user: ' + expense.user );
-    if (expense.user == 'client'){
+    if (expense.user === 'client'){
       //console.log('can delete expense');
       return true;
     } else {
