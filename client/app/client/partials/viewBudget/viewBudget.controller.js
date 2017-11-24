@@ -35,6 +35,22 @@ $scope.getEvents = function(){
   }
 };
 
+var updateEvent = function($event){
+  if(!$event){
+    setTimeout($scope.updateEvent, 100);
+    // $state.go('client.yourBudget')
+    console.log('no event to update');
+  } else {
+    Events.update($event)
+          .then(function(response){
+            console.log('updated');
+            console.log(response);
+          }, function(error){
+            console.error(error);
+          });
+  }
+};
+
 $scope.load = function() {
 
     // Pi chart for budget
@@ -72,6 +88,7 @@ $scope.load = function() {
       'title' : $scope.title,
       'user': 'client'
     });
+    updateEvent($scope.event);
     $scope.amount = 0.0;
     $scope.title = '';
   };
