@@ -1,0 +1,48 @@
+<div class = "container-fluid">
+  <div ng-controller="ViewGuestListCtrl" ng-init="getEvents()">
+    <div class="page-header">
+      <h1> {{event.name}} guest list:</h1>
+    </div>
+    <div class = "col-md-12" ng-init="sortGuest='name'">
+      <div class="col-md-5" style="padding-left:0px;float: left;">
+        <input "type=text" class="form-control" placeholder="Search here..." ng-model="searchGuests"></input>
+        <br></br>
+      </div>
+      <div class = "col-md-12">
+        <table class = "table table-hover hoverSort">
+          <thead>
+            <tr>
+              <th ng-click="sortGuest='name'"><b>Guest Name</b></th>
+              <th ng-click="sortGuest='partySize'"><b>Party Size</b></th>
+              <th ng-click="sortGuest='accommodations'"><b>Accommodations</b></th>
+              <th ng-click="sortGuest='attending'"><b>Attending</b></th>
+              <th><b>Edit</b></th>
+
+            </tr>
+          </thead>
+          <tbody ng-repeat ="item in event.guests">
+            <tr>
+              <td>{{item.name}}</td>
+              <td>{{item.email}}</td>
+              <td>{{item.phoneNumber}}</td>
+              <td>{{item.partySize}}</td>
+              <td>{{item.accommodations}}</td>
+              <td><span ng-class="(item.accepted) ? 'fa fa-check-square-o fa-lg' : 'fa fa-square-o fa-lg'" ng-click="changeAccepted($index)"></span></td>
+              <td style="text-align:right"><button type="button" class="btn btn-danger" ng-click="deleteGuest($index)">Remove</button></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><button type="button" class="btn btn-md btn-default" ng-click="addGuest()">Add Guests</button> </td>
+          </tfoot>
+
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- </div> -->
