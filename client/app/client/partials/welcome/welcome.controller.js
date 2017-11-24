@@ -30,6 +30,17 @@ $scope.getEvents = function(){
 $scope.toggle = function (event) {
   $scope.state = !$scope.state;
   $scope.ev = event;
+
+  $scope.accepted = 0;
+  $scope.pending = 0;
+
+  for(var i = 0; i < event.guests.length; i++){
+    if(event.guests[i].accepted)
+      $scope.accepted+= event.guests[i].partySize;
+    else {
+      $scope.pending+= event.guests[i].partySize;
+    }
+  }
   $scope.getEventSubcons = function() {
     var promises = $scope.ev.subcontractors.map(function(subcon) {
       return Subcontractors.getOne(subcon);
