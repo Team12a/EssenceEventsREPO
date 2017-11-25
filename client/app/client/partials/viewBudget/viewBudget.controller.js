@@ -95,9 +95,11 @@ $scope.load = function() {
 
   $scope.deleteExpenditure = function(expense){
     console.log('delete expenditure');
-    //console.log('budget before: ' + $scope.event.budget);
-    $scope.event.budget.pop();
-    //console.log('budget after pop: ' + $scope.event.budget);
+    var index = $scope.event.budget.indexOf(expense);
+    console.log('index of element: ' + index);
+    if (index > -1) {
+      $scope.event.budget.splice(index, 1);
+    }
     updateEvent($scope.event);
   };
 
