@@ -10,7 +10,7 @@
 	      this.modalService = $modal;
       }
 
-      //Open Manage Clients Modal to manage client information and create events for a client
+      //Open Manage Accounts Modal to manage accouht information and create events for an account
       openModal(user){
         var modalInstance = this.modalService.open({
           animation: true,
