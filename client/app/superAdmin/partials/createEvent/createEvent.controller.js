@@ -174,14 +174,14 @@ angular.module('essenceEventsRepoApp.superAdmin')
           locationAdd: $scope.venueAddress,
           lat: $scope.latitude,
           lng: $scope.longitude,
-          userId: $stateParams.userID,
+          userId: $stateParams.userId,
           toDoList: $scope.thingsToDo,
           budgetGoal: $scope.budgetGoal,
           budget: $scope.budget
         };
         Events.create(event)
           .then(function(response) {
-            $state.go('admin.manageEvent');
+            $state.go('superAdmin.manageEvent');
           }, function(err) {
             //do something
         });

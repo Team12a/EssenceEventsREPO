@@ -34,6 +34,7 @@ export function create(req, res) {
       throw err;
     }
     else {
+      // console.log(req.body.userID);
       res.send(event._id);
     }
   });
