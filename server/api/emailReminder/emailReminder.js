@@ -30,7 +30,7 @@ var br = '################################\n';
 
 
 var loopJob = new CronJob({
-  cronTime: '* * * * * *', //Modify values as needed.
+  cronTime: '00 03 11 ** 0-6', //Modify values as needed.
   //Describes what actions are taken after each interval
   onTick: function() {
           //Temp
