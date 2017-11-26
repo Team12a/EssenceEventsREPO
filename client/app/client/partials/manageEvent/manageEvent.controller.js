@@ -75,6 +75,15 @@ $scope.toggle = function (event) {
     $scope.datePicker.scheduleDateOpened = true;
   };
 
+  $scope.deleteToDo = function(index) {
+    $scope.ev.toDoList.splice(index, 1);
+    Events.update($scope.ev)
+    .then(function(response){
+      console.log('Successful delete todo');
+    }, function(err){
+      console.log(err);
+    });
+  };
 
   //adds item into todo list
   $scope.addToDo = function(todo, date)
@@ -84,7 +93,7 @@ $scope.toggle = function (event) {
       $scope.ev.toDoList.push({todo: $scope.todoInput, by: $scope.newDueDate, done: false});
       Events.update($scope.ev)
       .then(function(response){
-        console.log('Success');
+        console.log('Success' addition todo);
       }, function(err){
         console.log(err);
       });

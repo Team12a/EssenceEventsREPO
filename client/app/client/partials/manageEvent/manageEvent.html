@@ -114,6 +114,7 @@
                         <td>{{item.todo}}</td>
                         <td>{{item.by | date:"EEEE, MMM. d, yyyy @h:mm a"}}</td>
                         <td><span ng-class="(item.done) ? 'fa fa-check-square-o fa-lg' : 'fa fa-square-o fa-lg'" ng-click="changeDone($index)"></span></td>
+                        <td style="text-align:right"><button type="button" class="btn btn-danger" ng-click="deleteToDo($index)">Remove</button></td>
                       </tr>
                     </tbody>
                   </table>
