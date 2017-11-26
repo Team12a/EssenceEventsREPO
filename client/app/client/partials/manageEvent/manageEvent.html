@@ -96,17 +96,33 @@
                       </tr>
                     </tbody>
                   </table>
+                  <div id= "newContractor" class="col-md-11">
                   <h4>Add New Subcontractor</h4>
-                  <form class="row" name="forms">
-                    <div class="col-md-6">
-                      <label for="addSubcon">Add Subcontractor:</label>
+                    <div class="form-group" show-errors>
+                      <label for="name">Name</label>
+                      <input name="name" type="name" ng-model="name" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group" show-errors>
+                      <label for="link">Link</label>
+                      <input name="link" type="link" ng-model="link" id="link" class="form-control">
+                    </div>
+
+                  <div ng-show="error" class="text-danger">
+                    <strong ng-bind="error"></strong>
+                  </div>
+                  <label for="button">&zwnj;</label>
+                  <button type="submit" class="btn btn-success btn-lg ">Create Contractor</button>
+                </div>
+                <div>
+                  <div class = "col-md-10">
+                      <label class = "addSubcon" for="addSubcon">Or Select a Subcontractor:</label>
                       <select type="select" class="form-control" ng-model="addSubcon" ng-options="subcontractor as subcontractor.name for subcontractor in subcontractors | orderBy: 'name'"></select>
                     </div>
                     <div class="col-md-1">
                       <label for="button">&zwnj;</label>
                       <button type="submit" class="btn btn-success" ng-click="addSubcontractor(addSubcon) ? addSubcon = null : null">+</button>
                     </div>
-                  </form>
+                    </div>
                 </div>
                 <!-- display table of todolist -->
                 <div class = "col-md-6">
