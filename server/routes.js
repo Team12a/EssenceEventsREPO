@@ -14,9 +14,11 @@ export default function(app) {
   app.use('/api/events', require('./api/event'));
   app.use('/api/links', require('./api/link'));
   app.use('/api/email', require('./api/email'));
+  app.use('/api/testimonials', require('./api/testimonial'));
   app.use('/api/payments', require('./api/payment'));
   app.use('/api/testimonial', require('./api/testimonial'));
   
+
 
   app.use('/auth', require('./auth'));
 

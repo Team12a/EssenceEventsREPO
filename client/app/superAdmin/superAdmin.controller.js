@@ -35,6 +35,11 @@ angular.module('essenceEventsRepoApp.superAdmin')
         'title': 'Manage Links',
         'description': 'Manage Public Links Page',
         'state': 'superAdmin.manageLinks',
+      },
+      {
+        'title': 'View Testimonials',
+        'description': 'View Testimonials Uploaded by Clients',
+        'state': 'superAdmin.viewTestimonials',
       }
     ];
 

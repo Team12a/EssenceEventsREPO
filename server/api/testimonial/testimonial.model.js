@@ -5,6 +5,9 @@ var testimonialSchema = new Schema({
   postName: String,
   eventDescription: String,
   message: String,
+  postDate: {
+    type: Date
+  }
 });
 
 

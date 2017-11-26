@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('essenceEventsRepoApp.admin')
+angular.module('essenceEventsRepoApp.superAdmin')
 .controller('ViewTestimonialsCtrl', ['$scope', '$state', '$modal', 'Testimonials', function ($scope, $state, $modal, Testimonials) {
   //Get all links from Links Factory
   $scope.getTestimonials = function() {
