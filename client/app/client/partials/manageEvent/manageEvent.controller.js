@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('essenceEventsRepoApp.client')
-.controller('manageEventCtrl', [ 'Events', 'Auth', '$scope','$modal', '$stateParams', '$state', 'uiGmapIsReady', function ( Events, Auth, $scope, $modal, $stateParams, $state, uiGmapIsReady) {
+.controller('manageEventCtrl', [ 'Events', 'Auth', '$scope','$modal','$stateParams', '$state', 'uiGmapIsReady', function ( Events, Auth, $scope, $modal, $stateParams, $state, uiGmapIsReady) {
 
 
 var getUser = function() {
@@ -60,6 +60,15 @@ $scope.toggle = function (event) {
     });
   };
 
+  $scope.getContractors = function() {
+    Subcontractors.getAll()
+    .then(function(response) {
+      $scope.subcontractors = response.data;
+    }, function(err) {
+      //do something
+    });
+  };
+
   $scope.datePicker = {opened: false, scheduleDateOpened: false};
   $scope.open = function($event) {
     $event.preventDefault();
@@ -93,7 +102,7 @@ $scope.toggle = function (event) {
       $scope.ev.toDoList.push({todo: $scope.todoInput, by: $scope.newDueDate, done: false});
       Events.update($scope.ev)
       .then(function(response){
-        console.log('Success' addition todo);
+        console.log('Success addition todo');
       }, function(err){
         console.log(err);
       });

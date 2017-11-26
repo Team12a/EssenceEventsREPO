@@ -24,7 +24,7 @@
 
 
 
-            <div ng-show="state" ng-init="getEventSubcons()">
+            <div ng-show="state" ng-init="getEventSubcons(); getContractors()">
               <!-- <div style="text-align:center">
                 <h3> Your {{ev.name}} </h3>
                 <h5> is on {{ev.date | date: 'fullDate'}}</h5>
@@ -91,10 +91,22 @@
                     <tbody ng-repeat ="person in ev.subcons" ng-show="hasSubcontractors(ev.subcontractors)">
                       <tr>
                         <td>{{person.name}}</td>
-                        <td>{{person.link}}</td>
+                        <td><a ng-href="{{person.link | url}}" target="_blank">{{person.link}}</a></td>
+                        <td style="text-align:right"><button type="button" class="btn btn-danger" ng-click="deleteSubcon($index)">Remove</button></td>
                       </tr>
                     </tbody>
                   </table>
+                  <h4>Add New Subcontractor</h4>
+                  <form class="row" name="forms">
+                    <div class="col-md-6">
+                      <label for="addSubcon">Add Subcontractor:</label>
+                      <select type="select" class="form-control" ng-model="addSubcon" ng-options="subcontractor as subcontractor.name for subcontractor in subcontractors | orderBy: 'name'"></select>
+                    </div>
+                    <div class="col-md-1">
+                      <label for="button">&zwnj;</label>
+                      <button type="submit" class="btn btn-success" ng-click="addSubcontractor(addSubcon) ? addSubcon = null : null">+</button>
+                    </div>
+                  </form>
                 </div>
                 <!-- display table of todolist -->
                 <div class = "col-md-6">
