@@ -98,21 +98,22 @@
                   </table>
                   <div id= "newContractor" class="col-md-11">
                   <h4>Add New Subcontractor</h4>
+                  <form class = "row">
                     <div class="form-group" show-errors>
                       <label for="name">Name</label>
-                      <input name="name" type="name" ng-model="name" id="name" class="form-control" required>
+                      <input name="name" type="name" ng-model="name"  class="form-control" required>
                     </div>
                     <div class="form-group" show-errors>
                       <label for="link">Link</label>
-                      <input name="link" type="link" ng-model="link" id="link" class="form-control">
+                      <input name="link" type="link" ng-model="link"  class="form-control" required>
                     </div>
-
                   <div ng-show="error" class="text-danger">
                     <strong ng-bind="error"></strong>
                   </div>
                   <label for="button">&zwnj;</label>
-                  <button type="submit" class="btn btn-success btn-lg ">Create Contractor</button>
+                  <button type="submit" class="btn btn-success btn-lg " ng-click="createNewContractor(name, link) ? name = link = null : null">Create Contractor</button>
                 </div>
+              </form>
                 <div>
                   <div class = "col-md-10">
                       <label class = "addSubcon" for="addSubcon">Or Select a Subcontractor:</label>

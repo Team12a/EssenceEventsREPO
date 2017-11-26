@@ -3,7 +3,7 @@
 angular.module('essenceEventsRepoApp.client')
 .controller('manageEventCtrl', [ 'Events', 'Auth', '$scope','$modal','Subcontractors','$stateParams', '$state', 'uiGmapIsReady', function ( Events, Auth, $scope, $modal, Subcontractors, $stateParams, $state, uiGmapIsReady) {
 
-
+var scope = $scope;
 var getUser = function() {
   if (!$scope.curUser._id)
     setTimeout(getUser, 100);
@@ -140,6 +140,25 @@ $scope.toggle = function (event) {
     }
     else
     return 0;
+  };
+
+  $scope.createNewContractor = function(name, link) {
+    if ($scope.name) {
+      var contractor = {
+        name: $scope.name,
+        link: $scope.link
+      };
+      Subcontractors.create(contractor)
+        .then(function(response) {
+          console.log('Success add contractor');
+        }, function(error) {
+          console.log(error);
+      });
+      scope.addSubcontractor(contractor);
+      return 1;
+    }
+  else
+  return 0;
   };
 
   $scope.changeDone = function(index) {
