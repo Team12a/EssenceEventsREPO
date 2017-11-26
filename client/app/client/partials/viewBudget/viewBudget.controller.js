@@ -179,9 +179,24 @@ $scope.load = function() {
     }
   };
 
-  $scope.editingExpense = false;
-  $scope.editExpenditure = function(){
-    $scope.editingExpense = true;
+  //$scope.editingExpense = false;
+  $scope.editExpenditure = function(expense){
+    $scope.estate = !$scope.estate;
+    $scope.expenditure = expense;
+    var index = $scope.event.budget.indexOf(expense);
+    $scope.event.budget.splice(index, 1);
+  };
+
+  $scope.update = function(expense){
+
+    $scope.estate = !$scope.estate;
+    console.log(expense);
+
+    $scope.title = expense.title;
+    $scope.amount = expense.amount;
+    $scope.addExpenditure();
+    //updateEvent($scope.event)
+
   };
 
 }]);

@@ -57,5 +57,22 @@
       </table>
     </div>
 
+    <div class="row" ng-show="estate">
+      <b>Update information for {{expenditure.title}}</b>
+      <br>
+      <form name="listingForm" class="form-horizontal" ng-submit="update(expenditure)">
+        <div id="updateExpenseTitle" class="col-md-6">
+          <label for="etitle">Expenditure: </label>
+          <input type="text" name="etitle" placeholder="{{expenditure.title}}" value="{{expenditure.amount}}" ng-model="expenditure.title" class="form-control">
+        </div>
+        <div id="updateExpenseAmount" class="col-md-4">
+          <label for="eamount">Amount: </label>
+          <input type="text" name="eamount" placeholder="{{expenditure.amount}}" value="{{expenditure.amount}}" ng-model="expenditure.amount" class="form-control">
+        </div>
+        <br>
+        <button type="submit" id="updateExpense" class="btn btn-sucess">Update</button>
+      </form>
+    </div>
+
   </div>
 </div>
