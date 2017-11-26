@@ -96,6 +96,17 @@ $scope.toggle = function (event) {
     });
   };
 
+  $scope.deleteSubcon = function(index) {
+    $scope.ev.subcontractors.splice($scope.ev.subcontractors.indexOf($scope.ev.subcons[index]._id), 1);
+    $scope.ev.subcons.splice(index, 1);
+    Events.update($scope.ev)
+    .then(function(response){
+      console.log('Successful delete subcon');
+    }, function(err){
+      console.log(err);
+    });
+  };
+
   //adds item into todo list
   $scope.addToDo = function(todo, date)
   {
