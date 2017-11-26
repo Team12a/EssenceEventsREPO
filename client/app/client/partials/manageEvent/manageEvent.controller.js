@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('essenceEventsRepoApp.client')
-.controller('manageEventCtrl', [ 'Events', 'Auth', '$scope','$modal','$stateParams', '$state', 'uiGmapIsReady', function ( Events, Auth, $scope, $modal, $stateParams, $state, uiGmapIsReady) {
+.controller('manageEventCtrl', [ 'Events', 'Auth', '$scope','$modal','Subcontractors','$stateParams', '$state', 'uiGmapIsReady', function ( Events, Auth, $scope, $modal, Subcontractors, $stateParams, $state, uiGmapIsReady) {
 
 
 var getUser = function() {
@@ -28,7 +28,14 @@ $scope.getEvents = function(){
     });
 };
 
-
+$scope.getContractors = function() {
+  Subcontractors.getAll()
+  .then(function(response) {
+    $scope.subcontractors = response.data;
+  }, function(err) {
+    //do something
+  });
+};
 
 $scope.toggle = function (event) {
   $scope.state = !$scope.state;
@@ -44,6 +51,8 @@ $scope.toggle = function (event) {
       title: $scope.ev.locationName
     }
   };
+
+
   $scope.getEventSubcons = function() {
     var promises = $scope.ev.subcontractors.map(function(subcon) {
       return Subcontractors.getOne(subcon);
@@ -60,14 +69,7 @@ $scope.toggle = function (event) {
     });
   };
 
-  $scope.getContractors = function() {
-    Subcontractors.getAll()
-    .then(function(response) {
-      $scope.subcontractors = response.data;
-    }, function(err) {
-      //do something
-    });
-  };
+
 
   $scope.datePicker = {opened: false, scheduleDateOpened: false};
   $scope.open = function($event) {
@@ -104,6 +106,23 @@ $scope.toggle = function (event) {
       .then(function(response){
         console.log('Success addition todo');
       }, function(err){
+        console.log(err);
+      });
+      return 1;
+    }
+    else
+    return 0;
+  };
+
+  $scope.addSubcontractor = function(contractor) {
+    if (contractor)
+    if ($scope.ev.subcontractors.indexOf(contractor._id) === -1) {
+      $scope.ev.subcons.push(contractor);
+      $scope.ev.subcontractors.push(contractor._id);
+      Events.update($scope.ev)
+      .then(function(response) {
+        console.log('Success addition subcon');
+      }, function(err) {
         console.log(err);
       });
       return 1;
