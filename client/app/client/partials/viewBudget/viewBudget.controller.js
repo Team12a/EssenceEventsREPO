@@ -158,30 +158,15 @@ $scope.load = function() {
   };
 
   $scope.canEdit = function(expense){
-    //console.log('user: ' + expense.user );
     console.log('can edit this expense: ' + expense);
     console.log('user: ' + expense.user);
     if (expense.user === 'client'){
-      //console.log('can edit expense');
       return true;
     } else {
-      //console.log('cannot edit an expense that you did not input');
       return false;
     }
   };
 
-  $scope.canDelete = function(expense){
-    //console.log('user: ' + expense.user );
-    if (expense.user === 'client'){
-      //console.log('can delete expense');
-      return true;
-    } else {
-      //console.log('cannot delete an expense that you did not input');
-      return false;
-    }
-  };
-
-  //$scope.editingExpense = false;
   $scope.editExpenditure = function(expense){
     $scope.estate = !$scope.estate;
     $scope.expenditure = expense;
@@ -190,15 +175,11 @@ $scope.load = function() {
   };
 
   $scope.update = function(expense){
-
     $scope.estate = !$scope.estate;
     console.log(expense);
-
     $scope.title = expense.title;
     $scope.amount = expense.amount;
     $scope.addExpenditure();
-    //updateEvent($scope.event)
-
   };
 
 }]);

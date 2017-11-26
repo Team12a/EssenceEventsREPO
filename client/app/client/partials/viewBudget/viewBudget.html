@@ -72,8 +72,12 @@
           <tr ng-repeat="expense in event.budget">
             <td>{{expense.title}}</td>
             <td>{{expense.amount}}</td>
-            <td><button ng-show="canDelete(expense)" ng-click="deleteExpenditure(expense)" class="btn btn-danger" >Delete</button></td>
-            <td><button ng-show="canEdit(expense)" ng-click="editExpenditure(expense)" class="btn btn-info">Edit</button></td>
+            <td><button ng-show="canEdit(expense)" ng-click="deleteExpenditure(expense)" class="btn btn-danger" >
+              <i class="fa fa-trash-o" id="white-fa" aria-hidden="true"></i>
+            </button></td>
+            <td><button ng-show="canEdit(expense)" ng-click="editExpenditure(expense)" class="btn btn-info">
+              <i class="fa fa-pencil" id="white-fa" aria-hidden="true"></i>
+            </button></td>
           </tr>
         </tbody>
       </table>
