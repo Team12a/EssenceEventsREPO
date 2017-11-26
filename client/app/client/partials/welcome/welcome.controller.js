@@ -77,6 +77,7 @@ $scope.toggle = function (event) {
         x: function(d){return d.title},
         y: function(d){return d.amount;},
         showLabels: true,
+        width: 300,
         duration: 500,
         labelThreshold: 0.01,
         labelSunbeamLayout: true,
