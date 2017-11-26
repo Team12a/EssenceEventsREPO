@@ -1,14 +1,16 @@
 'use strict';
 
+
 angular.module('essenceEventsRepoApp.superAdmin')
 .controller('CreateEventCtrlSuper', ['Events', '$scope', '$stateParams', '$state', 'uiGmapGoogleMapApi', function (Events, $scope, $stateParams, $state, uiGmapGoogleMapApi) {
+
 
   // $scope.message = 'Hello';
 
   //handle people trying to hit url directly.
   if($stateParams.userID == 'undefined')
   {
-    $state.go('admin.manageClients');
+    $state.go('superAdmin.manageAccounts');
   }
 
   //used to display the user you are talking to
@@ -159,6 +161,8 @@ angular.module('essenceEventsRepoApp.superAdmin')
 
   //Saves all of the $scope fields into an event object and saves it to the database
   $scope.submit = function() {
+
+
     uiGmapGoogleMapApi.then(function(maps) {
       var geocoder = new google.maps.Geocoder();
       geocoder.geocode({'address': $scope.venueAddress},function(results, status){
@@ -193,6 +197,7 @@ angular.module('essenceEventsRepoApp.superAdmin')
         });
       });
         });
+
 
   };
 

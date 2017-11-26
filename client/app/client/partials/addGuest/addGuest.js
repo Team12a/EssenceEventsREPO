@@ -5,7 +5,7 @@
     .config(function ($stateProvider) {
       $stateProvider
         .state('client.addGuest', {
-          url: '/addGuest/',
+          url: '/addGuest',
           params: {
             ev: 'undefined'
           },
