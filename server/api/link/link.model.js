@@ -1,6 +1,6 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
-
+//terrible and confusing naming semantics, like ?????
 var eventSchema = new Schema({
   type: String,
   name: String,

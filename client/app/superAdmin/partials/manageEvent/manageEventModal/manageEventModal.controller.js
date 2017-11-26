@@ -210,6 +210,7 @@ $scope.deleteSubcon = function(index) {
 
 //Update the object on save call
 $scope.submit = function() {
+
   uiGmapGoogleMapApi.then(function(maps) {
     var geocoder = new google.maps.Geocoder();
     geocoder.geocode({'address': $scope.event.locationAdd},function(results, status){
@@ -229,6 +230,7 @@ $scope.submit = function() {
           });
         });
       });
+
 
 };
 
