@@ -2,16 +2,16 @@
   margin: 5%;
 }
 
-#inputExpenditure {
+#inputExpenditure, #etitle {
   width: 90%;
 }
 
-#view-budget-form {
+#view-budget-form, #edit-budget-form {
   padding: 5%;
   padding-left: 0%;
 }
 
-#price-input {
+#price-input, #updateExpenseAmount {
   width: 50%;
 }
 
@@ -23,4 +23,8 @@ p {
 table {
   width: 90% !important;
   padding-right: 5%;
+}
+
+#white-fa {
+  color: white !important;
 }

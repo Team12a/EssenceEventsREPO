@@ -159,6 +159,8 @@ $scope.load = function() {
 
   $scope.canEdit = function(expense){
     //console.log('user: ' + expense.user );
+    console.log('can edit this expense: ' + expense);
+    console.log('user: ' + expense.user);
     if (expense.user === 'client'){
       //console.log('can edit expense');
       return true;
