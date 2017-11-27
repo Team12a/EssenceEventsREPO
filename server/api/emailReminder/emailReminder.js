@@ -3,6 +3,7 @@
 import config from '../../config/environment';
 import User from '../user/user.model';
 import Event from '../event/event.model';
+import Payment from '../payment/payment.model';
 var nodemailer = require('nodemailer');
 var sgTransport = require('nodemailer-sendgrid-transport');
 
@@ -31,10 +32,9 @@ const CronJob = require('cron').CronJob;
 
 
 var br = '################################';
-var bool = false;
 
 var loopJob = new CronJob({
-  cronTime: '00 03 11 ** 0-6', //Modify values as needed.
+  cronTime: '05 * * * * *', //Modify values as needed. '00 30 11 ** 0-6'
   //Describes what actions are taken after each interval
   onTick: function() {
           //Temp
@@ -65,7 +65,7 @@ var loopJob = new CronJob({
           });
           var passedTemplate = transporter.templateSender(
             {
-            subject: 'EssenceEvents Passed Due Email Reminder for {{emailAddress}}!',
+            subject: 'EssenceEvents Passed Due Date Email Reminder for {{emailAddress}}!',
             html: `<table>
                     <tr bgcolor="#EDC4D6">
                       <th><h1><img src="http://essenceevents.net/assets/images/EELogoIMG.png" width="50" height="50" alt="Essence Events" align ="center" /> Email Reminder</h1></th>
@@ -82,9 +82,27 @@ var loopJob = new CronJob({
             }, {
               from: config.essEventsReminderEmail.email.address,
           });
+          var upcomingPaymentTemplate = transporter.templateSender(
+            {
+            subject: 'EssenceEvents Payment Email Reminder for {{emailAddress}}!',
+            html: `<table>
+                    <tr bgcolor="#EDC4D6">
+                      <th><h1><img src="http://essenceevents.net/assets/images/EELogoIMG.png" width="50" height="50" alt="Essence Events" align ="center" /> Email Reminder</h1></th>
+                      </tr>
+                      <tr>
+                        <td><h3>Hello <b>{{username}},</b></h3>
+                              <p>       You have an upcoming due date for <b>{{payment}}</b> on <b>{{dueDate}}</b>.</p></td>
+                      </tr>
+                      <tr bgcolor="#EDC4D6">
+                        <td align="center"><h3>Essence Events.</h3></td>
+                      </tr>
+                  </table>`
+            }, {
+              from: config.essEventsReminderEmail.email.address,
+          });
           var passedPaymentTemplate = transporter.templateSender(
             {
-            subject: 'EssenceEvents Passed Due Payment Email Reminder for {{emailAddress}}!',
+            subject: 'EssenceEvents Passed Due Date Payment Email Reminder for {{emailAddress}}!',
             html:
                   `<table>
                           <tr bgcolor="#EDC4D6">
@@ -92,7 +110,7 @@ var loopJob = new CronJob({
                             </tr>
                             <tr>
                               <td><h3>Hello <b>{{username}},</b></h3>
-                                    <p>       Your payment for <b>{{payment}}</b>, needed for the event, <b>{{eventName}}</b>, has passed its due date on <b>{{dueDate}}</b>.</p></td>
+                                    <p>       You have an required payment for <b>{{payment}}</b> that has passed its due date on <b>{{dueDate}}</b>.</p></td>
                             </tr>
                             <tr bgcolor="#EDC4D6">
                               <td align="center"><h3>Essence Events.</h3></td>
@@ -131,7 +149,7 @@ var loopJob = new CronJob({
                             </tr>
                             <tr>
                               <td><h3>Hello Erma,</h3>
-                                    <p>       <b>{{username}}</b> has missed a payment, <b>{{payment}}</b>, for the event, <b>{{eventName}}</b>, that was due on <b>{{dueDate}}</b>.</p></td>
+                                    <p>       <b>{{username}}</b> has missed a payment, <b>{{payment}}</b>, that was due on <b>{{dueDate}}</b>.</p></td>
                             </tr>
                             <tr bgcolor="#EDC4D6">
                               <td align="center"><h3>Essence Events.</h3></td>
@@ -143,7 +161,6 @@ var loopJob = new CronJob({
           });
           //Current Date
           var now = moment();
-          bool = false; //Get rid of this later. Only for testing purposes.
 
           //For each toDoList item, checks if finished, if not, send email to corresponding user email
           //If null (aka. no events/toDoList), do nothing
@@ -152,109 +169,203 @@ var loopJob = new CronJob({
           Event.find( { "toDoList":{$elemMatch:{done:false}} } ).exec(function(err, events){
              if(err) throw err;
              else{
-                  console.log(events.length);
+                  console.log('Number of Events: ' + events.length);
                   console.log(br);
                   events.forEach(function(thing){
                     //Find and convert it to an array with .exec
                     Event.find({"_id": thing.id}).exec(function(err, thingArray){
-                      console.log(thingArray[0].name);
-                      User.find({"_id": thingArray[0].userId}).exec(function(err, eventUser){
-                        if(err) throw err;
-                        else if(eventUser.length>0){
-                          console.log('..\t' + eventUser[0].name + '\t' + thingArray[0].name);
-                        }
-                      });
-                      //This makes sure the code only runs if user exists
-                      // Also gets rid of events from previous grunt serve.
-                      User.find({"_id": thingArray[0].userId}).exec(function(err, eventUser){
-                        if(err) throw err;
-                        else if(eventUser.length>0){
-                          var eventDate = moment(thingArray[0].date);
-                          console.log(br);
-                          console.log(thing.name + '\t' + eventDate.format('MMMM Do YYYY, h:mm:ss a'));  //Works
-                          console.log(thingArray[0].toDoList.length); //THIS WORKS
+                      if(err) throw err;
+                      else{
+                        console.log(thingArray[0].name);
+                        User.find({"_id": thingArray[0].userId}).exec(function(err, eventUser){
+                          if(err) throw err;
+                          else if(eventUser.length>0){
+                            console.log('..\t' + eventUser[0].name + '\t' + thingArray[0].name);
+                          }
+                        });
+                        //This makes sure the code only runs if user exists
+                        // Also gets rid of events from previous grunt serve.
+                        User.find({"_id": thingArray[0].userId}).exec(function(err, eventUser){
+                          if(err) throw err;
+                          else if(eventUser.length>0){
+                            var eventDate = moment(thingArray[0].date);
+                            console.log(br);
+                            console.log(thing.name + '\t' + eventDate.format('MMMM Do YYYY, h:mm:ss a'));  //Works
+                            console.log(thingArray[0].toDoList.length); //THIS WORKS
 
-                          thingArray[0].toDoList.forEach(function(item){
-                            console.log('...\t\t' + item.todo + '\t' + item.by);
-                            //Compares Dates
-                            var itemDate = moment(item.by);
-                            var dateDiff = itemDate.diff(now, 'm');   //Checks if Todo Date is passed. <0 means
-                            var eventDiff = eventDate.diff(now,'m');  //Checks if Event Date is passed.
-                            //EventDiff > 0 guarantees we're looking at upcoming events only
-                            //If Date is passed
-                            if(!item.done && dateDiff <= 0 && dateDiff > -4320 && thingArray[0].userId != null && eventDiff > 0){
-                              console.log('....\tPassed\t\tDate Diff (m): ' + dateDiff + '\tEventDiff (m):' +eventDiff);
-                              // use template based sender to send a message
-                              passedTemplate(
-                                { to: config.essEventsReminderEmail.email.address}, //Place Sender Email here. For testing purposes, send to itself.
-                                {
-                                  username: eventUser[0].name,
-                                  emailAddress: eventUser[0].email,
-                                  todoListItem: item.todo,
-                                  todoListDate: item.by
-                                },
-                                function(err, info){
-                                  if(err){
-                                    console.log('Error');
-                                    throw error;
-                                    res.status(400).end();
-                                  }else{
-                                    console.log('Email reminder sent');
+                            thingArray[0].toDoList.forEach(function(item){
+                              console.log('...\t\t' + item.todo + '\t' + item.by);
+                              //Compares Dates
+                              var itemDate = moment(item.by);
+                              var dateDiff = itemDate.diff(now, 'm');   //Checks if Todo Date is passed. <0 means passed
+                              var eventDiff = eventDate.diff(now,'m');  //Checks if Event Date is passed.
+                              //EventDiff > 0 guarantees we're looking at upcoming events only
+                              //If Date is passed but no more than 3 days (4320 minutes)
+                              if(!item.done && dateDiff <= 0 && dateDiff > -4320 && thingArray[0].userId != null && eventDiff > 0){
+                                console.log('....\tPassed\t\tDate Diff (m): ' + dateDiff + '\tEventDiff (m):' +eventDiff);
+                                // use template based sender to send a message
+                                passedTemplate(
+                                  { to: config.essEventsReminderEmail.email.address}, //Place Sender Email here. For testing purposes, send to itself.
+                                  {
+                                    username: eventUser[0].name,
+                                    emailAddress: eventUser[0].email,
+                                    todoListItem: item.todo,
+                                    todoListDate: itemDate.format('MMMM Do YYYY, h:mm:ss a')
+                                  },
+                                  function(err, info){
+                                    if(err){
+                                      console.log('Error');
+                                      throw error;
+                                      res.status(400).end();
+                                    }else{
+                                      console.log('Email reminder sent');
+                                    }
                                   }
-                                }
-                              );
-                              //Send Email to SuperAdmin as well
-                              passedAdminTemplate(
-                                { to: config.essEventsReminderEmail.email.address}, //Place Sender Email here. For testing purposes, send to itself.
-                                {
-                                  username: eventUser[0].name,
-                                  eventName: thingArray[0].name,
-                                  todoListItem: item.todo,
-                                  todoListDate: item.by
-                                },
-                                function(err, info){
-                                  if(err){
-                                    console.log('Error');
-                                    throw error;
-                                    res.status(400).end();
-                                  }else{
-                                    console.log('Email reminder sent');
+                                );
+                                //Send Email to SuperAdmin as well
+                                passedAdminTemplate(
+                                  { to: config.essEventsReminderEmail.email.address}, //Place Sender Email here. For testing purposes, send to itself.
+                                  {
+                                    username: eventUser[0].name,
+                                    eventName: thingArray[0].name,
+                                    todoListItem: item.todo,
+                                    todoListDate: itemDate.format('MMMM Do YYYY, h:mm:ss a')
+                                  },
+                                  function(err, info){
+                                    if(err){
+                                      console.log('Error');
+                                      throw error;
+                                      res.status(400).end();
+                                    }else{
+                                      console.log('Email reminder sent');
+                                    }
                                   }
-                                }
-                              );
-                            }
-                            //If Date is upcoming
-                            else if (!item.done && dateDiff > 0 && thingArray[0].userId != null && eventDiff > 0){
-                              console.log('....\tUpcoming\t\tDate Diff (m): ' + dateDiff + '\tEventDiff (m):' +eventDiff);
-                              // use template based sender to send a message
-                              upcomingTemplate(
-                                { to: config.essEventsReminderEmail.email.address}, //Place Sender Email here. For testing purposes, send to itself.
-                                {
-                                  username: eventUser[0].name,
-                                  emailAddress: eventUser[0].email,
-                                  todoListItem: item.todo,
-                                  todoListDate: item.by
-                                },
-                                function(err, info){
-                                  if(err){
-                                    console.log('Error');
-                                    throw error;
-                                    res.status(400).end();
-                                  }else{
-                                    console.log('Email reminder sent');
+                                );
+                              }
+                              //If Date is upcoming
+                              else if (!item.done && dateDiff > 0 && thingArray[0].userId != null && eventDiff > 0){
+                                console.log('....\tUpcoming\t\tDate Diff (m): ' + dateDiff + '\tEventDiff (m):' +eventDiff);
+                                // use template based sender to send a message
+                                upcomingTemplate(
+                                  { to: config.essEventsReminderEmail.email.address}, //Place Sender Email here. For testing purposes, send to itself.
+                                  {
+                                    username: eventUser[0].name,
+                                    emailAddress: eventUser[0].email,
+                                    todoListItem: item.todo,
+                                    todoListDate: itemDate.format('MMMM Do YYYY, h:mm:ss a')
+                                  },
+                                  function(err, info){
+                                    if(err){
+                                      console.log('Error');
+                                      throw error;
+                                      res.status(400).end();
+                                    }else{
+                                      console.log('Email reminder sent');
+                                    }
                                   }
-                                }
-                              );
-                            }
-                          });
-                        }
-                      });
-                      /////////////////////////////////////////////////////////////////
+                                );
+                              }
+                            });
+                          }
+                        });
+                        /////////////////////////////////////////////////////////////////
+                      }
                     });
                   });
              }
-         });
+          });
 
+          //This code line will give all payments
+          Payment.find().exec(function(err, payments){
+            if(err) throw err;
+            else{
+                console.log('Number of Payments: ' + payments.length);
+                console.log(br);
+                payments.forEach(function(thing){
+                  //Find and convert it to an array with .exec
+                  Payment.find({"_id": thing.id}).exec(function(err, thingArray){
+                    if(err) throw err;
+                    else{
+                      //This makes sure the code only runs if user exists
+                      // Also gets rid of payments from previous grunt serve.
+                      User.find({"_id": thingArray[0].userId}).exec(function(err, paymentUser){
+                        if(err) throw err;
+                        else if(paymentUser.length>0){
+                          var paymentDate = moment(thingArray[0].dueDate);
+                          console.log('..Payment: ' + thingArray[0].description + '\t' + paymentUser[0].name + '\t' + paymentDate.format('MMMM Do YYYY, h:mm:ss a'));
+                          //Compare Dates
+                          var dateDiff = paymentDate.diff(now, 'm');
+                          //If Date is passed
+                          if(!thingArray[0].paid && dateDiff<=0 && dateDiff > -4320 && thingArray[0].userId != null){
+                            console.log('....\tPassed\t\tDate Diff (m): ' + dateDiff);
+                            // use template based sender to send a message
+                            passedPaymentTemplate(
+                              {to: config.essEventsReminderEmail.email.address}, //Place Sender Email here. For testing purposes, send to itself.
+                              {
+                                username:paymentUser[0].name,
+                                emailAddress:paymentUser[0].email,
+                                payment:thingArray[0].description,
+                                dueDate:paymentDate.format('MMMM Do YYYY, h:mm:ss a')
+                              },
+                              function(err, info){
+                                if(err){
+                                  console.log('Error');
+                                  throw error;
+                                  res.status(400).end();
+                                }else{
+                                  console.log('Email reminder sent');
+                                }
+                              }
+                            );
+                            //Send Email to SuperAdmin as well
+                            passedAdminPaymentTemplate(
+                              {to: config.essEventsReminderEmail.email.address}, //Place Sender Email here. For testing purposes, send to itself.
+                              {
+                                username:paymentUser[0].name,
+                                payment:thingArray[0].description,
+                                dueDate:paymentDate.format('MMMM Do YYYY, h:mm:ss a')
+                              },
+                              function(err, info){
+                                if(err){
+                                  console.log('Error');
+                                  throw error;
+                                  res.status(400).end();
+                                }else{
+                                  console.log('Email reminder sent');
+                                }
+                              }
+                            );
+                          }
+                          //If Date is upcoming
+                          else if(!thingArray[0].paid && dateDiff > 0 && thingArray[0].userId != null){
+                            console.log('....\tUpcoming\t\tDate Diff (m): ' + dateDiff);
+                            // use template based sender to send a message
+                            upcomingPaymentTemplate(
+                              {to: config.essEventsReminderEmail.email.address},
+                              {
+                                username:paymentUser[0].name,
+                                emailAddress:paymentUser[0].email,
+                                payment:thingArray[0].description,
+                                dueDate:paymentDate.format('MMMM Do YYYY, h:mm:ss a')
+                              },
+                              function(err, info){
+                                if(err){
+                                  console.log('Error');
+                                  throw error;
+                                  res.status(400).end();
+                                }else{
+                                  console.log('Email reminder sent');
+                                }
+                              }
+                            );
+                          }
+                        }
+                      });
+                    }
+                  });
+                });
+            }
+          });
 
         },
   start: false
@@ -266,4 +377,3 @@ module.exports = {
 //loop.start();
 
 //console.log('loopJob status', loopJob.running); // loopJob status true, use this to check if it's running
-
