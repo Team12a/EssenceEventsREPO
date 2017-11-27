@@ -28,3 +28,45 @@ export function create(req, res) {
       res.send('Creation Successful');
   });
 }
+
+export function textByID(req, res, next, text_id) {
+  TextEdit.find({text_id: text_id}, function(err, literalText) {
+    if (err) {
+      res.status(400).send(err);
+      throw err;
+    }
+    else {
+      req.literalText = literalText;
+      next();
+    }
+  });
+}
+
+// export function update(req, res) {
+//   var text = new TextEdit(req.body);
+
+//   TextEdit.text_id = req.body.text_id;
+//   TextEdit.literalText = req.body.literalText;
+
+//   if(req.results) 
+//   {
+//     TextEdit.coordinates = 
+//     {
+//       latitude: req.results.lat, 
+//       longitude: req.results.lng
+//     };
+//   }
+
+//   listing.save(function(err) 
+//   {
+//     if(err) 
+//     {
+//       console.log(err);
+//       res.status(400).send(err);
+//     }
+//     else 
+//     {
+//       res.json(listing);
+//     }
+//   });
+// };
