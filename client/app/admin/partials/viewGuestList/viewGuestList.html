@@ -1,7 +1,7 @@
 <div class = "container-fluid">
-  <div ng-controller="ViewGuestListCtrl" ng-init="getEvents()">
+  <div ng-controller="ViewGuestListCtrl" >
     <div class="page-header">
-      <h1> {{event.name}} guest list:</h1>
+      <h1> {{eve.name}} guest list:</h1>
     </div>
     <div class = "col-md-12" ng-init="sortGuest='name'">
       <div class="col-md-5" style="padding-left:0px;float: left;">
@@ -20,7 +20,7 @@
 
             </tr>
           </thead>
-          <tbody ng-repeat ="item in event.guests">
+          <tbody ng-repeat ="item in eve.guests">
             <tr>
               <td>{{item.name}}</td>
               <td>{{item.email}}</td>

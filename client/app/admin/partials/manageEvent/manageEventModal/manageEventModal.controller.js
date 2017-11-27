@@ -143,10 +143,11 @@ $scope.addGuest = function(name, email, phoneNumber, partySize, accommodations) 
   return 0;
 };
 
-$scope.viewGuestList = function(event)
+$scope.viewGuestList = function()
 {
-  $modalInstance.close();
-  $state.go('admin.viewGuestList', {event});
+  console.log($scope.event.name);
+  // $modalInstance.close();
+  $state.go('admin.viewGuestList',{userID : user._id, usersName : user.name, eve: $scope.event});
 };
 
 //Remove a guest from the array
