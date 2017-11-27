@@ -5,7 +5,7 @@
       $stateProvider
         .state('superAdmin.manageEventModal', {
           url: '/manageEventModal',
-          templateUrl: 'app/superAdmin/partials/manageClients/manageClientsModal/manageEventModal.html',
+          templateUrl: 'app/superAdmin/partials/manageAccounts/manageAccountsModal/manageEventModal.html',
           controller: 'ManageEventModalCtrl',
           controllerAs: 'mancli',
           authenticate: 'super',
