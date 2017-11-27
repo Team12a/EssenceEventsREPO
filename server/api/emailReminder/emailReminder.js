@@ -161,6 +161,9 @@ var loopJob = new CronJob({
           });
           //Current Date
           var now = moment();
+          //Set for payment due dates
+          var timeStr = '23:59:59';
+          var time = moment(timeStr,'HH:mm:ss');
 
           //For each toDoList item, checks if finished, if not, send email to corresponding user email
           //If null (aka. no events/toDoList), do nothing
@@ -292,6 +295,12 @@ var loopJob = new CronJob({
                         if(err) throw err;
                         else if(paymentUser.length>0){
                           var paymentDate = moment(thingArray[0].dueDate);
+                          //Set Payment Due date to midnight just in case
+                          paymentDate.set({
+                            hour:   time.get('hour'),
+                            minute: time.get('minute'),
+                            second: time.get('second')
+                          });
                           console.log('..Payment: ' + thingArray[0].description + '\t' + paymentUser[0].name + '\t' + paymentDate.format('MMMM Do YYYY, h:mm:ss a'));
                           //Compare Dates
                           var dateDiff = paymentDate.diff(now, 'm');
