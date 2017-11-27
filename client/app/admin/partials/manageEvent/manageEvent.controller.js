@@ -22,7 +22,7 @@ angular.module('essenceEventsRepoApp.admin')
     Events.getAll()
     .then(function(response) {
       $scope.events = response.data;
-      
+
     //We have the userId in the model so we use Auth to get the name for each
       $scope.events.forEach(function(event) {
         Auth.getById(event.userId)
@@ -41,6 +41,7 @@ angular.module('essenceEventsRepoApp.admin')
   $scope.openModal = function(event) {
     var modalInstance = $modal.open({
       animation: true,
+      backdrop: 'static',
       templateUrl: 'app/admin/partials/manageEvent/manageEventModal/manageEventModal.html',
       controller: 'ManageEventModalCtrl',
       resolve: {
