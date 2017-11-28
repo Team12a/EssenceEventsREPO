@@ -5,8 +5,6 @@ angular.module('essenceEventsRepoApp.admin')
 .controller('CreateEventCtrl', ['Events', '$scope', '$stateParams', '$state', function (Events, $scope, $stateParams, $state) {
 
 
-  // $scope.message = 'Hello';
-
   //handle people trying to hit url directly.
   if($stateParams.userID == 'undefined')
   {
@@ -30,7 +28,6 @@ angular.module('essenceEventsRepoApp.admin')
   };
 
 
-  // $scope.freeCash;
   $scope.currCost = 0;
   $scope.myStyle='';
   $scope.thingsToDo = [];

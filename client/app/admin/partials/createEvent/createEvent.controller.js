@@ -3,8 +3,6 @@
 angular.module('essenceEventsRepoApp.admin')
 .controller('CreateEventCtrl', ['Events', '$scope', '$stateParams', '$state','uiGmapGoogleMapApi', function (Events, $scope, $stateParams, $state, uiGmapGoogleMapApi) {
 
-  // $scope.message = 'Hello';
-
   //handle people trying to hit url directly.
   if($stateParams.userID == 'undefined')
   {
@@ -14,11 +12,6 @@ angular.module('essenceEventsRepoApp.admin')
   //used to display the user you are talking to
   $scope.clientName = $stateParams.usersName;
 
-  //datePickerOptions
-//  $scope.dateOptions =
-
-
-
   //set up date for event
   $scope.eventDate = new Date();
   $scope.openEventDate = function($event) {
@@ -27,11 +20,6 @@ angular.module('essenceEventsRepoApp.admin')
     $scope.eventDateOpened = true;
   };
 
-
-
-
-
-  // $scope.freeCash;
   $scope.currCost = 0;
   $scope.myStyle='';
   $scope.thingsToDo = [];

@@ -1,6 +1,3 @@
-//made changes to mimic admin account need to make a client controller name
-// change line 6 and 7
-
 'use strict';
 
 angular.module('essenceEventsRepoApp.client')

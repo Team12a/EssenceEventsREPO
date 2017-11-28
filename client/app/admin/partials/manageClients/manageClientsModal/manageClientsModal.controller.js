@@ -30,19 +30,19 @@ angular.module('essenceEventsRepoApp.admin')
     $state.go('admin.createEvent', {userID : user._id, usersName : user.name});
   };
 
-  //***Create Payment ***
+  //Create Payment
   $scope.createPayment = function()
   {
     $modalInstance.close();
     $state.go('admin.createPayment', {userID: user._id, usersName: user.name});
   };
 
-  //**Get all payments for the user***
+  //Get all payments for the user
   $scope.getPayments = function(){
     $scope.payments = null;
     Payments.getByUser(user._id)
     .then(function(response){
-      if(response.data.lenght >0)
+      if(response.data.length >0)
       $scope.payments = response.data;
     }, function(err){
       //do something
@@ -61,7 +61,7 @@ angular.module('essenceEventsRepoApp.admin')
     });
   };
 
-  //***Switches states to Manage Payments and opens the modal for the payment clicked***
+  //Switches states to Manage Payments and opens the modal for the payment clicked
   $scope.managePayment = function(payment){
     $modalInstance.close();
     $state.go('admin.managePayment');

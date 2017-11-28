@@ -31,26 +31,6 @@ angular.module('essenceEventsRepoApp.admin')
     );
   }
 
-
-/**this is for Basic Info
-$scope.datePicker = {opened: false, scheduleDateOpened: false};
-$scope.open = function($event) {
-  $event.preventDefault();
-  $event.stopPropagation();
-  $scope.datePicker.opened = true;
-};
-*/
-
-
-/**used for Schedule Tab,
-$scope.scheduleDateOpen = function($event) {
-  $event.preventDefault();
-  $event.stopPropagation();
-  $scope.datePicker.scheduleDateOpened = true;
-};
-*/
-
-
 //Close modal without making changes
 $scope.cancel = function() {
   $modalInstance.close();

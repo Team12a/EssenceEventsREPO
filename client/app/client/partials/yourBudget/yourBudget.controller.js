@@ -5,7 +5,6 @@ angular.module('essenceEventsRepoApp.client')
 
 var getUser = function() {
   if (!$scope.curUser._id) {
-    console.error("no user found");
     setTimeout(getUser, 100);
   } else {
     $scope.clientName = $scope.curUser.name;
@@ -28,9 +27,6 @@ $scope.getEvents = function(){
     });
 };
 
-
-
-
     // Pi chart for budget
     $scope.options = {
       chart: {
@@ -52,8 +48,5 @@ $scope.getEvents = function(){
         }
       }
     };
-
-
-
 
 }]);

@@ -63,7 +63,6 @@ $scope.toggle = function (event) {
     };
     Events.toggleTodo($scope.ev._id, body)
       .then(function(response) {
-	//console.log('done');
       }, function(err) {
 	//do something
     });

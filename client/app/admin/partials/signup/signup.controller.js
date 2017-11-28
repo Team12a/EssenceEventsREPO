@@ -24,7 +24,6 @@ class SignupController {
       })
       .then(() => {
         // Account created, redirect to admin basic
-        //todo - redirect to create event
         this.$state.go('admin.manageClients');
       })
       .catch(err => {

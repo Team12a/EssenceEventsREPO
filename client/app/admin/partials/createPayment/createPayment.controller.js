@@ -3,8 +3,6 @@
 angular.module('essenceEventsRepoApp.admin')
 .controller('CreatePaymentCtrl', ['Payments', '$scope', '$stateParams', '$state', function (Payments, $scope, $stateParams, $state) {
 
-  // $scope.message = 'Hello';
-
   //handle people trying to hit url directly.
   if($stateParams.userID == 'undefined')
   {
@@ -16,7 +14,6 @@ angular.module('essenceEventsRepoApp.admin')
 
   //datePickerOptions
   $scope.dateOptions =
-
 
 
   //set up date for event

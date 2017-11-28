@@ -9,14 +9,12 @@ angular.module('essenceEventsRepoApp')
     else {
       $scope.clientName = $scope.curUser.name;
       $scope.id = $scope.curUser._id;
-      console.log($scope.id);
     }
   };
 
   $scope.curUser = Auth.getCurrentUser();
   getUser();
   var getPayments = function(){
-    console.log("Here");
     if (!$scope.id)
       setTimeout($scope.getPayments, 100);
     else
@@ -53,12 +51,10 @@ angular.module('essenceEventsRepoApp')
     getUser();
 
 
-
-
     $scope.find = function() {
       Payments.findAll()
-	.then(function(response) {
-	  $scope.Payments = response.data;
+	     .then(function(response) {
+	     $scope.Payments = response.data;
 	}, function(error) {
 	  $scope.error = 'Aint nothin';
       });

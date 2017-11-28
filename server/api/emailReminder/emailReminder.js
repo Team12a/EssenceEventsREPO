@@ -37,11 +37,6 @@ var loopJob = new CronJob({
   cronTime: '00 30 11 * * 0-6', //Modify values as needed.
   //Describes what actions are taken after each interval
   onTick: function() {
-          //Temp
-          console.log(br);
-          console.log(br);
-          console.log(br);
-          console.log('Running Send Notifications Worker every 5 seconds');
           //Creates transporter using sendgrid
           var transporter = nodemailer.createTransport(sgTransport(config.essEventsReminderEmail.options));
           //Email Templates
@@ -152,16 +147,14 @@ var loopJob = new CronJob({
           Event.find( { "toDoList":{$elemMatch:{done:false}} } ).exec(function(err, events){
              if(err) throw err;
              else{
-                  console.log(events.length);
-                  console.log(br);
+
                   events.forEach(function(thing){
                     //Find and convert it to an array with .exec
                     Event.find({"_id": thing.id}).exec(function(err, thingArray){
-                      console.log(thingArray[0].name);
+
                       User.find({"_id": thingArray[0].userId}).exec(function(err, eventUser){
                         if(err) throw err;
                         else if(eventUser.length>0){
-                          console.log('..\t' + eventUser[0].name + '\t' + thingArray[0].name);
                         }
                       });
                       //This makes sure the code only runs if user exists
@@ -170,12 +163,10 @@ var loopJob = new CronJob({
                         if(err) throw err;
                         else if(eventUser.length>0){
                           var eventDate = moment(thingArray[0].date);
-                          console.log(br);
-                          console.log(thing.name + '\t' + eventDate.format('MMMM Do YYYY, h:mm:ss a'));  //Works
-                          console.log(thingArray[0].toDoList.length); //THIS WORKS
+
 
                           thingArray[0].toDoList.forEach(function(item){
-                            console.log('...\t\t' + item.todo + '\t' + item.by);
+
                             //Compares Dates
                             var itemDate = moment(item.by);
                             var dateDiff = itemDate.diff(now, 'm');   //Checks if Todo Date is passed. <0 means
@@ -183,7 +174,7 @@ var loopJob = new CronJob({
                             //EventDiff > 0 guarantees we're looking at upcoming events only
                             //If Date is passed
                             if(!item.done && dateDiff <= 0 && dateDiff > -4320 && thingArray[0].userId != null && eventDiff > 0){
-                              console.log('....\tPassed\t\tDate Diff (m): ' + dateDiff + '\tEventDiff (m):' +eventDiff);
+
                               // use template based sender to send a message
                               passedTemplate(
                                 { to: config.essEventsReminderEmail.email.address}, //Place Sender Email here. For testing purposes, send to itself.
@@ -195,11 +186,9 @@ var loopJob = new CronJob({
                                 },
                                 function(err, info){
                                   if(err){
-                                    console.log('Error');
                                     throw error;
                                     res.status(400).end();
                                   }else{
-                                    console.log('Email reminder sent');
                                   }
                                 }
                               );
@@ -214,18 +203,16 @@ var loopJob = new CronJob({
                                 },
                                 function(err, info){
                                   if(err){
-                                    console.log('Error');
                                     throw error;
                                     res.status(400).end();
                                   }else{
-                                    console.log('Email reminder sent');
                                   }
                                 }
                               );
                             }
                             //If Date is upcoming
                             else if (!item.done && dateDiff > 0 && thingArray[0].userId != null && eventDiff > 0){
-                              console.log('....\tUpcoming\t\tDate Diff (m): ' + dateDiff + '\tEventDiff (m):' +eventDiff);
+
                               // use template based sender to send a message
                               upcomingTemplate(
                                 { to: config.essEventsReminderEmail.email.address}, //Place Sender Email here. For testing purposes, send to itself.
@@ -237,11 +224,9 @@ var loopJob = new CronJob({
                                 },
                                 function(err, info){
                                   if(err){
-                                    console.log('Error');
                                     throw error;
                                     res.status(400).end();
                                   }else{
-                                    console.log('Email reminder sent');
                                   }
                                 }
                               );
@@ -263,6 +248,5 @@ var loopJob = new CronJob({
 module.exports = {
   loop_job: loopJob
 };
-//loop.start();
 
 //console.log('loopJob status', loopJob.running); // loopJob status true, use this to check if it's running

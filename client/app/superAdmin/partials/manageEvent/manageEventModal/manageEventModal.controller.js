@@ -166,7 +166,6 @@ $scope.addBudget = function(item, cost)
     $scope.event.budget.push({title: item, amount: cost});
     $scope.currentCost = $scope.currentCost + cost;
 
-    //ADD IF STATEMENT FOR ERROR HANDLING
     if($scope.currentCost <= $scope.event.budgetGoal) {
       $scope.addItemStyle = {};
       $scope.errorMessege = "";
@@ -226,7 +225,6 @@ $scope.submit = function() {
             $modalInstance.close();
             $state.reload();
           }, function(err) {
-            console.log(err);
           });
         });
       });

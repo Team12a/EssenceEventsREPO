@@ -29,7 +29,6 @@ $scope.getEvents = function(){
 };
 
 
-
 $scope.toggle = function (event) {
   $scope.state = !$scope.state;
   $scope.ev = event;
@@ -52,14 +51,10 @@ $scope.toggle = function (event) {
     .then(function(response) {
       response.forEach(function(r) {
         $scope.subcontractors.push(r.data);
-        console.log($scope.subcontractors)
-        console.log(r.data);
       });
     }, function(err) {
       //do something
     });
-
-
   };
 
   $scope.changeDone = function(index) {
@@ -70,7 +65,6 @@ $scope.toggle = function (event) {
     };
     Events.toggleTodo($scope.ev._id, body)
       .then(function(response) {
-	//console.log('done');
       }, function(err) {
 	//do something
     });

@@ -30,7 +30,6 @@ $scope.getEvents = function(){
         .then(function(response) {
           $scope.event = response.data;
         }, function(error) {
-          console.error(error);
         });
   }
 };
@@ -65,8 +64,6 @@ $scope.load = function() {
   $scope.title = "";
 
   $scope.addExpenditure = function(){
-    console.log('expenditure added');
-    console.log('budget: ' + $scope.event.budget);
     $scope.event.budget.push({
       "amount": $scope.amount,
       "title" : $scope.title
@@ -74,6 +71,5 @@ $scope.load = function() {
     $scope.amount = 0.0;
     $scope.title = "";
   };
-
 
 }]);
