@@ -134,9 +134,9 @@ $scope.addSubcontractor = function(contractor) {
 };
 
 //Push a guest object to the array
-$scope.addGuest = function(name, email, phoneNumber, partySize) {
+$scope.addGuest = function(name, email, phoneNumber, partySize, accommodations) {
   if(name && email) {
-    $scope.event.guests.push({name: name, email: email, phoneNumber: phoneNumber, partySize: partySize, accepted: false});
+    $scope.event.guests.push({name: name, email: email, phoneNumber: phoneNumber, partySize: partySize, accepted: false, accommodations: accommodations});
     return 1;
   }
   else
@@ -163,7 +163,7 @@ $scope.hasItems = function(arr)
 $scope.addBudget = function(item, cost)
 {
   if (item && cost) {
-    $scope.event.budget.push({title: item, amount: cost});
+    $scope.event.budget.push({title: item, amount: cost, user: 'admin'});
     $scope.currentCost = $scope.currentCost + cost;
 
     //ADD IF STATEMENT FOR ERROR HANDLING

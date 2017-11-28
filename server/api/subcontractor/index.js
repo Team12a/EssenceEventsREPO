@@ -1,3 +1,4 @@
+//changed the logic here to allow access for both super admin and admins
 'use strict';
 
 import {Router} from 'express';
@@ -8,8 +9,8 @@ var router = new Router();
 
 router.get('/', controller.getAll);
 router.get('/:id', controller.getOne);
-router.post('/', auth.hasRole('admin'), controller.create);
-router.put('/', auth.hasRole('admin'), controller.update);
+router.post('/', controller.create);
+router.put('/', controller.update);
 router.delete('/:id', auth.hasRole('admin'), controller.remove);
 
 router.param('id', controller.findId);

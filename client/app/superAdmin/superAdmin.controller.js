@@ -1,28 +1,47 @@
 'use strict';
 
 //functions that will be included in our Super Admin Panel
+//These functions are almost identical to those in Admin Panel, as client wants same functionality included here
 angular.module('essenceEventsRepoApp.superAdmin')
   .controller('SuperAdminController',['$scope',function($scope)
 {
     $scope.Functions = [
       {
-        'title': 'Update Pictures',
-        'description': 'Update pictures',
-        'state' : 'superAdmin.updatePictures',
+        'title': 'New Account',
+        'description': 'Create an account for a new client',
+        'state': 'superAdmin.createAccount',
       },
       {
-        'title': 'Update Testimonials',
-        'description' : 'Manage and upload testimonials',
-        'state' : 'superAdmin.updateTestimonials',
+        'title': 'Manage Accounts',
+        'description': 'Manage existing clients',
+        'state': 'superAdmin.manageAccounts',
       },
       {
-        'title': 'Update Vendors',
-        'description' : 'Manage vendors included in vendors tab',
-        'state' : 'superAdmin.updateVendors',
+        'title': 'Manage Events',
+        'description': 'Manage an event for a existing client',
+        'state': 'superAdmin.manageEvent',
+      },
+      {
+        'title': 'Create Contractor',
+        'description': 'Create a contractor entry',
+        'state': 'superAdmin.createContractor',
+      },
+      {
+        'title': 'Manage Contractors',
+        'description': 'Manage existing contractors',
+        'state': 'superAdmin.manageContractors',
+      },
+      {
+        'title': 'Manage Vendors',
+        'description': 'Manage Public Links Page',
+        'state': 'superAdmin.manageLinks',
+      },
+      {
+        'title': 'View Testimonials',
+        'description': 'View Testimonials Uploaded by Clients',
+        'state': 'superAdmin.viewTestimonials',
       }
-      /*still need to add some functions here, specifically need to implement way to access admin priviledges
-      to avoid redundancy by copy pasting
-      */
     ];
+
 
 }]);

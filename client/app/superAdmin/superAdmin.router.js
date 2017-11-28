@@ -1,6 +1,6 @@
 'use strict';
 
-//Initial state when logining in as super admin, routes is protected by update logic in front-end auth guards
+//Initial state when logging in as super admin, routes is protected by update logic in front-end auth guards
 angular.module('essenceEventsRepoApp.superAdmin')
   .config(function($stateProvider){
     $stateProvider
@@ -9,6 +9,6 @@ angular.module('essenceEventsRepoApp.superAdmin')
         templateUrl:'app/superAdmin/superAdmin.html',
         controller: 'SuperAdminController',
         controllerAs: 'superAdmin',
-        authenticate: 'superAdmin'
+        authenticate: 'super'
       });
   });

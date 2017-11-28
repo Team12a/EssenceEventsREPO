@@ -38,11 +38,13 @@ var eventSchema = new Schema({
     email: String,
     phoneNumber: Number,
     partySize: Number,
-    accepted: Boolean
+    accepted: Boolean,
+    accommodations: String
   }],
   budget: [{
     title: String,
-    amount: Number
+    amount: Number,
+    user: String
   }],
   subcons: [{
     name: String,
