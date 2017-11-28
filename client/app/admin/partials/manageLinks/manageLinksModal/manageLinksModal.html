@@ -1,5 +1,5 @@
 <div ng-if="hideDeleteTab">
-  <h2 class="modal-header">Manage Link:</h2>
+  <h2 class="modal-header">Manage Vendor:</h2>
   <div class="modal-body row">
     <div class="form-group row col-md-12" show-errors>
       <label for="subconName">Type:</label>
@@ -10,7 +10,7 @@
       <input name="subconName" ng-model="link.name" id="subconName" class="form-control">
     </div>
     <div class="form-group row col-md-12" show-errors>
-      <label for="subconLink">Link:</label>
+      <label for="subconLink">Vendor:</label>
       <input name="subconLink" ng-model="link.url" id="subconLink" class="form-control">
     </div>
     <div class="form-group row col-md-12" show-errors>
@@ -25,7 +25,7 @@
 
   <div ng-if="hideDeleteTab" class="modal-footer" style="text-align: left">
     <button class="btn btn-success" ng-click="submit()">Save Changes</button>
-    <button class = "btn btn-danger" ng-click="showDeleteTabFunc()">Delete Link</button>
+    <button class = "btn btn-danger" ng-click="showDeleteTabFunc()">Delete Vendor</button>
     <button class="btn btn-default" ng-click="cancel()" style="float: right">Cancel</button>
   </div>
 
