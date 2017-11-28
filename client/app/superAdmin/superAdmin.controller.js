@@ -32,7 +32,7 @@ angular.module('essenceEventsRepoApp.superAdmin')
         'state': 'superAdmin.manageContractors',
       },
       {
-        'title': 'Manage Links',
+        'title': 'Manage Vendors',
         'description': 'Manage Public Links Page',
         'state': 'superAdmin.manageLinks',
       },
