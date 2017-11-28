@@ -51,7 +51,7 @@ class NavbarController {
       'hasDropDown' : false
     },
     {
-      'title': 'Links',
+      'title': 'Vendors',
       'state': 'links',
       'hasDropDown' : false
     },

@@ -163,7 +163,7 @@ $scope.hasItems = function(arr)
 $scope.addBudget = function(item, cost)
 {
   if (item && cost) {
-    $scope.event.budget.push({title: item, amount: cost});
+    $scope.event.budget.push({title: item, amount: cost, user: 'superadmin'});
     $scope.currentCost = $scope.currentCost + cost;
 
     //ADD IF STATEMENT FOR ERROR HANDLING
@@ -184,7 +184,7 @@ $scope.addBudget = function(item, cost)
   }
   else
   return 0;
-}
+};
 
 //deletes item from todo list
 $scope.deleteToDo = function(index) {
@@ -210,6 +210,7 @@ $scope.deleteSubcon = function(index) {
 
 //Update the object on save call
 $scope.submit = function() {
+
   uiGmapGoogleMapApi.then(function(maps) {
     var geocoder = new google.maps.Geocoder();
     geocoder.geocode({'address': $scope.event.locationAdd},function(results, status){
@@ -229,6 +230,7 @@ $scope.submit = function() {
           });
         });
       });
+
 
 };
 

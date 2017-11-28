@@ -31,8 +31,8 @@ angular.module('essenceEventsRepoApp.admin')
         'state': 'admin.manageContractors',
       },
       {
-        'title': 'Manage Links',
-        'description': 'Manage Public Links Page',
+        'title': 'Manage Vendors',
+        'description': 'Manage Public Vendors Page',
         'state': 'admin.manageLinks',
       },
       {

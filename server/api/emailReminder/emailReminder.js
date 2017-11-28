@@ -5,8 +5,10 @@ import User from '../user/user.model';
 import Event from '../event/event.model';
 var nodemailer = require('nodemailer');
 var sgTransport = require('nodemailer-sendgrid-transport');
+
 var moment = require('moment');
 const CronJob = require('cron').CronJob;
+
 
 /*
   For this emailReminder to work, the sendgrid email account should be in development.js
@@ -27,11 +29,15 @@ const CronJob = require('cron').CronJob;
   }
 */
 
+
 var br = '################################';
 var bool = false;
 
 var loopJob = new CronJob({
+
   cronTime: '00 30 11 * * 0-6', //Modify values as needed.
+
+
   //Describes what actions are taken after each interval
   onTick: function() {
           //Temp
@@ -252,6 +258,7 @@ var loopJob = new CronJob({
              }
          });
 
+
         },
   start: false
 });
@@ -260,4 +267,5 @@ module.exports = {
   loop_job: loopJob
 };
 //loop.start();
+
 //console.log('loopJob status', loopJob.running); // loopJob status true, use this to check if it's running

@@ -31,7 +31,9 @@ angular.module('essenceEventsRepoApp.client')
 
   //Displays the guest list for selected event
   $scope.toggle = function(event) {
-
+    if (!$scope.state && $scope.state1){
+      $scope.state1 = !$scope.state1;
+    }
     $scope.state = !$scope.state;
     $scope.ev = event;
 
@@ -60,6 +62,7 @@ angular.module('essenceEventsRepoApp.client')
 
   //Brings up the edit guest form
   $scope.toggleEdit = function (event, guest) {
+
     $scope.state1 = !$scope.state1;
     $scope.ev = event;
     $scope.guest = guest;
