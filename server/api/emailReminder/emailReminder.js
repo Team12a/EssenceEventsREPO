@@ -34,20 +34,20 @@ const CronJob = require('cron').CronJob;
 var br = '################################';
 
 var loopJob = new CronJob({
-  cronTime: '05 * * * * *', //Modify values as needed. '00 30 11 ** 0-6'
+  cronTime: '00 30 11 * * 0-6', //Modify values as needed.
   //Describes what actions are taken after each interval
   onTick: function() {
           //Temp
           console.log(br);
           console.log(br);
           console.log(br);
-          console.log('Running Send Notifications Worker every 5 seconds');
+          console.log('Running Send Notifications Worker every day');
           //Creates transporter using sendgrid
           var transporter = nodemailer.createTransport(sgTransport(config.essEventsReminderEmail.options));
           //Email Templates
           var upcomingTemplate = transporter.templateSender(
             {
-            subject: 'EssenceEvents Email Reminder for {{emailAddress}}!',
+            subject: 'EssenceEvents Email Reminder for {{username}}!',
             html: `<table>
                     <tr bgcolor="#EDC4D6">
                       <th><h1><img src="http://essenceevents.net/assets/images/EELogoIMG.png" width="50" height="50" alt="Essence Events" align ="center" /> Email Reminder</h1></th>
@@ -65,7 +65,7 @@ var loopJob = new CronJob({
           });
           var passedTemplate = transporter.templateSender(
             {
-            subject: 'EssenceEvents Passed Due Date Email Reminder for {{emailAddress}}!',
+            subject: 'EssenceEvents Passed Due Date Email Reminder for {{username}}!',
             html: `<table>
                     <tr bgcolor="#EDC4D6">
                       <th><h1><img src="http://essenceevents.net/assets/images/EELogoIMG.png" width="50" height="50" alt="Essence Events" align ="center" /> Email Reminder</h1></th>
@@ -84,7 +84,7 @@ var loopJob = new CronJob({
           });
           var upcomingPaymentTemplate = transporter.templateSender(
             {
-            subject: 'EssenceEvents Payment Email Reminder for {{emailAddress}}!',
+            subject: 'EssenceEvents Payment Email Reminder for {{username}}!',
             html: `<table>
                     <tr bgcolor="#EDC4D6">
                       <th><h1><img src="http://essenceevents.net/assets/images/EELogoIMG.png" width="50" height="50" alt="Essence Events" align ="center" /> Email Reminder</h1></th>
@@ -102,7 +102,7 @@ var loopJob = new CronJob({
           });
           var passedPaymentTemplate = transporter.templateSender(
             {
-            subject: 'EssenceEvents Passed Due Date Payment Email Reminder for {{emailAddress}}!',
+            subject: 'EssenceEvents Passed Due Date Payment Email Reminder for {{username}}!',
             html:
                   `<table>
                           <tr bgcolor="#EDC4D6">
@@ -208,10 +208,9 @@ var loopJob = new CronJob({
                                 console.log('....\tPassed\t\tDate Diff (m): ' + dateDiff + '\tEventDiff (m):' +eventDiff);
                                 // use template based sender to send a message
                                 passedTemplate(
-                                  { to: config.essEventsReminderEmail.email.address}, //Place Sender Email here. For testing purposes, send to itself.
+                                  { to: eventUser[0].email}, //Place Sender Email here. For testing purposes, send to itself.
                                   {
                                     username: eventUser[0].name,
-                                    emailAddress: eventUser[0].email,
                                     todoListItem: item.todo,
                                     todoListDate: itemDate.format('MMMM Do YYYY, h:mm:ss a')
                                   },
@@ -250,10 +249,9 @@ var loopJob = new CronJob({
                                 console.log('....\tUpcoming\t\tDate Diff (m): ' + dateDiff + '\tEventDiff (m):' +eventDiff);
                                 // use template based sender to send a message
                                 upcomingTemplate(
-                                  { to: config.essEventsReminderEmail.email.address}, //Place Sender Email here. For testing purposes, send to itself.
+                                  { to: eventUser[0].email}, //Place Sender Email here. For testing purposes, send to itself.
                                   {
                                     username: eventUser[0].name,
-                                    emailAddress: eventUser[0].email,
                                     todoListItem: item.todo,
                                     todoListDate: itemDate.format('MMMM Do YYYY, h:mm:ss a')
                                   },
@@ -309,10 +307,9 @@ var loopJob = new CronJob({
                             console.log('....\tPassed\t\tDate Diff (m): ' + dateDiff);
                             // use template based sender to send a message
                             passedPaymentTemplate(
-                              {to: config.essEventsReminderEmail.email.address}, //Place Sender Email here. For testing purposes, send to itself.
+                              {to: paymentUser[0].email}, //Place Sender Email here. For testing purposes, send to itself.
                               {
                                 username:paymentUser[0].name,
-                                emailAddress:paymentUser[0].email,
                                 payment:thingArray[0].description,
                                 dueDate:paymentDate.format('MMMM Do YYYY, h:mm:ss a')
                               },
@@ -350,10 +347,9 @@ var loopJob = new CronJob({
                             console.log('....\tUpcoming\t\tDate Diff (m): ' + dateDiff);
                             // use template based sender to send a message
                             upcomingPaymentTemplate(
-                              {to: config.essEventsReminderEmail.email.address},
+                              {to: paymentUser[0].email},
                               {
                                 username:paymentUser[0].name,
-                                emailAddress:paymentUser[0].email,
                                 payment:thingArray[0].description,
                                 dueDate:paymentDate.format('MMMM Do YYYY, h:mm:ss a')
                               },
@@ -383,6 +379,6 @@ var loopJob = new CronJob({
 module.exports = {
   loop_job: loopJob
 };
+//To be used in app.js
 //loop.start();
-
 //console.log('loopJob status', loopJob.running); // loopJob status true, use this to check if it's running
