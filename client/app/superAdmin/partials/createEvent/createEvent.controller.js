@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('essenceEventsRepoApp.superAdmin')
+angular.module('essenceEventsRepoApp.admin')
 .controller('CreateEventCtrl', ['Events', '$scope', '$stateParams', '$state', 'uiGmapGoogleMapApi', function (Events, $scope, $stateParams, $state, uiGmapGoogleMapApi) {
 
   // $scope.message = 'Hello';
@@ -8,7 +8,7 @@ angular.module('essenceEventsRepoApp.superAdmin')
   //handle people trying to hit url directly.
   if($stateParams.userID == 'undefined')
   {
-    $state.go('admin.manageClients');
+    $state.go('superAdmin.manageAccounts');
   }
 
   //used to display the user you are talking to
@@ -181,7 +181,7 @@ angular.module('essenceEventsRepoApp.superAdmin')
         };
         Events.create(event)
           .then(function(response) {
-            $state.go('admin.manageEvent');
+            $state.go('superAdmin.manageEvent');
           }, function(err) {
             //do something
         });

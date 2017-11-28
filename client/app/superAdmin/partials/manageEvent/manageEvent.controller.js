@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('essenceEventsRepoApp.superAdmin')
+angular.module('essenceEventsRepoApp.admin')
 .controller('ManageEventCtrl', ['$scope', '$state', '$modal', '$q', 'Events', 'Auth', function ($scope, $state, $modal, $q, Events, Auth) {
 
   var getUser = function() {
