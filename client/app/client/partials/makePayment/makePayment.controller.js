@@ -20,7 +20,7 @@ angular.module('essenceEventsRepoApp')
     if (!$scope.id)
       setTimeout($scope.getPayments, 100);
     else
-      Payments.paymentsByUserId($scope.id)
+      Payments.getByUser($scope.id)
         .then(function(response) {
           $scope.payments = response.data;
         }, function(error) {

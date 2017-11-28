@@ -29,6 +29,11 @@ export function create(req, res) {
   });
 }
 
+//Uses the findOneById middleman to send back payment by ID
+export function findOneById(req, res) {
+  res.send(req.literalText);
+}
+
 export function textByID(req, res, next, text_id) {
   TextEdit.find({text_id: text_id}, function(err, literalText) {
     if (err) {

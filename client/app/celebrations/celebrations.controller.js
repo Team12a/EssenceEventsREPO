@@ -28,12 +28,14 @@
 
     };
 
-    var getText = function(){
+    $scope.getText = function(id){
+      var text_id = id;
+      console.log(id);
       console.log("Here");
       if (!$scope.text_id)
         setTimeout($scope.getText, 100);
       else
-        Payments.paymentsByUserId($scope.text_id)
+        TextEdit.textByID($scope.text_id)
           .then(function(response) {
             $scope.literalText = response.data;
           }, function(error) {
@@ -53,6 +55,6 @@
     //     x.contentEditable = "true";
     //     button.innerHTML = "Disable content of p to be editable!";
     // }
-}
+
   }]);
   

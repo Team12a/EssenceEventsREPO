@@ -13,9 +13,11 @@
                             </a>
                         </div>
                     </div>
-                    <div ng-init="getText()">
+                    <div ng-init="getText('celebrationDescriptText')">
+                            <p id=celebrationDescriptText> </p>
                             <tr ng-repeat="ng-repeat=text in literalText">
                                     <td>{{text.literalText}}</td>
+                                    <td>Actual text </td>
                             </tr>
                     </div>
                    
