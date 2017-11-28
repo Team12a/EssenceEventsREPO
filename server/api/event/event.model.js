@@ -43,7 +43,8 @@ var eventSchema = new Schema({
   }],
   budget: [{
     title: String,
-    amount: Number
+    amount: Number,
+    user: String
   }],
   subcons: [{
     name: String,

@@ -32,6 +32,7 @@ angular.module('essenceEventsRepoApp.admin')
   $scope.openModal = function(payment) {
     var modalInstance = $modal.open({
       animation: true,
+      backdrop: 'static',
       templateUrl: 'app/admin/partials/managePayment/managePaymentModal/managePaymentModal.html',
       controller: 'ManagePaymentModalCtrl',
       resolve: {
