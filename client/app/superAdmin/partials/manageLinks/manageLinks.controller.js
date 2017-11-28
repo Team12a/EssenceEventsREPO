@@ -33,6 +33,7 @@ angular.module('essenceEventsRepoApp.superAdmin')
   $scope.openModal = function(link) {
     var modalInstance = $modal.open({
       animation: true,
+      backdrop: 'static',
       templateUrl: 'app/superAdmin/partials/manageLinks/manageLinksModal/manageLinksModal.html',
       controller: 'ManageLinksModalCtrl',
       resolve: {

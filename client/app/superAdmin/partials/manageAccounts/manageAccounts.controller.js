@@ -14,6 +14,7 @@
       openModal(user){
         var modalInstance = this.modalService.open({
           animation: true,
+          backdrop: 'static',
           templateUrl: 'app/superAdmin/partials/manageAccounts/manageAccountsModal/manageAccountsModal.html',
           controller: 'ManageAccountsModalCtrl',
           resolve: {

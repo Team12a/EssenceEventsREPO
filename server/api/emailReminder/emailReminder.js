@@ -34,7 +34,10 @@ const CronJob = require('cron').CronJob;
 var br = '################################';
 
 var loopJob = new CronJob({
+
+
   cronTime: '00 30 11 * * 0-6', //Modify values as needed.
+
   //Describes what actions are taken after each interval
   onTick: function() {
           //Temp

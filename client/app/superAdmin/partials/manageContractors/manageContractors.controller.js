@@ -16,6 +16,7 @@ angular.module('essenceEventsRepoApp.superAdmin')
     $scope.openModal = function(subcontractor) {
       var modalInstance = $modal.open({
         animation: true,
+        backdrop: 'static',
         templateUrl: 'app/superAdmin/partials/manageContractors/manageContractorModal/manageContractorModal.html',
         controller: 'ManageContractorModalCtrl',
         resolve: {

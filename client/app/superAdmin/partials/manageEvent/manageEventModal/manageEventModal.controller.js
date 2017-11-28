@@ -163,7 +163,7 @@ $scope.hasItems = function(arr)
 $scope.addBudget = function(item, cost)
 {
   if (item && cost) {
-    $scope.event.budget.push({title: item, amount: cost});
+    $scope.event.budget.push({title: item, amount: cost, user: 'superadmin'});
     $scope.currentCost = $scope.currentCost + cost;
 
     //ADD IF STATEMENT FOR ERROR HANDLING
@@ -184,7 +184,7 @@ $scope.addBudget = function(item, cost)
   }
   else
   return 0;
-}
+};
 
 //deletes item from todo list
 $scope.deleteToDo = function(index) {

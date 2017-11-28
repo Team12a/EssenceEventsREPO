@@ -24,7 +24,7 @@
 
 
 
-            <div ng-show="state" ng-init="getEventSubcons()">
+            <div ng-show="state" ng-init="getEventSubcons(); getContractors()">
               <!-- <div style="text-align:center">
                 <h3> Your {{ev.name}} </h3>
                 <h5> is on {{ev.date | date: 'fullDate'}}</h5>
@@ -91,13 +91,41 @@
                     <tbody ng-repeat ="person in ev.subcons" ng-show="hasSubcontractors(ev.subcontractors)">
                       <tr>
                         <td>{{person.name}}</td>
-                        <td>{{person.link}}</td>
+                        <td><a ng-href="{{person.link | url}}" target="_blank">{{person.link}}</a></td>
+                        <td style="text-align:right"><button type="button" class="btn btn-danger" ng-click="deleteSubcon($index)">Remove</button></td>
                       </tr>
                     </tbody>
                   </table>
+                  <div id= "newContractor" class="col-md-11">
+                  <h4>Add New Subcontractor </h4>
+                  <form class = "row">
+                    <div class="form-group" >
+                      <label for="name">Name (required)</label>
+                      <input name="name" type="name" ng-model="name"  class="form-control">
+                    </div>
+                    <div class="form-group" >
+                      <label for="link">Link </label>
+                      <input name="link" type="link" ng-model="link"  class="form-control" >
+                    </div>
+                  <label for="button">&zwnj;</label>
+                  <button type="submit" class="btn btn-success btn-lg " ng-click="createNewContractor(name, link) ? name = link = null : null">Create Contractor</button>
+                </div>
+              </form>
+                <div>
+                  <div class = "col-md-10">
+                      <label class = "addSubcon" for="addSubcon">Or Select a Subcontractor:</label>
+                      <select type="select" class="form-control" ng-model="addSubcon" ng-options="subcontractor as subcontractor.name for subcontractor in subcontractors | orderBy: 'name'"></select>
+                    </div>
+                    <div class="col-md-1">
+                      <label for="button">&zwnj;</label>
+                      <button type="submit" class="btn btn-success" ng-click="addSubcontractor(addSubcon) ? addSubcon = null : null">+</button>
+                    </div>
+                    </div>
                 </div>
                 <!-- display table of todolist -->
                 <div class = "col-md-6">
+
+                  <div>
                   <h4 style="text-align:center">Task List</h4>
                   <table class = "table table-hover">
                     <thead>
@@ -112,10 +140,36 @@
                         <td>{{item.todo}}</td>
                         <td>{{item.by | date:"EEEE, MMM. d, yyyy @h:mm a"}}</td>
                         <td><span ng-class="(item.done) ? 'fa fa-check-square-o fa-lg' : 'fa fa-square-o fa-lg'" ng-click="changeDone($index)"></span></td>
+                        <td style="text-align:right"><button type="button" class="btn btn-danger" ng-click="deleteToDo($index)">Remove</button></td>
                       </tr>
                     </tbody>
                   </table>
-
+                </div>
+                <h4>Add new Todo</h4>
+                <form class="row" name="$parent.hello">
+                  <div id="budget" class="col-md-10">
+                    <label for="todoInput">Item:</label>
+                    <input type="text" name="todoInput" ng-model="todoInput" class="form-control">
+                  </div>
+                  <div class="form-group row col-md-12" show-errors>
+                    <div class = "col-md-6">
+                      <label for="dateOfEvent">Date:</label>
+                      <div class = "input-group">
+                        <input type="text" class="form-control" id="eventDate" datepicker-popup="fullDate" ng-model="newDueDate" is-open="datePicker.scheduleDateOpened" picker-options="dateOptions" close-text="Close">
+                        <span class="input-group-btn">
+                          <button type="button" class="btn btn-default" ng-click="scheduleDateOpen($event)"><i id="todoCal" class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                      </div>
+                    </div>
+                    <div class ="col-md-3" style="margin-left: 5px;" show errors>
+                      <timepicker ng-model="newDueDate" hour-step="1" minute-step="1" show-meridian="true"></timepicker>
+                    </div>
+                    <div class="col-md-1 col-md-offset-1">
+                      <label for="button">&zwnj;</label>
+                      <button type="submit" class="btn btn-success" id="addTodo" ng-click="addToDo(todoInput,newDueDate) ? todoInput = newDueDate = null : null">+</button>
+                    </div>
+                  </div>
+                </form>
                 </div>
               </div>
             </div>

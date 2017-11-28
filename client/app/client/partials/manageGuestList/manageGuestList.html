@@ -40,6 +40,7 @@
                   <th ng-click="sortGuest='accommodations'"><b>Accommodations</b></th>
                   <th ng-click="sortGuest='attending'"><b>Attending</b></th>
                   <th><b>Edit</b></th>
+                  <th><b>Remove</b></th>
                 </tr>
               </thead>
               <tbody ng-repeat ="item in ev.guests | orderBy: sortGuest | filter: searchGuests" ng-show="hasItems(ev.guests)">
@@ -47,14 +48,13 @@
                   <td>{{item.name}}</td>
                   <td>{{item.partySize}}</td>
                   <td>{{item.accommodations}}</td>
-
                   <td><span ng-class="(item.accepted) ? 'fa fa-check-square-o fa-lg' : 'fa fa-square-o fa-lg'" ng-click="changeAccepted(ev, item)"></span></td>
                   <td><span class="glyphicon glyphicon-edit" ng-click="toggleEdit(ev, item)"></span></td>
-                  <td><span button class = "btn btn-danger" ng-click="removeGuest(ev, item)">Remove</span><td>
-
+                  <td><span button class = "btn btn-danger" ng-click="removeGuest(ev, item)">Remove</span></td>
                 </tr>
               </tbody>
               <tfoot>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
