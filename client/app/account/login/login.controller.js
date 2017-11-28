@@ -34,6 +34,7 @@ class LoginController {
     var email = this.user.email || '';
     var modalInstance = this.modalService.open({
       animation: true,
+      backdrop: 'static',
       templateUrl: 'app/account/login/resetModal/resetModal.html',
       controller: 'resetModalCtrl',
       resolve: {

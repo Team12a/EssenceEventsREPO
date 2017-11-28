@@ -14,6 +14,7 @@
       openModal(user){
         var modalInstance = this.modalService.open({
           animation: true,
+          backdrop: 'static',
           templateUrl: 'app/admin/partials/manageClients/manageClientsModal/manageClientsModal.html',
           controller: 'ManageClientsModalCtrl',
           resolve: {
