@@ -13,7 +13,7 @@
         text_id: id,
         literalText: lt
       };
-
+      console.log('h');
       // if (textToEdit.contentEditable == "true") {
       //   TextEdit.create(textToSubmit)
       //   .then(function(response) {
