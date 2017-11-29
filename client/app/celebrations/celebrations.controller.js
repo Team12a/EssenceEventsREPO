@@ -1,10 +1,10 @@
 
   'use strict';
-  
+
   angular.module('essenceEventsRepoApp.client')
   .controller('CelebrationsCtrl', ['TextEdit', '$scope', '$stateParams', '$state', function (TextEdit, $scope, $stateParams, $state) {
     $scope.submit = function(id) {
-     
+
       var textToEdit = document.getElementById(id);
       console.log(textToEdit);
       var lt = textToEdit.innerHTML;
@@ -14,38 +14,46 @@
         literalText: lt
       };
 
+      // if (textToEdit.contentEditable == "true") {
+      //   TextEdit.create(textToSubmit)
+      //   .then(function(response) {
+      //     $state.reload();
+      //   }, function (err) {
+      //     //do something
+      //   });
       if (textToEdit.contentEditable == "true") {
-        TextEdit.create(textToSubmit)
+        TextEdit.update(textToSubmit)
         .then(function(response) {
           $state.reload();
         }, function (err) {
           //do something
         });
         textToEdit.contentEditable = "false";
-      }else{
+      } else{
         textToEdit.contentEditable = "true";
       }
 
     };
 
-    $scope.getText = function(id){
-      var text_id = id;
-      console.log(id);
-      console.log("Here");
-      if (!$scope.text_id)
-        setTimeout($scope.getText, 100);
-      else
-        TextEdit.textByID($scope.text_id)
-          .then(function(response) {
-            $scope.literalText = response.data;
-          }, function(error) {
-            //do something
-        });
+    $scope.getText = function(){
+      var text_id='celebrationDescriptText';
+      // console.log('Here');
+      TextEdit.getByID(text_id)
+        .then(function(response) {
+          $scope.literalText = response.data[0].literalText;
+          console.log(response.data);
+        }, function(error) {
+          console.log('hey');
+          //do something
+      });
     };
 
-  
-    
-  
+
+   $scope.update=function(){
+
+   }
+
+
     // $scope.myFunction = function(button,id) {
     // var x = document.getElementById(id);
     // if (x.contentEditable == "true") {
@@ -57,4 +65,3 @@
     // }
 
   }]);
-  

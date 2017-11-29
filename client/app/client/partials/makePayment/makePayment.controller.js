@@ -15,6 +15,7 @@ angular.module('essenceEventsRepoApp')
 
   $scope.curUser = Auth.getCurrentUser();
   getUser();
+
   var getPayments = function(){
     console.log("Here");
     if (!$scope.id)

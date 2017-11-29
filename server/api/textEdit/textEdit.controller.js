@@ -29,6 +29,18 @@ export function create(req, res) {
   });
 }
 
+export function update(req, res){
+  TextEdit.update({text_id: req.body.text_id}, req.body, function(err, literalText){
+    if(err){
+      res.status(400).send('There is nothing here!');
+      throw err;
+    }
+    else{
+      res.send('Successful update');
+    }
+  });
+}
+
 //Uses the findOneById middleman to send back payment by ID
 export function findOneById(req, res) {
   res.send(req.literalText);
@@ -37,6 +49,7 @@ export function findOneById(req, res) {
 export function textByID(req, res, next, text_id) {
   TextEdit.find({text_id: text_id}, function(err, literalText) {
     if (err) {
+      console.log('wwhheoaef');
       res.status(400).send(err);
       throw err;
     }
@@ -53,23 +66,23 @@ export function textByID(req, res, next, text_id) {
 //   TextEdit.text_id = req.body.text_id;
 //   TextEdit.literalText = req.body.literalText;
 
-//   if(req.results) 
+//   if(req.results)
 //   {
-//     TextEdit.coordinates = 
+//     TextEdit.coordinates =
 //     {
-//       latitude: req.results.lat, 
+//       latitude: req.results.lat,
 //       longitude: req.results.lng
 //     };
 //   }
 
-//   listing.save(function(err) 
+//   listing.save(function(err)
 //   {
-//     if(err) 
+//     if(err)
 //     {
 //       console.log(err);
 //       res.status(400).send(err);
 //     }
-//     else 
+//     else
 //     {
 //       res.json(listing);
 //     }
