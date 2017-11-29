@@ -16,9 +16,7 @@ export default function(app) {
   app.use('/api/email', require('./api/email'));
   app.use('/api/testimonials', require('./api/testimonial'));
   app.use('/api/payments', require('./api/payment'));
-  app.use('/api/testimonial', require('./api/testimonial'));
-  
-
+  app.use('/api/textEdit', require('./api/textEdit'));
 
   app.use('/auth', require('./auth'));
 

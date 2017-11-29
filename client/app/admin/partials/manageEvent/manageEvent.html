@@ -25,7 +25,8 @@
                       <td>{{event.userName || '----'}}</td>
                       <td>{{event.locationName}}</td>
                       <td>{{event.date.substring(5,10) + '-' + event.date.substring(0,4)}}</td>
-                      <td><button type="button" class="btn btn-md btn-default" ng-click="openModal(event)">Manage</button></td>
+                      <td><button type="button" class="btn btn-md btn-default" ng-click="openModal(event)">Manage</button>
+                          <button type="button" class="btn btn-md btn-default" ng-click="viewGuests(event)">Manage Guests</button></td>
                     </tr>
                   </tbody>
                 </table>

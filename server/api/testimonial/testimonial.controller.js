@@ -15,6 +15,35 @@ export function findAll(req, res) {
       res.send(testimonial);
   });
 }
+
+export function findOneById(req, res) {
+  res.send(req.testimonial);
+}
+
+export function remove(req, res) {
+  Testimonial.remove({_id: req.testimonial._id}, function(err) {
+    if (err) {
+      res.status(400).send(err);
+      throw err;
+    }
+    else
+      res.send('Deletion successful');
+  });
+}
+
+export function testimonialById(req, res, next, id) {
+  Testimonial.findById(id, function(err, testimonial) {
+    if (err) {
+      res.status(400).send(err);
+      throw err;
+    }
+    else {
+      req.testimonial = testimonial;
+      next();
+    }
+  });
+}
+
 //Create a new event based on req.body and save it to the database
 export function create(req, res) {
   var testimonial = new Testimonial(req.body);
