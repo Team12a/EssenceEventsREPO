@@ -1,7 +1,9 @@
 'use strict';
 
+
 angular.module('essenceEventsRepoApp.admin')
 .controller('CreateEventCtrl', ['Events', '$scope', '$stateParams', '$state', 'uiGmapGoogleMapApi', function (Events, $scope, $stateParams, $state, uiGmapGoogleMapApi) {
+
 
   // $scope.message = 'Hello';
 
@@ -65,7 +67,7 @@ angular.module('essenceEventsRepoApp.admin')
   //Change free cash when updated in the budget array
   $scope.changeFreeCashArr = function()
   {
-    $scope.budget[0] = ({title: "Free Cash", amount: $scope.freeCash});
+    $scope.budget[0] = ({title: "Free Cash", amount: $scope.freeCash, user: 'superadmin'});
   }
 
   //Check if Todo List is empty
@@ -94,7 +96,7 @@ angular.module('essenceEventsRepoApp.admin')
   $scope.addBudget = function()
   {
     if ($scope.budgetItem && $scope.itemCost && $scope.freeCash >= $scope.itemCost) {
-      $scope.budget.push({title: $scope.budgetItem, amount: $scope.itemCost});
+      $scope.budget.push({title: $scope.budgetItem, amount: $scope.itemCost, user: 'superadmin'});
       $scope.freeCash = $scope.freeCash - $scope.itemCost;
       $scope.currCost += $scope.itemCost;
       $scope.myBudgetStyle = {}
@@ -159,6 +161,8 @@ angular.module('essenceEventsRepoApp.admin')
 
   //Saves all of the $scope fields into an event object and saves it to the database
   $scope.submit = function() {
+
+
     uiGmapGoogleMapApi.then(function(maps) {
       var geocoder = new google.maps.Geocoder();
       geocoder.geocode({'address': $scope.venueAddress},function(results, status){
@@ -166,6 +170,12 @@ angular.module('essenceEventsRepoApp.admin')
           var locCoord = results[0].geometry.location;
               $scope.latitude= locCoord.lat();
               $scope.longitude= locCoord.lng();
+        }else {
+
+              $scope.latitude = 29.65253;
+              $scope.longitude = -82.330276;
+              $scope.venueName = 'Essence Events';
+              $scope.venueAddress = '530 W University Ave Gainesville, FL ';
         }
         var event = {
           name: $scope.eventName,
@@ -187,6 +197,7 @@ angular.module('essenceEventsRepoApp.admin')
         });
       });
         });
+
 
   };
 

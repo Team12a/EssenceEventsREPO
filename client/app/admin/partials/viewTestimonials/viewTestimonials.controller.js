@@ -12,4 +12,11 @@ angular.module('essenceEventsRepoApp.admin')
     });
   };
 
+  $scope.delete = function(testimonial){
+    Testimonials.remove(testimonial._id).then(function(){
+        $state.reload();
+      }
+    );
+  }
+
 }]);

@@ -32,6 +32,12 @@ angular.module('essenceEventsRepoApp.admin')
     });
   }
 
+
+  //Close modals without making changes
+  $scope.cancel = function() {
+    $modalInstance.close();
+  }
+  
   //Save changes to subcontractor to database on submit
   $scope.submit = function() {
     if ($scope.subcontractor.name)
@@ -44,8 +50,5 @@ angular.module('essenceEventsRepoApp.admin')
     });
   };
 
-  //Close modal without changing anything
-  $scope.cancel = function() {
-    $modalInstance.close();
-  }
+
 }]);

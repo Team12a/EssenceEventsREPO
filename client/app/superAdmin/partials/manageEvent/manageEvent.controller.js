@@ -58,6 +58,7 @@ angular.module('essenceEventsRepoApp.admin')
   $scope.openModal = function(event) {
     var modalInstance = $modal.open({
       animation: true,
+      backdrop: 'static',
       templateUrl: 'app/superAdmin/partials/manageEvent/manageEventModal/manageEventModal.html',
       controller: 'ManageEventModalCtrl',
       resolve: {

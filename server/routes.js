@@ -18,8 +18,7 @@ export default function(app) {
   app.use('/api/payments', require('./api/payment'));
   
 
-  //not sure about this
-  app.use('/api/superAdmins', require('./api/superAdmin'));
+
 
   app.use('/auth', require('./auth'));
 
