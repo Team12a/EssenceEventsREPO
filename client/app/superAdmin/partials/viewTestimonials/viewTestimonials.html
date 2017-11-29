@@ -15,6 +15,7 @@
             <th ng-click="sort='eventDescription'"><b>Event Desctiption</b></th>
             <th ng-click="sort='message'"><b>Message</b></th>
             <th ng-click="sort='postDate'"><b>Post Date</b></th>
+            <th><b>Delete</b></th>
           </tr>
         </thead>
 
@@ -24,6 +25,7 @@
             <td>{{testimonial.eventDescription}}</td>
             <td>{{testimonial.message}}</td>
             <td>{{testimonial.postDate.substring(5,10) + '-' + testimonial.postDate.substring(0,4)}}</td>
+            <td><button type="button" class="btn btn-md btn-danger" ng-click="delete(testimonial)">Delete</button></td>
           </tr>
         </tbody>
       </table>
