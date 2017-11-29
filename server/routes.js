@@ -19,6 +19,7 @@ export default function(app) {
   //not sure about this
   app.use('/api/superAdmins', require('./api/superAdmin'));
   app.use('/api/textEdit', require('./api/textEdit'));
+  app.use('/api/cloudinary', require('./api/cloudinary'));
 
   app.use('/auth', require('./auth'));
 
