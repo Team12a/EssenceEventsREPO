@@ -33,7 +33,7 @@ angular.module('essenceEventsRepoApp.superAdmin')
     var modalInstance = $modal.open({
       animation: true,
       backdrop: 'static',
-      templateUrl: 'app/admin/partials/managePayment/managePaymentModal/managePaymentModal.html',
+      templateUrl: 'app/superAdmin/partials/managePayment/managePaymentModal/managePaymentModal.html',
       controller: 'ManagePaymentModalCtrl',
       resolve: {
         payment: function()

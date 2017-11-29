@@ -3,7 +3,7 @@
 angular.module('essenceEventsRepoApp.superAdmin')
   .config(function ($stateProvider) {
     $stateProvider
-      .state('admin.createPayment', {
+      .state('superAdmin.createPayment', {
         url: '/createPayment/',
         params: {
           userID: 'undefined',

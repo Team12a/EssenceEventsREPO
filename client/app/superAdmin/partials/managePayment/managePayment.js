@@ -3,7 +3,7 @@
 angular.module('essenceEventsRepoApp.superAdmin')
   .config(function ($stateProvider) {
     $stateProvider
-      .state('admin.managePayment', {
+      .state('superAdmin.managePayment', {
         url: '/managePayment',
         templateUrl: 'app/superAdmin/partials/managePayment/managePayment.html',
         controller: 'ManagePaymentCtrl',
