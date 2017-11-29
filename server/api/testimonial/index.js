@@ -8,5 +8,8 @@ var router = new Router();
 
 router.get('/', controller.findAll);
 router.post('/',controller.create);
+router.get('/:id', controller.findOneById);
+router.delete('/:id', controller.remove);
+router.param('id', controller.testimonialById);
 
 export default router;

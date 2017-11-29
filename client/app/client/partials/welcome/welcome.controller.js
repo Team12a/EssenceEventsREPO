@@ -70,6 +70,7 @@ $scope.toggle = function (event) {
     });
   };
 
+
   nv.addGraph(function() {
     var chart = nv.models.pieChart()
         .x(function(d) { return d.title })

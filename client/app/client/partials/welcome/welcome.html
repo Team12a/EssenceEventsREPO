@@ -30,6 +30,7 @@
         <h5> is on {{ev.date | date: 'fullDate'}}</h5>
         <h5> at {{ev.locationName}}</h5>
       </div>
+      <br></br>
         <!--Your budget-->
         <div class = "col-md-12">
           <div class = "col-md-6">
@@ -38,7 +39,8 @@
               <svg></svg>
             </div>
           </div>
-          <!-- Display Guest List -->
+
+          <!-- Display Guest List-->
           <div class = "col-md-6" ng-init="sortGuest='name'">
             <h4 style="text-align:center">Guest List</h4>
             <table class = "table table-hover hoverSort">
@@ -57,7 +59,7 @@
             </table>
           </div>
         </div>
-        <!-- Display Todo Calendar -->
+        <!-- Display Todo Calendar-->
         <div class = "col-md-12">
           <div class="col-md-6">
             <div style="text-align:center">
@@ -70,7 +72,7 @@
             <mwl-calendar view="calendarView" view-date="calendarDate" events="todo" view-title="calendarTitle" on-view-change-click="false">
             </mwl-calendar>
           </div>
-          <!-- display table of todolist -->
+          <!-- display table of todolist-->
           <div class = "col-md-6">
             <h4 style="text-align:center">Task List</h4>
             <table class = "table table-hover">

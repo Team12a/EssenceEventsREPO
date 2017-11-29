@@ -73,7 +73,7 @@ class NavbarController {
     this.Evs.getByUser(curUsr._id)
     .then(function(response) {
       var events = response.data;
-      state.go('client', {userID: curUsr._id, userName: curUsr.name, events: events});
+      state.go('client.welcome', {userID: curUsr._id, userName: curUsr.name, events: events});
     }, function(err) {
       //do something
       console.log(err);

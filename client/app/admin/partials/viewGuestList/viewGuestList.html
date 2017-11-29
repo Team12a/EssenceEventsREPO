@@ -1,0 +1,110 @@
+<div class = "container-fluid">
+  <div ng-controller="viewGuestListCtrl" >
+    <div class="page-header">
+      <h1> {{eve.name}} Guest List:</h1>
+    </div>
+    <div class = "col-md-12" ng-init="sortGuest='name'">
+      <div class="col-md-5" style="padding-left:0px;float: left;">
+        <input "type=text" class="form-control" placeholder="Search here..." ng-model="searchGuests"></input>
+        <br></br>
+      </div>
+      <div class = "col-md-12">
+        <table class = "table table-hover hoverSort">
+          <thead>
+            <tr>
+              <th ng-click="sortGuest='name'"><b>Guest Name</b></th>
+              <th ng-click="sortGuest='email'"><b>Email</b></th>
+              <th ng-click="sortGuest='phoneNumber'"><b>Phone Number</b></th>
+              <th ng-click="sortGuest='partySize'"><b>Party Size</b></th>
+              <th ng-click="sortGuest='accommodations'"><b>Accommodations</b></th>
+              <th ng-click="sortGuest='attending'"><b>Attending</b></th>
+              <th><b>Edit</b></th>
+              <th><b>Remove</b></th>
+            </tr>
+          </thead>
+          <tbody ng-repeat ="item in eve.guests | orderBy: sortGuest | filter: searchGuests">
+            <tr>
+              <td>{{item.name}}</td>
+              <td>{{item.email}}</td>
+              <td>{{item.phoneNumber}}</td>
+              <td>{{item.partySize}}</td>
+              <td>{{item.accommodations}}</td>
+              <td><span ng-class="(item.accepted) ? 'fa fa-check-square-o fa-lg' : 'fa fa-square-o fa-lg'" ng-click="changeAccepted(item)"></span></td>
+              <td><span class="glyphicon glyphicon-edit" ng-click="toggleEdit(item)"></span></td>
+              <td><button type="button" class="btn btn-danger" ng-click="removeGuest(item)">Remove</button></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><button type="button" class="btn btn-md btn-default" ng-click="toggle()">Add Guests</button> </td>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+    <div ng-show="state">
+         <b>Update Information For {{guest.name}}<b>
+           <br></br>
+           <form name="listingForm" class="form-horizontal" ng-submit="updateGuest(guest)">
+             <div id="updateGuest" class="col-md-4">
+               <label for="guestPhone">Phone Number:</label>
+               <input type="number" name="guestPhone"  placeholder="{{guest.phoneNumber}}" ng-model="formData.guestPhone" class="form-control">
+             </div>
+             <div id="updateGuest" class="col-md-5">
+               <label for="guestEmail">Email:</label>
+               <input type="email" name="guestEmail"  placeholder="{{guest.email}}" ng-model="formData.guestEmail" class="form-control">
+             </div>
+             <div id="updateGuest" class="col-md-2">
+               <label for="guestSize">Party Size:</label>
+               <input type="number" name="guestSize"  placeholder="{{guest.partySize}}" ng-model="formData.guestSize" class="form-control">
+             </div>
+             <div id="updateGuest" class="col-md-6">
+               <label for="guestAccommodations">Accommodations:</label>
+               <input name="guestAccommodations" placeholder="{{guest.accommodations}}" ng-model="formData.guestAccommodations" class="form-control">
+             </div>
+             <div>
+               <br></br>
+               <br></br>
+               <button  class="btn btn-success" id="updateGuest" type = 'submit'>Update</button>
+             </div>
+             </form>
+       </div>
+       <div ng-show = "state1">
+         <form name="listingForm" class="form-horizontal" ng-submit="addGuest()">
+          <div class="form-group" show-errors>
+            <label for="name">Name</label>
+            <input name="name" type="name" ng-model="name" id="name" class="form-control" required>
+          </div>
+          <div class="form-group" show-errors>
+            <label for="name">Phone Number</label>
+            <input name="phoneNumber" type="number" ng-model="phoneNumber" id="name" class="form-control">
+          </div>
+          <div class="form-group" show-errors>
+            <label for="name">Email</label>
+            <input name="Email" type="email" ng-model="email" id="name" class="form-control" required>
+          </div>
+          <div class="form-group" show-errors>
+            <label for="partySize">Party Size</label>
+            <input name="partySize" type="partySize" ng-model="partySize" id="partySize" class="form-control" required>
+          </div>
+          <div class="form-group" show-errors>
+            <label for="accommodations">Accommodations</label>
+            <input name="accommodations"type="accommodations" ng-model="accommodations" id="accommodations" class="form-control">
+          </div>
+          <div ng-show="error" class="text-danger">
+            <strong ng-bind="error"></strong>
+          </div>
+	         <div>
+            <button class="btn btn-inverse btn-lg btn-register" type="submit" ng-submit="addGuest()">
+              Add Guest
+  	         </button>
+          </div>
+        </form>
+      </div>
+  </div>
+</div>
