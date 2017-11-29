@@ -3,14 +3,15 @@
 angular.module('essenceEventsRepoApp.client')
 .controller('viewBudgetCtrl', [ 'Events', 'Auth', '$scope','$modal', '$stateParams', '$state', function ( Events, Auth, $scope, $modal, $stateParams, $state) {
 
+// check to make sure there is an event passed in
 $scope.eventId = $stateParams.eventId;
 if (!$stateParams.eventId){
   $state.go('client.yourBudget');
 } else {
   $scope.event = Events.getOne($stateParams.eventId);
-  console.log($scope.event);
 }
 
+// gets the user tied to the event
 var getUser = function() {
   if (!$scope.curUser._id) {
     setTimeout(getUser, 100);
@@ -20,10 +21,11 @@ var getUser = function() {
   }
 };
 
+// calls the user to get the current user
 $scope.curUser = Auth.getCurrentUser();
 getUser();
 
-//$scope.useridlauren = 0;
+// retrieves the events for the user
 $scope.getEvents = function(){
   if (!$scope.id) {
     setTimeout($scope.getEvents, 100);
@@ -38,22 +40,21 @@ $scope.getEvents = function(){
   }
 };
 
+// updates an event in the database
 var updateEvent = function($event){
   if(!$event){
     setTimeout($scope.updateEvent, 100);
-    // $state.go('client.yourBudget')
-    console.log('no event to update');
+      $state.go('client.yourBudget')
   } else {
     Events.update($event)
           .then(function(response){
-            console.log('updated');
-            console.log(response);
           }, function(error){
             console.error(error);
           });
   }
 };
 
+// functions that need to be run after the page loads
 $scope.load = function() {
 
     // Pi chart for budget
@@ -83,22 +84,17 @@ $scope.load = function() {
   $scope.amount = 0.0;
   $scope.title = '';
 
+  // to add an expenditure to the event budget
   $scope.addExpenditure = function(){
-    console.log('expenditure added');
-    console.log('budget: ' + $scope.event.budget);
     if (!$scope.event.budgetGoal){
       $scope.event.budgetGoal = 0;
     }
-    console.log('budget goal: ' + $scope.event.budgetGoal);
     var currentCost = 0.0;
     for (var i = 1; i < $scope.event.budget.length; i++){
-      currentCost += $scope.event.budget[i].amount;
-      console.log('new current cost: ' + currentCost);
+      currentCost += Number($scope.event.budget[i].amount);
     }
-    console.log('scope amount: ' + $scope.amount);
     currentCost += Number($scope.amount);
     $scope.currentCost = currentCost;
-    console.log('current cost: ' + currentCost);
     if (currentCost > $scope.event.budgetGoal){
       $scope.errorMessage = 'Over Budget';
       $scope.addItemStyle = {
@@ -131,18 +127,31 @@ $scope.load = function() {
     $scope.title = '';
   };
 
+  // to delete an expenditure from the event budget
   $scope.deleteExpenditure = function(expense){
 
-    console.log('delete expenditure');
+    if (!$scope.event.budgetGoal){
+      $scope.event.budgetGoal = 0;
+    }
+    var currentCost = 0.0;
+    for (var i = 1; i < $scope.event.budget.length; i++){
+      currentCost += Number($scope.event.budget[i].amount);
+    }
     var index = $scope.event.budget.indexOf(expense);
-    $scope.currentCost = Number($scope.currentCost) - Number($scope.event.budget[index].amount);
-    if ($scope.currentCost <= $scope.event.budgetGoal) {
-      $scope.addItemStyle = {};
+    currentCost -= Number($scope.event.budget[index].amount);
+    $scope.currentCost = currentCost;
+    if (currentCost > $scope.event.budgetGoal){
+      $scope.errorMessage = 'Over Budget';
+      $scope.addItemStyle = {
+        'border-color': 'red',
+        'border-width': '3px',
+        'border-style': 'groove'
+      };
+    } else {
       $scope.errorMessage = '';
     }
-    $scope.event.budget.splice(index, 1);
-    if ($scope.currentCost <= $scope.event.budgetGoal){
-      $scope.event.budget[0].amount = Number($scope.event.budgetGoal) - Number($scope.currentCost);
+    if (currentCost <= $scope.event.budgetGoal){
+      $scope.event.budget[0].amount = $scope.event.budgetGoal - currentCost;
       $scope.errorMessage = '';
     } else {
       $scope.event.budget[0].amount = 0.0;
@@ -153,13 +162,14 @@ $scope.load = function() {
         'border-style': 'groove'
       };
     }
+    $scope.event.budget.splice(index, 1);
+
     updateEvent($scope.event);
 
   };
 
+  // checks to make sure the event can be edited/deleted by the client
   $scope.canEdit = function(expense){
-    console.log('can edit this expense: ' + expense);
-    console.log('user: ' + expense.user);
     if (expense.user === 'client'){
       return true;
     } else {
@@ -167,6 +177,7 @@ $scope.load = function() {
     }
   };
 
+  // to edit an expenditure
   $scope.editExpenditure = function(expense){
     $scope.estate = !$scope.estate;
     $scope.expenditure = expense;
@@ -174,9 +185,9 @@ $scope.load = function() {
     $scope.event.budget.splice(index, 1);
   };
 
+  // to update an expenditure
   $scope.update = function(expense){
     $scope.estate = !$scope.estate;
-    console.log(expense);
     $scope.title = expense.title;
     $scope.amount = expense.amount;
     $scope.addExpenditure();
