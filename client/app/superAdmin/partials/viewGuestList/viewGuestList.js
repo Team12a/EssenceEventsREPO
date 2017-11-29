@@ -1,7 +1,7 @@
 
   'use strict';
 
-  angular.module('essenceEventsRepoApp.superAdmin')
+  angular.module('essenceEventsRepoApp.admin')
     .config(function ($stateProvider) {
       $stateProvider
         .state('superAdmin.viewGuestList', {
@@ -10,7 +10,6 @@
             ev: 'undefined'
           },
           templateUrl: 'app/superAdmin/partials/viewGuestList/viewGuestList.html',
-          controller: 'viewGuestListCtrl',
-          authenticate: 'super'
+          controller: 'viewGuestListCtrl'
         });
     });

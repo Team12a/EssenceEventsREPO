@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('essenceEventsRepoApp.superAdmin')
+angular.module('essenceEventsRepoApp.admin')
 .controller('viewGuestListCtrl', [ 'Auth', 'Events', '$scope','$stateParams', '$state', function (Auth, Events, $scope, $stateParams, $state) {
 
   $scope.eve =  $stateParams.ev;
