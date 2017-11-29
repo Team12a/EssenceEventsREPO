@@ -13,7 +13,7 @@
           <tr>
             <th ng-click="sort='name'"><b>Name</b></td>
               <th ng-click="sort='userName'"><b>User</b></td>
-                <th ng-click="sort='location'"><b>Venue</b></td>
+                <th ng-click="sort='locationName'"><b>Venue</b></td>
                   <th ng-click="sort='date'"><b>Date</b></td>
                     <th></td>
                     </tr>
@@ -25,7 +25,8 @@
                       <td>{{event.userName || '----'}}</td>
                       <td>{{event.locationName}}</td>
                       <td>{{event.date.substring(5,10) + '-' + event.date.substring(0,4)}}</td>
-                      <td><button type="button" class="btn btn-md btn-default" ng-click="openModal(event)">Manage</button></td>
+                      <td><button type="button" class="btn btn-md btn-default" ng-click="openModal(event)">Manage</button>
+                          <button type="button" class="btn btn-md btn-default" ng-click="viewGuests(event)">Manage Guests</button></td>
                     </tr>
                   </tbody>
                 </table>
@@ -38,7 +39,7 @@
                     <tr>
                       <th ng-click="sort='name'"><b>Name</b></td>
                         <th ng-click="sort='userName'"><b>User</b></td>
-                          <th ng-click="sort='location'"><b>Venue</b></td>
+                          <th ng-click="sort='locationName'"><b>Venue</b></td>
                             <th ng-click="sort='date'"><b>Date</b></td>
                               <th></td>
                               </tr>
@@ -48,7 +49,7 @@
                               <tr ng-repeat="event in events | filter: searchEvents |filter: filterPast() | orderBy: sort">
                                 <td>{{event.name}}</td>
                                 <td>{{event.userName || '----'}}</td>
-                                <td>{{event.location}}</td>
+                                <td>{{event.locationName}}</td>
                                 <td>{{event.date.substring(5,10) + '-' + event.date.substring(0,4)}}</td>
                                 <td><button type="button" class="btn btn-md btn-default" ng-click="openModal(event)">Manage</button></td>
                               </tr>

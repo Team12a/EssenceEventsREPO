@@ -18,7 +18,7 @@ angular.module('essenceEventsRepoApp.superAdmin')
       user.phoneNumber = phoneNumber;
       user.$save({access_token: $cookies.get('token')}).then(function () {
         $modalInstance.close();
-	$state.reload();
+	      $state.reload();
       });
     }
   };

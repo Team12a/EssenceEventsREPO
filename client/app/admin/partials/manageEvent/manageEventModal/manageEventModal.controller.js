@@ -143,6 +143,13 @@ $scope.addGuest = function(name, email, phoneNumber, partySize, accommodations) 
   return 0;
 };
 
+$scope.viewGuestList = function()
+{
+  console.log($scope.event.name);
+  // $modalInstance.close();
+  $state.go('admin.viewGuestList',{userID : user._id, usersName : user.name, eve: $scope.event});
+};
+
 //Remove a guest from the array
 $scope.deleteGuest = function(index) {
   $scope.event.guests.splice(index, 1);
@@ -163,7 +170,7 @@ $scope.hasItems = function(arr)
 $scope.addBudget = function(item, cost)
 {
   if (item && cost) {
-    $scope.event.budget.push({title: item, amount: cost});
+    $scope.event.budget.push({title: item, amount: cost, user: 'admin'});
     $scope.currentCost = $scope.currentCost + cost;
 
     //ADD IF STATEMENT FOR ERROR HANDLING

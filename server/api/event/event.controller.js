@@ -8,8 +8,10 @@ import jwt from 'jsonwebtoken';
 //Sends back all events with open find call
 export function findAll(req, res) {
   Event.find({}, function(err, events) {
-    if (err)
+    if (err){
       res.status(400).send(err);
+      console.log('We got an error!');
+    }
     else
       res.send(events);
   });
@@ -102,12 +104,12 @@ export function removeUser(req, res) {
   if (req.events.length > 0)
     Event.find({userId: req.events[0].userId})
       .remove(function (err) {
-	if (err) {
-	  throw err;
-	  res.status(400).end();
-	}
-	else
-	  res.send('did it');
+	       if (err) {
+	          throw err;
+	          res.status(400).end();
+	       }
+	        else
+	         res.send('did it');
     });
   else
     res.status(400).end();

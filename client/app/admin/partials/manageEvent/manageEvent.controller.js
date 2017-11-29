@@ -3,6 +3,18 @@
 angular.module('essenceEventsRepoApp.admin')
 .controller('ManageEventCtrl', ['$scope', '$state', '$modal', '$q', 'Events', 'Auth', function ($scope, $state, $modal, $q, Events, Auth) {
 
+  var getUser = function() {
+    if (!$scope.curUser._id)
+      setTimeout(getUser, 100);
+    else {
+      $scope.clientName = $scope.curUser.name;
+      $scope.id = $scope.curUser._id;
+    }
+  };
+
+  $scope.curUser = Auth.getCurrentUser();
+  getUser();
+
     //filters to determine past and present tabs
   $scope.filterPast = function() {
     return function(item) {
@@ -22,7 +34,7 @@ angular.module('essenceEventsRepoApp.admin')
     Events.getAll()
     .then(function(response) {
       $scope.events = response.data;
-      
+
     //We have the userId in the model so we use Auth to get the name for each
       $scope.events.forEach(function(event) {
         Auth.getById(event.userId)
@@ -37,10 +49,16 @@ angular.module('essenceEventsRepoApp.admin')
     });
   };
 
+    //Takes user to guest list view
+    $scope.viewGuests = function(event){
+      $state.go('admin.viewGuestList', {ev : event});
+    };
+    
     //Open modal view
   $scope.openModal = function(event) {
     var modalInstance = $modal.open({
       animation: true,
+      backdrop: 'static',
       templateUrl: 'app/admin/partials/manageEvent/manageEventModal/manageEventModal.html',
       controller: 'ManageEventModalCtrl',
       resolve: {

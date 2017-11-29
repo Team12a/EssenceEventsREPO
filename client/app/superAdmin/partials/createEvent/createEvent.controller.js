@@ -1,14 +1,16 @@
 'use strict';
 
-angular.module('essenceEventsRepoApp.superAdmin')
-.controller('CreateEventCtrl', ['Events', '$scope', '$stateParams', '$state', function (Events, $scope, $stateParams, $state) {
+
+angular.module('essenceEventsRepoApp.admin')
+.controller('CreateEventCtrl', ['Events', '$scope', '$stateParams', '$state', 'uiGmapGoogleMapApi', function (Events, $scope, $stateParams, $state, uiGmapGoogleMapApi) {
+
 
   // $scope.message = 'Hello';
 
   //handle people trying to hit url directly.
   if($stateParams.userID == 'undefined')
   {
-    $state.go('admin.manageClients');
+    $state.go('superAdmin.manageAccounts');
   }
 
   //used to display the user you are talking to
@@ -65,7 +67,7 @@ angular.module('essenceEventsRepoApp.superAdmin')
   //Change free cash when updated in the budget array
   $scope.changeFreeCashArr = function()
   {
-    $scope.budget[0] = ({title: "Free Cash", amount: $scope.freeCash});
+    $scope.budget[0] = ({title: "Free Cash", amount: $scope.freeCash, user: 'superadmin'});
   }
 
   //Check if Todo List is empty
@@ -94,7 +96,7 @@ angular.module('essenceEventsRepoApp.superAdmin')
   $scope.addBudget = function()
   {
     if ($scope.budgetItem && $scope.itemCost && $scope.freeCash >= $scope.itemCost) {
-      $scope.budget.push({title: $scope.budgetItem, amount: $scope.itemCost});
+      $scope.budget.push({title: $scope.budgetItem, amount: $scope.itemCost, user: 'superadmin'});
       $scope.freeCash = $scope.freeCash - $scope.itemCost;
       $scope.currCost += $scope.itemCost;
       $scope.myBudgetStyle = {}
@@ -159,21 +161,44 @@ angular.module('essenceEventsRepoApp.superAdmin')
 
   //Saves all of the $scope fields into an event object and saves it to the database
   $scope.submit = function() {
-    var event = {
-      name: $scope.eventName,
-      date: $scope.eventDate,
-      location: $scope.venue,
-      userId: $stateParams.userID,
-      toDoList: $scope.thingsToDo,
-      budgetGoal: $scope.budgetGoal,
-      budget: $scope.budget
-    };
-    Events.create(event)
-      .then(function(response) {
-        $state.go('superAdmin.manageEvent');
-      }, function(err) {
-        //do something
-    });
+
+
+    uiGmapGoogleMapApi.then(function(maps) {
+      var geocoder = new google.maps.Geocoder();
+      geocoder.geocode({'address': $scope.venueAddress},function(results, status){
+        if(status == google.maps.GeocoderStatus.OK){
+          var locCoord = results[0].geometry.location;
+              $scope.latitude= locCoord.lat();
+              $scope.longitude= locCoord.lng();
+        }else {
+
+              $scope.latitude = 29.65253;
+              $scope.longitude = -82.330276;
+              $scope.venueName = 'Essence Events';
+              $scope.venueAddress = '530 W University Ave Gainesville, FL ';
+        }
+        var event = {
+          name: $scope.eventName,
+          date: $scope.eventDate,
+          locationName: $scope.venueName,
+          locationAdd: $scope.venueAddress,
+          lat: $scope.latitude,
+          lng: $scope.longitude,
+          userId: $stateParams.userID,
+          toDoList: $scope.thingsToDo,
+          budgetGoal: $scope.budgetGoal,
+          budget: $scope.budget
+        };
+        Events.create(event)
+          .then(function(response) {
+            $state.go('superAdmin.manageEvent');
+          }, function(err) {
+            //do something
+        });
+      });
+        });
+
+
   };
 
 }]);

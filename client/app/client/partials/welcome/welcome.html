@@ -1,18 +1,18 @@
 <div class = "container-fluid">
-  <div ng-controller="WelcomeCtrl" ng-init="getEvents()">
+  <div ng-controller="WelcomeCtrl" ng-init="getEvents(); sort='date'">
       <h2>Welcome, {{clientName}} </h2>
-      <table class="table table-hover">
+      <table class="table table-hover hoverSort">
         <thead>
           <tr>
-            <th><b>Event Name</b></td>
-              <th><b>Location</b></td>
-                <th><b>Address</b></td>
-                <th><b>Date</b></td>
+            <th ng-click="sort='name'"><b>Event Name</b></td>
+              <th ng-click="sort='locationName'"><b>Location</b></td>
+                <th ng-click="sort='locationAdd'"><b>Address</b></td>
+                <th ng-click="sort='date'"><b>Date</b></td>
                   <th></td>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr ng-repeat="ev in events">
+                  <tr ng-repeat="ev in events | orderBy: sort">
                     <td>{{ev.name}}</td>
                     <td>{{ev.locationName}}</td>
                     <td>{{ev.locationAdd}}</td>
@@ -30,41 +30,36 @@
         <h5> is on {{ev.date | date: 'fullDate'}}</h5>
         <h5> at {{ev.locationName}}</h5>
       </div>
+      <br></br>
         <!--Your budget-->
         <div class = "col-md-12">
           <div class = "col-md-6">
             <h4 align="center">Your Budget</h4>
-            <nvd3 options="options" data="ev.budget"></nvd3>
+            <div id="chart">
+              <svg></svg>
+            </div>
           </div>
-          <!-- Display Guest List -->
+
+          <!-- Display Guest List-->
           <div class = "col-md-6" ng-init="sortGuest='name'">
             <h4 style="text-align:center">Guest List</h4>
             <table class = "table table-hover hoverSort">
               <thead>
                 <tr>
-                  <!-- <th ng-click="sortGuest='name'"><b>Name</b></th>
-                  <th ng-click="sortGuest='email'"><b>Email</b></th>
-                  <th ng-click="sortGuest='phoneNumber'"><b>Phone Number</b></th>
-                  <th ng-click="sortGuest='partySize'"><b>Party Size</b></th>
-                  <th ng-click="sortGuest='accepted'"><b>Accepted</b></th> -->
                   <th ng-click="sortGuest='accepted'"><b>Accepted</b></th>
-                  <th ng-click="sortGuest='declined'"><b>Declined</b></th>
                   <th ng-click="sortGuest='pending'"><b>Pending</b></th>
                 </tr>
               </thead>
-              <tbody ng-repeat ="item in ev.guests | orderBy: sortGuest" ng-show="hasItems(ev.guests)">
+              <tbody ng-show="hasItems(ev.guests)">
                 <tr>
-                  <td>{{item.name}}</td>
-                  <td>{{item.email}}</td>
-                  <td>{{item.phoneNumber}}</td>
-                  <td>{{item.partySize}}</td>
-                  <td><span ng-class="(item.accepted) ? 'fa fa-check-square-o fa-lg' : 'fa fa-square-o fa-lg'"></span></td>
+                  <td>{{accepted}}</td>
+                  <td>{{pending}}</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
-        <!-- Display Todo Calendar -->
+        <!-- Display Todo Calendar-->
         <div class = "col-md-12">
           <div class="col-md-6">
             <div style="text-align:center">
@@ -77,7 +72,7 @@
             <mwl-calendar view="calendarView" view-date="calendarDate" events="todo" view-title="calendarTitle" on-view-change-click="false">
             </mwl-calendar>
           </div>
-          <!-- display table of todolist -->
+          <!-- display table of todolist-->
           <div class = "col-md-6">
             <h4 style="text-align:center">Task List</h4>
             <table class = "table table-hover">
