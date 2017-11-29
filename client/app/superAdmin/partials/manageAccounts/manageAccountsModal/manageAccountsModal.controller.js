@@ -42,6 +42,41 @@ angular.module('essenceEventsRepoApp.superAdmin')
     });
   };
 
+  //***Create Payment ***
+  $scope.createPayment = function()
+  {
+    $modalInstance.close();
+    $state.go('superAdmin.createPayment', {userID: user._id, usersName: user.name});
+  };
+
+  //**Get all payments for the user***
+  $scope.getPayments = function(){
+    $scope.payments = null;
+    Payments.getByUser(user._id)
+    .then(function(response){
+      if(response.data.lenght >0)
+      $scope.payments = response.data;
+    }, function(err){
+      //do something
+    });
+  };
+
+  $scope.managePayment = function(payment){
+    $modalInstance.close();
+    $state.go('superAdmin.managePayment');
+    var modalInstance = $modal.open({
+      animation: true,
+      templateUrl: 'app/superAdmin/partials/managePayment/managePaymentModal/managePaymentModal.html',
+      controller: 'ManagePaymentModalCtrl',
+      resolve: {
+        payment: function()
+        {
+          return payment;
+        }
+  }
+  });
+  };
+
   //Switches states to Manage Events and opens the modal for the event clicked
   $scope.manageEvent = function(event) {
     $modalInstance.close();
