@@ -16,7 +16,7 @@ angular.module('essenceEventsRepoApp.admin')
     $scope.openModal = function(subcontractor) {
       var modalInstance = $modal.open({
         animation: true,
-        backdrop: 'static',
+        //backdrop: 'static',
         templateUrl: 'app/admin/partials/manageContractors/manageContractorModal/manageContractorModal.html',
         controller: 'ManageContractorModalCtrl',
         resolve: {

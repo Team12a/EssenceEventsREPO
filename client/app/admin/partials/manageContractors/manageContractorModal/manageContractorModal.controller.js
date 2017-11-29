@@ -37,7 +37,7 @@ angular.module('essenceEventsRepoApp.admin')
   $scope.cancel = function() {
     $modalInstance.close();
   }
-  
+
   //Save changes to subcontractor to database on submit
   $scope.submit = function() {
     if ($scope.subcontractor.name)
