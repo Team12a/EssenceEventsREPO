@@ -25,7 +25,7 @@ function uploadFile() {
   formData.append("public_id","new_new_test");
 
   for (var pair of formData.entries()) {
-    console.log(pair[0]+ ', ' + pair[1]); 
+    console.log(pair[0]+ ', ' + pair[1]);
 }
   xhr.open("POST", "https://api.cloudinary.com/v1_1/" +
     cloudName +
@@ -33,7 +33,7 @@ function uploadFile() {
 
   xhr.onload = () => {
     if (xhr.status === 200) {
-    
+
       // Success! You probably want to save the URL somewhere
       var response = JSON.parse(xhr.response);
       var temp = response.secure_url;
@@ -48,21 +48,11 @@ function uploadFile() {
 }
 
 </script>
- 
-<div class="main" ng-controller="MainController">
-    <header class="hero-unit" id="banner">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <br><br><br><br>
-                
-                <!--  -->
-                <!-- <img src="http://res.cloudinary.com/dxqqlgb4t/image/upload/chase.jpg"/> -->
-                <h1 class="section-heading">WE'LL MAKE SURE YOUR WEDDING DAY IS EVERYTHING YOU'VE EVER DREAMED OF</h1>
-                <a img src="client\assets\images\homepage\white_line.png" alt='Fancy White Line Break clip art'/></a>
-                <img src="assets/images/homepage/white_line.png" />
-            </div>
 
+<section id="services">
+        <div class="container">
+            <br><br>
+            <h2 class="text-center cta-h2">Help me, help you</h2>
         </div>
         <div class="container">
             <div class="row">
