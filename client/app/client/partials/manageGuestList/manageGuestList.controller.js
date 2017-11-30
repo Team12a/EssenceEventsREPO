@@ -121,8 +121,8 @@ angular.module('essenceEventsRepoApp.client')
       return (arr.length > 0);
     };
   };
-  
-$scope.cancel = funtion(){
-  $scope.state1 = undefined;
-}
+
+  $scope.cancel = function(){
+    $scope.state1 = undefined;
+  };
 }]);
