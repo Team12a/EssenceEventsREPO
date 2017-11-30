@@ -12,10 +12,8 @@ angular.module('essenceEventsRepoApp.admin')
   }
 
   $scope.toggle = function(){
-    if($scope.state){
-      $scope.state = !$scope.state;
-    }
-      $scope.state1 = !$scope.state1;
+
+      $scope.state = "add";
 
   };
 
@@ -36,7 +34,7 @@ angular.module('essenceEventsRepoApp.admin')
 
    $scope.eve.guests.push(newGuest);
    Events.update($scope.eve);
-   $scope.state1 = !$scope.state1;
+   $scope.state = undefined;
    };
 
   $scope.changeAccepted = function(guest) {
@@ -67,7 +65,7 @@ angular.module('essenceEventsRepoApp.admin')
     //Brings up the edit guest form
     $scope.toggleEdit = function (guest) {
 
-      $scope.state = !$scope.state;
+      $scope.state = "edit";
       $scope.guest = guest;
 
         $scope.hasItems = function(arr)
@@ -105,9 +103,13 @@ angular.module('essenceEventsRepoApp.admin')
          'guestAccommodations' : null,
          'guestSize' : undefined
      };
-      $scope.state = !$scope.state;
+      $scope.state = undefined;
      }, function(err) {
        //do something
      });
    };
+
+   $scope.cancel = function(){
+     $scope.state = undefined;
+   }
 }]);
