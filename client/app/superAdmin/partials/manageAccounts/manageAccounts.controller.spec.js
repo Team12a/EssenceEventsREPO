@@ -1,16 +1,16 @@
 'use strict';
 
-describe('Controller: ManageClientsCtrl', function () {
+describe('Controller: ManageAccountsCtrl', function () {
 
   // load the controller's module
   beforeEach(module('essenceEventsRepoApp'));
 
-  var ManageClientsCtrl, scope;
+  var ManageAccountsCtrl, scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    ManageClientsCtrl = $controller('ManageClientsCtrl', {
+    ManageAccountsCtrl = $controller('ManageAccountsCtrl', {
       $scope: scope
     });
   }));

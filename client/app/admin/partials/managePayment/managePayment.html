@@ -12,21 +12,21 @@
         <thead>
           <tr>
             <th ng-click="sort='description'"><b>Description</b></td>
-                <th ng-click="sort='amount'"><b>Amount</b></td>
-                  <th ng-click="sort='dueDate'"><b>Due Date</b></td>
-                    <th></td>
-                    </tr>
-                  </thead>
+            <th ng-click="sort='amount'"><b>Amount</b></td>
+            <th ng-click="sort='dueDate'"><b>Due Date</b></td>
+            <th></td>
+          </tr>
+        </thead>
 
-                  <tbody>
-                    <tr ng-repeat="payment in payments">
-                      <td>{{payment.description}}</td>
-                      <td>{{payment.amount}}</td>
-                      <td>{{payment.dueDate.substring(5,10) + '-' + payment.dueDate.substring(0,4)}}</td>
-                      <td><button type="button" class="btn btn-md btn-default" ng-click="openModal(payment)">Manage</button></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </tab>
-            </tabset>
-          </div>
+        <tbody>
+          <tr ng-repeat="payment in payments">
+            <td>{{payment.description}}</td>
+            <td>{{payment.amount}}</td>
+            <td>{{payment.dueDate.substring(5,10) + '-' + payment.dueDate.substring(0,4)}}</td>
+            <td><button type="button" class="btn btn-md btn-default" ng-click="openModal(payment)">Manage</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </tab>
+  </tabset>
+  </div>

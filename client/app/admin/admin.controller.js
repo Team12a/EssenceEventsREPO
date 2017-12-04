@@ -31,14 +31,14 @@ angular.module('essenceEventsRepoApp.admin')
         'state': 'admin.manageContractors',
       },
       {
-        'title': 'Manage Links',
-        'description': 'Manage Public Links Page',
+        'title': 'Manage Vendors',
+        'description': 'Manage Public Vendors Page',
         'state': 'admin.manageLinks',
       },
       {
         'title': 'View Testimonials',
         'description': 'View Testimonials Uploaded by Clients',
-        'state': 'admin.veiwTestimonials',
+        'state': 'admin.viewTestimonials',
       },
     ];
 

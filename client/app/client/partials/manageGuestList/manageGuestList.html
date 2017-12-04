@@ -1,25 +1,26 @@
 <div class = "container-fluid">
+
   <div ng-controller="WelcomeCtrl" ng-init="getEvents()">
-      <h2>Welcome, {{clientName}} </h2>
+      <h2>Manage Your Guests </h2>
+
       <table class="table table-hover">
         <thead>
           <tr>
-            <th><b>Event Name</b></td>
-            <th><b>Location</b></td>
-            <th><b>Date</b></td>
+            <th ng-click="sort='name'"><b>Event Name</b></td>
+            <th ng-click="sort='locationName'"><b>Location</b></td>
+            <th ng-click="sort='date'"><b>Date</b></td>
             <th></td>
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="event in events">
+          <tr ng-repeat="event in events | orderBy: sort">
             <td>{{event.name}}</td>
-            <td>{{event.location}}</td>
+            <td>{{event.locationName}}</td>
             <td>{{event.date.substring(5,10) + '-' + event.date.substring(0,4)}}</td>
             <td> <button class = "btn btn-primary" ng-click="toggle(event)">View Guests</button></td>
           </tr>
         </tbody>
       </table>
-
 
       <div ng-show="state">
         <!-- Display Guest List -->
@@ -34,12 +35,12 @@
             <table class = "table table-hover hoverSort">
               <thead>
                 <tr>
-                  <th ng-click="sortGuest='guestName'"><b>Guest Name</b></th>
+                  <th ng-click="sortGuest='name'"><b>Guest Name</b></th>
                   <th ng-click="sortGuest='partySize'"><b>Party Size</b></th>
                   <th ng-click="sortGuest='accommodations'"><b>Accommodations</b></th>
                   <th ng-click="sortGuest='attending'"><b>Attending</b></th>
                   <th><b>Edit</b></th>
-
+                  <th><b>Remove</b></th>
                 </tr>
               </thead>
               <tbody ng-repeat ="item in ev.guests | orderBy: sortGuest | filter: searchGuests" ng-show="hasItems(ev.guests)">
@@ -47,10 +48,9 @@
                   <td>{{item.name}}</td>
                   <td>{{item.partySize}}</td>
                   <td>{{item.accommodations}}</td>
-
-                  <td><span ng-class="(item.accepted) ? 'fa fa-check-square-o fa-lg' : 'fa fa-square-o fa-lg'" ng-click="changeAccepted()"></span></td>
-
-                  <td><span class="glyphicon glyphicon-edit" ng-click="toggleEdit(item)"></span></td>
+                  <td><span ng-class="(item.accepted) ? 'fa fa-check-square-o fa-lg' : 'fa fa-square-o fa-lg'" ng-click="changeAccepted(ev, item)"></span></td>
+                  <td><span class="glyphicon glyphicon-edit" ng-click="toggleEdit(ev, item)"></span></td>
+                  <td><span button class = "btn btn-danger" ng-click="removeGuest(ev, item)">Remove</span></td>
                 </tr>
               </tbody>
               <tfoot>
@@ -58,42 +58,42 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td><button type="button" class="btn btn-md btn-default" ng-click="addGuest()">Add Guests</button> </td>
+                <td></td>
+                <td><button type="button" class="btn btn-md btn-default" ng-click="addGuest(ev)">Add Guests</button> </td>
               </tfoot>
-
             </table>
-
           </div>
         </div>
           <div ng-show="state1">
 
             <b>Update Information For {{guest.name}}<b>
               <br></br>
-              <form name="listingForm" class="form-horizontal" ng-submit="submit()">
-                <div id="budget" class="col-md-4">
+              <form name="listingForm" class="form-horizontal" ng-submit="updateGuest(ev, guest)">
+                <div id="updateGuest" class="col-md-4">
                   <label for="guestPhone">Phone Number:</label>
-                  <input type="number" name="guestPhone" placeholder="{{guest.phoneNumber}}" ng-model="guestPhone" class="form-control">
+                  <input type="number" name="guestPhone"  placeholder="{{guest.phoneNumber}}" ng-model="formData.guestPhone" class="form-control">
                 </div>
-                <div id="budget" class="col-md-5">
+                <div id="updateGuest" class="col-md-5">
                   <label for="guestEmail">Email:</label>
-                  <input type="email" name="guestEmail" placeholder="{{guest.email}}" ng-model="guestEmail" class="form-control">
+                  <input type="email" name="guestEmail"  placeholder="{{guest.email}}" ng-model="formData.guestEmail" class="form-control">
                 </div>
-                <div id="budget" class="col-md-2">
-                  <label for="todoInput">Party Size:</label>
-                  <input type="number" name="guestSize" placeholder="{{guest.partySize}}" ng-model="guestSize" class="form-control">
+                <div id="updateGuest" class="col-md-2">
+                  <label for="guestSize">Party Size:</label>
+                  <input type="number" name="guestSize"  placeholder="{{guest.partySize}}" ng-model="formData.guestSize" class="form-control">
                 </div>
-                <div id="budget" class="col-md-6">
-                  <label for="accommodations">Accommodations:</label>
-                  <input type="text" name="accommodations" placeholder="{{guest.accommodations}}" ng-model="guestAccommodations" class="form-control">
+                <div id="updateGuest" class="col-md-6">
+                  <label for="guestAccommodations">Accommodations:</label>
+                  <input name="guestAccommodations" placeholder="{{guest.accommodations}}" ng-model="formData.guestAccommodations" class="form-control">
                 </div>
+                <div>
                   <br></br>
-                  <button class="btn btn-success" id="updateGuest" ng-submit="updateGuest()">Update</button>
-                  <button class = "btn btn-danger" ng-click="deleteGuest()">Remove</button>
-                <form>
+
+                  <br></br>
+                  <button  class="btn btn-success" id="updateGuest" type = 'submit'>Update</button>
+                </div>
+                </form>
 
           </div>
-
       </div>
-
   </div>
 </div>

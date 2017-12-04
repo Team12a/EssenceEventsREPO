@@ -20,10 +20,8 @@ export default function(app) {
   app.use('/api/events', require('./api/event'));
   app.use('/api/links', require('./api/link'));
   app.use('/api/email', require('./api/email'));
+  app.use('/api/testimonials', require('./api/testimonial'));
   app.use('/api/payments', require('./api/payment'));
-  app.use('/api/testimonial', require('./api/testimonial'));
-  //not sure about this
-  app.use('/api/superAdmins', require('./api/superAdmin'));
   app.use('/api/textEdit', require('./api/textEdit'));
   app.use('/api/cloudinary', require('./api/cloudinary'));
   app.use('/cloudinary_cors.html', require('./api/cloudinary/cloudinary_cors.html'));

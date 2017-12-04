@@ -3,33 +3,12 @@
 (function() {
 
 class MainController {
-  constructor(Auth, $state, $scope, $http, Events) {
+
+  constructor($http) {
     this.$http = $http;
     this.awesomeThings = [];
-    this.isLoggedIn = Auth.isLoggedIn;
-    this.isSuperAdmin = Auth.isSuperAdmin;
-    this.isAdmin = Auth.isAdmin;
-    this.getCurrentUser = Auth.getCurrentUser;
-    //this.curUsr = this.getCurrentUser();
-    //this.$state.go('customer', {userID: this.curUsr._id, userName: this.curUsr.name})
-    this.state = $state;
-
-    this.Evs = Events;
   }
-
-  navigate(){
-    var curUsr = this.getCurrentUser();
-    let state = this.state;
-    this.Evs.getByUser(curUsr._id)
-    .then(function(response) {
-      var events = response.data;
-      state.go('customer', {userID: curUsr._id, userName: curUsr.name, events: events});
-    }, function(err) {
-      //do something
-      console.log(err);
-    });
-   
-  }
+<<<<<<< HEAD
 
   // uploadFile(){
   
@@ -42,6 +21,9 @@ class MainController {
   //       {invalidate: true}, 
   //       function(error, result) {console.log(result); });
 
+=======
+}
+>>>>>>> 8dad86a4d9c07ae415e92952ae799ff335ebbf28
 
   // };
       

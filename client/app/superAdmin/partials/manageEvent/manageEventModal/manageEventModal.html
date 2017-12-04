@@ -25,15 +25,20 @@
 
               <!-- Div to input time for date -->
               <div class = "col-md-5 col-md-offset-1" show errors>
-                <timepicker ng-model="event.date" hour-step="1" minute-step="1" show-meridian="true"></timepicker>
-              </div>
+              <timepicker ng-model="event.date" hour-step="1" minute-step="1" show-meridian="true">
+              </timepicker>
             </div>
 
-            <!-- Div to input then venue  -->
-            <div class="form-group row col-md-12" show-errors>
-              <label for="venue">Venue:</label>
-              <input name="venue" type="venue" ng-model="event.location" id="venue" class="form-control" required>
-            </div>
+            <!-- Div to input time for location -->
+              <div class="form-group row col-md-12" show-errors>
+                <label for="venue">Venue:</label>
+                <input name="venue" type="venue" ng-model="event.locationName" id="venue" class="form-control" required>
+              </div>
+
+              <div class="form-group row col-md-12" show-errors>
+                <label for="venue">Address:</label>
+                <input name="venueAddress" type="venueAddress" ng-model="event.locationAdd" id="venueAddress" class="form-control" required>
+              </div>
 
             <!-- Div to input the goal budget -->
             <div class="form-group row col-md-12" show-errors>
@@ -83,7 +88,7 @@
           </div>
         </form>
 
-        <div class="row">
+        <div class="row"  style="overflow: auto">
           <table class = "col-md-12 table table-hover" ng-show="hasItems(event.toDoList)">
             <thead>
               <tr>
@@ -137,7 +142,7 @@
           </div>
         </form>
 
-        <div class="row">
+        <div class="row"  style="overflow: auto">
           <table class = "col-md-12 table table-hover" ng-show="hasItems(event.budget)">
             <thead>
               <tr>
@@ -180,7 +185,7 @@
             <button type="submit" class="btn btn-success" ng-click="addSubcontractor(addSubcon) ? addSubcon = null : null">+</button>
           </div>
         </form>
-        <div class="row">
+        <div class="row"  style="overflow: auto">
           <table class = "col-md-12 table table-hover" ng-show="hasItems(event.subcons)">
             <thead>
               <tr>
@@ -235,7 +240,7 @@
           </div>
         </form>
 
-        <div class="row">
+        <div class="row"  style="overflow: auto">
           <table class = "col-md-12 table table-hover" ng-show="hasItems(event.guests)" style="word-wrap: break-word">
             <thead>
               <tr>

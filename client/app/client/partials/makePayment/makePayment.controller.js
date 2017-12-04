@@ -29,6 +29,18 @@ angular.module('essenceEventsRepoApp')
       });
   };
 
+  $scope.getPayments = function(){
+    if (!$scope.id)
+      setTimeout($scope.getPayments, 100);
+    else
+      Payments.getByUser($scope.id)
+        .then(function(response) {
+          $scope.payments = response.data;
+        }, function(error) {
+          //do something
+      });
+  };
+
     var getUser = function() {
       if (!$scope.curUser._id)
         setTimeout(getUser, 100);
