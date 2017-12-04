@@ -1,3 +1,5 @@
+
+
 <!-- <script type="text/javascript">
     function uploadFile() {
       var formData = new FormData(),
@@ -6,8 +8,8 @@
         cloudName = "dxqqlgb4t";
       formData.append("file", file);
       formData.append("upload_preset", "kinnmurr");
-      formData.append("api_key", "328814721185186");
-      formData.append("api_secret", "w1xyddi2MF1S6UA13T9kXAGJM3g"); // REQUIRED
+    //   formData.append("api_key", "328814721185186");
+    //   formData.append("api_secret", "w1xyddi2MF1S6UA13T9kXAGJM3g"); // REQUIRED
       formData.append("invalidate",true);
       formData.append("public_id","new_new_test");
       for (var pair of formData.entries()) {
@@ -29,10 +31,24 @@
         }
       }
       xhr.send(formData);
-    } -->
-    <!-- </script> -->
+    } 
+    </script> -->
+
+
+<script type="text/javascript">
+ src="jquery.ui.widget.js"
+</script>
+<script type="text/javascript">
+ src="jquery.iframe-transport.js"
+</script>
+<script type="text/javascript">
+ src="jquery.fileupload.js"
+</script>
+
+<script src="../node_modules/cloudinary-jquery-file-upload/cloudinary-jquery-file-upload.js"></script>
  
 <div class="main" ng-controller="MainController">
+  
     <header class="hero-unit" id="banner">
     <div class="container">
         <div class="row">
@@ -139,10 +155,9 @@
                     
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <h4 ><input type="file" id="file" ng-click="uploadFile('file')" /> </h4>
+                    <input type="file" id="files" ng-model="image" onchange="angular.element(this).scope().uploadImage('files')" />
                     <a href="celebrations" class="portfolio-box">
-                        <!-- <img src="assets/images/homepage/baby_shower.jpg" class="img-responsive" alt=""> -->
-                        <img src="http://res.cloudinary.com/dxqqlgb4t/image/upload/baby_shower.jpg" class="img-responsive" alt="">
+                        <img src="http://res.cloudinary.com/dxqqlgb4t/image/upload/sample.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
