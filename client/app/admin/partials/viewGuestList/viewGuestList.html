@@ -47,7 +47,7 @@
         </table>
       </div>
     </div>
-    <div ng-show="state">
+    <div ng-show="state == 'edit'">
          <b>Update Information For {{guest.name}}<b>
            <br></br>
            <form name="listingForm" class="form-horizontal" ng-submit="updateGuest(guest)">
@@ -74,7 +74,7 @@
              </div>
              </form>
        </div>
-       <div ng-show = "state1">
+       <div ng-show = "state == 'add'">
          <form name="listingForm" class="form-horizontal" ng-submit="addGuest()">
           <div class="form-group" show-errors>
             <label for="name">Name</label>

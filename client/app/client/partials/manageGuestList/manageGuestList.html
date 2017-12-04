@@ -64,36 +64,36 @@
             </table>
           </div>
         </div>
-          <div ng-show="state1">
+        <div ng-show="state1 == 'edit'">
+          <b>Update Information For {{guest.name}}<b>
+            <br></br>
+            <form name="listingForm" class="form-horizontal" ng-submit="updateGuest(ev, guest)">
+              <div id="updateGuest" class="col-md-4">
+                <label for="guestPhone">Phone Number:</label>
+                <input type="number" name="guestPhone"  placeholder="{{guest.phoneNumber}}" ng-model="formData.guestPhone" class="form-control">
+              </div>
+              <div id="updateGuest" class="col-md-5">
+                <label for="guestEmail">Email:</label>
+                <input type="email" name="guestEmail"  placeholder="{{guest.email}}" ng-model="formData.guestEmail" class="form-control">
+              </div>
+              <div id="updateGuest" class="col-md-2">
+                <label for="guestSize">Party Size:</label>
+                <input type="number" name="guestSize"  placeholder="{{guest.partySize}}" ng-model="formData.guestSize" class="form-control">
+              </div>
+              <div id="updateGuest" class="col-md-6">
+                <label for="guestAccommodations">Accommodations:</label>
+                <input name="guestAccommodations" placeholder="{{guest.accommodations}}" ng-model="formData.guestAccommodations" class="form-control">
+              </div>
+              <div>
+                <br></br>
 
-            <b>Update Information For {{guest.name}}<b>
-              <br></br>
-              <form name="listingForm" class="form-horizontal" ng-submit="updateGuest(ev, guest)">
-                <div id="updateGuest" class="col-md-4">
-                  <label for="guestPhone">Phone Number:</label>
-                  <input type="number" name="guestPhone"  placeholder="{{guest.phoneNumber}}" ng-model="formData.guestPhone" class="form-control">
-                </div>
-                <div id="updateGuest" class="col-md-5">
-                  <label for="guestEmail">Email:</label>
-                  <input type="email" name="guestEmail"  placeholder="{{guest.email}}" ng-model="formData.guestEmail" class="form-control">
-                </div>
-                <div id="updateGuest" class="col-md-2">
-                  <label for="guestSize">Party Size:</label>
-                  <input type="number" name="guestSize"  placeholder="{{guest.partySize}}" ng-model="formData.guestSize" class="form-control">
-                </div>
-                <div id="updateGuest" class="col-md-6">
-                  <label for="guestAccommodations">Accommodations:</label>
-                  <input name="guestAccommodations" placeholder="{{guest.accommodations}}" ng-model="formData.guestAccommodations" class="form-control">
-                </div>
-                <div>
-                  <br></br>
-
-                  <br></br>
-                  <button  class="btn btn-success" id="updateGuest" type = 'submit'>Update</button>
-                </div>
-                </form>
-
-          </div>
+                <br></br>
+                <button  class="btn btn-success" id="updateGuest" type = 'submit'>Update</button>
+                <button   id="updateGuest" ng-click='cancel()'>Cancel</button>
+              </div>
+              </form>
+    </div>
       </div>
+
   </div>
 </div>

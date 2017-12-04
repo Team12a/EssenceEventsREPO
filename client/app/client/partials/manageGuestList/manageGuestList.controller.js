@@ -4,6 +4,8 @@ angular.module('essenceEventsRepoApp.client')
 .controller('manageGuestListCtrl', [ 'Events', 'Auth', '$scope', '$stateParams', '$state', function ( Events, Auth, $scope, $stateParams, $state) {
 
   $scope.formData = {};
+  $scope.state;
+  $scope.state1;
 
   var getUser = function() {
     if (!$scope.curUser._id)
@@ -30,17 +32,7 @@ angular.module('essenceEventsRepoApp.client')
   };
 
   //Displays the guest list for selected event
-  $scope.toggle = function(event) {
-    if (!$scope.state && $scope.state1){
-      $scope.state1 = !$scope.state1;
-    }
-    $scope.state = !$scope.state;
-    $scope.ev = event;
 
-    $scope.hasItems = function(arr) {
-      return (arr.length > 0);
-    };
-  };
 
   //Takes you to page to add a guest for the selected event
   $scope.addGuest = function(event){
@@ -63,7 +55,7 @@ angular.module('essenceEventsRepoApp.client')
   //Brings up the edit guest form
   $scope.toggleEdit = function (event, guest) {
 
-    $scope.state1 = !$scope.state1;
+    $scope.state1 = "edit";
     $scope.ev = event;
     $scope.guest = guest;
 
@@ -114,10 +106,23 @@ angular.module('essenceEventsRepoApp.client')
         'guestAccommodations' : null,
         'guestSize' : undefined
     };
-      $scope.state1 = !$scope.state1;
+      $scope.state1 = undefined;
     }, function(err) {
       //do something
     });
   };
 
+  $scope.toggle = function(event) {
+
+    $scope.state = true;
+    $scope.ev = event;
+    $scope.state1 = undefined;
+    $scope.hasItems = function(arr) {
+      return (arr.length > 0);
+    };
+  };
+
+  $scope.cancel = function(){
+    $scope.state1 = undefined;
+  };
 }]);
