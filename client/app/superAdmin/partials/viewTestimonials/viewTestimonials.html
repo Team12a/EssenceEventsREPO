@@ -25,7 +25,7 @@
             <td>{{testimonial.eventDescription}}</td>
             <td>{{testimonial.message}}</td>
             <td>{{testimonial.postDate.substring(5,10) + '-' + testimonial.postDate.substring(0,4)}}</td>
-            <td><button type="button" class="btn btn-md btn-danger" ng-click="delete(testimonial)">Delete</button></td>
+            <td><button type="button" ng-really-message="Are you sure?" class="btn btn-md btn-danger" ng-really-click="delete(testimonial)">Delete</button></td>
           </tr>
         </tbody>
       </table>
