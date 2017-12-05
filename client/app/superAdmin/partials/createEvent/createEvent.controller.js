@@ -1,8 +1,8 @@
 'use strict';
 
 
-angular.module('essenceEventsRepoApp.admin')
-.controller('CreateEventCtrl', ['Events', '$scope', '$stateParams', '$state', 'uiGmapGoogleMapApi', function (Events, $scope, $stateParams, $state, uiGmapGoogleMapApi) {
+angular.module('essenceEventsRepoApp.superAdmin')
+.controller('CreateEventCtrlSuper', ['Events', '$scope', '$stateParams', '$state', 'uiGmapGoogleMapApi', function (Events, $scope, $stateParams, $state, uiGmapGoogleMapApi) {
 
 
   // $scope.message = 'Hello';
