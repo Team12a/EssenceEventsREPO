@@ -9,20 +9,33 @@
                         </a>
                     </div>
                 </div>
-                <div class="project-content col-md-4">
+
+                <div ng-init="getText1()" class="project-content col-md-4">
                     <h4><span>Weddings</span></h4>
-                    <p>At Essence Events, we specialize in custom details for your wedding. Our focus is to provide our clients with flawless planning and design experience. From logistics to execution, we ensure you have a wonderful wedding day. We work with local vendors throughout the community to bring every detail of your wedding to life.</p>
+                    <button class="btn btn-default "ng-if="nav.isSuperAdmin()" ng-click="submit('weddingDescriptText')">Submit Changes</button>
+                    <div id="weddingDescriptText" ng-if="nav.isSuperAdmin()" contenteditable="true">{{literalText1}}</div>
+                    <div id="weddingDescriptText" ng-if="!nav.isSuperAdmin()">{{literalText1}}</div>
+                    <br></br>
                     <h4><span>Examples</span></h4>
                     <ul>
-                        <li><strong>Wedding Service</strong></li>
-                        <li><strong>Practice Reception</strong></li>
-                        <li><strong>Pre-Wedding Party</strong></li>
-                        <li><strong>And More</strong></li>
+                      <li><strong>Wedding Service</strong></li>
+                      <li><strong>Practice Reception</strong></li>
+                      <li><strong>Pre-Wedding Party</strong></li>
+                      <li><strong>And More</strong></li>
                     </ul>
                 </div>
+
             </div>
-            <blockquote><p>"You have made our wedding an experience we will never forget."
-            </p><p><small>Albany &amp; Derrick</small></p></blockquote>
+            <div ng-init="getText2()">
+                <button class="btn btn-default "ng-if="nav.isSuperAdmin()" ng-click="submit('weddingTestimonial')">Submit Changes</button>
+                <blockquote ng-show="nav.isSuperAdmin()"><p id="weddingTestimonial" ng-if="nav.isSuperAdmin()" contenteditable="true">{{literalText2}}</p></blockquote>
+                <blockquote ng-show="!nav.isSuperAdmin()"><p id="weddingTestimonial" ng-if="!nav.isSuperAdmin()">{{literalText2}}</p>
+                  <p id="weddingTestimonialAuthor" ng-if="!nav.isSuperAdmin()"><small>{{literalText3}}</small></p></blockquote>
+            </div>
+            <div ng-init="getText3()" ng-show="nav.isSuperAdmin()">
+                <button class="btn btn-default "ng-if="nav.isSuperAdmin()" ng-click="submit('weddingTestimonialAuthor')">Submit Changes</button>
+                <blockquote><p id="weddingTestimonialAuthor" ng-show="nav.isSuperAdmin()" contenteditable="true">{{literalText3}}</p></blockquote>
+            </div>
         </div>
     </div>
 </div>

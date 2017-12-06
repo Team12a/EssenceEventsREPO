@@ -9,20 +9,35 @@
                         </a>
                     </div>
                 </div>
-                <div class="project-content col-md-4">
+
+                <div ng-init="getText1()" class="project-content col-md-4">
                     <h4><span>Corporate</span></h4>
-                    <p>At Essence Events, we help promote and plan every detail of your corporate event. From banquet halls to corporate retreats, we cover every aspect to make your company event successful.</p>
+                    <button class="btn btn-default "ng-if="nav.isSuperAdmin()" ng-click="submit('corporateDescriptText')">Submit Changes</button>
+                    <div id="corporateDescriptText" ng-if="nav.isSuperAdmin()" contenteditable="true">{{literalText1}}</div>
+                    <div id="corporateDescriptText" ng-if="!nav.isSuperAdmin()">{{literalText1}}</div>
+                    <br></br>
                     <h4><span>Examples</span></h4>
                     <ul>
-                        <li><strong>Corporate Retreat</strong></li>
-                        <li><strong>Convention</strong></li>
-                        <li><strong>Recruiting Event</strong></li>
-                        <li><strong>And More</strong></li>
+                      <li><strong>Corporate Retreat</strong></li>
+                      <li><strong>Convention</strong></li>
+                      <li><strong>Recruiting Event</strong></li>
+                      <li><strong>And More</strong></li>
                     </ul>
                 </div>
+
             </div>
-            <blockquote><p>"Thank you for making our fundraising event a beautiful success!"
-            </p><p><small>Nkwanda Jah, Executive Director of Cultural Arts Coalition</small></p></blockquote>
+            <div ng-init="getText2()">
+                <button class="btn btn-default "ng-if="nav.isSuperAdmin()" ng-click="submit('corporateTestimonial')">Submit Changes</button>
+                <blockquote ng-show="nav.isSuperAdmin()"><p id="corporateTestimonial" ng-if="nav.isSuperAdmin()" contenteditable="true">{{literalText2}}</p></blockquote>
+                <blockquote ng-show="!nav.isSuperAdmin()"><p id="corporateTestimonial" ng-if="!nav.isSuperAdmin()">{{literalText2}}</p>
+                  <p id="corporateTestimonialAuthor" ng-if="!nav.isSuperAdmin()"><small>{{literalText3}}</small></p></blockquote>
+            </div>
+            <div ng-init="getText3()" ng-show="nav.isSuperAdmin()">
+                <button class="btn btn-default "ng-if="nav.isSuperAdmin()" ng-click="submit('corporateTestimonialAuthor')">Submit Changes</button>
+                <blockquote><p id="corporateTestimonialAuthor" ng-show="nav.isSuperAdmin()" contenteditable="true">{{literalText3}}</p></blockquote>
+            </div>
+            <!--<blockquote><p>"Thank you for making our fundraising event a beautiful success!"
+            </p><p><small>Nkwanda Jah, Executive Director of Cultural Arts Coalition</small></p></blockquote> -->
         </div>
     </div>
 </div>
