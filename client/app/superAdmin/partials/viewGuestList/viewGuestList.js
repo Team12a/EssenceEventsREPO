@@ -1,7 +1,7 @@
 
   'use strict';
 
-  angular.module('essenceEventsRepoApp.admin')
+  angular.module('essenceEventsRepoApp.superAdmin')
     .config(function ($stateProvider) {
       $stateProvider
         .state('superAdmin.viewGuestList', {
