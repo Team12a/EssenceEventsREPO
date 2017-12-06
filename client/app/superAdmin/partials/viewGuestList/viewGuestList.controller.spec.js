@@ -11,6 +11,7 @@ describe('Controller: ViewGuestListCtrlSuper', function () {
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
     ViewGuestListCtrl = $controller('ViewGuestListCtrlSuper', {
+
       $scope: scope
     });
   }));
