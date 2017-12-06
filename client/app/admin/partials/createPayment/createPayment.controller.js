@@ -31,9 +31,9 @@ angular.module('essenceEventsRepoApp.admin')
   //Saves all of the $scope fields into an event object and saves it to the database
   $scope.submit = function() {
     var payment = {
-      description: $scope.paymentDesc,
+      description: "Initial Meeting Fee",
       dueDate: $scope.paymentDueDate,
-      amount: $scope.amount,
+      amount: 25.00,
       userId: $stateParams.userID
     };
 

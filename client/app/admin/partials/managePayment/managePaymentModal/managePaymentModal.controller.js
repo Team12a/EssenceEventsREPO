@@ -6,7 +6,7 @@ angular.module('essenceEventsRepoApp.admin')
 
     //Copy object so we don't change main page concurrently and setup subcontractors
   $scope.payment = JSON.parse(JSON.stringify(payment));
-
+  
   //hideDeleteTab with functionality
   $scope.hideDeleteTab = true;
 
@@ -20,9 +20,10 @@ angular.module('essenceEventsRepoApp.admin')
     $scope.hideDeleteTab = true;
   }
 
-  //deleteEvent
+  //deletePayment
   $scope.deletePayment = function()
   {
+    console.log("Here");
     Payments.remove(payment._id).then(function()
       {
         $modalInstance.close();
@@ -32,23 +33,21 @@ angular.module('essenceEventsRepoApp.admin')
   }
 
 
-/**this is for Basic Info
+
 $scope.datePicker = {opened: false, scheduleDateOpened: false};
 $scope.open = function($event) {
   $event.preventDefault();
   $event.stopPropagation();
   $scope.datePicker.opened = true;
 };
-*/
 
 
-/**used for Schedule Tab,
 $scope.scheduleDateOpen = function($event) {
   $event.preventDefault();
   $event.stopPropagation();
   $scope.datePicker.scheduleDateOpened = true;
 };
-*/
+
 
 
 //Close modal without making changes
