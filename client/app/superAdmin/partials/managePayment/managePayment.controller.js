@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('essenceEventsRepoApp.admin')
-.controller('ManagePaymentCtrl', ['$scope', '$state', '$modal', '$q', 'Payments', 'Auth', function ($scope, $state, $modal, $q, Payments, Auth) {
+angular.module('essenceEventsRepoApp.superAdmin')
+.controller('ManagePaymentCtrlSuper', ['$scope', '$state', '$modal', '$q', 'Payments', 'Auth', function ($scope, $state, $modal, $q, Payments, Auth) {
 
     //filters to determine past and present tabs
   $scope.filterPast = function() {
@@ -32,8 +32,8 @@ angular.module('essenceEventsRepoApp.admin')
     var modalInstance = $modal.open({
       animation: true,
       backdrop: 'static',
-      templateUrl: 'app/admin/partials/managePayment/managePaymentModal/managePaymentModal.html',
-      controller: 'ManagePaymentModalCtrl',
+      templateUrl: 'app/superAdmin/partials/managePayment/managePaymentModal/managePaymentModal.html',
+      controller: 'ManagePaymentModalCtrlSuper',
       resolve: {
         payment: function()
         {

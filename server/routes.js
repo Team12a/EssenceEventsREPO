@@ -9,6 +9,7 @@ import path from 'path';
 
 export default function(app) {
   // Routes used
+  
   app.use('/api/users', require('./api/user'));
   app.use('/api/subcontractors', require('./api/subcontractor'));
   app.use('/api/events', require('./api/event'));
@@ -17,8 +18,13 @@ export default function(app) {
   app.use('/api/testimonials', require('./api/testimonial'));
   app.use('/api/payments', require('./api/payment'));
   app.use('/api/textEdit', require('./api/textEdit'));
+  app.use('/api/cloudinary', require('./api/cloudinary'));
+  
 
   app.use('/auth', require('./auth'));
+
+ 
+  
 
   // All undefined asset or api routes should return a 404
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')

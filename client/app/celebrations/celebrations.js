@@ -6,6 +6,7 @@ angular.module('essenceEventsRepoApp')
       .state('celebrations', {
         url: '/celebrations',
         templateUrl: 'app/celebrations/celebrations.html',
-        controller: 'CelebrationsCtrl'
+        controller: 'CelebrationsCtrl',
+        controllerAs: 'Celeb'
       });
   });
