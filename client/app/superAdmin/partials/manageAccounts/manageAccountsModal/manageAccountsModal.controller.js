@@ -30,6 +30,23 @@ angular.module('essenceEventsRepoApp.superAdmin')
     $state.go('superAdmin.createEvent', {userID : user._id, usersName : user.name});
   };
 
+ //***Create Payment ***
+  $scope.createPayment = function()
+  {
+    $modalInstance.close();
+    $state.go('superAdmin.createPayment', {userID: user._id, usersName: user.name});
+  };
+  //**Get all payments for the user***
+  $scope.getPayments = function(){
+    $scope.payments = null;
+    Payments.getByUser(user._id)
+    .then(function(response){
+      if(response.data.lenght >0)
+      $scope.payments = response.data;
+    }, function(err){
+      //do something
+    });
+  };
   //Get all events for the user
   $scope.getEvents = function() {
     $scope.events = null;

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('essenceEventsRepoApp.superAdmin')
-.controller('ManageEventModalCtrl', ['$scope', '$state', '$q', '$modalInstance', 'event', 'Events', 'Subcontractors', function ($scope, $state, $q, $modalInstance, event, Events, Subcontractors)
+.controller('ManageEventModalCtrlSuper', ['$scope', '$state', '$q', '$modalInstance', 'event', 'Events', 'Subcontractors', function ($scope, $state, $q, $modalInstance, event, Events, Subcontractors)
 {
 
     //Copy object so we don't change main page concurrently and setup subcontractors
