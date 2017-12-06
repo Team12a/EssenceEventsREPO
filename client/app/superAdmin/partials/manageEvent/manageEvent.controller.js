@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('essenceEventsRepoApp.admin')
-.controller('ManageEventCtrl', ['$scope', '$state', '$modal', '$q', 'Events', 'Auth', function ($scope, $state, $modal, $q, Events, Auth) {
+angular.module('essenceEventsRepoApp.superAdmin')
+.controller('ManageEventCtrlSuper', ['$scope', '$state', '$modal', '$q', 'Events', 'Auth', function ($scope, $state, $modal, $q, Events, Auth) {
 
   var getUser = function() {
     if (!$scope.curUser._id)
@@ -60,7 +60,7 @@ angular.module('essenceEventsRepoApp.admin')
       animation: true,
       backdrop: 'static',
       templateUrl: 'app/superAdmin/partials/manageEvent/manageEventModal/manageEventModal.html',
-      controller: 'ManageEventModalCtrl',
+      controller: 'ManageEventModalCtrlSuper',
       resolve: {
         event: function()
         {

@@ -6,7 +6,7 @@
         .state('superAdmin.manageLinksModal', {
           url: '/manageLinksModal',
           templateUrl: 'app/superAdmin/partials/manageLinks/manageLinksModal/manageLinksModal.html',
-          controller: 'ManageLinksModalCtrl',
+          controller: 'ManageLinksModalCtrlSuper',
           controllerAs: 'mancon',
          authenticate: 'super'
         });
