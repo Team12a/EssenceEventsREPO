@@ -10,6 +10,6 @@
             ev: 'undefined'
           },
           templateUrl: 'app/superAdmin/partials/viewGuestList/viewGuestList.html',
-          controller: 'viewGuestListCtrl'
+          controller: 'viewGuestListCtrlSuper'
         });
     });
