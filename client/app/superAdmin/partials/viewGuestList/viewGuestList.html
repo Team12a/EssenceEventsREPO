@@ -1,5 +1,5 @@
 <div class = "container-fluid">
-  <div ng-controller="viewGuestListCtrl" >
+  <div ng-controller="viewGuestListCtrlSuper" >
     <div class="page-header">
       <h1> {{eve.name}} Guest List:</h1>
     </div>
@@ -31,7 +31,7 @@
               <td>{{item.accommodations}}</td>
               <td><span ng-class="(item.accepted) ? 'fa fa-check-square-o fa-lg' : 'fa fa-square-o fa-lg'" ng-click="changeAccepted(item)"></span></td>
               <td><span class="glyphicon glyphicon-edit" ng-click="toggleEdit(item)"></span></td>
-              <td><button type="button" class="btn btn-danger" ng-click="removeGuest(item)">Remove</button></td>
+              <td><button type="button" ng-really-message="Are you sure?" class="btn btn-danger" ng-really-click="removeGuest(item)">Remove</button></td>
             </tr>
           </tbody>
           <tfoot>

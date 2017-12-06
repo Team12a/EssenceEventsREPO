@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('essenceEventsRepoApp.superAdmin')
-.controller('ManageLinksModalCtrl', ['$scope', '$state', '$modalInstance', 'link', 'Links', function ($scope, $state, $modalInstance, link, Links)
+.controller('ManageLinksModalCtrlSuper', ['$scope', '$state', '$modalInstance', 'link', 'Links', function ($scope, $state, $modalInstance, link, Links)
 {
   //Prevent changes from automatically changing the table behind the modal
   $scope.link = JSON.parse(JSON.stringify(link));

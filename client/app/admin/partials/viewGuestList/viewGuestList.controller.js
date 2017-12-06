@@ -5,12 +5,10 @@ angular.module('essenceEventsRepoApp.admin')
 
   $scope.eve =  $stateParams.ev;
   $scope.formData = {}
-  $scope.state;
-  $scope.state1;
 
   if($stateParams.ev == 'undefined')
   {
-    $state.go('admin.manageEvent');
+    $state.go('superAdmin.manageEvent');
   }
 
   $scope.toggle = function(){
@@ -36,7 +34,7 @@ angular.module('essenceEventsRepoApp.admin')
 
    $scope.eve.guests.push(newGuest);
    Events.update($scope.eve);
-   $scope.state= "";
+   $scope.state = undefined;
    };
 
   $scope.changeAccepted = function(guest) {
@@ -66,7 +64,6 @@ angular.module('essenceEventsRepoApp.admin')
 
     //Brings up the edit guest form
     $scope.toggleEdit = function (guest) {
-
 
       $scope.state = "edit";
       $scope.guest = guest;
@@ -106,9 +103,13 @@ angular.module('essenceEventsRepoApp.admin')
          'guestAccommodations' : null,
          'guestSize' : undefined
      };
-      $scope.state = "";
+      $scope.state = undefined;
      }, function(err) {
        //do something
      });
    };
+
+   $scope.cancel = function(){
+     $scope.state = undefined;
+   }
 }]);
