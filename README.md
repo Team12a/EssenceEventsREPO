@@ -36,4 +36,8 @@ Run `grunt build` for building and `grunt serve` for preview.
 
 ## Testing
 
-Running `npm test` will run the unit tests with karma.
+To install karma testing: `npm install -g karma-cli` 
+to run tests: `karma start test/karma-conf.js --single-run`
+
+(Currently set-up to run on chrome, if you wish to run it on another browser change that in the karma-conf.js ) 
+
