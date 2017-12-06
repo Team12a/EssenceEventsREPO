@@ -6,7 +6,7 @@ angular.module('essenceEventsRepoApp.admin')
 
     //Copy object so we don't change main page concurrently and setup subcontractors
   $scope.payment = JSON.parse(JSON.stringify(payment));
-  
+
   //hideDeleteTab with functionality
   $scope.hideDeleteTab = true;
 
@@ -23,7 +23,6 @@ angular.module('essenceEventsRepoApp.admin')
   //deletePayment
   $scope.deletePayment = function()
   {
-    console.log("Here");
     Payments.remove(payment._id).then(function()
       {
         $modalInstance.close();
