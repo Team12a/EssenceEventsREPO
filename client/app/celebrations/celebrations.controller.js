@@ -14,6 +14,7 @@
       console.log(err);
     });
 
+
   }
 
 //Added this.isSuperAdmin to constructor, line 85
@@ -90,7 +91,18 @@ angular.module('essenceEventsRepoApp.client')
         //do something
     });
   };
-
+  $scope.getText3 = function(){
+    var text_id='celebrationTestimonialAuthor';
+    // console.log('Here');
+    TextEdit.getByID(text_id)
+      .then(function(response) {
+        $scope.literalText3 = response.data[0].literalText;
+        console.log(response.data);
+      }, function(error) {
+        console.log('hey');
+        //do something
+    });
+  };
 
  $scope.update=function(){
 

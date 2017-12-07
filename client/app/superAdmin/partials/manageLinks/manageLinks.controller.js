@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('essenceEventsRepoApp.superAdmin')
-.controller('ManageLinksCtrl', ['$scope', '$state', '$modal', 'Links', function ($scope, $state, $modal, Links) {
+.controller('ManageLinksCtrlSuper', ['$scope', '$state', '$modal', 'Links', function ($scope, $state, $modal, Links) {
   //Get all links from Links Factory
   $scope.getLinks = function() {
     Links.getAll()
@@ -35,7 +35,7 @@ angular.module('essenceEventsRepoApp.superAdmin')
       animation: true,
       backdrop: 'static',
       templateUrl: 'app/superAdmin/partials/manageLinks/manageLinksModal/manageLinksModal.html',
-      controller: 'ManageLinksModalCtrl',
+      controller: 'ManageLinksModalCtrlSuper',
       resolve: {
         link: function()
         {

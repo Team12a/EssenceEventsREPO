@@ -31,9 +31,13 @@
                 </div>
                 <div ng-init="getText2()">
                     <button class="btn btn-default "ng-if="nav.isSuperAdmin()" ng-click="submit('celebrationTestimonial')">Submit Changes</button>
-                    <blockquote><p id="celebrationTestimonial" ng-if="nav.isSuperAdmin()" contenteditable="true">{{literalText2}}</p>
-                    <blockquote><p id="celebrationTestimonial" ng-if="!nav.isSuperAdmin()">{{literalText2}}     
-                    </p><p><small>Sabrina &amp; Demetrius Peoples</small></p></blockquote>
+                    <blockquote ng-show="nav.isSuperAdmin()"><p id="celebrationTestimonial" ng-if="nav.isSuperAdmin()" contenteditable="true">{{literalText2}}</p></blockquote>
+                    <blockquote ng-show="!nav.isSuperAdmin()"><p id="celebrationTestimonial" ng-if="!nav.isSuperAdmin()">{{literalText2}}</p>
+                      <p id="celebrationTestimonialAuthor" ng-if="!nav.isSuperAdmin()"><small>{{literalText3}}</small></p></blockquote>
+                </div>
+                <div ng-init="getText3()" ng-show="nav.isSuperAdmin()">
+                    <button class="btn btn-default "ng-if="nav.isSuperAdmin()" ng-click="submit('celebrationTestimonialAuthor')">Submit Changes</button>
+                    <blockquote><p id="celebrationTestimonialAuthor" ng-show="nav.isSuperAdmin()" contenteditable="true">{{literalText3}}</p></blockquote>
                 </div>
             </div>
         </div>

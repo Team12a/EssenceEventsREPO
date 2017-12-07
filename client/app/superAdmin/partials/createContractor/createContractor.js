@@ -6,7 +6,7 @@ angular.module('essenceEventsRepoApp.admin')
       .state('superAdmin.createContractor', {
         url: '/createContractor',
         templateUrl: 'app/superAdmin/partials/createContractor/createContractor.html',
-        controller: 'CreateContractorCtrl',
+        controller: 'CreateContractorCtrlSuper',
         authenticate: 'super'
       });
   });

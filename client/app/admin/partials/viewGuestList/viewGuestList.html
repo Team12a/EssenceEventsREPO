@@ -31,7 +31,7 @@
               <td>{{item.accommodations}}</td>
               <td><span ng-class="(item.accepted) ? 'fa fa-check-square-o fa-lg' : 'fa fa-square-o fa-lg'" ng-click="changeAccepted(item)"></span></td>
               <td><span class="glyphicon glyphicon-edit" ng-click="toggleEdit(item)"></span></td>
-              <td><button type="button" class="btn btn-danger" ng-click="removeGuest(item)">Remove</button></td>
+              <td><button type="button" ng-really-message="Are you sure?" class="btn btn-danger" ng-really-click="removeGuest(item)">Remove</button></td>
             </tr>
           </tbody>
           <tfoot>
@@ -47,7 +47,7 @@
         </table>
       </div>
     </div>
-    <div ng-show="state">
+    <div ng-show="state == 'edit'">
          <b>Update Information For {{guest.name}}<b>
            <br></br>
            <form name="listingForm" class="form-horizontal" ng-submit="updateGuest(guest)">
@@ -71,10 +71,11 @@
                <br></br>
                <br></br>
                <button  class="btn btn-success" id="updateGuest" type = 'submit'>Update</button>
+               <button   id="updateGuest" ng-click="cancel()">Cancel</button>
              </div>
              </form>
        </div>
-       <div ng-show = "state1">
+       <div ng-show = "state == 'add'">
          <form name="listingForm" class="form-horizontal" ng-submit="addGuest()">
           <div class="form-group" show-errors>
             <label for="name">Name</label>
@@ -103,6 +104,9 @@
             <button class="btn btn-inverse btn-lg btn-register" type="submit" ng-submit="addGuest()">
               Add Guest
   	         </button>
+             <button class="btn btn-inverse btn-lg btn-register" ng-click="cancel()">
+               Cancel
+   	         </button>
           </div>
         </form>
       </div>
