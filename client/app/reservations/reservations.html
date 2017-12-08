@@ -68,11 +68,31 @@
       <div class="hr1" style="margin-bottom:10px;"></div>
 
       <!-- Info - Icons List -->
-      <ul class="icons-list">
-        <li><i class="fa fa-globe bigicon">  </i> <strong>Address:</strong> 530 W University Ave Gainesville, FL </li>
-        <li><i class="fa fa-envelope-o bigicon"></i> <strong>Email:</strong> info@essenceevents.net</li>
-        <li><i class="fa fa-mobile bigicon"></i> <strong>Phone:</strong> (352)-359-8762</li>
-      </ul>
+      
+     
+        <div ng-init="getText1()">
+          <ul class="icons-list">
+            <span><i class="fa fa-globe bigicon"></i> <strong>Address:</strong> 
+            <button class="btn btn-default "ng-if="nav.isSuperAdmin()" ng-click="submit_text('address_text')">Submit Changes</button>
+            <span id="address_text" ng-if="nav.isSuperAdmin()" contenteditable="true">{{literalText1}}</span>
+            <span id="address_text" ng-if="!nav.isSuperAdmin()">{{literalText1}} </span>
+            </ul>
+        <div ng-init="getText3()">
+            <ul class="icons-list">
+                <li><i class="fa fa-envelope-o bigicon"></i> <strong>Email:</strong> info@essenceevents.net</li>
+            </ul>
+        <div ng-init="getText2()">
+            <ul class="icons-list">
+              <i class="fa fa-mobile bigicon"></i> <strong>Phone:</strong> 
+              <button class="btn btn-default "ng-if="nav.isSuperAdmin()" ng-click="submit_text('phone_text')">Submit Changes</button>
+              <span id="phone_text" ng-if="nav.isSuperAdmin()" contenteditable="true">{{literalText2}}</span>
+              <span id="phone_text" ng-if="!nav.isSuperAdmin()">{{literalText2}} </span>
+             
+            </ul>
+        </div>
+
+
+      
 
       <!-- Divider -->
       <div class="hr1" style="margin-bottom:15px;"></div>
