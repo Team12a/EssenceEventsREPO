@@ -1,16 +1,34 @@
 'use strict';
+  class CelebrationsCtrl {
+  navigate(){
+    var curUsr = this.getCurrentUser();
+    let state = this.state;
+    this.Evs.getByUser(curUsr._id)
+    .then(function(response) {
+      var events = response.data;
+      state.go('client.welcome', {userID: curUsr._id, userName: curUsr.name, events: events});
+    }, function(err) {
+      //do something
+      console.log(err);
+    });
 
-(function() {
-
-class MainController {
-
-  constructor($http) {
-    this.$http = $http;
-    this.awesomeThings = [];
   }
 
+//Added this.isSuperAdmin to constructor, line 85
+  constructor(Auth, $state, $scope, Events) {
+    this.isLoggedIn = Auth.isLoggedIn;
+    this.isSuperAdmin = Auth.isSuperAdmin;
+    this.isAdmin = Auth.isAdmin;
+    this.getCurrentUser = Auth.getCurrentUser;
+    //this.curUsr = this.getCurrentUser();
+    //this.$state.go('customer', {userID: this.curUsr._id, userName: this.curUsr.name})
+    this.state = $state;
+
+    this.Evs = Events;
+
+    //this.navigate();
+  }
 }
-})
 angular.module('essenceEventsRepoApp')
 .controller('MainController',['Cloudinary', '$scope', '$stateParams', '$state', '$timeout','Auth', function (Cloudinary, $scope, $stateParams, $state, $timeout, Auth) {
   
@@ -55,13 +73,13 @@ angular.module('essenceEventsRepoApp')
 
   //   });
     
-  // };
+  // // };
 
-  $scope.uploadImage = function(files) {
-    var fileToSend = document.getElementById(files).files[0];
-    console.log(fileToSend.name);
-    // actualUploadFile(fileToSend);
-  }
+  // $scope.uploadImage = function(files) {
+  //   var fileToSend = document.getElementById(files).files[0];
+  //   console.log(fileToSend.name);
+  //   // actualUploadFile(fileToSend);
+  // }
  
 }]);
 
