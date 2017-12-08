@@ -67,23 +67,6 @@
       </div>
     </tab>
 
-    <tab heading="Manage Payments" ng-init="getPayments()" ng-click="refreshDeleteUserHTML()" id="managePayments">
-      <h2 class="modal-header">Client payments:</h2>
-      <div class="modal-body">
-        <button class="btn btn-lg btn-block btn-success" ng-click="createPayment()">Create Payment</button>
-        <table class="table table-hover" ng-hide="payments == null">
-          <tr>
-            <th>Fees</th>
-            <th>Due Date</th>
-            <th>Amount</th>
-          </tr>
-          <tr ng-repeat="payment in payments" ng-click="managePayment(payment)">
-            <td>{{payment.description}}</td>
-            <td>{{payment.dueDate}}</td>
-            <td>{{payment.amount}}</td>
-          </tr>
-        </table>
-      </div>
-    </tab>
+
   </tabset>
 </div>

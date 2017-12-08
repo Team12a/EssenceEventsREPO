@@ -41,11 +41,6 @@ angular.module('essenceEventsRepoApp.superAdmin')
         'description': 'View Testimonials Uploaded by Clients',
         'state': 'superAdmin.viewTestimonials',
       },
-      {
-        'title':'Manage Payments',
-        'description':'Manage payments as a super admin',
-        'state':'superAdmin.managePayment'
-      }
     ];
 
 

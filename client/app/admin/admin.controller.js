@@ -40,11 +40,6 @@ angular.module('essenceEventsRepoApp.admin')
         'description': 'View Testimonials Uploaded by Clients',
         'state': 'admin.viewTestimonials',
       },
-      {
-        'title': 'Manage Payments',
-        'description': 'Manage Payments Assigned to customers',
-        'state': 'admin.managePayment',
-      },
     ];
 
 
