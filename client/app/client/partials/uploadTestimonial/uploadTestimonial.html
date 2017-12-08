@@ -1,11 +1,10 @@
 <div class = "container-fluid">
   <div ng-controller="UploadTestimonialCtrl">
-      <h2>Upload a Testimonial</h2>
-      <h6>Loved the service? Let us know below!</h6>
       <div class="well well-sm">
         <form name="form" class="form-horizontal" ng-submit="submit()" onSubmit="alert('Thank you for your feedback.');" >
           <fieldset>
             <legend class="text-left header">Testimonial</legend>
+            <p class="text-left">Loved the service? Let us know below!</p>
             <p class="text-center" ng-if="submitSuccess">
               Your testimonial has been submitted.  Thank you!
             </p>

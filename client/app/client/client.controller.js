@@ -28,11 +28,7 @@ angular.module('essenceEventsRepoApp.client')
         'description': 'Manage guest list for specific event',
         'state': 'client.manageGuestList',
       },
-      {
-        'title': 'Make a Payment',
-        'description': 'Access payments and pay through paypal',
-        'state': 'client.makePayment',
-      },
+
       {
         'title': 'Upload a Testimonial',
         'description': 'Add testimonial regarding event',

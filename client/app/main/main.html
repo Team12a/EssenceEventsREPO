@@ -1,208 +1,208 @@
-<header class="hero-unit" id="banner">
-  <div class="container">
-      <div class="row">
-          <div class="col-lg-12 text-center">
-              <br><br><br><br>
-              <h1 class="section-heading">WE'LL MAKE SURE YOUR WEDDING DAY IS EVERYTHING YOU'VE EVER DREAMED OF</h1>
-              <a img src="client\assets\images\homepage\white_line.png" alt='Fancy White Line Break clip art'/></a>
-              <img src="assets/images/homepage/white_line.png" />
-          </div>
-      </div>
-  </div>
-</header>
-
-
 <script type="text/javascript">
-function uploadFile() {
-  var formData = new FormData(),
-    file = document.getElementById("file").files[0],
-    xhr = new XMLHttpRequest(),
-    cloudName = "dxqqlgb4t";
+     function uploadFile(id) {
+         console.log(id)
+         var formData = new FormData(),
+         file = document.getElementById(id).files[0],
+         xhr = new XMLHttpRequest(),
+         cloudName = "essence-events";
+       formData.append("file", file);
+       formData.append("upload_preset", "ra3hgrcb"); // REQUIRED
+       formData.append("public_id",id);
+       for (var pair of formData.entries()) {
+         console.log(pair[0]+ ', ' + pair[1]);
+     }
+       xhr.open("POST", "https://api.cloudinary.com/v1_1/" +
+         cloudName +
+         "/image/upload");
+       xhr.onload = () => {
+         if (xhr.status === 200) {
+           // Success! You probably want to save the URL somewhere
+           var response = JSON.parse(xhr.response);
+           var temp = response.secure_url;
+           console.log(response);
+           // https address of uploaded file
+         } else {
+           alert("Upload failed. Please try agian.");
+         }
+       }
+       xhr.send(formData);
+     }
+    </script>
 
-  formData.append("file", file);
-  formData.append("upload_preset", "i9nq3o8w"); // REQUIRED
-  formData.append("Invalidate",true);
-  formData.append("public_id","new_new_test");
-
-  for (var pair of formData.entries()) {
-    console.log(pair[0]+ ', ' + pair[1]); 
-}
-  xhr.open("POST", "https://api.cloudinary.com/v1_1/" +
-    cloudName +
-    "/image/upload");
-
-  xhr.onload = () => {
-    if (xhr.status === 200) {
-    
-      // Success! You probably want to save the URL somewhere
-      var response = JSON.parse(xhr.response);
-      var temp = response.secure_url;
-      console.log(response);
-      // https address of uploaded file
-    } else {
-      alert("Upload failed. Please try agian.");
-    }
-  }
-  xhr.send(formData);
-
-}
-
-</script>
- 
-<div class="main" ng-controller="MainController">
-    <header class="hero-unit" id="banner">
+<header class="hero-unit" id="banner">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
                 <br><br><br><br>
-                
-                <!--  -->
-                <!-- <img src="http://res.cloudinary.com/dxqqlgb4t/image/upload/chase.jpg"/> -->
                 <h1 class="section-heading">WE'LL MAKE SURE YOUR WEDDING DAY IS EVERYTHING YOU'VE EVER DREAMED OF</h1>
                 <a img src="client\assets\images\homepage\white_line.png" alt='Fancy White Line Break clip art'/></a>
                 <img src="assets/images/homepage/white_line.png" />
-            </div>
 
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-4 text-center">
-                    <div class="service-box">
-                        <i class="fa fa-4x fa-check-square-o wow bounceIn text-primary"></i>
-                        <h3>To Do List</h3>
-                        <p class="text-muted">Everything that needs to be done can be accessed through your login</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 text-center">
-                    <div class="service-box">
-                        <i class="fa fa-4x fa-money wow bounceIn text-primary" data-wow-delay=".1s"></i>
-                        <h3>Budget</h3>
-                        <p class="text-muted">Ability to view your budget and individual costs</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 text-center">
-                    <div class="service-box">
-                        <i class="fa fa-4x fa-calendar wow bounceIn text-primary" data-wow-delay=".2s"></i>
-                        <h3>Schedule</h3>
-                        <p class="text-muted">Ability to view planning schedule</p>
-                    </div>
-                </div>
-                <!-- <div class="col-lg-3 col-md-6 text-center">
-                    <div class="service-box">
-                        <i class="fa fa-4x fa-photo wow bounceIn text-primary" data-wow-delay=".3s"></i>
-                        <h3>Photos</h3>
-                        <p class="text-muted">Ability to view all your weddings photos before purchasing</p>
-                    </div>
-                </div> -->
-            </div>
-        </div>
-    </section>
-
-<!-- features with hover -->
-<!-- <div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Features:</h1>
-      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in main.awesomeThings">
-        <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}</a></li>
-      </ul>
-    </div>
-  </div>
-</div> -->
-<br><br>
-<section class="no-padding" id="portfolio">
-    <div class="container-fluid">
-        <div class="row no-gutter">
-            <div class="col-lg-4 col-sm-6">
-                <a href="/weddings" class="portfolio-box">
-                    <img src="assets/images/homepage/weddings.jpg" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                        <div class="portfolio-box-caption-content">
-                            <div class="project-category text-faded">
-                                CATEGORY
-                            </div>
-                            <div class="project-name">
-                                Weddings
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <a href="celebrations" class="portfolio-box">
-                    <img src="assets/images/homepage/decorations.jpg" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                        <div class="portfolio-box-caption-content">
-                            <div class="project-category text-faded">
-                                CATEGORY
-                            </div>
-                            <div class="project-name">
-                                Decorations
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <a href="celebrations" class="portfolio-box">
-                    <img src="assets/images/homepage/baby_shower.jpg" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                        <div class="portfolio-box-caption-content">
-                            <div class="project-category text-faded">
-                                CATEGORY
-                            </div>
-                            <div class="project-name">
-                                Celebrations
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <a href="corporate" class="portfolio-box">
-                    <img src="assets/images/homepage/corporate.jpg" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                        <div class="portfolio-box-caption-content">
-                            <div class="project-category text-faded">
-                                CATEGORY
-                            </div>
-                            <div class="project-name">
-                                Corporate
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <a href="weddings" class="portfolio-box">
-                    <img src="assets/images/homepage/cakes.jpg" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                        <div class="portfolio-box-caption-content">
-                            <div class="project-category text-faded">
-                                CATEGORY
-                            </div>
-                            <div class="project-name">
-                                Cakes
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <a href="weddings" class="portfolio-box">
-                    <img src="assets/images/homepage/wedding_receptions.jpg" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                        <div class="portfolio-box-caption-content">
-                            <div class="project-category text-faded">
-                                CATEGORY
-                            </div>
-                            <div class="project-name">
-                                Receptions
-                            </div>
-                        </div>
-                    </div>
-                </a>
             </div>
         </div>
     </div>
-</section>
+  </header>
+  
+  
+
+  
+  <section id="services">
+          <div class="container">
+              <br><br>
+              <h2 class="text-center cta-h2">Help me, help you</h2>
+          </div>
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-4 col-md-4 text-center">
+                      <div class="service-box">
+                          <i class="fa fa-4x fa-check-square-o wow bounceIn text-primary"></i>
+                          <h3>To Do List</h3>
+                          <p class="text-muted">Everything that needs to be done can be accessed through your login</p>
+                      </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 text-center">
+                      <div class="service-box">
+                          <i class="fa fa-4x fa-money wow bounceIn text-primary" data-wow-delay=".1s"></i>
+                          <h3>Budget</h3>
+                          <p class="text-muted">Ability to view your budget and individual costs</p>
+                      </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 text-center">
+                      <div class="service-box">
+                          <i class="fa fa-4x fa-calendar wow bounceIn text-primary" data-wow-delay=".2s"></i>
+                          <h3>Schedule</h3>
+                          <p class="text-muted">Ability to view planning schedule</p>
+                      </div>
+                  </div>
+                  <!-- <div class="col-lg-3 col-md-6 text-center">
+                      <div class="service-box">
+                          <i class="fa fa-4x fa-photo wow bounceIn text-primary" data-wow-delay=".3s"></i>
+                          <h3>Photos</h3>
+                          <p class="text-muted">Ability to view all your weddings photos before purchasing</p>
+                      </div>
+                  </div> -->
+              </div>
+          </div>
+      </section>
+  
+  <!-- features with hover -->
+  <!-- <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">Features:</h1>
+        <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in main.awesomeThings">
+          <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}</a></li>
+        </ul>
+      </div>
+    </div>
+  </div> -->
+  <br><br>
+  <section class="no-padding" id="portfolio">
+      <div class="container-fluid">
+          <div class="row no-gutter">
+              <div class="col-lg-4 col-sm-6">
+                <h4 ng-if="nav.isSuperAdmin()"><input type="file" id="wedding_photo" onchange="uploadFile('wedding_photo')" /> </h4>
+                  <a href="/weddings" class="portfolio-box">
+                    <img src="https://res.cloudinary.com/essence-events/image/upload/wedding_photo.jpg" onError="this.src = 'assets/images/homepage/weddings.jpg'" class="img-responsive" alt=""/>
+                      <!-- <img src="assets/images/homepage/weddings.jpg" class="img-responsive" alt=""> -->
+                      <div class="portfolio-box-caption">
+                          <div class="portfolio-box-caption-content">
+                              <div class="project-category text-faded">
+                                  CATEGORY
+                              </div>
+                              <div class="project-name">
+                                  Weddings
+                              </div>
+                          </div>
+                      </div>
+                  </a>
+              </div>
+              <div class="col-lg-4 col-sm-6">
+                <h4 ng-if="nav.isSuperAdmin()"><input type="file" id="decoration_photo" onchange="uploadFile('decoration_photo')" /> </h4>
+                  <a href="celebrations" class="portfolio-box">
+                      <img src="https://res.cloudinary.com/essence-events/image/upload/decoration_photo.jpg" onError="this.src = 'assets/images/homepage/decorations.jpg'" class="img-responsive" alt=""/>
+                      <!-- <img src="assets/images/homepage/decorations.jpg" class="img-responsive" alt=""> -->
+                      <div class="portfolio-box-caption">
+                          <div class="portfolio-box-caption-content">
+                              <div class="project-category text-faded">
+                                  CATEGORY
+                              </div>
+                              <div class="project-name">
+                                  Decorations
+                              </div>
+                          </div>
+                      </div>
+                  </a>
+              </div>
+              <div class="col-lg-4 col-sm-6">
+                <h4 ng-if="nav.isSuperAdmin()"><input type="file" id="baby_shower_photo" onchange="uploadFile('baby_shower_photo')" /> </h4>
+                  <a href="celebrations" class="portfolio-box">
+                      <img src="https://res.cloudinary.com/essence-events/image/upload/baby_shower_photo.jpg" onError="this.src = 'assets/images/homepage/baby_shower.jpg' "class="img-responsive" alt=""/>
+                      <!-- <img src="assets/images/homepage/baby_shower.jpg" class="img-responsive" alt=""> -->
+                      <div class="portfolio-box-caption">
+                          <div class="portfolio-box-caption-content">
+                              <div class="project-category text-faded">
+                                  CATEGORY
+                              </div>
+                              <div class="project-name">
+                                  Celebrations
+                              </div>
+                          </div>
+                      </div>
+                  </a>
+              </div>
+              <div class="col-lg-4 col-sm-6">
+                <h4 ng-if="nav.isSuperAdmin()"><input type="file" id="corporate_photo" onchange="uploadFile('corporate_photo')" /> </h4>
+                  <a href="corporate" class="portfolio-box">
+                     <img src="https://res.cloudinary.com/essence-events/image/upload/corporate_photo.jpg" onError="this.src = 'assets/images/homepage/corporate.jpg'" class="img-responsive" alt=""/>
+                      <!-- <img src="assets/images/homepage/corporate.jpg" class="img-responsive" alt=""> -->
+                      <div class="portfolio-box-caption">
+                          <div class="portfolio-box-caption-content">
+                              <div class="project-category text-faded">
+                                  CATEGORY
+                              </div>
+                              <div class="project-name">
+                                  Corporate
+                              </div>
+                          </div>
+                      </div>
+                  </a>
+              </div>
+              <div class="col-lg-4 col-sm-6">
+                <h4 ng-if="nav.isSuperAdmin()"><input type="file" id="cake_photo" onchange="uploadFile('cake_photo')" /> </h4>
+                  <a href="weddings" class="portfolio-box">
+                    <img src="https://res.cloudinary.com/essence-events/image/upload/cake_photo.jpg" onError="this.src = 'assets/images/homepage/cakes.jpg' "class="img-responsive" alt=""/>
+                      <!-- <img src="assets/images/homepage/cakes.jpg" class="img-responsive" alt=""> -->
+                      <div class="portfolio-box-caption">
+                          <div class="portfolio-box-caption-content">
+                              <div class="project-category text-faded">
+                                  CATEGORY
+                              </div>
+                              <div class="project-name">
+                                  Cakes
+                              </div>
+                          </div>
+                      </div>
+                  </a>
+              </div>
+              <div class="col-lg-4 col-sm-6">
+                <h4 ng-if="nav.isSuperAdmin()"><input type="file" id="wedding_reception_photo" onchange="uploadFile('wedding_reception_photo')" /> </h4>
+                  <a href="weddings" class="portfolio-box">
+                      <img src="https://res.cloudinary.com/essence-events/image/upload/wedding_reception_photo.jpg" onError="this.src = 'assets/images/homepage/wedding_receptions.jpg' "class="img-responsive" alt=""/>
+                      <!-- <img src="assets/images/homepage/wedding_receptions.jpg" class="img-responsive" alt=""> -->
+                      <div class="portfolio-box-caption">
+                          <div class="portfolio-box-caption-content">
+                              <div class="project-category text-faded">
+                                  CATEGORY
+                              </div>
+                              <div class="project-name">
+                                  Receptions
+                              </div>
+                          </div>
+                      </div>
+                  </a>
+              </div>
+          </div>
+      </div>
+  </section>
+<!-- <input type="file" id="files" ng-model="image" onchange="angular.element(this).scope().uploadImage('files')" / -->

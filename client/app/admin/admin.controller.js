@@ -40,6 +40,7 @@ angular.module('essenceEventsRepoApp.admin')
         'description': 'View Testimonials Uploaded by Clients',
         'state': 'admin.viewTestimonials',
       },
+
     ];
 
 

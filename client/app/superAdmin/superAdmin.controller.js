@@ -40,7 +40,8 @@ angular.module('essenceEventsRepoApp.superAdmin')
         'title': 'View Testimonials',
         'description': 'View Testimonials Uploaded by Clients',
         'state': 'superAdmin.viewTestimonials',
-      }
+      },
+
     ];
 
 

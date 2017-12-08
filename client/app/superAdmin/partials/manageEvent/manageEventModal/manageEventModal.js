@@ -6,7 +6,7 @@
         .state('superAdmin.manageEventModal', {
           url: '/manageEventModal',
           templateUrl: 'app/superAdmin/partials/manageAccounts/manageAccountsModal/manageEventModal.html',
-          controller: 'ManageEventModalCtrl',
+          controller: 'ManageEventModalCtrlSuper',
           controllerAs: 'mancli',
           authenticate: 'super',
         });

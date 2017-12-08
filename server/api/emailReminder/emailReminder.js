@@ -85,43 +85,43 @@ var loopJob = new CronJob({
             }, {
               from: config.essEventsReminderEmail.email.address,
           });
-          var upcomingPaymentTemplate = transporter.templateSender(
-            {
-            subject: 'EssenceEvents Payment Email Reminder for {{username}}!',
-            html: `<table>
-                    <tr bgcolor="#EDC4D6">
-                      <th><h1><img src="http://essenceevents.net/assets/images/EELogoIMG.png" width="50" height="50" alt="Essence Events" align ="center" /> Email Reminder</h1></th>
-                      </tr>
-                      <tr>
-                        <td><h3>Hello <b>{{username}},</b></h3>
-                              <p>       You have an upcoming due date for <b>{{payment}}</b> on <b>{{dueDate}}</b>.</p></td>
-                      </tr>
-                      <tr bgcolor="#EDC4D6">
-                        <td align="center"><h3>Essence Events.</h3></td>
-                      </tr>
-                  </table>`
-            }, {
-              from: config.essEventsReminderEmail.email.address,
-          });
-          var passedPaymentTemplate = transporter.templateSender(
-            {
-            subject: 'EssenceEvents Passed Due Date Payment Email Reminder for {{username}}!',
-            html:
-                  `<table>
-                          <tr bgcolor="#EDC4D6">
-                            <th><h1><img src="http://essenceevents.net/assets/images/EELogoIMG.png" width="50" height="50" alt="Essence Events" align ="center" /> Email Reminder</h1></th>
-                            </tr>
-                            <tr>
-                              <td><h3>Hello <b>{{username}},</b></h3>
-                                    <p>       You have an required payment for <b>{{payment}}</b> that has passed its due date on <b>{{dueDate}}</b>.</p></td>
-                            </tr>
-                            <tr bgcolor="#EDC4D6">
-                              <td align="center"><h3>Essence Events.</h3></td>
-                            </tr>
-                        </table>`
-            }, {
-              from: config.essEventsReminderEmail.email.address,
-          });
+          // var upcomingPaymentTemplate = transporter.templateSender(
+          //   {
+          //   subject: 'EssenceEvents Payment Email Reminder for {{username}}!',
+          //   html: `<table>
+          //           <tr bgcolor="#EDC4D6">
+          //             <th><h1><img src="http://essenceevents.net/assets/images/EELogoIMG.png" width="50" height="50" alt="Essence Events" align ="center" /> Email Reminder</h1></th>
+          //             </tr>
+          //             <tr>
+          //               <td><h3>Hello <b>{{username}},</b></h3>
+          //                     <p>       You have an upcoming due date for <b>{{payment}}</b> on <b>{{dueDate}}</b>.</p></td>
+          //             </tr>
+          //             <tr bgcolor="#EDC4D6">
+          //               <td align="center"><h3>Essence Events.</h3></td>
+          //             </tr>
+          //         </table>`
+          //   }, {
+          //     from: config.essEventsReminderEmail.email.address,
+          // });
+          // var passedPaymentTemplate = transporter.templateSender(
+          //   {
+          //   subject: 'EssenceEvents Passed Due Date Payment Email Reminder for {{username}}!',
+          //   html:
+          //         `<table>
+          //                 <tr bgcolor="#EDC4D6">
+          //                   <th><h1><img src="http://essenceevents.net/assets/images/EELogoIMG.png" width="50" height="50" alt="Essence Events" align ="center" /> Email Reminder</h1></th>
+          //                   </tr>
+          //                   <tr>
+          //                     <td><h3>Hello <b>{{username}},</b></h3>
+          //                           <p>       You have an required payment for <b>{{payment}}</b> that has passed its due date on <b>{{dueDate}}</b>.</p></td>
+          //                   </tr>
+          //                   <tr bgcolor="#EDC4D6">
+          //                     <td align="center"><h3>Essence Events.</h3></td>
+          //                   </tr>
+          //               </table>`
+          //   }, {
+          //     from: config.essEventsReminderEmail.email.address,
+          // });
           var passedAdminTemplate = transporter.templateSender(
             {
             subject: 'SuperAdmin Event Reminder for Erma Sams!',
@@ -142,26 +142,26 @@ var loopJob = new CronJob({
             }, {
               from: config.essEventsReminderEmail.email.address,
           });
-          var passedAdminPaymentTemplate = transporter.templateSender(
-            {
-            subject: 'SuperAdmin Payment Reminder for Erma Sams!',
-            html:
-                  `<table>
-                          <tr bgcolor="#EDC4D6">
-                            <th><h1><img src="http://essenceevents.net/assets/images/EELogoIMG.png" width="50" height="50" alt="Essence Events" align ="center" /> Email Reminder</h1></th>
-                            </tr>
-                            <tr>
-                              <td><h3>Hello Erma,</h3>
-                                    <p>       <b>{{username}}</b> has missed a payment, <b>{{payment}}</b>, that was due on <b>{{dueDate}}</b>.</p></td>
-                            </tr>
-                            <tr bgcolor="#EDC4D6">
-                              <td align="center"><h3>Essence Events.</h3></td>
-                            </tr>
-                        </table>`
-
-            }, {
-              from: config.essEventsReminderEmail.email.address,
-          });
+          // var passedAdminPaymentTemplate = transporter.templateSender(
+          //   {
+          //   subject: 'SuperAdmin Payment Reminder for Erma Sams!',
+          //   html:
+          //         `<table>
+          //                 <tr bgcolor="#EDC4D6">
+          //                   <th><h1><img src="http://essenceevents.net/assets/images/EELogoIMG.png" width="50" height="50" alt="Essence Events" align ="center" /> Email Reminder</h1></th>
+          //                   </tr>
+          //                   <tr>
+          //                     <td><h3>Hello Erma,</h3>
+          //                           <p>       <b>{{username}}</b> has missed a payment, <b>{{payment}}</b>, that was due on <b>{{dueDate}}</b>.</p></td>
+          //                   </tr>
+          //                   <tr bgcolor="#EDC4D6">
+          //                     <td align="center"><h3>Essence Events.</h3></td>
+          //                   </tr>
+          //               </table>`
+          //
+          //   }, {
+          //     from: config.essEventsReminderEmail.email.address,
+          // });
           //Current Date
           var now = moment();
           //Set for payment due dates
@@ -229,7 +229,7 @@ var loopJob = new CronJob({
                                 );
                                 //Send Email to SuperAdmin as well
                                 passedAdminTemplate(
-                                  { to: config.essEventsReminderEmail.email.address}, //Place Sender Email here. For testing purposes, send to itself.
+                                  { to: 'info@essenceevents.net'}, //Place Sender Email here. For testing purposes, send to itself.
                                   {
                                     username: eventUser[0].name,
                                     eventName: thingArray[0].name,
@@ -279,101 +279,102 @@ var loopJob = new CronJob({
              }
           });
 
+          //NOTE: Commented out because errors with payment
           //This code line will give all payments
-          Payment.find().exec(function(err, payments){
-            if(err) throw err;
-            else{
-                console.log('Number of Payments: ' + payments.length);
-                console.log(br);
-                payments.forEach(function(thing){
-                  //Find and convert it to an array with .exec
-                  Payment.find({"_id": thing.id}).exec(function(err, thingArray){
-                    if(err) throw err;
-                    else{
-                      //This makes sure the code only runs if user exists
-                      // Also gets rid of payments from previous grunt serve.
-                      User.find({"_id": thingArray[0].userId}).exec(function(err, paymentUser){
-                        if(err) throw err;
-                        else if(paymentUser.length>0){
-                          var paymentDate = moment(thingArray[0].dueDate);
-                          //Set Payment Due date to midnight just in case
-                          paymentDate.set({
-                            hour:   time.get('hour'),
-                            minute: time.get('minute'),
-                            second: time.get('second')
-                          });
-                          console.log('..Payment: ' + thingArray[0].description + '\t' + paymentUser[0].name + '\t' + paymentDate.format('MMMM Do YYYY, h:mm:ss a'));
-                          //Compare Dates
-                          var dateDiff = paymentDate.diff(now, 'm');
-                          //If Date is passed
-                          if(!thingArray[0].paid && dateDiff<=0 && dateDiff > -4320 && thingArray[0].userId != null){
-                            console.log('....\tPassed\t\tDate Diff (m): ' + dateDiff);
-                            // use template based sender to send a message
-                            passedPaymentTemplate(
-                              {to: paymentUser[0].email}, //Place Sender Email here. For testing purposes, send to itself.
-                              {
-                                username:paymentUser[0].name,
-                                payment:thingArray[0].description,
-                                dueDate:paymentDate.format('MMMM Do YYYY, h:mm:ss a')
-                              },
-                              function(err, info){
-                                if(err){
-                                  console.log('Error');
-                                  throw error;
-                                  res.status(400).end();
-                                }else{
-                                  console.log('Email reminder sent');
-                                }
-                              }
-                            );
-                            //Send Email to SuperAdmin as well
-                            passedAdminPaymentTemplate(
-                              {to: config.essEventsReminderEmail.email.address}, //Place Sender Email here. For testing purposes, send to itself.
-                              {
-                                username:paymentUser[0].name,
-                                payment:thingArray[0].description,
-                                dueDate:paymentDate.format('MMMM Do YYYY, h:mm:ss a')
-                              },
-                              function(err, info){
-                                if(err){
-                                  console.log('Error');
-                                  throw error;
-                                  res.status(400).end();
-                                }else{
-                                  console.log('Email reminder sent');
-                                }
-                              }
-                            );
-                          }
-                          //If Date is upcoming
-                          else if(!thingArray[0].paid && dateDiff > 0 && thingArray[0].userId != null){
-                            console.log('....\tUpcoming\t\tDate Diff (m): ' + dateDiff);
-                            // use template based sender to send a message
-                            upcomingPaymentTemplate(
-                              {to: paymentUser[0].email},
-                              {
-                                username:paymentUser[0].name,
-                                payment:thingArray[0].description,
-                                dueDate:paymentDate.format('MMMM Do YYYY, h:mm:ss a')
-                              },
-                              function(err, info){
-                                if(err){
-                                  console.log('Error');
-                                  throw error;
-                                  res.status(400).end();
-                                }else{
-                                  console.log('Email reminder sent');
-                                }
-                              }
-                            );
-                          }
-                        }
-                      });
-                    }
-                  });
-                });
-            }
-          });
+          // Payment.find().exec(function(err, payments){
+          //   if(err) throw err;
+          //   else{
+          //       console.log('Number of Payments: ' + payments.length);
+          //       console.log(br);
+          //       payments.forEach(function(thing){
+          //         //Find and convert it to an array with .exec
+          //         Payment.find({"_id": thing.id}).exec(function(err, thingArray){
+          //           if(err) throw err;
+          //           else{
+          //             //This makes sure the code only runs if user exists
+          //             // Also gets rid of payments from previous grunt serve.
+          //             User.find({"_id": thingArray[0].userId}).exec(function(err, paymentUser){
+          //               if(err) throw err;
+          //               else if(paymentUser.length>0){
+          //                 var paymentDate = moment(thingArray[0].dueDate);
+          //                 //Set Payment Due date to midnight just in case
+          //                 paymentDate.set({
+          //                   hour:   time.get('hour'),
+          //                   minute: time.get('minute'),
+          //                   second: time.get('second')
+          //                 });
+          //                 console.log('..Payment: ' + thingArray[0].description + '\t' + paymentUser[0].name + '\t' + paymentDate.format('MMMM Do YYYY, h:mm:ss a'));
+          //                 //Compare Dates
+          //                 var dateDiff = paymentDate.diff(now, 'm');
+          //                 //If Date is passed
+          //                 if(!thingArray[0].paid && dateDiff<=0 && dateDiff > -4320 && thingArray[0].userId != null){
+          //                   console.log('....\tPassed\t\tDate Diff (m): ' + dateDiff);
+          //                   // use template based sender to send a message
+          //                   passedPaymentTemplate(
+          //                     {to: paymentUser[0].email}, //Place Sender Email here. For testing purposes, send to itself.
+          //                     {
+          //                       username:paymentUser[0].name,
+          //                       payment:thingArray[0].description,
+          //                       dueDate:paymentDate.format('MMMM Do YYYY, h:mm:ss a')
+          //                     },
+          //                     function(err, info){
+          //                       if(err){
+          //                         console.log('Error');
+          //                         throw error;
+          //                         res.status(400).end();
+          //                       }else{
+          //                         console.log('Email reminder sent');
+          //                       }
+          //                     }
+          //                   );
+          //                   //Send Email to SuperAdmin as well
+          //                   passedAdminPaymentTemplate(
+          //                     {to: config.essEventsReminderEmail.email.address}, //Place Sender Email here. For testing purposes, send to itself.
+          //                     {
+          //                       username:paymentUser[0].name,
+          //                       payment:thingArray[0].description,
+          //                       dueDate:paymentDate.format('MMMM Do YYYY, h:mm:ss a')
+          //                     },
+          //                     function(err, info){
+          //                       if(err){
+          //                         console.log('Error');
+          //                         throw error;
+          //                         res.status(400).end();
+          //                       }else{
+          //                         console.log('Email reminder sent');
+          //                       }
+          //                     }
+          //                   );
+          //                 }
+          //                 //If Date is upcoming
+          //                 else if(!thingArray[0].paid && dateDiff > 0 && thingArray[0].userId != null){
+          //                   console.log('....\tUpcoming\t\tDate Diff (m): ' + dateDiff);
+          //                   // use template based sender to send a message
+          //                   upcomingPaymentTemplate(
+          //                     {to: paymentUser[0].email},
+          //                     {
+          //                       username:paymentUser[0].name,
+          //                       payment:thingArray[0].description,
+          //                       dueDate:paymentDate.format('MMMM Do YYYY, h:mm:ss a')
+          //                     },
+          //                     function(err, info){
+          //                       if(err){
+          //                         console.log('Error');
+          //                         throw error;
+          //                         res.status(400).end();
+          //                       }else{
+          //                         console.log('Email reminder sent');
+          //                       }
+          //                     }
+          //                   );
+          //                 }
+          //               }
+          //             });
+          //           }
+          //         });
+          //       });
+          //   }
+          // });
 
         },
   start: false

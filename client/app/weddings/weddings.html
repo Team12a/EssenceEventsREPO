@@ -1,28 +1,75 @@
+<script type="text/javascript">
+     function uploadFile(id) {
+         console.log(id)
+         var formData = new FormData(),
+         file = document.getElementById(id).files[0],
+         xhr = new XMLHttpRequest(),
+         cloudName = "essence-events";
+       formData.append("file", file);
+       formData.append("upload_preset", "ra3hgrcb"); // REQUIRED
+       formData.append("public_id",id);
+       for (var pair of formData.entries()) {
+         console.log(pair[0]+ ', ' + pair[1]);
+     }
+       xhr.open("POST", "https://api.cloudinary.com/v1_1/" +
+         cloudName +
+         "/image/upload");
+       xhr.onload = () => {
+         if (xhr.status === 200) {
+           // Success! You probably want to save the URL somewhere
+           var response = JSON.parse(xhr.response);
+           var temp = response.secure_url;
+           console.log(response);
+           // https address of uploaded file
+         } else {
+           alert("Upload failed. Please try agian.");
+         }
+       }
+       xhr.send(formData);
+     }
+    </script>
+
 <div id="container">
     <div id="content">
         <div class="container">
+            <h4 ng-if="nav.isSuperAdmin()"><input type="file" id="wedding_testimonial_photo" onchange="uploadFile('wedding_testimonial_photo')" /> </h4>
             <div class="project-page row">
                 <div class="project-media col-md-8">
                     <div class="item">
                         <a class="lightbox" data-lightbox-gallery="gallery2">
-                            <img alt="" src="assets/images/10940568_10106333404752921_3998010058219657142_n.jpg" style="width:100%;">
+                            
+                            <img src="https://res.cloudinary.com/essence-events/image/upload/wedding_testimonial_photo.jpg" onError="this.src = 'assets/images/10940568_10106333404752921_3998010058219657142_n.jpg'" style="width:100%;" class="img-responsive" alt=""/>
+                            <!-- <img alt="" src="assets/images/10940568_10106333404752921_3998010058219657142_n.jpg" style="width:100%;"> -->
                         </a>
                     </div>
                 </div>
-                <div class="project-content col-md-4">
+
+                <div ng-init="getText1()" class="project-content col-md-4">
                     <h4><span>Weddings</span></h4>
-                    <p>At Essence Events, we specialize in custom details for your wedding. Our focus is to provide our clients with flawless planning and design experience. From logistics to execution, we ensure you have a wonderful wedding day. We work with local vendors throughout the community to bring every detail of your wedding to life.</p>
+                    <button class="btn btn-default "ng-if="nav.isSuperAdmin()" ng-click="submit('weddingDescriptText')">Submit Changes</button>
+                    <div id="weddingDescriptText" ng-if="nav.isSuperAdmin()" contenteditable="true">{{literalText1}}</div>
+                    <div id="weddingDescriptText" ng-if="!nav.isSuperAdmin()">{{literalText1}}</div>
+                    <br></br>
                     <h4><span>Examples</span></h4>
                     <ul>
-                        <li><strong>Wedding Service</strong></li>
-                        <li><strong>Practice Reception</strong></li>
-                        <li><strong>Pre-Wedding Party</strong></li>
-                        <li><strong>And More</strong></li>
+                      <li><strong>Wedding Service</strong></li>
+                      <li><strong>Practice Reception</strong></li>
+                      <li><strong>Pre-Wedding Party</strong></li>
+                      <li><strong>And More</strong></li>
                     </ul>
                 </div>
+
             </div>
-            <blockquote><p>"You have made our wedding an experience we will never forget."
-            </p><p><small>Albany &amp; Derrick</small></p></blockquote>
+            <div ng-init="getText2()">
+                <button class="btn btn-default "ng-if="nav.isSuperAdmin()" ng-click="submit('weddingTestimonial')">Submit Changes</button>
+                <blockquote ng-show="nav.isSuperAdmin()"><p id="weddingTestimonial" ng-if="nav.isSuperAdmin()" contenteditable="true">{{literalText2}}</p></blockquote>
+                <blockquote ng-show="!nav.isSuperAdmin()"><p id="weddingTestimonial" ng-if="!nav.isSuperAdmin()">{{literalText2}}</p>
+                  <p id="weddingTestimonialAuthor" ng-if="!nav.isSuperAdmin()"><small>{{literalText3}}</small></p></blockquote>
+            </div>
+            <div ng-init="getText3()" ng-show="nav.isSuperAdmin()">
+                <button class="btn btn-default "ng-if="nav.isSuperAdmin()" ng-click="submit('weddingTestimonialAuthor')">Submit Changes</button>
+                <blockquote><p id="weddingTestimonialAuthor" ng-show="nav.isSuperAdmin()" contenteditable="true">{{literalText3}}</p></blockquote>
+            </div>
         </div>
     </div>
 </div>

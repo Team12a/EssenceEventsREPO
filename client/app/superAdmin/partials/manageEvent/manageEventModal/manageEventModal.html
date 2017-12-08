@@ -3,7 +3,7 @@
     <tab heading="Basic Info" ng-if="hideDeleteTab">
       <h2 class="modal-header">Event information:</h2>
       <div class="modal-body">
-        <div class = "">
+        <div>
           <form name="form">
             <!-- Div to input the event name -->
             <div class="form-group row col-md-12" show-errors>
@@ -28,6 +28,7 @@
               <timepicker ng-model="event.date" hour-step="1" minute-step="1" show-meridian="true">
               </timepicker>
             </div>
+          </div>
 
             <!-- Div to input time for location -->
               <div class="form-group row col-md-12" show-errors>
