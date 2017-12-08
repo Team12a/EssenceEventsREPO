@@ -1,14 +1,14 @@
 'use strict';
 
-angular.module('essenceEventsRepoApp.admin')
-.controller('CreatePaymentCtrl', ['Payments', '$scope', '$stateParams', '$state', function (Payments, $scope, $stateParams, $state) {
+angular.module('essenceEventsRepoApp.superAdmin')
+.controller('CreatePaymentCtrlSuper', ['Payments', '$scope', '$stateParams', '$state', function (Payments, $scope, $stateParams, $state) {
 
   // $scope.message = 'Hello';
 
   //handle people trying to hit url directly.
   if($stateParams.userID == 'undefined')
   {
-    $state.go('admin.manageClients');
+    $state.go('superAdmin.manageAccounts');
   }
 
   //used to display the user you are talking to
@@ -39,7 +39,7 @@ angular.module('essenceEventsRepoApp.admin')
 
     Payments.create(payment)
       .then(function(response) {
-        $state.go('admin.managePayment');
+        $state.go('superAdmin.managePayment');
       }, function(err) {
         //do something
     });

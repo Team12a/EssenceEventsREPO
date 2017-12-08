@@ -1,16 +1,16 @@
 'use strict';
 
-describe('Controller: viewGuestListCtrl', function () {
+describe('Controller: ManagePaymentCtrl', function () {
 
   // load the controller's module
   beforeEach(module('essenceEventsRepoApp'));
 
-  var viewGuestListCtrl, scope;
+  var ManagePaymentCtrl, scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    viewGuestListCtrl = $controller('viewGuestListCtrl', {
+    ManagePaymentCtrl = $controller('ManagePaymentCtrl', {
       $scope: scope
     });
   }));

@@ -35,10 +35,6 @@ module.exports = function(config) {
       'client/bower_components/api-check/dist/api-check.js',
       'client/bower_components/angular-simple-logger/dist/angular-simple-logger.js',
       'client/bower_components/markerclustererplus/src/markerclusterer.js',
-      'client/bower_components/google-maps-utility-library-v3-markerwithlabel/dist/markerwithlabel.js',
-      'client/bower_components/google-maps-utility-library-v3-infobox/dist/infobox.js',
-      'client/bower_components/google-maps-utility-library-v3-keydragzoom/dist/keydragzoom.js',
-      'client/bower_components/js-rich-marker/src/richmarker.js',
       'client/bower_components/angular-google-maps/dist/angular-google-maps.js',
       'client/bower_components/angular-mocks/angular-mocks.js',
       // endbower
@@ -102,10 +98,10 @@ module.exports = function(config) {
     // - Safari (only Mac)
     // - PhantomJS
     // - IE (only Windows)
-    browsers: ['PhantomJS'],
+    browsers: ['Chrome'],
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
-    singleRun: false
+    singleRun: true
   });
 };

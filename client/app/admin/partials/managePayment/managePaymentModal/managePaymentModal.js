@@ -3,9 +3,9 @@
  angular.module('essenceEventsRepoApp.admin')
    .config(function ($stateProvider) {
      $stateProvider
-       .state('managePaymentModal', {
+       .state('admin.managePaymentModal', {
          url: '/managePaymentModal',
-         templateUrl: 'app/admin/partials/manageClients/manageClientsModal/managePaymentModal.html',
+         templateUrl: 'app/admin/partials/managePayments/managePaymentsModal/managePaymentModal.html',
          controller: 'managePaymentModalCtrl',
          controllerAs: 'mancli',
          authenticate: 'admin',

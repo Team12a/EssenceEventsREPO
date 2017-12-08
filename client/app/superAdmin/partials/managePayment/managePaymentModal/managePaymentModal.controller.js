@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('essenceEventsRepoApp.admin')
-.controller('ManagePaymentModalCtrl', ['$scope', '$state', '$q', '$modalInstance', 'payment', 'Payments', function ($scope, $state, $q, $modalInstance, payment, Payments)
+angular.module('essenceEventsRepoApp.superAdmin')
+.controller('ManagePaymentModalCtrlSuper', ['$scope', '$state', '$q', '$modalInstance', 'payment', 'Payments', function ($scope, $state, $q, $modalInstance, payment, Payments)
 {
 
     //Copy object so we don't change main page concurrently and setup subcontractors
