@@ -1,6 +1,6 @@
 'use strict';
 
-const config = require("../../config/environment/development.js");
+const config = require("../../config/environment");
 var cloudinary = require('cloudinary').v2;
 export function signFileUploadRequest(request, response) {
 
