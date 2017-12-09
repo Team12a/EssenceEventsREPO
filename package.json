@@ -103,8 +103,8 @@
     "time-grunt": "^1.2.1"
   },
   "engines": {
-    "node": "^4.2.3",
-    "npm": "^2.14.7"
+    "node": "^6.11.2",
+    "npm": "^3.10.10"
   },
   "scripts": {
     "start": "node server",
