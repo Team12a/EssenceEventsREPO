@@ -67,10 +67,12 @@ export default function(app) {
   }
 
   app.set('appPath', path.join(config.root, 'client'));
+  app.set('bowerPath', path.join(conf.root,'/bower_components'))
 
   if ('production' === env) {
     app.use(favicon(path.join(config.root, 'client', 'favicon.ico')));
     app.use(express.static(app.get('appPath')));
+    app.use('/bower_components',express.static(app.get('bowerPath')));
     app.use(morgan('dev'));
   }
 
