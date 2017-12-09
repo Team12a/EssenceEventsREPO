@@ -2,9 +2,9 @@
 
 'use strict';
 
-import crypto from 'crypto';
+const crypto = require("crypto");
 var mongoose = require('bluebird').promisifyAll(require('mongoose'));
-import {Schema} from 'mongoose';
+const {Schema} = require("mongoose");
 
 var UserSchema = new Schema({
   name: String,
@@ -223,4 +223,5 @@ UserSchema.methods = {
   }
 };
 
-export default mongoose.model('User', UserSchema);
+var User= mongoose.model('User', UserSchema);
+module.exports=User;

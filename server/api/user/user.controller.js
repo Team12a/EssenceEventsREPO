@@ -122,7 +122,7 @@ export function updateUser(req, res, next) {
  */
 export function me(req, res, next) {
   var userId = req.user._id;
-
+  console(userId);
   User.findOneAsync({ _id: userId }, '-salt -password')
     .then(user => { // don't ever give out the password or salt
       if (!user) {
