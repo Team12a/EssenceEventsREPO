@@ -1,9 +1,9 @@
 'use strict';
 
-import config from '../../config/environment';
-import User from '../user/user.model';
-import Event from '../event/event.model';
-import Payment from '../payment/payment.model';
+const config = require ("../../config/environment");
+const User = require("../user/user.model");
+const Event = require("../event/event.model");
+const Payment = require("../payment/payment.model");
 var nodemailer = require('nodemailer');
 var sgTransport = require('nodemailer-sendgrid-transport');
 

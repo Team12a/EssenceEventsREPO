@@ -1,7 +1,7 @@
 'use strict';
 
-import config from '../../config/environment';
-import User from '../user/user.model';
+const config = require("../../config/environment");
+const User = require("../user/user.model");
 var nodemailer = require('nodemailer');
 
 

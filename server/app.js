@@ -4,11 +4,11 @@
 
 'use strict';
 
-import express from 'express';
-import mongoose from 'mongoose';
+const express = require("express");
+const mongoose = require ("mongoose");
 mongoose.Promise = require('bluebird');
-import config from './config/environment';
-import http from 'http';
+const config = require("./config/environment");
+const http = require("http");
 //EmailReminder
 var emailReminder = require('./api/emailReminder/emailReminder.js');
 
