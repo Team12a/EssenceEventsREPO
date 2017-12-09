@@ -146,9 +146,9 @@
     "supertest": "^1.1.0",
     "time-grunt": "^1.2.1"
   },
-  "cacheDirectories": ["client/node_modules", "server/node_modules", "client/bower_components", "server/bower_components"],
   "engines": {
     "node": "~6.11.2",
+    "bower":"~1.8.0",
     "npm": "~3.10.10"
   },
   "scripts": {
