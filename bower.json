@@ -6,7 +6,7 @@
     "angular-mocks": "1.4.0",
     "json3": "3.3.1",
     "es5-shim": "3.0.1",
-    "bootstrap": "3.1.1",
+    "bootstrap": "~3.1.1",
     "angular-resource": "1.4.0",
     "angular-cookies": "1.4.0",
     "angular-sanitize": "1.4.0",
@@ -28,6 +28,7 @@
     "livereload-js": "^2.2.1"
   },
   "resolutions": {
-    "angular": "1.6.7"
+    "angular": "1.6.7",
+    "bootstrap": "3.1.1"
   }
 }
