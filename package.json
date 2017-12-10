@@ -62,6 +62,7 @@
     "grunt-protractor-runner": "^3.1.0",
     "grunt-usemin": "^3.0.0",
     "grunt-wiredep": "^2.0.0",
+    "jit-grunt": "^0.9.1",
     "jquery": "^3.2.1",
     "jsonwebtoken": "^5.0.0",
     "livereload-js": "^2.2.2",
