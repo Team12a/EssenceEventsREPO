@@ -154,7 +154,7 @@
     "npm": "~3.10.10"
   },
   "scripts": {
-    "start": "grunt --force",
+    "start": "node server",
     "test": "grunt test",
     "postinstall": "bower install --config.interactive=false",
     "update-webdriver": "node node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update"
